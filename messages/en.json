@@ -4,8 +4,8 @@
     "description": "orangekoko brings singular vintage jewelry sourced across Japan to Europe. Every piece is one of one, worn before, carrying its own trace of time."
   },
   "announcement": {
-    "freeShipping": "Complimentary shipping on orders over €250",
-    "packedInTokyo": "Carefully packed in Tokyo"
+    "freeShipping": "Complimentary shipping on orders over €120",
+    "packedInTokyo": "Carefully packed in Japan"
   },
   "nav": {
     "newArrivals": "New Arrivals",
@@ -53,7 +53,7 @@
     "condition5": "What you see is what you receive.",
     "condition6": "Original. Authentic. One-of-one.",
     "feature1Title": "Worldwide Shipping",
-    "feature1Body": "Carefully packed in Tokyo and shipped with care.",
+    "feature1Body": "Carefully packed in Japan and shipped with care.",
     "feature2Title": "Thoughtful Wrapping",
     "feature2Body": "Mindful packaging, ready to give or keep.",
     "feature3Title": "Authentic & Curated",

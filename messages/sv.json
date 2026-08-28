@@ -4,8 +4,8 @@
     "description": "orangekoko för unika vintagesmycken från hela Japan till Europa. Varje smycke är ett unikum, tidigare buret, och bär sitt eget spår av tid."
   },
   "announcement": {
-    "freeShipping": "Fri frakt på beställningar över 250 €",
-    "packedInTokyo": "Noggrant packat i Tokyo"
+    "freeShipping": "Fri frakt på beställningar över 120 €",
+    "packedInTokyo": "Noggrant packat i Japan"
   },
   "nav": {
     "newArrivals": "Nyheter",
@@ -53,7 +53,7 @@
     "condition5": "Det du ser är det du får.",
     "condition6": "Original. Äkta. Unikt.",
     "feature1Title": "Frakt över hela världen",
-    "feature1Body": "Noggrant packat i Tokyo och skickat med omsorg.",
+    "feature1Body": "Noggrant packat i Japan och skickat med omsorg.",
     "feature2Title": "Genomtänkt förpackning",
     "feature2Body": "Omtänksam förpackning, redo att ge bort eller behålla.",
     "feature3Title": "Äkta & Utvalt",

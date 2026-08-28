@@ -4,8 +4,8 @@
     "description": "orangekoko apporte en Europe des bijoux vintage uniques dénichés à travers le Japon. Chaque pièce est unique, déjà portée, et garde sa propre trace du temps."
   },
   "announcement": {
-    "freeShipping": "Livraison offerte dès 250 € d'achat",
-    "packedInTokyo": "Emballé avec soin à Tokyo"
+    "freeShipping": "Livraison offerte dès 120 € d'achat",
+    "packedInTokyo": "Emballé avec soin au Japon"
   },
   "nav": {
     "newArrivals": "Nouveautés",
@@ -53,7 +53,7 @@
     "condition5": "Ce que vous voyez est ce que vous recevez.",
     "condition6": "Original. Authentique. Pièce unique.",
     "feature1Title": "Livraison internationale",
-    "feature1Body": "Emballé avec soin à Tokyo et expédié avec attention.",
+    "feature1Body": "Emballé avec soin au Japon et expédié avec attention.",
     "feature2Title": "Emballage soigné",
     "feature2Body": "Un emballage pensé, prêt à offrir ou à garder.",
     "feature3Title": "Authentique & sélectionné",

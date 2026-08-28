@@ -4,8 +4,8 @@
     "description": "orangekoko tuo Eurooppaan ainutlaatuisia vintagekoruja eri puolilta Japania. Jokainen koru on ainutkertainen, aiemmin käytetty ja kantaa mukanaan omaa ajan jälkeään."
   },
   "announcement": {
-    "freeShipping": "Ilmainen toimitus yli 250 € tilauksiin",
-    "packedInTokyo": "Huolellisesti pakattu Tokiossa"
+    "freeShipping": "Ilmainen toimitus yli 120 € tilauksiin",
+    "packedInTokyo": "Huolellisesti pakattu Japanissa"
   },
   "nav": {
     "newArrivals": "Uutuudet",
@@ -53,7 +53,7 @@
     "condition5": "Se, mitä näet, on se, mitä saat.",
     "condition6": "Alkuperäinen. Aito. Ainutlaatuinen.",
     "feature1Title": "Toimitus maailmanlaajuisesti",
-    "feature1Body": "Huolellisesti pakattu Tokiossa ja lähetetty huolella.",
+    "feature1Body": "Huolellisesti pakattu Japanissa ja lähetetty huolella.",
     "feature2Title": "Harkittu pakkaus",
     "feature2Body": "Huolella suunniteltu pakkaus, valmis lahjaksi tai omaksi iloksi.",
     "feature3Title": "Aito ja Kuratoitu",

@@ -4,8 +4,8 @@
     "description": "orangekoko bringer enestående vintagesmykker fra hele Japan til Europa. Hvert smykke er ett av sitt slag, tidligere brukt, og bærer sitt eget spor av tid."
   },
   "announcement": {
-    "freeShipping": "Fri frakt på bestillinger over 250 €",
-    "packedInTokyo": "Nøye pakket i Tokyo"
+    "freeShipping": "Fri frakt på bestillinger over 120 €",
+    "packedInTokyo": "Nøye pakket i Japan"
   },
   "nav": {
     "newArrivals": "Nyheter",
@@ -53,7 +53,7 @@
     "condition5": "Det du ser, er det du får.",
     "condition6": "Originalt. Autentisk. Unikt.",
     "feature1Title": "Frakt over hele verden",
-    "feature1Body": "Nøye pakket i Tokyo og sendt med omtanke.",
+    "feature1Body": "Nøye pakket i Japan og sendt med omtanke.",
     "feature2Title": "Gjennomtenkt innpakning",
     "feature2Body": "Omtenksom innpakning, klar til å gi bort eller beholde.",
     "feature3Title": "Ekte & Kuratert",

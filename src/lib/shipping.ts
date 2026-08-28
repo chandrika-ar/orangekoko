@@ -20,7 +20,7 @@ export const SHIPPABLE_COUNTRIES = [
   "NO", "IS", "CH", "GB",
 ] as const;
 
-export const FREE_SHIPPING_THRESHOLD_CENTS = 25000; // €250, matches homepage banner
+export const FREE_SHIPPING_THRESHOLD_CENTS = 12000; // €120, matches homepage banner
 
 interface ShippingOption {
   id: string;
