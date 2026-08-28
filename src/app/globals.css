@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  /* orangekoko brand tokens — warm, editorial, vintage-jewelry palette */
+  --color-cream: #f6f1e9;
+  --color-cream-deep: #efe7d8;
+  --color-ink: #211c17;
+  --color-ink-soft: #4a433b;
+  --color-line: #ddd3c1;
+  --color-accent: #c9622c;
+  --color-accent-soft: #e7ad82;
+  --color-white: #fffdf9;
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-cream-deep: var(--color-cream-deep);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-line: var(--color-line);
+  --color-accent: var(--color-accent);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-white: var(--color-white);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--color-cream-deep),
+    var(--color-cream-deep) 10px,
+    var(--color-line) 10px,
+    var(--color-line) 11px
+  );
+  border: 1px solid var(--color-line);
+  color: var(--color-ink-soft);
+  text-align: center;
+}
