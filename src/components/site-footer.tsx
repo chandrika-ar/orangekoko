@@ -21,7 +21,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-line bg-cream-deep">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-14 text-sm sm:grid-cols-3 sm:px-6 lg:grid-cols-5 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-14 text-sm sm:grid-cols-3 sm:px-6 lg:grid-cols-6 lg:px-8">
         <div>
           <p className="mb-3 text-[11px] uppercase tracking-[0.12em] text-ink-soft">
             {t("shop")}
@@ -55,7 +55,7 @@ export function SiteFooter() {
             <li><Link href="/contact">{t("contact")}</Link></li>
           </ul>
         </div>
-        <div>
+        <div className="col-span-2">
           <p className="mb-3 text-[11px] uppercase tracking-[0.12em] text-ink-soft">
             {t("newsletter")}
           </p>
@@ -82,7 +82,7 @@ export function SiteFooter() {
                   setSubmitting(false);
                 }
               }}
-              className="flex border-b border-ink"
+              className="flex max-w-sm gap-2"
             >
               <input
                 required
@@ -90,12 +90,12 @@ export function SiteFooter() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={t("emailPlaceholder")}
-                className="w-full bg-transparent py-1.5 text-sm placeholder:text-ink-soft focus:outline-none"
+                className="w-full min-w-0 border border-line bg-cream px-3 py-2.5 text-sm placeholder:text-ink-soft focus:border-ink focus:outline-none"
               />
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-2 text-xs uppercase tracking-[0.1em] disabled:opacity-50"
+                className="shrink-0 bg-ink px-5 py-2.5 text-xs uppercase tracking-[0.1em] text-white transition-colors hover:bg-accent disabled:opacity-50"
               >
                 {t("subscribe")}
               </button>
