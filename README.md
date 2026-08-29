@@ -179,7 +179,7 @@ src/
       ear-clips/ earrings-studs/ necklaces/ new-arrivals/   分类页
       product/[slug]/   商品详情页
       cart/ wishlist/ checkout/   购物车、心愿单、结账
-      about/ shipping/ returns/ size-guide/ faq/ contact/ journal/ account/ search/
+      about/ shipping/ returns/ faq/ contact/ journal/ account/ search/ projects/ brand/
     api/
       checkout/route.ts        创建 Stripe Checkout Session
       webhooks/stripe/route.ts  Stripe webhook(超卖防护骨架)

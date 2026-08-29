@@ -71,7 +71,6 @@ export function SiteFooter() {
           <ul className="space-y-2">
             <li><Link href="/shipping">{t("shipping")}</Link></li>
             <li><Link href="/returns">{t("returns")}</Link></li>
-            <li><Link href="/size-guide">{t("sizeGuide")}</Link></li>
             <li><Link href="/faq">{t("faq")}</Link></li>
             <li><Link href="/contact">{t("contact")}</Link></li>
           </ul>
