@@ -16,7 +16,7 @@ export function FeaturesRow() {
         {items.map(({ icon, title, body }) => (
           <div key={title} className="flex flex-col items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={icon} alt="" className="h-9 w-9 object-contain" />
+            <img src={icon} alt="" className="h-16 w-16 object-contain" />
             <p className="text-xs uppercase tracking-[0.1em]">{title}</p>
             <p className="max-w-[180px] text-xs leading-relaxed text-ink-soft">
               {body}
