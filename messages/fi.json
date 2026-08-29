@@ -82,7 +82,8 @@
     "careBody": "Vintagekorut vaativat hellävaraista käsittelyä: säilytä kosteudelta suojattuna, vältä hajuvesiä ja suoraa kosketusta veteen.",
     "shareTitle": "Jaa tämä koru",
     "relatedTitle": "Saatat pitää myös näistä",
-    "priceNote": "Hintaan sisältyy arvonlisävero, mikäli sovellettavissa"
+    "priceNote": "Hintaan sisältyy arvonlisävero, mikäli sovellettavissa",
+    "approxNote": "Suuntaa antava — veloitus tapahtuu euroissa (EUR)."
   },
   "cart": {
     "title": "Ostoskorisi",
@@ -91,6 +92,7 @@
     "continueShopping": "Jatka ostoksia",
     "subtotal": "Välisumma",
     "shippingNote": "Toimitus ja verot lasketaan kassalla",
+    "billedInEur": "Veloitus tapahtuu aina euroissa (EUR) näytetystä valuutasta riippumatta.",
     "checkout": "Kassalle",
     "remove": "Poista",
     "quantity": "Määrä"

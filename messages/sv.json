@@ -82,7 +82,8 @@
     "careBody": "Vintagesmycken kräver varsam hantering: förvara torrt, undvik parfym och direktkontakt med vatten.",
     "shareTitle": "Dela detta smycke",
     "relatedTitle": "Du kanske också gillar",
-    "priceNote": "Priset inkluderar moms där tillämpligt"
+    "priceNote": "Priset inkluderar moms där tillämpligt",
+    "approxNote": "Ungefärligt — betalning sker i EUR."
   },
   "cart": {
     "title": "Din Varukorg",
@@ -91,6 +92,7 @@
     "continueShopping": "Fortsätt handla",
     "subtotal": "Delsumma",
     "shippingNote": "Frakt och skatter beräknas i kassan",
+    "billedInEur": "Betalning sker alltid i EUR, oavsett vilken valuta som visas.",
     "checkout": "Till kassan",
     "remove": "Ta bort",
     "quantity": "Antal"

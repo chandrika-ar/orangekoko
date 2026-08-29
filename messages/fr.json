@@ -82,7 +82,8 @@
     "careBody": "Les bijoux vintage demandent un soin délicat : conservez-les à l'abri de l'humidité, évitez le parfum et le contact direct avec l'eau.",
     "shareTitle": "Partager cette pièce",
     "relatedTitle": "Vous aimerez aussi",
-    "priceNote": "Prix TVA incluse le cas échéant"
+    "priceNote": "Prix TVA incluse le cas échéant",
+    "approxNote": "Approximatif — le paiement sera effectué en EUR."
   },
   "cart": {
     "title": "Votre panier",
@@ -91,6 +92,7 @@
     "continueShopping": "Continuer mes achats",
     "subtotal": "Sous-total",
     "shippingNote": "Livraison et taxes calculées lors du paiement",
+    "billedInEur": "Le paiement est toujours effectué en EUR, quelle que soit la devise affichée.",
     "checkout": "Paiement",
     "remove": "Retirer",
     "quantity": "Qté"

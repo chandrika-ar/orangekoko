@@ -82,7 +82,8 @@
     "careBody": "I gioielli vintage richiedono un trattamento delicato: conservare lontano dall'umidità, evitare profumi e il contatto diretto con l'acqua.",
     "shareTitle": "Condividi questo pezzo",
     "relatedTitle": "Potrebbe piacerti anche",
-    "priceNote": "Il prezzo include l'IVA ove applicabile"
+    "priceNote": "Il prezzo include l'IVA ove applicabile",
+    "approxNote": "Approssimativo — l'addebito avverrà in EUR."
   },
   "cart": {
     "title": "Il Tuo Carrello",
@@ -91,6 +92,7 @@
     "continueShopping": "Continua lo shopping",
     "subtotal": "Subtotale",
     "shippingNote": "Spedizione e imposte calcolate al checkout",
+    "billedInEur": "L'addebito avviene sempre in EUR, indipendentemente dalla valuta visualizzata.",
     "checkout": "Checkout",
     "remove": "Rimuovi",
     "quantity": "Qtà"

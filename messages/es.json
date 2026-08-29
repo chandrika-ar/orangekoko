@@ -82,7 +82,8 @@
     "careBody": "Las joyas vintage requieren un trato delicado: guárdelas lejos de la humedad y evite el perfume y el contacto directo con el agua.",
     "shareTitle": "Compartir esta pieza",
     "relatedTitle": "También le puede interesar",
-    "priceNote": "El precio incluye el IVA cuando corresponda"
+    "priceNote": "El precio incluye el IVA cuando corresponda",
+    "approxNote": "Aproximado — el cobro se realizará en EUR."
   },
   "cart": {
     "title": "Su Cesta",
@@ -91,6 +92,7 @@
     "continueShopping": "Seguir comprando",
     "subtotal": "Subtotal",
     "shippingNote": "Los gastos de envío e impuestos se calculan al finalizar la compra",
+    "billedInEur": "El cobro siempre se realiza en EUR, independientemente de la moneda mostrada.",
     "checkout": "Finalizar compra",
     "remove": "Eliminar",
     "quantity": "Cant."

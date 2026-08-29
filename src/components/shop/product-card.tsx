@@ -1,17 +1,18 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Heart } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ImagePlaceholder } from "@/components/image-placeholder";
-import { formatPrice, type Product } from "@/lib/products";
+import { type Product } from "@/lib/products";
+import { useDisplayPrice } from "@/lib/use-display-price";
 import { useWishlistStore } from "@/store/wishlist-store";
 import clsx from "clsx";
 
 export function ProductCard({ product }: { product: Product }) {
-  const locale = useLocale();
   const t = useTranslations("product");
+  const price = useDisplayPrice(product.priceCents, product.currency);
   const has = useWishlistStore((s) => s.has(product.id));
   const toggle = useWishlistStore((s) => s.toggle);
   const thumbnail = product.imageUrls?.[0];
@@ -53,9 +54,7 @@ export function ProductCard({ product }: { product: Product }) {
         <Link href={`/product/${product.slug}`} className="hover:text-accent">
           {product.title}
         </Link>
-        <p className="mt-1 text-ink-soft">
-          {formatPrice(product.priceCents, product.currency, locale)}
-        </p>
+        <p className="mt-1 text-ink-soft">{price.formatted}</p>
         <p className="mt-0.5 text-[10px] uppercase tracking-[0.1em] text-ink-soft">
           {t("oneOfOne")}
         </p>

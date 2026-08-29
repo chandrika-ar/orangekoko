@@ -27,9 +27,9 @@ export function ConditionSection() {
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/condition-illustration.png"
+          src="/logo-mark.png"
           alt=""
-          className="hidden aspect-[3/4] w-full object-contain lg:block"
+          className="hidden aspect-square w-full object-contain lg:block"
         />
       </div>
     </section>

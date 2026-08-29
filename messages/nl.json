@@ -82,7 +82,8 @@
     "careBody": "Vintage sieraden vragen om zorgvuldige omgang: bewaar ze uit de buurt van vocht, vermijd parfum en direct contact met water.",
     "shareTitle": "Deel dit stuk",
     "relatedTitle": "Dit vindt u wellicht ook mooi",
-    "priceNote": "Prijs is inclusief btw waar van toepassing"
+    "priceNote": "Prijs is inclusief btw waar van toepassing",
+    "approxNote": "Bij benadering — afrekenen gebeurt in EUR."
   },
   "cart": {
     "title": "Uw Winkelmand",
@@ -91,6 +92,7 @@
     "continueShopping": "Verder winkelen",
     "subtotal": "Subtotaal",
     "shippingNote": "Verzendkosten & belastingen worden berekend bij het afrekenen",
+    "billedInEur": "Er wordt altijd in EUR afgerekend, ongeacht de weergegeven valuta.",
     "checkout": "Afrekenen",
     "remove": "Verwijderen",
     "quantity": "Aantal"

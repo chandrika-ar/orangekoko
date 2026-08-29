@@ -8,6 +8,8 @@ import { routing, type Locale } from "@/i18n/routing";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
+import { CurrencyRatesProvider } from "@/components/currency-provider";
+import { getExchangeRates } from "@/lib/currency";
 import "../globals.css";
 
 const displayFont = Playfair_Display({
@@ -56,15 +58,18 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
+  const rates = await getExchangeRates();
 
   return (
     <html lang={locale} className={`${displayFont.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-cream text-ink antialiased">
         <NextIntlClientProvider messages={messages}>
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
-          <CartDrawer />
+          <CurrencyRatesProvider rates={rates}>
+            <SiteHeader />
+            <main>{children}</main>
+            <SiteFooter />
+            <CartDrawer />
+          </CurrencyRatesProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -82,7 +82,8 @@
     "careBody": "Vintage jewelry asks for gentle handling: store away from moisture, avoid perfume and direct contact with water.",
     "shareTitle": "Share this piece",
     "relatedTitle": "You may also like",
-    "priceNote": "Price includes VAT where applicable"
+    "priceNote": "Price includes VAT where applicable",
+    "approxNote": "Approximate — you'll be charged in EUR at checkout."
   },
   "cart": {
     "title": "Your Bag",
@@ -91,6 +92,7 @@
     "continueShopping": "Continue shopping",
     "subtotal": "Subtotal",
     "shippingNote": "Shipping & taxes calculated at checkout",
+    "billedInEur": "All charges are billed in EUR regardless of displayed currency.",
     "checkout": "Checkout",
     "remove": "Remove",
     "quantity": "Qty"

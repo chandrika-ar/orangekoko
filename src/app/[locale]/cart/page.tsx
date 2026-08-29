@@ -1,13 +1,16 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cartSubtotalCents, useCartStore } from "@/store/cart-store";
-import { formatPrice } from "@/lib/products";
+import { useDisplayPrice } from "@/lib/use-display-price";
+
+function LinePrice({ cents, currency }: { cents: number; currency: string }) {
+  return <>{useDisplayPrice(cents, currency).formatted}</>;
+}
 
 export default function CartPage() {
   const t = useTranslations("cart");
-  const locale = useLocale();
   const lines = useCartStore((s) => s.lines);
   const removeItem = useCartStore((s) => s.removeItem);
   const subtotal = cartSubtotalCents(lines);
@@ -43,7 +46,7 @@ export default function CartPage() {
                     {line.title}
                   </Link>
                   <p className="mt-1 text-sm text-ink-soft">
-                    {formatPrice(line.priceCents, line.currency, locale)}
+                    <LinePrice cents={line.priceCents} currency={line.currency} />
                   </p>
                 </div>
                 <button
@@ -57,9 +60,10 @@ export default function CartPage() {
           </ul>
           <div className="mt-6 flex items-center justify-between text-lg">
             <span>{t("subtotal")}</span>
-            <span>{formatPrice(subtotal, currency, locale)}</span>
+            <span><LinePrice cents={subtotal} currency={currency} /></span>
           </div>
           <p className="mt-1 text-xs text-ink-soft">{t("shippingNote")}</p>
+          <p className="mt-1 text-xs text-ink-soft">{t("billedInEur")}</p>
           <Link
             href="/checkout"
             className="mt-6 block w-full max-w-xs bg-ink py-3.5 text-center text-xs uppercase tracking-[0.12em] text-white hover:bg-accent sm:inline-block"

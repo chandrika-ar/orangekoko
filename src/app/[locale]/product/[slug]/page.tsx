@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { getProductBySlug, getProductsByCategory, formatPrice } from "@/lib/products";
+import { CURRENCY_BY_LOCALE, convertCents, getExchangeRates } from "@/lib/currency";
+import type { Locale } from "@/i18n/routing";
 import { ProductGallery } from "@/components/shop/product-gallery";
 import { ProductActions } from "@/components/shop/product-actions";
 import { Accordion } from "@/components/shop/accordion";
@@ -20,6 +22,11 @@ export default async function ProductPage({
     .filter((p) => p.id !== product.id)
     .slice(0, 4);
 
+  const rates = await getExchangeRates();
+  const displayCurrency = CURRENCY_BY_LOCALE[locale as Locale] ?? product.currency;
+  const displayCents = convertCents(product.priceCents, product.currency, displayCurrency, rates);
+  const isConverted = displayCurrency !== product.currency;
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
@@ -35,9 +42,12 @@ export default async function ProductPage({
           </p>
           <h1 className="mt-2 font-display text-3xl">{product.title}</h1>
           <p className="mt-2 text-lg">
-            {formatPrice(product.priceCents, product.currency, locale)}
+            {formatPrice(displayCents, displayCurrency, locale)}
           </p>
           <p className="mt-1 text-xs text-ink-soft">{t("priceNote")}</p>
+          {isConverted && (
+            <p className="mt-1 text-xs text-ink-soft">{t("approxNote")}</p>
+          )}
           <p className="mt-3 text-sm text-ink-soft">{t("onlyOneAvailable")}</p>
 
           <div className="mt-6">

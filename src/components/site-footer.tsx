@@ -4,22 +4,7 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { locales, localeLabels, type Locale } from "@/i18n/routing";
-
-// Real currency used in each locale's associated country — Nordic
-// currencies differ from the Eurozone even though this store bills
-// checkout in EUR only for now (see newsletterHint disclaimer in footer).
-const localeCurrency: Record<Locale, string> = {
-  en: "EUR €",
-  de: "EUR €",
-  fr: "EUR €",
-  nl: "EUR €",
-  es: "EUR €",
-  it: "EUR €",
-  sv: "SEK kr",
-  da: "DKK kr",
-  no: "NOK kr",
-  fi: "EUR €",
-};
+import { CURRENCY_BY_LOCALE, CURRENCY_SYMBOL } from "@/lib/currency";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { ArrowUpRight } from "lucide-react";
 
@@ -139,7 +124,7 @@ export function SiteFooter() {
           >
             {locales.map((l) => (
               <option key={l} value={l}>
-                {localeLabels[l]} — {localeCurrency[l]}
+                {localeLabels[l]} — {CURRENCY_SYMBOL[CURRENCY_BY_LOCALE[l]]}
               </option>
             ))}
           </select>

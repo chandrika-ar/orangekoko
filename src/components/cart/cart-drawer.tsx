@@ -1,14 +1,17 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { cartSubtotalCents, useCartStore } from "@/store/cart-store";
-import { formatPrice } from "@/lib/products";
+import { useDisplayPrice } from "@/lib/use-display-price";
+
+function LinePrice({ cents, currency }: { cents: number; currency: string }) {
+  return <>{useDisplayPrice(cents, currency).formatted}</>;
+}
 
 export function CartDrawer() {
   const t = useTranslations("cart");
-  const locale = useLocale();
   const isOpen = useCartStore((s) => s.isOpen);
   const close = useCartStore((s) => s.close);
   const lines = useCartStore((s) => s.lines);
@@ -65,7 +68,7 @@ export function CartDrawer() {
                       {line.title}
                     </Link>
                     <p className="mt-1 text-sm text-ink-soft">
-                      {formatPrice(line.priceCents, line.currency, locale)}
+                      <LinePrice cents={line.priceCents} currency={line.currency} />
                     </p>
                     <button
                       onClick={() => removeItem(line.productId)}
@@ -80,9 +83,10 @@ export function CartDrawer() {
             <div className="border-t border-line px-5 py-5">
               <div className="flex items-center justify-between text-sm">
                 <span>{t("subtotal")}</span>
-                <span>{formatPrice(subtotal, currency, locale)}</span>
+                <span><LinePrice cents={subtotal} currency={currency} /></span>
               </div>
               <p className="mt-1 text-xs text-ink-soft">{t("shippingNote")}</p>
+              <p className="mt-1 text-xs text-ink-soft">{t("billedInEur")}</p>
               <Link
                 href="/checkout"
                 onClick={close}

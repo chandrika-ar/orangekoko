@@ -82,7 +82,8 @@
     "careBody": "Vintage-Schmuck braucht sanfte Pflege: trocken lagern, Kontakt mit Parfüm und Wasser vermeiden.",
     "shareTitle": "Teilen",
     "relatedTitle": "Das könnte Ihnen auch gefallen",
-    "priceNote": "Preis inkl. MwSt., soweit anwendbar"
+    "priceNote": "Preis inkl. MwSt., soweit anwendbar",
+    "approxNote": "Ungefähr — die Abrechnung erfolgt beim Checkout in EUR."
   },
   "cart": {
     "title": "Ihr Warenkorb",
@@ -91,6 +92,7 @@
     "continueShopping": "Weiter einkaufen",
     "subtotal": "Zwischensumme",
     "shippingNote": "Versand und Steuern werden beim Checkout berechnet",
+    "billedInEur": "Die Abrechnung erfolgt unabhängig von der angezeigten Währung immer in EUR.",
     "checkout": "Zur Kasse",
     "remove": "Entfernen",
     "quantity": "Menge"
