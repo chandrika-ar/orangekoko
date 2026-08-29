@@ -15,6 +15,8 @@
     "about": "Vår Historie",
     "journal": "Journal",
     "search": "Søk",
+    "searchHint": "Søket matcher bare produktnavn — bruk menyen ovenfor for vår historie eller journal.",
+    "searchNoResults": "Ingen varer matcher det søket. Prøv et annet ord, eller bla gjennom etter kategori ovenfor.",
     "wishlist": "Ønskeliste",
     "cart": "Handlekurv",
     "account": "Konto",
@@ -134,5 +136,25 @@
     "rights": "© {year} orangekoko. Alle rettigheter forbeholdt.",
     "instagram": "Instagram",
     "pinterest": "Pinterest"
+  },
+  "faq": {
+    "q1": "Er smykkene virkelig ekte vintage?",
+    "a1": "Ja, smykkene er ekte. Vi inspiserer hvert stykke nøye under fotografering og pakking for å bekrefte tilstanden, så vi kan dessverre ikke godta retur eller refusjon for skader som rapporteres etter levering.",
+    "q2": "Hva er japanske vintagesmykker?",
+    "a2": "Japanske vintagesmykker er, kort sagt, en kategori som belønner et nærmere blikk. Enkelte stykker er laget av edle materialer som Akoya-perler eller japansk korall, eller ferdigstilt med unike teknikker som shippo-yaki eller Kutani-inspirert dekor.\n\nDet som skiller dem ut, er ikke prangende stil. Det er ikke helt vestlige fine smykker. Det er heller ikke helt asiatiske antikviteter. De befinner seg et sted midt imellom, og det er nettopp det som gjør dem interessante.",
+    "q3": "Kan jeg returnere eller bytte en vare?",
+    "a3": "Vi inspiserer hvert stykke nøye under fotografering og pakking, så vi kan dessverre ikke godta retur eller bytte for skader som rapporteres etter levering. For å forhindre bytte av varer godtar vi ikke retur under noen omstendigheter. Det sagt, vil vi at du skal føle deg trygg før du kjøper! Har du spørsmål eller bekymringer, ikke nøl med å spørre på forhånd. Vi hjelper deg gjerne!",
+    "q4": "Så... hvor får egentlig Orange Koko tak i alt dette?",
+    "a4": "Vi kjøper inn fra lisensierte bruktbutikker for merkevarer, sertifiserte pantelånere og private antikkmarkeder. Hvert stykke blir verifisert før det når deg.",
+    "q5": "Hva er den nåværende tilstanden til produktene?",
+    "a5": "En liten merknad før du blir forelsket i noe: dette er vintage-stykker. Det betyr at små riper, lette bruksspor og av og til tegn på et godt levd liv er en del av pakken. Hvis du er ute etter perfeksjon, er dette nok ikke stedet for deg. Setter du pris på ting som faktisk har vært et sted — velkommen.",
+    "q6": "Kan jeg få rabatt?",
+    "a6": "Det forstår vi helt, hvem elsker ikke et godt tilbud! Dessverre er prisene våre faste, og vi kan ikke tilby rabatter. Vi kjører imidlertid spesielle kampanjer fra tid til annen, så følg med! Hvert stykke er nøye priset ut fra kvalitet og unikhet. Vi håper du finner noe du elsker.",
+    "q7": "Vent, hvorfor ble bestillingen min kansellert etter at jeg allerede hadde betalt?",
+    "a7": "Ærlig svar: noen av våre håndlagde og vintage-varer legges ut på flere plattformer samtidig. Hvis noe blir solgt et annet sted først, må vi kanskje kansellere — selv etter kjøp. Vi vet det er irriterende, vi beklager, men det skjer. Av samme grunn kan annonser også forsvinne uten forvarsel, så ser du noe du liker, ikke vent for lenge.",
+    "q8": "Er mål og bilder pålitelige?",
+    "a8": "Målt og inspisert for hånd, så det kan være en avvik på en til to millimeter, eller av og til en liten detalj som er oversett. Hvis tilstanden betyr mye for deg, er det bare å skrive til oss på forhånd.\n\nNår det gjelder bildene, er de tatt av oss personlig, så husk at fargene kan avvike litt fra den faktiske varen avhengig av skjermen og lysforholdene dine.",
+    "q9": "Hvorfor trenger jeg ikke bekymre meg for allergier eller rare lukter?",
+    "a9": "Ingen kjæledyr i huset — så null dyrehår, null dyrelukt. Og vi tåler virkelig ikke sigarettrøyk, så det finnes heller ikke noe av det. Det som kommer til deg, er rent, nøytralt og klart til bruk."
   }
 }

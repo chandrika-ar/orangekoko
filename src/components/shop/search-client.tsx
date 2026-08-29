@@ -24,7 +24,11 @@ export function SearchClient({ allProducts }: { allProducts: Product[] }) {
         placeholder={t("search")}
         className="w-full border-b border-ink bg-transparent py-3 text-xl font-display focus:outline-none"
       />
-      {query && (
+      <p className="mt-2 text-xs text-ink-soft">{t("searchHint")}</p>
+      {query && results.length === 0 && (
+        <p className="mt-10 text-sm text-ink-soft">{t("searchNoResults")}</p>
+      )}
+      {query && results.length > 0 && (
         <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
           {results.map((p) => (
             <ProductCard key={p.id} product={p} />

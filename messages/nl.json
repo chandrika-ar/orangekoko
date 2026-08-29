@@ -15,6 +15,8 @@
     "about": "Ons Verhaal",
     "journal": "Journaal",
     "search": "Zoeken",
+    "searchHint": "Zoeken werkt alleen op productnaam — voor ons verhaal of journal gebruik je het menu hierboven.",
+    "searchNoResults": "Geen stukken gevonden voor deze zoekopdracht. Probeer een ander woord, of blader hierboven per categorie.",
     "wishlist": "Verlanglijst",
     "cart": "Winkelmand",
     "account": "Account",
@@ -134,5 +136,25 @@
     "rights": "© {year} orangekoko. Alle rechten voorbehouden.",
     "instagram": "Instagram",
     "pinterest": "Pinterest"
+  },
+  "faq": {
+    "q1": "Zijn de sieraden echt authentieke vintage stukken?",
+    "a1": "Ja, de sieraden zijn authentiek. We inspecteren elk stuk zorgvuldig tijdens het fotograferen en inpakken om de staat te bevestigen, waardoor we geen retouren of terugbetalingen kunnen accepteren voor schade die na levering wordt gemeld.",
+    "q2": "Wat is Japanse vintage sieraden?",
+    "a2": "Japanse vintage sieraden zijn, kortom, een categorie die nadere aandacht beloont. Sommige stukken zijn gemaakt met kostbare materialen zoals Akoya-parels of Japanse koraal, of afgewerkt met unieke technieken zoals shippo-yaki of Kutani-stijl decoratie.\n\nWat ze onderscheidt, is niet opzichtigheid. Het is niet helemaal westerse fijne sieraden. Het is ook niet helemaal Aziatische antiek. Het zit ergens daartussenin, en dat is precies wat het interessant maakt.",
+    "q3": "Kan ik een artikel retourneren of ruilen?",
+    "a3": "We inspecteren elk artikel zorgvuldig tijdens het fotograferen en inpakken, dus we kunnen helaas geen retouren of ruilingen accepteren voor schade die na levering wordt gemeld. Om verwisseling van artikelen te voorkomen, accepteren we onder geen enkele omstandigheid retouren. Toch willen we dat je zeker van je aankoop bent! Heb je vragen of twijfels, aarzel dan niet om ze vooraf te stellen. We helpen je graag verder!",
+    "q4": "Dus... waar haalt Orange Koko deze dingen eigenlijk vandaan?",
+    "a4": "We halen onze voorraad bij gelicentieerde merk-kringloopwinkels, gecertificeerde pandjeshuizen en particuliere antiekmarkten. Elk stuk wordt geverifieerd voordat het bij jou terechtkomt.",
+    "q5": "Wat is de huidige staat van de producten?",
+    "a5": "Een korte opmerking voordat je verliefd wordt op iets: dit zijn vintage stukken. Dat betekent dat kleine krasjes, lichte gebruikssporen en af en toe een teken van een goed geleefd leven erbij horen. Als je op zoek bent naar perfectie, is dit waarschijnlijk niet voor jou. Als je dingen waardeert die daadwerkelijk ergens zijn geweest — welkom.",
+    "q6": "Kan ik korting krijgen?",
+    "a6": "Dat snappen we helemaal, wie houdt er niet van een goede deal! Helaas zijn onze prijzen vast en kunnen we geen kortingen aanbieden. We organiseren wel af en toe speciale acties, dus blijf op de hoogte! Elk stuk is zorgvuldig geprijsd om de kwaliteit en uniciteit ervan te weerspiegelen. Hopelijk vind je iets waar je van houdt.",
+    "q7": "Wacht, waarom is mijn bestelling geannuleerd nadat ik al had betaald?",
+    "a7": "Eerlijk antwoord: sommige van onze handgemaakte en vintage stukken staan tegelijkertijd op meerdere platforms. Als iets elders eerder wordt verkocht, moeten we het soms annuleren — zelfs na aankoop. We weten dat het vervelend is, het spijt ons, maar het gebeurt. Aanbiedingen kunnen om dezelfde reden ook zonder waarschuwing verdwijnen, dus als je iets moois vindt, wacht dan niet te lang.",
+    "q8": "Zijn de maten en foto's betrouwbaar?",
+    "a8": "Met de hand gemeten en geïnspecteerd, dus er kan een millimeter of twee variatie zijn, of af en toe een klein detail dat over het hoofd is gezien. Als de staat erg belangrijk voor je is, stuur ons gerust van tevoren een berichtje.\n\nWat de foto's betreft: die zijn door onszelf genomen, dus houd er rekening mee dat kleuren iets kunnen afwijken van het werkelijke artikel, afhankelijk van je scherm en de lichtomstandigheden.",
+    "q9": "Waarom hoef ik me geen zorgen te maken over allergieën of vreemde geurtjes?",
+    "a9": "Geen huisdieren in huis — dus geen haartjes, geen dierengeur. En we kunnen sigarettenrook echt niet uitstaan, dus daar is ook helemaal niets van. Wat aankomt is schoon, neutraal en klaar om te dragen."
   }
 }

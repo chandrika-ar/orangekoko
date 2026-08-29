@@ -15,6 +15,8 @@
     "about": "Unsere Geschichte",
     "journal": "Journal",
     "search": "Suche",
+    "searchHint": "Die Suche durchsucht nur Produktnamen – für unsere Geschichte oder das Journal nutzen Sie bitte das Menü oben.",
+    "searchNoResults": "Keine Treffer für diese Suche. Probieren Sie ein anderes Wort oder stöbern Sie oben nach Kategorie.",
     "wishlist": "Wunschliste",
     "cart": "Warenkorb",
     "account": "Konto",
@@ -134,5 +136,25 @@
     "rights": "© {year} orangekoko. Alle Rechte vorbehalten.",
     "instagram": "Instagram",
     "pinterest": "Pinterest"
+  },
+  "faq": {
+    "q1": "Sind die Schmuckstücke wirklich echter Vintage-Schmuck?",
+    "a1": "Ja, der Schmuck ist echt. Wir prüfen jedes Stück sorgfältig beim Fotografieren und Verpacken, um seinen Zustand zu bestätigen. Aus diesem Grund können wir keine Rücksendungen oder Erstattungen für Schäden akzeptieren, die nach der Lieferung gemeldet werden.",
+    "q2": "Was ist japanischer Vintage-Schmuck?",
+    "a2": "Japanischer Vintage-Schmuck ist, kurz gesagt, eine Kategorie, die genaueres Hinsehen belohnt. Manche Stücke sind aus edlen Materialien wie Akoya-Perlen oder japanischer Koralle gefertigt oder mit besonderen Techniken wie Shippo-yaki oder Kutani-Dekor veredelt.\n\nWas sie auszeichnet, ist nicht Lautstärke. Es ist nicht ganz westlicher Feinschmuck. Es ist auch nicht ganz asiatische Antiquität. Es liegt irgendwo dazwischen – und genau das macht es interessant.",
+    "q3": "Kann ich einen Artikel zurückgeben oder umtauschen?",
+    "a3": "Wir prüfen jedes Stück sorgfältig beim Fotografieren und Verpacken, daher können wir leider keine Rücksendungen oder Umtausch für nach der Lieferung gemeldete Schäden akzeptieren. Um einen Artikelaustausch zu verhindern, akzeptieren wir grundsätzlich keine Rücksendungen. Trotzdem möchten wir, dass Sie sich vor dem Kauf sicher fühlen! Bei Fragen oder Bedenken melden Sie sich gerne vorab bei uns – wir helfen Ihnen gerne weiter!",
+    "q4": "Woher bezieht Orange Koko diese Stücke eigentlich?",
+    "a4": "Wir beziehen unsere Ware von lizenzierten Marken-Second-Hand-Läden, zertifizierten Pfandleihern und privaten Antiquitätenmärkten. Jedes Stück wird geprüft, bevor es bei Ihnen ankommt.",
+    "q5": "Wie ist der aktuelle Zustand der Produkte?",
+    "a5": "Ein kurzer Hinweis, bevor Sie sich verlieben: Dies sind Vintage-Stücke. Das bedeutet, kleine Kratzer, leichte Gebrauchsspuren und gelegentliche Zeichen eines gelebten Lebens gehören dazu. Wenn Sie Perfektion suchen, sind Sie hier wahrscheinlich falsch. Wenn Sie Dinge schätzen, die schon etwas erlebt haben – willkommen.",
+    "q6": "Kann ich einen Rabatt bekommen?",
+    "a6": "Das verstehen wir total – wer liebt keine gute Gelegenheit! Leider sind unsere Preise fest und wir können keine Rabatte anbieten. Wir veranstalten aber von Zeit zu Zeit besondere Aktionen, also bleiben Sie dran! Jedes Stück ist sorgfältig entsprechend seiner Qualität und Einzigartigkeit bepreist. Wir hoffen, Sie finden etwas, das Sie lieben.",
+    "q7": "Moment, warum wurde meine Bestellung nach der Zahlung storniert?",
+    "a7": "Ehrliche Antwort: Einige unserer handgefertigten und Vintage-Angebote sind gleichzeitig auf mehreren Plattformen gelistet. Wenn ein Stück woanders zuerst verkauft wird, müssen wir es eventuell stornieren – selbst nach dem Kauf. Wir wissen, das ist ärgerlich, es tut uns leid, aber es kommt vor. Aus demselben Grund können Angebote auch ohne Vorwarnung verschwinden – wenn Ihnen also etwas gefällt, warten Sie nicht zu lange.",
+    "q8": "Sind die Maße und Fotos zuverlässig?",
+    "a8": "Von Hand gemessen und geprüft, daher kann es ein bis zwei Millimeter Abweichung geben oder gelegentlich ein kleines Detail, das übersehen wurde. Wenn Ihnen der Zustand sehr wichtig ist, schreiben Sie uns gerne vorher.\n\nWas die Fotos betrifft: Sie werden von uns persönlich aufgenommen. Bitte bedenken Sie, dass Farben je nach Bildschirm und Lichtverhältnissen leicht vom tatsächlichen Artikel abweichen können.",
+    "q9": "Warum muss ich mir keine Sorgen wegen Allergien oder seltsamer Gerüche machen?",
+    "a9": "Bei uns gibt es keine Haustiere – also null Tierhaare, null Tiergeruch. Und Zigarettenrauch können wir absolut nicht ausstehen, davon gibt es bei uns also auch nichts. Was bei Ihnen ankommt, ist sauber, neutral und tragebereit."
   }
 }
