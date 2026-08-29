@@ -105,7 +105,7 @@
     "title": "Ønskeliste",
     "empty": "Intet gemt endnu.",
     "emptyBody": "Tryk på hjertet på et stykke for at gemme det her.",
-    "moveToBag": "Læg i kurv"
+    "continueShopping": "Fortsæt med at shoppe"
   },
   "checkout": {
     "successTitle": "Tak",

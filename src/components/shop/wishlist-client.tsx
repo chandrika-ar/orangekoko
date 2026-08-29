@@ -22,7 +22,7 @@ export function WishlistClient({ allProducts }: { allProducts: Product[] }) {
             href="/new-arrivals"
             className="mt-4 border-b border-ink pb-0.5 text-xs uppercase tracking-[0.1em]"
           >
-            {t("moveToBag")}
+            {t("continueShopping")}
           </Link>
         </div>
       ) : (

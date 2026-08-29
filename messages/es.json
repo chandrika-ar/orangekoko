@@ -105,7 +105,7 @@
     "title": "Lista de Deseos",
     "empty": "Aún no ha guardado nada.",
     "emptyBody": "Toque el corazón de cualquier pieza para guardarla aquí.",
-    "moveToBag": "Añadir a la cesta"
+    "continueShopping": "Seguir comprando"
   },
   "checkout": {
     "successTitle": "Gracias",

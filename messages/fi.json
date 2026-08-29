@@ -105,7 +105,7 @@
     "title": "Toivelista",
     "empty": "Ei vielä tallennettuja koruja.",
     "emptyBody": "Napauta sydäntä minkä tahansa korun kohdalla tallentaaksesi sen tänne.",
-    "moveToBag": "Lisää ostoskoriin"
+    "continueShopping": "Jatka ostoksia"
   },
   "checkout": {
     "successTitle": "Kiitos",

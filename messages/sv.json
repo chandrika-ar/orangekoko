@@ -105,7 +105,7 @@
     "title": "Önskelista",
     "empty": "Inget sparat än.",
     "emptyBody": "Tryck på hjärtat på valfritt smycke för att spara det här.",
-    "moveToBag": "Lägg i varukorgen"
+    "continueShopping": "Fortsätt handla"
   },
   "checkout": {
     "successTitle": "Tack",

@@ -105,7 +105,7 @@
     "title": "Verlanglijst",
     "empty": "Nog niets bewaard.",
     "emptyBody": "Tik op het hartje bij een stuk om het hier te bewaren.",
-    "moveToBag": "In winkelmand"
+    "continueShopping": "Verder winkelen"
   },
   "checkout": {
     "successTitle": "Dank u wel",

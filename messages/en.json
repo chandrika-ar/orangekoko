@@ -105,7 +105,7 @@
     "title": "Wishlist",
     "empty": "Nothing saved yet.",
     "emptyBody": "Tap the heart on any piece to save it here.",
-    "moveToBag": "Add to bag"
+    "continueShopping": "Continue shopping"
   },
   "checkout": {
     "successTitle": "Thank you",

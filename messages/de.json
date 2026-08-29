@@ -105,7 +105,7 @@
     "title": "Wunschliste",
     "empty": "Noch nichts gespeichert.",
     "emptyBody": "Tippen Sie auf das Herz bei einem Stück, um es hier zu speichern.",
-    "moveToBag": "In den Warenkorb"
+    "continueShopping": "Weiter einkaufen"
   },
   "checkout": {
     "successTitle": "Vielen Dank",

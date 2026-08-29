@@ -105,7 +105,7 @@
     "title": "Ønskeliste",
     "empty": "Ingenting lagret ennå.",
     "emptyBody": "Trykk på hjertet på et smykke for å lagre det her.",
-    "moveToBag": "Legg i handlekurv"
+    "continueShopping": "Fortsett å handle"
   },
   "checkout": {
     "successTitle": "Takk",
