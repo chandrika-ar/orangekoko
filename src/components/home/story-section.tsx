@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
 export function StorySection() {
@@ -28,15 +29,14 @@ export function StorySection() {
           {t("storyCta")}
         </Link>
       </div>
-      <div
-        className="image-placeholder min-h-[360px]"
-        role="img"
-        aria-label="Story image — a traditional Japanese dressing table (kyodai) with mirror, in warm interior light. Replace with real photography."
-      >
-        <span className="max-w-xs px-6 text-center text-xs uppercase tracking-[0.15em]">
-          Story image placeholder — Japanese vintage vanity / dressing table
-          (kyōdai), warm interior light. Replace with real photography.
-        </span>
+      <div className="relative min-h-[360px]">
+        <Image
+          src="/story-vanity.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="(min-width: 1024px) 50vw, 100vw"
+        />
       </div>
     </section>
   );
