@@ -24,7 +24,7 @@ export function CategoryGrid() {
               sizes="(min-width: 640px) 33vw, 100vw"
             />
           </div>
-          <div className="border border-line bg-cream-deep py-5 text-center">
+          <div className="bg-cream py-5 text-center">
             <p className="text-sm uppercase tracking-[0.15em]">{item.label}</p>
             <span className="mt-1 inline-block border-b border-ink text-[11px] uppercase tracking-[0.1em] text-ink-soft">
               {t("discover")}
