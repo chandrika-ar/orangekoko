@@ -144,7 +144,7 @@
     "a2": "Japanse vintage sieraden zijn, kortom, een categorie die nadere aandacht beloont. Sommige stukken zijn gemaakt met kostbare materialen zoals Akoya-parels of Japanse koraal, of afgewerkt met unieke technieken zoals shippo-yaki of Kutani-stijl decoratie.\n\nWat ze onderscheidt, is niet opzichtigheid. Het is niet helemaal westerse fijne sieraden. Het is ook niet helemaal Aziatische antiek. Het zit ergens daartussenin, en dat is precies wat het interessant maakt.",
     "q3": "Kan ik een artikel retourneren of ruilen?",
     "a3": "We inspecteren elk artikel zorgvuldig tijdens het fotograferen en inpakken, dus we kunnen helaas geen retouren of ruilingen accepteren voor schade die na levering wordt gemeld. Om verwisseling van artikelen te voorkomen, accepteren we onder geen enkele omstandigheid retouren. Toch willen we dat je zeker van je aankoop bent! Heb je vragen of twijfels, aarzel dan niet om ze vooraf te stellen. We helpen je graag verder!",
-    "q4": "Dus... waar haalt Orange Koko deze dingen eigenlijk vandaan?",
+    "q4": "Dus... waar haalt orangekoko deze dingen eigenlijk vandaan?",
     "a4": "We halen onze voorraad bij gelicentieerde merk-kringloopwinkels, gecertificeerde pandjeshuizen en particuliere antiekmarkten. Elk stuk wordt geverifieerd voordat het bij jou terechtkomt.",
     "q5": "Wat is de huidige staat van de producten?",
     "a5": "Een korte opmerking voordat je verliefd wordt op iets: dit zijn vintage stukken. Dat betekent dat kleine krasjes, lichte gebruikssporen en af en toe een teken van een goed geleefd leven erbij horen. Als je op zoek bent naar perfectie, is dit waarschijnlijk niet voor jou. Als je dingen waardeert die daadwerkelijk ergens zijn geweest — welkom.",
@@ -156,5 +156,17 @@
     "a8": "Met de hand gemeten en geïnspecteerd, dus er kan een millimeter of twee variatie zijn, of af en toe een klein detail dat over het hoofd is gezien. Als de staat erg belangrijk voor je is, stuur ons gerust van tevoren een berichtje.\n\nWat de foto's betreft: die zijn door onszelf genomen, dus houd er rekening mee dat kleuren iets kunnen afwijken van het werkelijke artikel, afhankelijk van je scherm en de lichtomstandigheden.",
     "q9": "Waarom hoef ik me geen zorgen te maken over allergieën of vreemde geurtjes?",
     "a9": "Geen huisdieren in huis — dus geen haartjes, geen dierengeur. En we kunnen sigarettenrook echt niet uitstaan, dus daar is ook helemaal niets van. Wat aankomt is schoon, neutraal en klaar om te dragen."
+  },
+  "account": {
+    "title": "Account",
+    "notConfigured": "Klantaccounts zijn nog niet ingesteld.",
+    "signInHint": "Log in met je e-mail om je verlanglijst aan je account te koppelen.",
+    "emailPlaceholder": "Je e-mail",
+    "sendLink": "Link versturen",
+    "checkEmail": "Check je inbox voor een inloglink.",
+    "signInError": "Er is iets misgegaan. Probeer het opnieuw.",
+    "signedInAs": "Ingelogd als {email}",
+    "viewWishlist": "Bekijk verlanglijst",
+    "signOut": "Uitloggen"
   }
 }

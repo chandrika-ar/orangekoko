@@ -7,14 +7,14 @@ import { Link } from "@/i18n/navigation";
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { type Product } from "@/lib/products";
 import { useDisplayPrice } from "@/lib/use-display-price";
-import { useWishlistStore } from "@/store/wishlist-store";
+import { useWishlist } from "@/lib/use-wishlist";
 import clsx from "clsx";
 
 export function ProductCard({ product }: { product: Product }) {
   const t = useTranslations("product");
   const price = useDisplayPrice(product.priceCents, product.currency);
-  const has = useWishlistStore((s) => s.has(product.id));
-  const toggle = useWishlistStore((s) => s.toggle);
+  const { has: hasWishlist, toggle } = useWishlist();
+  const has = hasWishlist(product.id);
   const thumbnail = product.imageUrls?.[0];
 
   return (

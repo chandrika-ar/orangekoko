@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { useSession } from "next-auth/react";
 import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { AnnouncementBar } from "@/components/announcement-bar";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { useCartStore } from "@/store/cart-store";
-import { useWishlistStore } from "@/store/wishlist-store";
+import { useWishlist } from "@/lib/use-wishlist";
 import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function SiteHeader() {
@@ -17,7 +18,9 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const lineCount = useCartStore((s) => s.lines.length);
   const openCart = useCartStore((s) => s.open);
-  const wishlistCount = useWishlistStore((s) => s.productIds.length);
+  const { productIds: wishlistIds } = useWishlist();
+  const wishlistCount = wishlistIds.length;
+  const { status: sessionStatus } = useSession();
 
   const navItems = [
     { href: "/new-arrivals", label: t("newArrivals") },
@@ -66,7 +69,10 @@ export function SiteHeader() {
               )}
             </Link>
             <Link href="/account" aria-label={t("account")} className="hidden sm:inline-flex p-1">
-              <User size={19} />
+              <User
+                size={19}
+                className={sessionStatus === "authenticated" ? "fill-accent text-accent" : undefined}
+              />
             </Link>
             <button
               aria-label={t("cart")}

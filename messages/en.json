@@ -138,13 +138,13 @@
     "pinterest": "Pinterest"
   },
   "faq": {
-    "q1": "Are the jewellery pieces actually genuine vintage?",
-    "a1": "Yes, the jewellery is genuine. We inspect every item carefully during photography and packing to confirm its condition, so we are unable to accept returns or refunds for any damage reported after delivery.",
+    "q1": "Are the jewelry pieces actually genuine vintage?",
+    "a1": "Yes, the jewelry is genuine. We inspect every item carefully during photography and packing to confirm its condition, so we are unable to accept returns or refunds for any damage reported after delivery.",
     "q2": "What is Japanese vintage jewelry?",
-    "a2": "Japanese vintage jewelry is, in short, a category that rewards closer attention. Some of them built around precious materials such as Akoya pearls, Japanese coral or finished with unique techniques like Shippo-yaki or Kutani-style decorative work.\n\nWhat sets them apart isn't loudness. It's not quite Western fine jewelry. It's not quite Asian antique either. It sits somewhere in between, and that's precisely what makes it interesting.",
+    "a2": "Japanese vintage jewelry is, in short, a category that rewards closer attention. Some pieces are built around precious materials such as Akoya pearls or Japanese coral, or finished with unique techniques like Shippo-yaki or Kutani-style decorative work.\n\nWhat sets them apart isn't loudness. It's not quite Western fine jewelry. It's not quite Asian antique either. It sits somewhere in between, and that's precisely what makes it interesting.",
     "q3": "Can I return or exchange an item?",
     "a3": "We carefully inspect every item during photography and packing, so unfortunately we are unable to accept returns or exchanges for damage reported after delivery. To prevent item-switching, we do not accept returns under any circumstances. That said, we want you to feel confident before purchasing! If you have any questions or concerns, please don't hesitate to ask beforehand. We're happy to help!",
-    "q4": "So… where does Orange Koko even source these things?",
+    "q4": "So… where does orangekoko even source these things?",
     "a4": "We source from licensed brand resale shops, certified pawnbrokers, and private antique markets. Every piece goes through verification before it reaches you.",
     "q5": "What's the current situation with their products?",
     "a5": "A quick note before you fall in love with something: these are vintage pieces. That means small scratches, minor scuffs, and the occasional sign of a life well-lived are part of the package. If you're chasing perfection, this probably isn't your aisle. If you appreciate things that have actually been somewhere — welcome.",
@@ -153,8 +153,20 @@
     "q7": "Wait, why was my order cancelled after I already paid?",
     "a7": "Honest answer: some of our handmade and vintage listings are shared across multiple platforms simultaneously. If something sells elsewhere first, we may have to cancel — even post-purchase. We know, it's annoying. We're sorry. It happens. Listings can also disappear without warning for the same reason, so if you see something you love, don't sleep on it.",
     "q8": "Are the measurements and photos reliable?",
-    "a8": "Measured and inspected by hand, so there may be a millimeter or two of variance, or the occasional tiny detail I've missed. If condition matters a lot to you, feel free to message me first.\n\nAs for the photos — they're taken by us personally, so please do keep in mind that colours may vary slightly from the actual item depending on your screen and lighting conditions.",
+    "a8": "Measured and inspected by hand, so there may be a millimeter or two of variance, or the occasional tiny detail we've missed. If condition matters a lot to you, feel free to message us first.\n\nAs for the photos — they're taken by us personally, so please do keep in mind that colours may vary slightly from the actual item depending on your screen and lighting conditions.",
     "q9": "Why don't I need to worry about allergies or weird smells?",
     "a9": "No pets in the house — so zero fur, zero pet odours. And we genuinely cannot stand cigarette smoke, so there's absolutely none of that either. What arrives is clean, neutral, and ready to wear."
+  },
+  "account": {
+    "title": "Account",
+    "notConfigured": "Customer accounts aren't set up yet.",
+    "signInHint": "Sign in with your email to save your wishlist to your account.",
+    "emailPlaceholder": "Your email",
+    "sendLink": "Send link",
+    "checkEmail": "Check your inbox for a sign-in link.",
+    "signInError": "Something went wrong. Please try again.",
+    "signedInAs": "Signed in as {email}",
+    "viewWishlist": "View wishlist",
+    "signOut": "Sign out"
   }
 }

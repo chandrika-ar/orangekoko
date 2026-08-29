@@ -1,15 +1,61 @@
 import { getTranslations } from "next-intl/server";
-import { SimplePage } from "@/components/simple-page";
+import { auth, signOut, isAuthConfigured } from "@/auth";
+import { Link } from "@/i18n/navigation";
+import { SignInForm } from "@/components/account/sign-in-form";
 
 export default async function AccountPage() {
-  const t = await getTranslations("nav");
+  const t = await getTranslations("account");
+
+  if (!isAuthConfigured) {
+    return (
+      <div className="mx-auto max-w-md px-4 py-16 sm:px-6 lg:px-8">
+        <h1 className="font-display text-3xl">{t("title")}</h1>
+        <p className="mt-3 text-sm text-ink-soft">{t("notConfigured")}</p>
+      </div>
+    );
+  }
+
+  const session = await auth();
+
+  if (!session?.user) {
+    return (
+      <div className="mx-auto max-w-md px-4 py-16 sm:px-6 lg:px-8">
+        <h1 className="font-display text-3xl">{t("title")}</h1>
+        <p className="mt-3 text-sm text-ink-soft">{t("signInHint")}</p>
+        <div className="mt-6">
+          <SignInForm />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <SimplePage title={t("account")}>
-      <p>
-        [占位页面 — customer accounts / order history are not part of this
-        MVP. Orders are confirmed by email after checkout. Add login here in
-        a later phase once order volume justifies it.]
+    <div className="mx-auto max-w-md px-4 py-16 sm:px-6 lg:px-8">
+      <h1 className="font-display text-3xl">{t("title")}</h1>
+      <p className="mt-3 text-sm text-ink-soft">
+        {t("signedInAs", { email: session.user.email ?? "" })}
       </p>
-    </SimplePage>
+      <div className="mt-6 flex flex-col gap-3">
+        <Link
+          href="/wishlist"
+          className="w-fit border-b border-ink pb-0.5 text-xs uppercase tracking-[0.1em]"
+        >
+          {t("viewWishlist")}
+        </Link>
+        <form
+          action={async () => {
+            "use server";
+            await signOut({ redirectTo: "/account" });
+          }}
+        >
+          <button
+            type="submit"
+            className="border-b border-ink pb-0.5 text-xs uppercase tracking-[0.1em]"
+          >
+            {t("signOut")}
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }

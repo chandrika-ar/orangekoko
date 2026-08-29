@@ -144,7 +144,7 @@
     "a2": "Japansk vintage-smykker er, kort sagt, en kategori, der belønner et nærmere kig. Nogle stykker er lavet af ædle materialer som Akoya-perler eller japansk koral, eller færdiggjort med unikke teknikker som shippo-yaki eller Kutani-stil dekoration.\n\nDet, der adskiller dem, er ikke prangende stil. Det er ikke helt vestlig fin smykkekunst. Det er heller ikke helt asiatiske antikviteter. De ligger et sted midt imellem, og det er netop det, der gør dem interessante.",
     "q3": "Kan jeg returnere eller bytte en vare?",
     "a3": "Vi undersøger omhyggeligt hver vare under fotografering og pakning, så vi kan desværre ikke acceptere returnering eller bytte for skader, der rapporteres efter levering. For at forhindre ombytning af varer accepterer vi ikke returnering under nogen omstændigheder. Det sagt, vil vi gerne have, at du føler dig sikker inden du køber! Har du spørgsmål eller bekymringer, er du velkommen til at spørge på forhånd. Vi hjælper gerne!",
-    "q4": "Så... hvor får Orange Koko egentlig fat i alt det her?",
+    "q4": "Så... hvor får orangekoko egentlig fat i alt det her?",
     "a4": "Vi køber ind fra licenserede genbrugsbutikker for mærkevarer, certificerede pantelånere og private antikmarkeder. Hver vare bliver verificeret, før den når frem til dig.",
     "q5": "Hvordan er produkternes nuværende tilstand?",
     "a5": "Lige en kort bemærkning, før du forelsker dig i noget: dette er vintage-genstande. Det betyder, at små ridser, lette brugsspor og af og til tegn på et godt levet liv er en del af pakken. Leder du efter perfektion, er det nok ikke stedet for dig. Sætter du pris på ting, der rent faktisk har været et sted — velkommen.",
@@ -156,5 +156,17 @@
     "a8": "Målt og efterset i hånden, så der kan være en afvigelse på en til to millimeter, eller en gang imellem en lille detalje, der er overset. Hvis tilstanden betyder meget for dig, er du velkommen til at skrive til os på forhånd.\n\nHvad billederne angår, er de taget af os selv, så husk, at farverne kan afvige en smule fra den faktiske vare afhængigt af din skærm og lysforhold.",
     "q9": "Hvorfor behøver jeg ikke bekymre mig om allergier eller mærkelige lugte?",
     "a9": "Ingen kæledyr i huset — så nul dyrehår, nul dyrelugt. Og vi kan virkelig ikke holde ud med cigaretrøg, så der er heller absolut intet af det. Det, der kommer frem til dig, er rent, neutralt og klar til brug."
+  },
+  "account": {
+    "title": "Konto",
+    "notConfigured": "Kundekonti er ikke sat op endnu.",
+    "signInHint": "Log ind med din e-mail for at knytte din ønskeliste til din konto.",
+    "emailPlaceholder": "Din e-mail",
+    "sendLink": "Send link",
+    "checkEmail": "Tjek din indbakke for et login-link.",
+    "signInError": "Noget gik galt. Prøv igen.",
+    "signedInAs": "Logget ind som {email}",
+    "viewWishlist": "Se ønskeliste",
+    "signOut": "Log ud"
   }
 }

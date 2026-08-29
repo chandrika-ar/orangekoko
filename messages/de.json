@@ -144,7 +144,7 @@
     "a2": "Japanischer Vintage-Schmuck ist, kurz gesagt, eine Kategorie, die genaueres Hinsehen belohnt. Manche Stücke sind aus edlen Materialien wie Akoya-Perlen oder japanischer Koralle gefertigt oder mit besonderen Techniken wie Shippo-yaki oder Kutani-Dekor veredelt.\n\nWas sie auszeichnet, ist nicht Lautstärke. Es ist nicht ganz westlicher Feinschmuck. Es ist auch nicht ganz asiatische Antiquität. Es liegt irgendwo dazwischen – und genau das macht es interessant.",
     "q3": "Kann ich einen Artikel zurückgeben oder umtauschen?",
     "a3": "Wir prüfen jedes Stück sorgfältig beim Fotografieren und Verpacken, daher können wir leider keine Rücksendungen oder Umtausch für nach der Lieferung gemeldete Schäden akzeptieren. Um einen Artikelaustausch zu verhindern, akzeptieren wir grundsätzlich keine Rücksendungen. Trotzdem möchten wir, dass Sie sich vor dem Kauf sicher fühlen! Bei Fragen oder Bedenken melden Sie sich gerne vorab bei uns – wir helfen Ihnen gerne weiter!",
-    "q4": "Woher bezieht Orange Koko diese Stücke eigentlich?",
+    "q4": "Woher bezieht orangekoko diese Stücke eigentlich?",
     "a4": "Wir beziehen unsere Ware von lizenzierten Marken-Second-Hand-Läden, zertifizierten Pfandleihern und privaten Antiquitätenmärkten. Jedes Stück wird geprüft, bevor es bei Ihnen ankommt.",
     "q5": "Wie ist der aktuelle Zustand der Produkte?",
     "a5": "Ein kurzer Hinweis, bevor Sie sich verlieben: Dies sind Vintage-Stücke. Das bedeutet, kleine Kratzer, leichte Gebrauchsspuren und gelegentliche Zeichen eines gelebten Lebens gehören dazu. Wenn Sie Perfektion suchen, sind Sie hier wahrscheinlich falsch. Wenn Sie Dinge schätzen, die schon etwas erlebt haben – willkommen.",
@@ -156,5 +156,17 @@
     "a8": "Von Hand gemessen und geprüft, daher kann es ein bis zwei Millimeter Abweichung geben oder gelegentlich ein kleines Detail, das übersehen wurde. Wenn Ihnen der Zustand sehr wichtig ist, schreiben Sie uns gerne vorher.\n\nWas die Fotos betrifft: Sie werden von uns persönlich aufgenommen. Bitte bedenken Sie, dass Farben je nach Bildschirm und Lichtverhältnissen leicht vom tatsächlichen Artikel abweichen können.",
     "q9": "Warum muss ich mir keine Sorgen wegen Allergien oder seltsamer Gerüche machen?",
     "a9": "Bei uns gibt es keine Haustiere – also null Tierhaare, null Tiergeruch. Und Zigarettenrauch können wir absolut nicht ausstehen, davon gibt es bei uns also auch nichts. Was bei Ihnen ankommt, ist sauber, neutral und tragebereit."
+  },
+  "account": {
+    "title": "Konto",
+    "notConfigured": "Kundenkonten sind noch nicht eingerichtet.",
+    "signInHint": "Melden Sie sich mit Ihrer E-Mail an, um Ihre Wunschliste mit Ihrem Konto zu verknüpfen.",
+    "emailPlaceholder": "Ihre E-Mail",
+    "sendLink": "Link senden",
+    "checkEmail": "Prüfen Sie Ihr Postfach auf einen Anmeldelink.",
+    "signInError": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "signedInAs": "Angemeldet als {email}",
+    "viewWishlist": "Wunschliste ansehen",
+    "signOut": "Abmelden"
   }
 }

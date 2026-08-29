@@ -10,6 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import { CurrencyRatesProvider } from "@/components/currency-provider";
 import { getExchangeRates } from "@/lib/currency";
+import { AuthSessionProvider } from "@/components/session-provider";
 import "../globals.css";
 
 const displayFont = Playfair_Display({
@@ -64,12 +65,14 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${displayFont.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-cream text-ink antialiased">
         <NextIntlClientProvider messages={messages}>
-          <CurrencyRatesProvider rates={rates}>
-            <SiteHeader />
-            <main>{children}</main>
-            <SiteFooter />
-            <CartDrawer />
-          </CurrencyRatesProvider>
+          <AuthSessionProvider>
+            <CurrencyRatesProvider rates={rates}>
+              <SiteHeader />
+              <main>{children}</main>
+              <SiteFooter />
+              <CartDrawer />
+            </CurrencyRatesProvider>
+          </AuthSessionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -4,11 +4,11 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ProductCard } from "@/components/shop/product-card";
 import type { Product } from "@/lib/products";
-import { useWishlistStore } from "@/store/wishlist-store";
+import { useWishlist } from "@/lib/use-wishlist";
 
 export function WishlistClient({ allProducts }: { allProducts: Product[] }) {
   const t = useTranslations("wishlist");
-  const productIds = useWishlistStore((s) => s.productIds);
+  const { productIds } = useWishlist();
   const saved = allProducts.filter((p) => productIds.includes(p.id));
 
   return (

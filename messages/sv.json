@@ -144,7 +144,7 @@
     "a2": "Japanska vintagesmycken är, kort sagt, en kategori som belönar en närmare titt. Vissa är gjorda av ädla material som Akoya-pärlor eller japansk korall, eller förädlade med unika tekniker som shippo-yaki eller Kutani-inspirerad dekoration.\n\nDet som skiljer dem åt är inte prål. Det är inte riktigt västerländska fina smycken. Det är inte heller riktigt asiatiska antikviteter. De hamnar någonstans mittemellan, och det är precis det som gör dem intressanta.",
     "q3": "Kan jag returnera eller byta en vara?",
     "a3": "Vi inspekterar noggrant varje vara vid fotografering och packning, så vi kan tyvärr inte acceptera returer eller byten för skador som rapporteras efter leverans. För att förhindra att varor byts ut accepterar vi inga returer under några omständigheter. Men vi vill att du ska känna dig trygg innan köpet! Har du några frågor eller funderingar, tveka inte att höra av dig i förväg. Vi hjälper gärna till!",
-    "q4": "Så... var får Orange Koko egentligen tag på allt det här?",
+    "q4": "Så... var får orangekoko egentligen tag på allt det här?",
     "a4": "Vi köper in från licensierade återförsäljare av märkesvaror, certifierade pantbanker och privata antikmarknader. Varje föremål verifieras innan det når dig.",
     "q5": "Vilket skick är produkterna i just nu?",
     "a5": "En liten notering innan du blir förälskad i något: det här är vintageföremål. Det innebär att små repor, lätta bruksskador och enstaka tecken på ett väl levt liv hör till. Söker du perfektion är det här nog inte rätt ställe för dig. Uppskattar du saker som faktiskt har varit någonstans — välkommen.",
@@ -156,5 +156,17 @@
     "a8": "Uppmätta och inspekterade för hand, så det kan finnas någon millimeters avvikelse, eller ibland en liten detalj som missats. Om skicket betyder mycket för dig, hör gärna av dig innan du köper.\n\nVad gäller bilderna är de tagna av oss personligen, så tänk på att färgerna kan skilja sig något från det verkliga föremålet beroende på din skärm och belysning.",
     "q9": "Varför behöver jag inte oroa mig för allergier eller konstiga lukter?",
     "a9": "Inga husdjur hemma hos oss — så noll djurhår, noll djurlukt. Och vi tål verkligen inte cigarettrök, så det finns absolut inget av det heller. Det som kommer till dig är rent, neutralt och redo att bäras."
+  },
+  "account": {
+    "title": "Konto",
+    "notConfigured": "Kundkonton är inte konfigurerade än.",
+    "signInHint": "Logga in med din e-post för att koppla din önskelista till ditt konto.",
+    "emailPlaceholder": "Din e-post",
+    "sendLink": "Skicka länk",
+    "checkEmail": "Kolla din inkorg för en inloggningslänk.",
+    "signInError": "Något gick fel. Försök igen.",
+    "signedInAs": "Inloggad som {email}",
+    "viewWishlist": "Visa önskelista",
+    "signOut": "Logga ut"
   }
 }

@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Heart } from "lucide-react";
 import clsx from "clsx";
 import { useCartStore } from "@/store/cart-store";
-import { useWishlistStore } from "@/store/wishlist-store";
+import { useWishlist } from "@/lib/use-wishlist";
 import type { Product } from "@/lib/products";
 
 export function ProductActions({ product }: { product: Product }) {
@@ -14,8 +14,8 @@ export function ProductActions({ product }: { product: Product }) {
   const inCart = useCartStore((s) =>
     s.lines.some((l) => l.productId === product.id),
   );
-  const hasWishlist = useWishlistStore((s) => s.has(product.id));
-  const toggleWishlist = useWishlistStore((s) => s.toggle);
+  const { has, toggle: toggleWishlist } = useWishlist();
+  const hasWishlist = has(product.id);
   const [justAdded, setJustAdded] = useState(false);
 
   return (

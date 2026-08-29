@@ -144,7 +144,7 @@
     "a2": "Il gioiello vintage giapponese è, in breve, una categoria che premia uno sguardo più attento. Alcuni pezzi sono realizzati con materiali preziosi come le perle Akoya o il corallo giapponese, oppure rifiniti con tecniche uniche come lo shippo-yaki o la decorazione in stile Kutani.\n\nCiò che li distingue non è vistosità. Non sono del tutto gioielleria fine occidentale. Non sono nemmeno del tutto antiquariato asiatico. Si collocano a metà strada, ed è proprio questo che li rende interessanti.",
     "q3": "Posso restituire o cambiare un articolo?",
     "a3": "Ispezioniamo attentamente ogni articolo durante la fotografia e l'imballaggio, quindi purtroppo non possiamo accettare resi o cambi per danni segnalati dopo la consegna. Per evitare la sostituzione degli articoli, non accettiamo resi in nessun caso. Detto questo, vogliamo che tu ti senta sicura prima dell'acquisto! Se hai domande o dubbi, non esitare a chiedere in anticipo. Saremo felici di aiutarti!",
-    "q4": "Quindi... da dove arrivano davvero questi pezzi di Orange Koko?",
+    "q4": "Quindi... da dove arrivano davvero questi pezzi di orangekoko?",
     "a4": "Ci riforniamo da negozi di rivendita di marchi autorizzati, case di pegno certificate e mercati di antiquariato privati. Ogni pezzo viene verificato prima di arrivare a te.",
     "q5": "Qual è lo stato attuale dei prodotti?",
     "a5": "Una piccola nota prima che tu ti innamori di qualcosa: questi sono pezzi vintage. Questo significa che piccoli graffi, leggeri segni d'uso e occasionali tracce di una vita vissuta fanno parte del pacchetto. Se cerchi la perfezione, probabilmente non è il posto giusto per te. Se apprezzi le cose che hanno davvero vissuto qualcosa, benvenuta.",
@@ -156,5 +156,17 @@
     "a8": "Misurati e ispezionati a mano, quindi potrebbe esserci una variazione di uno o due millimetri, o qualche piccolo dettaglio occasionalmente sfuggito. Se le condizioni sono per te molto importanti, scrivici pure prima di acquistare.\n\nPer quanto riguarda le foto, sono scattate personalmente da noi, quindi tieni presente che i colori potrebbero variare leggermente rispetto all'articolo reale a seconda dello schermo e della luce.",
     "q9": "Perché non devo preoccuparmi di allergie o odori strani?",
     "a9": "Niente animali in casa — quindi zero peli, zero odore di animali. E non sopportiamo davvero il fumo di sigaretta, quindi non ce n'è assolutamente traccia. Ciò che ricevi arriva pulito, neutro e pronto da indossare."
+  },
+  "account": {
+    "title": "Account",
+    "notConfigured": "Gli account cliente non sono ancora configurati.",
+    "signInHint": "Accedi con la tua email per collegare la tua wishlist al tuo account.",
+    "emailPlaceholder": "La tua email",
+    "sendLink": "Invia link",
+    "checkEmail": "Controlla la posta per il link di accesso.",
+    "signInError": "Qualcosa è andato storto. Riprova.",
+    "signedInAs": "Accesso effettuato come {email}",
+    "viewWishlist": "Vedi la wishlist",
+    "signOut": "Esci"
   }
 }

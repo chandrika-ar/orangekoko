@@ -144,7 +144,7 @@
     "a2": "Japanske vintagesmykker er, kort sagt, en kategori som belønner et nærmere blikk. Enkelte stykker er laget av edle materialer som Akoya-perler eller japansk korall, eller ferdigstilt med unike teknikker som shippo-yaki eller Kutani-inspirert dekor.\n\nDet som skiller dem ut, er ikke prangende stil. Det er ikke helt vestlige fine smykker. Det er heller ikke helt asiatiske antikviteter. De befinner seg et sted midt imellom, og det er nettopp det som gjør dem interessante.",
     "q3": "Kan jeg returnere eller bytte en vare?",
     "a3": "Vi inspiserer hvert stykke nøye under fotografering og pakking, så vi kan dessverre ikke godta retur eller bytte for skader som rapporteres etter levering. For å forhindre bytte av varer godtar vi ikke retur under noen omstendigheter. Det sagt, vil vi at du skal føle deg trygg før du kjøper! Har du spørsmål eller bekymringer, ikke nøl med å spørre på forhånd. Vi hjelper deg gjerne!",
-    "q4": "Så... hvor får egentlig Orange Koko tak i alt dette?",
+    "q4": "Så... hvor får egentlig orangekoko tak i alt dette?",
     "a4": "Vi kjøper inn fra lisensierte bruktbutikker for merkevarer, sertifiserte pantelånere og private antikkmarkeder. Hvert stykke blir verifisert før det når deg.",
     "q5": "Hva er den nåværende tilstanden til produktene?",
     "a5": "En liten merknad før du blir forelsket i noe: dette er vintage-stykker. Det betyr at små riper, lette bruksspor og av og til tegn på et godt levd liv er en del av pakken. Hvis du er ute etter perfeksjon, er dette nok ikke stedet for deg. Setter du pris på ting som faktisk har vært et sted — velkommen.",
@@ -156,5 +156,17 @@
     "a8": "Målt og inspisert for hånd, så det kan være en avvik på en til to millimeter, eller av og til en liten detalj som er oversett. Hvis tilstanden betyr mye for deg, er det bare å skrive til oss på forhånd.\n\nNår det gjelder bildene, er de tatt av oss personlig, så husk at fargene kan avvike litt fra den faktiske varen avhengig av skjermen og lysforholdene dine.",
     "q9": "Hvorfor trenger jeg ikke bekymre meg for allergier eller rare lukter?",
     "a9": "Ingen kjæledyr i huset — så null dyrehår, null dyrelukt. Og vi tåler virkelig ikke sigarettrøyk, så det finnes heller ikke noe av det. Det som kommer til deg, er rent, nøytralt og klart til bruk."
+  },
+  "account": {
+    "title": "Konto",
+    "notConfigured": "Kundekontoer er ikke satt opp ennå.",
+    "signInHint": "Logg inn med e-posten din for å knytte ønskelisten din til kontoen din.",
+    "emailPlaceholder": "Din e-post",
+    "sendLink": "Send lenke",
+    "checkEmail": "Sjekk innboksen din for en innloggingslenke.",
+    "signInError": "Noe gikk galt. Prøv igjen.",
+    "signedInAs": "Logget inn som {email}",
+    "viewWishlist": "Se ønskeliste",
+    "signOut": "Logg ut"
   }
 }
