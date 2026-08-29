@@ -125,8 +125,10 @@
     "newsletterThanks": "Thank you — you're on the list.",
     "emailPlaceholder": "Your email",
     "subscribe": "Subscribe",
+    "newsletterError": "Something went wrong — please try again.",
     "region": "Region & Language",
     "language": "Language / Country",
+    "regionNote": "Checkout is currently billed in EUR for all regions.",
     "rights": "© {year} orangekoko. All rights reserved.",
     "instagram": "Instagram",
     "pinterest": "Pinterest"

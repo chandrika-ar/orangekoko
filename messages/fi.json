@@ -125,8 +125,10 @@
     "newsletterThanks": "Kiitos — olet nyt listalla.",
     "emailPlaceholder": "Sähköpostiosoitteesi",
     "subscribe": "Tilaa",
+    "newsletterError": "Jokin meni pieleen — yritä uudelleen.",
     "region": "Alue ja Kieli",
     "language": "Kieli / Maa",
+    "regionNote": "Maksu veloitetaan tällä hetkellä euroissa (EUR) kaikilla alueilla.",
     "rights": "© {year} orangekoko. Kaikki oikeudet pidätetään.",
     "instagram": "Instagram",
     "pinterest": "Pinterest"

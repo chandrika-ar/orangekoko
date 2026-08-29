@@ -125,8 +125,10 @@
     "newsletterThanks": "Gracias — ya está en la lista.",
     "emailPlaceholder": "Su correo electrónico",
     "subscribe": "Suscribirse",
+    "newsletterError": "Algo salió mal — inténtalo de nuevo.",
     "region": "Región e Idioma",
     "language": "Idioma / País",
+    "regionNote": "El pago se factura actualmente en EUR para todas las regiones.",
     "rights": "© {year} orangekoko. Todos los derechos reservados.",
     "instagram": "Instagram",
     "pinterest": "Pinterest"

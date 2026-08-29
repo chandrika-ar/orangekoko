@@ -125,8 +125,10 @@
     "newsletterThanks": "Dank u — u staat op de lijst.",
     "emailPlaceholder": "Uw e-mailadres",
     "subscribe": "Aanmelden",
+    "newsletterError": "Er is iets misgegaan — probeer het opnieuw.",
     "region": "Regio & Taal",
     "language": "Taal / Land",
+    "regionNote": "Afrekenen gebeurt momenteel voor alle regio's in EUR.",
     "rights": "© {year} orangekoko. Alle rechten voorbehouden.",
     "instagram": "Instagram",
     "pinterest": "Pinterest"

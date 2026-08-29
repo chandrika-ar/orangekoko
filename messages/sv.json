@@ -125,8 +125,10 @@
     "newsletterThanks": "Tack — du står nu på listan.",
     "emailPlaceholder": "Din e-postadress",
     "subscribe": "Prenumerera",
+    "newsletterError": "Något gick fel — försök igen.",
     "region": "Region & Språk",
     "language": "Språk / Land",
+    "regionNote": "Betalning sker för närvarande i EUR för alla regioner.",
     "rights": "© {year} orangekoko. Alla rättigheter förbehållna.",
     "instagram": "Instagram",
     "pinterest": "Pinterest"

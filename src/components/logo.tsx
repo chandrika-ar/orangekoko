@@ -9,8 +9,6 @@ export function Logo({ locale }: { locale: Locale }) {
       aria-label="orangekoko — home"
     >
       <span className="font-display text-2xl tracking-tight">orangekoko</span>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo-mark.png" alt="" width={22} height={22} className="-mt-0.5 h-[18px] w-[18px] object-contain" />
     </Link>
   );
 }

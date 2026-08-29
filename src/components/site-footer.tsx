@@ -4,6 +4,22 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { locales, localeLabels, type Locale } from "@/i18n/routing";
+
+// Real currency used in each locale's associated country — Nordic
+// currencies differ from the Eurozone even though this store bills
+// checkout in EUR only for now (see newsletterHint disclaimer in footer).
+const localeCurrency: Record<Locale, string> = {
+  en: "EUR €",
+  de: "EUR €",
+  fr: "EUR €",
+  nl: "EUR €",
+  es: "EUR €",
+  it: "EUR €",
+  sv: "SEK kr",
+  da: "DKK kr",
+  no: "NOK kr",
+  fi: "EUR €",
+};
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { ArrowUpRight } from "lucide-react";
 
@@ -15,6 +31,8 @@ export function SiteFooter() {
   const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
   return (
     <footer className="border-t border-line bg-cream-deep">
@@ -61,9 +79,23 @@ export function SiteFooter() {
             <p className="text-accent">{t("newsletterThanks")}</p>
           ) : (
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                setSubmitted(true);
+                setSubmitting(true);
+                setError(false);
+                try {
+                  const res = await fetch("/api/newsletter", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, locale }),
+                  });
+                  if (!res.ok) throw new Error("failed");
+                  setSubmitted(true);
+                } catch {
+                  setError(true);
+                } finally {
+                  setSubmitting(false);
+                }
               }}
               className="flex border-b border-ink"
             >
@@ -75,10 +107,17 @@ export function SiteFooter() {
                 placeholder={t("emailPlaceholder")}
                 className="w-full bg-transparent py-1.5 text-sm placeholder:text-ink-soft focus:outline-none"
               />
-              <button type="submit" className="px-2 text-xs uppercase tracking-[0.1em]">
+              <button
+                type="submit"
+                disabled={submitting}
+                className="px-2 text-xs uppercase tracking-[0.1em] disabled:opacity-50"
+              >
                 {t("subscribe")}
               </button>
             </form>
+          )}
+          {error && (
+            <p className="mt-2 text-xs text-red-600">{t("newsletterError")}</p>
           )}
           <a
             href="https://instagram.com"
@@ -100,10 +139,13 @@ export function SiteFooter() {
           >
             {locales.map((l) => (
               <option key={l} value={l}>
-                {localeLabels[l]} — EUR €
+                {localeLabels[l]} — {localeCurrency[l]}
               </option>
             ))}
           </select>
+          <p className="mt-2 text-[11px] leading-relaxed text-ink-soft">
+            {t("regionNote")}
+          </p>
         </div>
       </div>
       <div className="border-t border-line px-4 py-5 text-center text-[11px] text-ink-soft sm:px-6 lg:px-8">
