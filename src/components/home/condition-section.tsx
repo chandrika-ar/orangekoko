@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { ImagePlaceholder } from "@/components/image-placeholder";
 
 export function ConditionSection() {
   const t = useTranslations("home");
@@ -26,10 +25,11 @@ export function ConditionSection() {
             </ul>
           </div>
         </div>
-        <ImagePlaceholder
-          label="Decorative still life — dried branches in glass vase"
-          aspect="aspect-[3/4]"
-          className="hidden lg:flex"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/condition-illustration.svg"
+          alt=""
+          className="hidden aspect-[3/4] w-full object-cover lg:block"
         />
       </div>
     </section>

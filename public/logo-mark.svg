@@ -1,52 +1,28 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="orangekoko watercolor orange mark">
   <defs>
-    <filter id="wc-paper" x="-40%" y="-40%" width="180%" height="180%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="3" seed="7" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G" result="disp"/>
-      <feGaussianBlur in="disp" stdDeviation="0.6" result="soft"/>
-      <feColorMatrix in="soft" type="matrix"
-        values="1 0 0 0 0
-                0 1 0 0 0
-                0 0 1 0 0
-                0 0 0 0.92 0"/>
+    <filter id="wc-edge" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
-    <filter id="wc-paper-soft" x="-40%" y="-40%" width="180%" height="180%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="21" result="noise2"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise2" scale="10" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-    <radialGradient id="orange-grad" cx="38%" cy="32%" r="75%">
-      <stop offset="0%" stop-color="#f0a862"/>
-      <stop offset="45%" stop-color="#d9722f"/>
-      <stop offset="100%" stop-color="#b4501f"/>
+    <radialGradient id="orange-grad" cx="36%" cy="30%" r="78%">
+      <stop offset="0%" stop-color="#f3af71"/>
+      <stop offset="55%" stop-color="#dd7a34"/>
+      <stop offset="100%" stop-color="#b7561f"/>
     </radialGradient>
     <linearGradient id="leaf-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8a9a6b"/>
+      <stop offset="0%" stop-color="#93a374"/>
       <stop offset="100%" stop-color="#5f7248"/>
     </linearGradient>
   </defs>
 
-  <g filter="url(#wc-paper)">
-    <circle cx="95" cy="118" r="60" fill="#e88a3d" opacity="0.35"/>
+  <g filter="url(#wc-edge)">
+    <circle cx="100" cy="112" r="58" fill="url(#orange-grad)"/>
+    <circle cx="82" cy="90" r="20" fill="#f6c48f" opacity="0.45"/>
   </g>
 
-  <g filter="url(#wc-paper-soft)">
-    <circle cx="103" cy="112" r="54" fill="url(#orange-grad)" opacity="0.92"/>
-  </g>
-
-  <g filter="url(#wc-paper)" opacity="0.55">
-    <circle cx="118" cy="96" r="30" fill="#f4c48c"/>
-  </g>
-
-  <g filter="url(#wc-paper)" opacity="0.5">
-    <path d="M78 150 C88 158 118 160 132 148 C122 168 92 172 78 150 Z" fill="#8f4a1e"/>
-  </g>
-
-  <g filter="url(#wc-paper-soft)">
-    <path d="M103 58 C99 45 104 34 116 27 C112 40 112 50 108 60 Z" fill="url(#leaf-grad)" opacity="0.9"/>
-    <path d="M104 60 C96 50 84 47 72 51 C82 55 90 62 98 68 Z" fill="url(#leaf-grad)" opacity="0.75"/>
-  </g>
-
-  <g filter="url(#wc-paper-soft)">
-    <path d="M108 58 C107 78 107 98 105 118" stroke="#6b4a2c" stroke-width="3" stroke-linecap="round" opacity="0.6" fill="none"/>
+  <g filter="url(#wc-edge)">
+    <path d="M100 62 C97 50 101 40 111 34 C108 45 108 54 104 63 Z" fill="url(#leaf-grad)"/>
+    <path d="M101 64 C112 64 120 58 124 49 C118 60 108 66 100 70 Z" fill="url(#leaf-grad)" opacity="0.85"/>
+    <path d="M101 63 C101 80 101 96 100 111" stroke="#6b4a2c" stroke-width="3" stroke-linecap="round" fill="none"/>
   </g>
 </svg>
