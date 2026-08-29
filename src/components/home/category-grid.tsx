@@ -12,7 +12,7 @@ export function CategoryGrid() {
   ];
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-3">
+    <section className="grid grid-cols-1 gap-6 bg-cream pt-8 sm:grid-cols-3 sm:gap-8 sm:pt-10">
       {items.map((item) => (
         <Link key={item.href} href={item.href} className="group block">
           <div className="relative aspect-square w-full overflow-hidden">
@@ -24,7 +24,7 @@ export function CategoryGrid() {
               sizes="(min-width: 640px) 33vw, 100vw"
             />
           </div>
-          <div className="border-x border-b border-line bg-cream-deep py-5 text-center">
+          <div className="border border-line bg-cream-deep py-5 text-center">
             <p className="text-sm uppercase tracking-[0.15em]">{item.label}</p>
             <span className="mt-1 inline-block border-b border-ink text-[11px] uppercase tracking-[0.1em] text-ink-soft">
               {t("discover")}
