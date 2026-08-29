@@ -78,10 +78,14 @@ npm run dev
 
 ### 1. 防止超卖(重要 — 每件都是孤品)
 
-接入 Sanity 后,`/api/checkout` 在生成付款链接前会实时查一次 Sanity 里的 `sold` 状态,基本解决了"两个人同时买到同一件孤品"的问题——只要你卖出后及时去 `/studio` 把该商品的 Sold 打开。仍然建议做的收尾动作:
+已经全自动了:`/api/checkout` 在生成付款链接前会实时查一次 Sanity 里的 `sold` 状态,付款成功后 Stripe 会通知 `/api/webhooks/stripe`,由它自动把对应商品在 Sanity 里标记为 `sold: true`——你不需要手动去 `/studio` 点开关。
 
-- **接入 Stripe webhook 自动标记已售**:`src/app/api/webhooks/stripe/route.ts` 已经搭好骨架,收到 `checkout.session.completed` 后可以调用 Sanity 的写入 API 自动把对应商品的 `sold` 设为 true,不用你手动去后台点——如果你希望我接上这一步,告诉我一声。
-- 在此之前,人工流程是:卖出后第一时间去 `/studio` 手动标记 Sold(几秒钟的事),作为最后一道防线。
+这一步需要两个环境变量才能生效(见 `.env.local.example`):
+
+- `SANITY_API_TOKEN` — Sanity → API → Tokens → Add API token,角色选 **Editor**,把生成的 token 填到 Vercel 的 Environment Variables 里(不要告诉我这个 token,它有写入权限,直接填到 Vercel 后台,不用经过我)
+- `STRIPE_WEBHOOK_SECRET` — 等你配置 Stripe 生产环境、在 Stripe 后台添加了指向 `/api/webhooks/stripe` 的 Webhook 端点后就会拿到,同样填到 Vercel
+
+在这两个变量配置好之前,`sold` 状态只能手动在 `/studio` 里改,不影响你现在测试网站其他功能。
 
 ### 2. 真实图片
 

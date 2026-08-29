@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
   // Prices and availability are always resolved server-side from the
   // product catalogue — never trust amounts sent from the client.
   const lineItems = [];
+  const productIds: string[] = [];
   for (const slug of body.slugs) {
     const product = await getProductBySlug(slug);
     if (!product) {
@@ -42,6 +43,7 @@ export async function POST(req: NextRequest) {
         { status: 409 },
       );
     }
+    productIds.push(product.id);
     lineItems.push({
       quantity: 1,
       price_data: {
@@ -73,6 +75,8 @@ export async function POST(req: NextRequest) {
       shipping_options: toStripeShippingOptions(subtotalCents),
       success_url: `${origin}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/${locale}/checkout/cancel`,
+      // Read back by the webhook to mark exactly these products sold.
+      metadata: { productIds: productIds.join(",") },
     });
 
     return NextResponse.json({ url: session.url });

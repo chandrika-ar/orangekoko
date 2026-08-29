@@ -1,15 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
+import { sanityWriteClient } from "@/sanity/lib/client";
 import type Stripe from "stripe";
 
 /**
  * Stripe webhook — the second half of preventing double-sales on
- * one-of-one inventory (see README "Before you sell anything" section).
- *
- * Not wired to persistent storage yet: `markProductAsSold` below is a
- * stub. Wire it to whatever store holds product state (Vercel KV,
- * Supabase, etc.) before relying on this for real orders — right now
- * nothing actually removes a sold piece from the catalogue.
+ * one-of-one inventory. Marks each purchased product `sold: true` in
+ * Sanity once payment completes. Requires SANITY_API_TOKEN (an
+ * Editor-level token) in addition to STRIPE_WEBHOOK_SECRET — without
+ * both set, this just logs and returns.
  */
 export async function POST(req: NextRequest) {
   const signature = req.headers.get("stripe-signature");
@@ -38,15 +37,28 @@ export async function POST(req: NextRequest) {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
-    const lineItems = await getStripe().checkout.sessions.listLineItems(
-      session.id,
-    );
-    for (const item of lineItems.data) {
-      const name = item.description;
-      // TODO: look up the product by name/id and persist `sold: true`,
-      // then also stop selling it in the /api/checkout route's catalogue
-      // lookup. See README for recommended storage options.
-      console.log("Mark as sold:", name);
+    const productIds = session.metadata?.productIds?.split(",").filter(Boolean) ?? [];
+
+    if (productIds.length === 0) {
+      console.warn("checkout.session.completed with no productIds metadata", session.id);
+    } else if (!sanityWriteClient) {
+      console.error(
+        "SANITY_API_TOKEN not set — could not mark products sold:",
+        productIds,
+      );
+    } else {
+      const client = sanityWriteClient;
+      await Promise.all(
+        productIds.map((id) =>
+          client
+            .patch(id)
+            .set({ sold: true })
+            .commit()
+            .catch((err) =>
+              console.error(`Failed to mark product ${id} sold`, err),
+            ),
+        ),
+      );
     }
   }
 
