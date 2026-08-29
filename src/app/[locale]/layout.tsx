@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { hasLocale } from "next-intl";
@@ -10,11 +10,11 @@ import { SiteFooter } from "@/components/site-footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import "../globals.css";
 
-const fraunces = Fraunces({
+const displayFont = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-fraunces",
   style: ["normal", "italic"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const inter = Inter({
@@ -58,7 +58,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang={locale} className={`${displayFont.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-cream text-ink antialiased">
         <NextIntlClientProvider messages={messages}>
           <SiteHeader />

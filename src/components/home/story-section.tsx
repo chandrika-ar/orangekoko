@@ -7,7 +7,7 @@ export function StorySection() {
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2">
-      <div className="flex flex-col justify-center gap-4 bg-cream-deep px-8 py-16 sm:px-14 lg:py-0">
+      <div className="flex flex-col justify-center gap-4 bg-cream-deep px-8 py-16 sm:px-14 lg:py-20">
         <p className="text-[11px] uppercase tracking-[0.15em] text-ink-soft">
           {t("storyEyebrow")}
         </p>
@@ -29,7 +29,7 @@ export function StorySection() {
           {t("storyCta")}
         </Link>
       </div>
-      <div className="relative min-h-[360px]">
+      <div className="relative min-h-[420px] lg:min-h-[560px]">
         <Image
           src="/story-vanity.jpg"
           alt=""
