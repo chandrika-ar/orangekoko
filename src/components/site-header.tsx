@@ -27,6 +27,8 @@ export function SiteHeader() {
     { href: "/ear-clips", label: t("earClips") },
     { href: "/earrings-studs", label: t("earringsStuds") },
     { href: "/necklaces", label: t("necklaces") },
+    { href: "/projects", label: t("projects") },
+    { href: "/brand", label: t("brand") },
   ];
 
   return (
@@ -35,14 +37,14 @@ export function SiteHeader() {
       <header className="border-b border-line bg-cream/95 backdrop-blur">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <button
-            className="lg:hidden -ml-2 p-2"
+            className="xl:hidden -ml-2 p-2"
             aria-label={menuOpen ? t("close") : t("menu")}
             onClick={() => setMenuOpen((v) => !v)}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
 
-          <nav className="hidden lg:flex items-center gap-7 text-[13px]">
+          <nav className="hidden xl:flex items-center gap-6 text-[13px]">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -93,7 +95,7 @@ export function SiteHeader() {
         </div>
 
         {menuOpen && (
-          <nav className="lg:hidden flex flex-col gap-1 border-t border-line px-4 pb-4 pt-2">
+          <nav className="xl:hidden flex flex-col gap-1 border-t border-line px-4 pb-4 pt-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}

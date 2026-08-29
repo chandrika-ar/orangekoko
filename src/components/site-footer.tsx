@@ -6,7 +6,28 @@ import { Link } from "@/i18n/navigation";
 import { locales, localeLabels, type Locale } from "@/i18n/routing";
 import { CURRENCY_BY_LOCALE, CURRENCY_SYMBOL } from "@/lib/currency";
 import { useRouter, usePathname } from "@/i18n/navigation";
-import { ArrowUpRight } from "lucide-react";
+
+// lucide-react dropped brand/logo icons, so this is a small inline glyph
+// (rounded square + lens + flash dot) instead of a package dependency.
+function InstagramIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
 
 export function SiteFooter() {
   const t = useTranslations("footer");
@@ -105,12 +126,13 @@ export function SiteFooter() {
             <p className="mt-2 text-xs text-red-600">{t("newsletterError")}</p>
           )}
           <a
-            href="https://instagram.com"
+            href="#"
             target="_blank"
             rel="noreferrer"
             className="mt-5 inline-flex items-center gap-2 text-ink-soft hover:text-ink"
           >
-            {t("instagram")} <ArrowUpRight size={14} />
+            <InstagramIcon size={16} />
+            {t("instagram")}
           </a>
         </div>
         <div>
