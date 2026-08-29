@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { Heart } from "lucide-react";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { formatPrice, type Product } from "@/lib/products";
@@ -13,16 +14,27 @@ export function ProductCard({ product }: { product: Product }) {
   const t = useTranslations("product");
   const has = useWishlistStore((s) => s.has(product.id));
   const toggle = useWishlistStore((s) => s.toggle);
+  const thumbnail = product.imageUrls?.[0];
 
   return (
     <div className="group relative text-left">
       <Link href={`/product/${product.slug}`} className="block">
-        <div className="relative">
-          <ImagePlaceholder
-            label={`${product.title} — product photo`}
-            aspect="aspect-[3/4]"
-            className="transition-opacity group-hover:opacity-90"
-          />
+        <div className="relative aspect-[3/4] w-full overflow-hidden bg-cream-deep">
+          {thumbnail ? (
+            <Image
+              src={thumbnail}
+              alt={product.title}
+              fill
+              className="object-cover transition-opacity group-hover:opacity-90"
+              sizes="(min-width: 1024px) 25vw, 50vw"
+            />
+          ) : (
+            <ImagePlaceholder
+              label={`${product.title} — product photo`}
+              aspect="aspect-[3/4]"
+              className="absolute inset-0 transition-opacity group-hover:opacity-90"
+            />
+          )}
           {product.sold && (
             <span className="absolute left-2 top-2 bg-ink px-2 py-1 text-[10px] uppercase tracking-[0.1em] text-white">
               {t("sold")}

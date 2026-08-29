@@ -18,6 +18,7 @@
 | 物流 | 自建 flat-rate 模型 | Phase 2 再接入实时物流 API |
 | 图标 | lucide-react | |
 | 字体 | Fraunces（衬线,标题）+ Inter（无衬线,正文） | via `next/font/google` |
+| 内容管理 | Sanity（可视化后台,`/studio` 路径） | 添加/编辑商品图片和信息不用碰代码,见下方"内容管理"一节 |
 
 ---
 
@@ -52,34 +53,53 @@ npm run dev
 
 ---
 
+## 内容管理(添加/编辑商品 —— 不用碰代码)
+
+商品数据已经接入 [Sanity](https://sanity.io)(免费额度对你这个体量完全够用),你可以像填表格一样管理商品,填完保存,网站几分钟内自动更新。设置一次即可,之后天天用:
+
+1. 去 [sanity.io](https://sanity.io) 用邮箱或 Google/GitHub 账号免费注册。
+2. 注册后创建一个新项目(Create new project),名字随便起(比如 "orangekoko")。数据集(dataset)用默认的 `production` 就行。
+3. 项目建好后,在项目设置里能看到一串 **Project ID**(字母数字组合),把这个 ID 发给我(或者你自己填,见下一步)。
+4. 在 Vercel 项目的 Environment Variables 里加两个变量:
+   - `NEXT_PUBLIC_SANITY_PROJECT_ID` = 你的 Project ID
+   - `NEXT_PUBLIC_SANITY_DATASET` = `production`
+   加完后 Redeploy 一次。
+5. 之后打开 `https://你的域名/studio`,用你刚才注册 Sanity 的账号登录,就能看到一个"Product"列表,点 "Create" 新建商品:填标题、选分类、填价格(欧元)、上传照片(支持拖拽多张、可以框选每张图的焦点区域裁切)、填 Condition / Materials / Era / Sourced in / Measurements / Description,点右上角 Publish 保存。网站几分钟内自动显示,不用推代码、不用找我。
+6. 某件卖出后,回到 `/studio` 打开这件商品,把 "Sold" 开关打开,Publish 保存——网站上会立刻标记"已售罄",而且我们的下单接口现在也会在真正生成付款链接前实时核对这个状态,避免同一件孤品被两个人同时买到(比之前纯代码硬编码的方案安全很多,虽然严格意义上仍不是 100% 无竞态,但已经覆盖了绝大多数场景)。
+7. 谁能登录 `/studio` 编辑?只有你在 Sanity 项目设置(Members)里邀请过的账号才能登录进去改东西,`/studio` 这个网址本身公开不要紧,没被邀请的人打开也进不去后台。
+
+在没有配置 `NEXT_PUBLIC_SANITY_PROJECT_ID` 之前(比如你现在预览这个链接时),网站会自动显示 `src/lib/products.ts` 里的 8 个占位商品作为兜底演示数据——配置完 Sanity 后会自动切换成你在后台填的真实商品,不需要额外改代码。
+
+首页 Hero 人像、Our Story 配图、分类卡片这几张"氛围图"暂时没接入 Sanity(它们不是逐日更新的商品图,是很少换的品牌视觉),继续按下面第 2 条的方式发给我处理即可。
+
+---
+
 ## 上线前必须做的事(重要程度从高到低)
 
 ### 1. 防止超卖(重要 — 每件都是孤品)
 
-现在的商品数据（`src/lib/products.ts`）是写死在代码里的静态数组,**下单成功后不会自动标记为"已售"**。也就是说,理论上两个人可以同时买到同一件孤品。这是当前架构里唯一一个"能跑但不能直接拿去卖钱"的地方,上线前必须解决,推荐两个方案按成本排序:
+接入 Sanity 后,`/api/checkout` 在生成付款链接前会实时查一次 Sanity 里的 `sold` 状态,基本解决了"两个人同时买到同一件孤品"的问题——只要你卖出后及时去 `/studio` 把该商品的 Sold 打开。仍然建议做的收尾动作:
 
-- **最简单**:接入一个轻量数据库/KV(例如 Vercel KV、Supabase 免费额度都够用)存商品的 `sold` 状态,`/api/checkout` 下单前检查、`/api/webhooks/stripe` 收到 `checkout.session.completed` 后写入。webhook 骨架已经搭好在 `src/app/api/webhooks/stripe/route.ts`,只差接一个真实存储。
-- **人工兜底**(如果你想先跑起来再说):每天上新时人工核对,一旦某件卖出就手动从 `products.ts` 删除对应条目并重新部署——因为你说的更新频率是"每天几款",人工操作是可行的过渡方案,但仍建议尽快换成数据库方案。
+- **接入 Stripe webhook 自动标记已售**:`src/app/api/webhooks/stripe/route.ts` 已经搭好骨架,收到 `checkout.session.completed` 后可以调用 Sanity 的写入 API 自动把对应商品的 `sold` 设为 true,不用你手动去后台点——如果你希望我接上这一步,告诉我一声。
+- 在此之前,人工流程是:卖出后第一时间去 `/studio` 手动标记 Sold(几秒钟的事),作为最后一道防线。
 
 ### 2. 真实图片
 
-目前所有图片位置都是占位区(带说明文字的斜纹方块),包括:
+商品图片已经通过 `/studio`(见上方"内容管理"一节)管理,上传后自动出现在商品详情页和列表页,不需要碰代码。
+
+还剩几张不属于"商品"的品牌氛围图仍是占位区(带说明文字的斜纹方块),需要你发真实照片给我替换:
 
 - 首页 Hero 人像(占位说明:"自然欧洲女性人像,柔和日光,佩戴单品,避免生硬的合成皮肤质感"）
 - Our Story 板块配图(占位说明:"日本 vintage 梳妆台/镜台"）
-- 分类卡片 3 张(耳夹/耳钉/项链平铺图)
-- Latest Discoveries 5 个新品位
+- 分类卡片 3 张(耳夹/耳钉/项链平铺图,也可以等有真实商品图后从里面挑)
 - Condition & Authenticity 装饰图
-- 每个商品详情页的多图位(数量在 `products.ts` 里按 `imageCount` 定义)
 - About 页头图 + Sourcing 图
 
-把真实照片放进 `public/images/...`,然后把对应组件里的 `<ImagePlaceholder>` 换成 `next/image`（组件在 `src/components/image-placeholder.tsx`,替换方式很直接)。
+把真实照片发给我,我来替换对应组件里的 `<ImagePlaceholder>`(组件在 `src/components/image-placeholder.tsx`)。
 
 ### 3. 真实商品数据
 
-`src/lib/products.ts` 里现在是 8 个占位商品(标题、价格、材质、年代、来源、文案都标了"占位文案"/"[Placeholder]")。正式商品文案确认后,替换这个文件即可——结构(小标题分区:Condition / Materials / Era / Sourced in / Measurements + Description / Details & Condition / Shipping & Returns / Care 折叠区)已经跟参考网站保持一致,不用改代码,只改内容。
-
-> 注意:每天上新 3–10 款的节奏下,`products.ts` 这种硬编码文件很快会不好维护。等接入第 1 条的数据库后,建议顺手把商品数据也搬进去,做一个简单的后台表单或直接用数据库管理界面(如 Supabase Studio)来加商品,而不是每次改代码文件。
+已经不需要改代码文件了——去 `/studio` 按上方步骤填写即可,结构(小标题分区:Condition / Materials / Era / Sourced in / Measurements + Description / Details & Condition / Shipping & Returns / Care 折叠区)已经跟参考网站保持一致。`src/lib/products.ts` 里保留的 8 条占位数据只在没配置 Sanity 时作为兜底演示,配置好之后可以不用管它。
 
 ### 4. Stripe 生产环境配置
 
@@ -154,6 +174,6 @@ public/logo-mark.svg     水彩橘子 logo(矢量,可任意缩放)
 
 ## Roadmap 总结
 
-- **现在(Phase 0,已完成)**:完整前端 + 设计还原 + 购物车/心愿单/多语言 + Stripe 测试模式打通 + 物流 flat-rate。
-- **Phase 1(上线前,你来做/找人做)**:防超卖存储、真实图片、真实商品文案、Stripe 生产环境 + 税务配置、法务页面、域名切到 Vercel。
-- **Phase 2(有订单量之后再投入)**:真实物流 API、账号系统/订单历史、简单商品管理后台或 CMS、多币种展示、产品文案多语言翻译流程。
+- **现在(Phase 0,已完成)**:完整前端 + 设计还原 + 购物车/心愿单/多语言 + Stripe 测试模式打通 + 物流 flat-rate + Sanity 可视化后台(商品/图片管理)。
+- **Phase 1(上线前,你来做/找人做)**:注册 Sanity 账号并录入真实商品、品牌氛围图(Hero/Story 等)、Stripe 生产环境 + 税务配置、法务页面、域名切到 Vercel、(可选)接 Stripe webhook 自动标记已售。
+- **Phase 2(有订单量之后再投入)**:真实物流 API、账号系统/订单历史、多币种展示、产品文案多语言翻译流程。

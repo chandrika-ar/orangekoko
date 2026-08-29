@@ -7,7 +7,7 @@ export default async function EarringsStudsPage() {
   return (
     <ProductGridPage
       title={t("earringsStudsLabel")}
-      products={getProductsByCategory("earrings-studs")}
+      products={await getProductsByCategory("earrings-studs")}
     />
   );
 }

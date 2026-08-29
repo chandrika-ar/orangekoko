@@ -12,18 +12,22 @@ export default async function ProductPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
   if (!product) notFound();
 
   const t = await getTranslations("product");
-  const related = getProductsByCategory(product.category)
+  const related = (await getProductsByCategory(product.category))
     .filter((p) => p.id !== product.id)
     .slice(0, 4);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-        <ProductGallery title={product.title} imageCount={product.imageCount} />
+        <ProductGallery
+          title={product.title}
+          imageCount={product.imageCount}
+          imageUrls={product.imageUrls}
+        />
 
         <div>
           <p className="text-[11px] uppercase tracking-[0.15em] text-accent">

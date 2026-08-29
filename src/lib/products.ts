@@ -1,3 +1,7 @@
+import { sanityClient } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
+import type { SanityImageSource } from "@sanity/image-url";
+
 export type ProductCategory = "earrings-studs" | "ear-clips" | "necklaces";
 
 export interface Product {
@@ -7,8 +11,10 @@ export interface Product {
   title: string;
   priceCents: number;
   currency: "EUR";
-  /** Number of placeholder image slots to render on the product page. */
+  /** Number of placeholder image slots to render when there are no real photos yet. */
   imageCount: number;
+  /** Real photo URLs from Sanity. Absent for the local sample catalogue. */
+  imageUrls?: string[];
   condition: string;
   materials: string;
   era: string;
@@ -16,6 +22,60 @@ export interface Product {
   measurements: string;
   description: string[];
   sold?: boolean;
+}
+
+interface SanityProductDoc {
+  _id: string;
+  title: string;
+  slug: string;
+  category: ProductCategory;
+  priceEur: number;
+  images?: SanityImageSource[];
+  condition: string;
+  materials: string;
+  era: string;
+  origin: string;
+  measurements: string;
+  description: string[];
+  sold?: boolean;
+}
+
+const PRODUCT_PROJECTION = `{
+  _id,
+  title,
+  "slug": slug.current,
+  category,
+  priceEur,
+  images,
+  condition,
+  materials,
+  era,
+  origin,
+  measurements,
+  description,
+  sold
+}`;
+
+function mapSanityProduct(doc: SanityProductDoc): Product {
+  return {
+    id: doc._id,
+    slug: doc.slug,
+    category: doc.category,
+    title: doc.title,
+    priceCents: Math.round(doc.priceEur * 100),
+    currency: "EUR",
+    imageCount: doc.images?.length ?? 1,
+    imageUrls: (doc.images ?? [])
+      .map((img) => urlForImage(img)?.width(1600).fit("max").url())
+      .filter((url): url is string => Boolean(url)),
+    condition: doc.condition,
+    materials: doc.materials,
+    era: doc.era,
+    origin: doc.origin,
+    measurements: doc.measurements,
+    description: doc.description,
+    sold: doc.sold,
+  };
 }
 
 export const categories: {
@@ -184,12 +244,53 @@ export const products: Product[] = [
   },
 ];
 
-export function getProductsByCategory(category: ProductCategory): Product[] {
-  return products.filter((p) => p.category === category);
+export async function getAllProducts(): Promise<Product[]> {
+  if (!sanityClient) return products;
+  try {
+    const docs = await sanityClient.fetch<SanityProductDoc[]>(
+      `*[_type == "product"] | order(_createdAt desc) ${PRODUCT_PROJECTION}`,
+    );
+    return docs.map(mapSanityProduct);
+  } catch (err) {
+    console.error("Sanity fetch failed, falling back to sample data", err);
+    return products;
+  }
 }
 
-export function getProductBySlug(slug: string): Product | undefined {
-  return products.find((p) => p.slug === slug);
+export async function getProductsByCategory(
+  category: ProductCategory,
+): Promise<Product[]> {
+  if (!sanityClient) {
+    return products.filter((p) => p.category === category);
+  }
+  try {
+    const docs = await sanityClient.fetch<SanityProductDoc[]>(
+      `*[_type == "product" && category == $category] | order(_createdAt desc) ${PRODUCT_PROJECTION}`,
+      { category },
+    );
+    return docs.map(mapSanityProduct);
+  } catch (err) {
+    console.error("Sanity fetch failed, falling back to sample data", err);
+    return products.filter((p) => p.category === category);
+  }
+}
+
+export async function getProductBySlug(
+  slug: string,
+): Promise<Product | undefined> {
+  if (!sanityClient) {
+    return products.find((p) => p.slug === slug);
+  }
+  try {
+    const doc = await sanityClient.fetch<SanityProductDoc | null>(
+      `*[_type == "product" && slug.current == $slug][0] ${PRODUCT_PROJECTION}`,
+      { slug },
+    );
+    return doc ? mapSanityProduct(doc) : undefined;
+  } catch (err) {
+    console.error("Sanity fetch failed, falling back to sample data", err);
+    return products.find((p) => p.slug === slug);
+  }
 }
 
 export function formatPrice(cents: number, currency: string, locale: string) {

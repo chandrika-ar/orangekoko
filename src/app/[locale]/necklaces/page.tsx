@@ -7,7 +7,7 @@ export default async function NecklacesPage() {
   return (
     <ProductGridPage
       title={t("necklacesLabel")}
-      products={getProductsByCategory("necklaces")}
+      products={await getProductsByCategory("necklaces")}
     />
   );
 }

@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { ProductGridPage } from "@/components/shop/product-grid-page";
-import { products } from "@/lib/products";
+import { getAllProducts } from "@/lib/products";
 
 export default async function NewArrivalsPage() {
   const t = await getTranslations("home");
@@ -9,7 +9,7 @@ export default async function NewArrivalsPage() {
     <ProductGridPage
       title={tNav("newArrivals")}
       subtitle={t("newArrivalsSubtitle")}
-      products={products}
+      products={await getAllProducts()}
     />
   );
 }

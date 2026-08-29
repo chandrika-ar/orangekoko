@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
   // product catalogue — never trust amounts sent from the client.
   const lineItems = [];
   for (const slug of body.slugs) {
-    const product = getProductBySlug(slug);
+    const product = await getProductBySlug(slug);
     if (!product) {
       return NextResponse.json(
         { error: `Unknown product: ${slug}` },
