@@ -96,6 +96,8 @@
     "continueShopping": "Continua lo shopping",
     "subtotal": "Subtotale",
     "shippingNote": "Spedizione e imposte calcolate al checkout",
+    "freeShippingProgress": "Aggiungi altri {amount} per sbloccare la spedizione standard gratuita.",
+    "freeShippingUnlocked": "Hai sbloccato la spedizione standard gratuita!",
     "billedInEur": "L'addebito avviene sempre in EUR, indipendentemente dalla valuta visualizzata.",
     "checkout": "Checkout",
     "remove": "Rimuovi",
@@ -119,7 +121,6 @@
     "about": "Chi siamo",
     "ourStory": "La Nostra Storia",
     "journal": "Journal",
-    "sourcing": "Provenienza",
     "help": "Aiuto",
     "shipping": "Spedizioni",
     "returns": "Resi",
@@ -146,7 +147,7 @@
     "q3": "Posso restituire o cambiare un articolo?",
     "a3": "Ispezioniamo attentamente ogni articolo durante la fotografia e l'imballaggio, quindi purtroppo non possiamo accettare resi o cambi per danni segnalati dopo la consegna. Per evitare la sostituzione degli articoli, non accettiamo resi in nessun caso. Detto questo, vogliamo che tu ti senta sicura prima dell'acquisto! Se hai domande o dubbi, non esitare a chiedere in anticipo. Saremo felici di aiutarti!",
     "q4": "Quindi... da dove arrivano davvero questi pezzi di orangekoko?",
-    "a4": "Ci riforniamo da negozi di rivendita di marchi autorizzati, case di pegno certificate e mercati di antiquariato privati. Ogni pezzo viene verificato prima di arrivare a te.",
+    "a4": "Ci riforniamo direttamente da collezionisti privati e collezioni personali in tutto il Giappone — gioielli scelti e conservati da una sola persona, non merce di seconda mano di massa. Dietro ogni pezzo c'è una storia: chi lo indossava, dove ha viaggiato, cosa significava per quella persona — e quella storia fa parte di ciò che porti a casa con te. Ogni pezzo viene verificato prima di arrivare a te.",
     "q5": "Qual è lo stato attuale dei prodotti?",
     "a5": "Una piccola nota prima che tu ti innamori di qualcosa: questi sono pezzi vintage. Questo significa che piccoli graffi, leggeri segni d'uso e occasionali tracce di una vita vissuta fanno parte del pacchetto. Se cerchi la perfezione, probabilmente non è il posto giusto per te. Se apprezzi le cose che hanno davvero vissuto qualcosa, benvenuta.",
     "q6": "Posso avere uno sconto?",
@@ -156,7 +157,60 @@
     "q8": "Le misure e le foto sono affidabili?",
     "a8": "Misurati e ispezionati a mano, quindi potrebbe esserci una variazione di uno o due millimetri, o qualche piccolo dettaglio occasionalmente sfuggito. Se le condizioni sono per te molto importanti, scrivici pure prima di acquistare.\n\nPer quanto riguarda le foto, sono scattate personalmente da noi, quindi tieni presente che i colori potrebbero variare leggermente rispetto all'articolo reale a seconda dello schermo e della luce.",
     "q9": "Perché non devo preoccuparmi di allergie o odori strani?",
-    "a9": "Niente animali in casa — quindi zero peli, zero odore di animali. E non sopportiamo davvero il fumo di sigaretta, quindi non ce n'è assolutamente traccia. Ciò che ricevi arriva pulito, neutro e pronto da indossare."
+    "a9": "Niente animali nel nostro studio — quindi zero peli, zero odore di animali. E non sopportiamo davvero il fumo di sigaretta, quindi non ce n'è assolutamente traccia."
+  },
+  "projectsPage": {
+    "issueLabel": "Numero 01",
+    "seasonLabel": "Autunno",
+    "title": "La selezione d'autunno",
+    "intro": "Quando la luce si fa ambrata e l'aria più tersa, siamo attratti da pezzi che portano un calore tutto loro — ori brunito, rossi laccati intensi, il peso silenzioso del corallo e dell'ambra. Questa selezione stagionale raccoglie ritrovamenti vintage che sanno d'autunno: senza fretta, un po' malinconici, e proprio per questo ancora più belli.",
+    "comingSoonTitle": "Pezzi in arrivo",
+    "comingSoonBody": "Stiamo attualmente selezionando e fotografando i pezzi di questa stagione — torna presto a trovarci, o esplora intanto la nostra collezione completa."
+  },
+  "chat": {
+    "pageIntro": "Chiedi informazioni su taglia, condizione, spedizione o qualsiasi altra cosa — il nostro assistente può aiutarti subito.",
+    "notConfigured": "La chat dal vivo non è ancora configurata — scrivici direttamente via email qui sotto.",
+    "intro": "Ciao! Chiedimi pure qualsiasi cosa sui nostri pezzi, sulla spedizione o sulle nostre politiche.",
+    "placeholder": "Scrivi la tua domanda…",
+    "send": "Invia",
+    "thinking": "Sto pensando…",
+    "error": "Qualcosa è andato storto. Riprova, oppure scrivici direttamente.",
+    "escalation": "Non trovi la tua risposta? Scrivici direttamente e ti risponderemo di persona."
+  },
+  "shippingPage": {
+    "intro": "Spediamo dal Giappone verso l'UE, il Regno Unito, la Norvegia, l'Islanda e la Svizzera con corrieri tracciati e assicurati.",
+    "freeTitle": "Spedizione standard gratuita oltre {amount}",
+    "freeBody": "A partire da {amount} di spesa, la spedizione standard assicurata è automaticamente gratuita al checkout — nessun codice necessario.",
+    "standardName": "Standard tracciata (Japan Post e-packet)",
+    "expressName": "Espressa assicurata (Japan Post EMS)",
+    "daysRange": "{min}–{max} giorni lavorativi",
+    "countriesTitle": "Dove spediamo",
+    "note": "I prezzi indicati si applicano per ordine e vengono addebitati in EUR al checkout, indipendentemente dalla valuta visualizzata."
+  },
+  "returns": {
+    "intro": "Poiché ogni pezzo che vendiamo è unico — vintage, già amato e a volte vecchio di decenni —, il nostro approccio ai resi si basa sulla cura che dedichiamo prima della spedizione, più che dopo.",
+    "policyTitle": "La nostra politica",
+    "policyBody": "Ogni articolo viene ispezionato, misurato e fotografato con cura al momento della pubblicazione, così riceverai esattamente ciò che vedi. Per questo motivo, e per proteggere l'integrità dei nostri pezzi unici, non possiamo accettare resi o cambi una volta spedito l'ordine.",
+    "beforeTitle": "Prima di ordinare",
+    "beforeBody": "Sappiamo che acquistare vintage online richiede un po' di fiducia, per questo vogliamo che tu ti senta completamente sicura prima di procedere al checkout. Se hai qualsiasi domanda — su condizione, taglia, materiali o qualsiasi dettaglio dell'annuncio — scrivici prima. Siamo sempre felici di condividere foto o dettagli aggiuntivi.",
+    "issueTitle": "Se qualcosa non va",
+    "issueBody": "Nel raro caso in cui il tuo ordine arrivi danneggiato durante il trasporto o non corrisponda all'annuncio, contattaci entro 48 ore dalla consegna con delle foto e troveremo insieme una soluzione."
+  },
+  "brand": {
+    "title": "Cosa significa orange",
+    "philosophy1": "orange non è un colore — è una sensazione. Il momento in cui la luce del pomeriggio rallenta. Un tepore silenzioso che resta vicino alla vita senza imporsi.",
+    "philosophy2": "Non creato per attirare lo sguardo, ma per restare con te nella quotidianità. Crediamo che un gioiello non debba dimostrare costantemente la propria presenza. I pezzi migliori ti accompagnano semplicemente in silenzio — lasciando un peso sulla pelle, tracce nel tempo. È lì che inizia orange.",
+    "philosophy3": "Come spazio curato, ricerchiamo opere artigianali contemporanee e gioielli vintage giapponesi — non perché abbagliano, ma perché meritano di essere indossati per anni, ancora e ancora.",
+    "philosophy4": "L'artigianalità, la texture, un senso del tempo — questi sono i nostri criteri. Da orangekoko, il gioiello è più vicino a una vitamina quotidiana per vivere.",
+    "philosophy5": "Piccolo, ma necessario. Delicato, ma preso sul serio.",
+    "closing": "orange non crea impulso. orange lascia un'impressione."
+  },
+  "about": {
+    "expandedEyebrow": "Con parole mie",
+    "expandedBody1": "Sono sempre stata attratta dai gioielli vintage giapponesi — non quelli lucidati dietro una vetrina, ma i pezzi che si trovano bancarella dopo bancarella nei piccoli mercatini delle pulci, in città che la maggior parte delle guide ignora.",
+    "expandedBody2": "Li cerco personalmente, e la parte più bella non è quasi mai il pezzo in sé — è la storia che porta con sé. I venditori sono spesso i proprietari originali, o le loro famiglie, e raccontano dove ha viaggiato un pezzo, chi lo indossava e in quale occasione, perché alla fine è stato messo da parte. Storie del genere non esistono nei negozi delle grandi città.",
+    "expandedBody3": "Ciò che continua a sorprendermi è quanto bene questi pezzi abbiano resistito al tempo. Il Giappone ha una cultura silenziosa e profondamente radicata nella cura degli oggetti — riparare invece di sostituire, conservare con intenzione, tramandare invece di gettare via. Questa abitudine alla conservazione attenta è esattamente il motivo per cui un pezzo di decenni fa può ancora arrivarti in condizioni indossabili, con la sua storia intatta invece che cancellata.",
+    "expandedBody4": "È su questo che si fonda orangekoko: pezzi che meritano questo tipo di cura, e le storie che portano con sé."
   },
   "account": {
     "title": "Account",
@@ -168,6 +222,17 @@
     "signInError": "Qualcosa è andato storto. Riprova.",
     "signedInAs": "Accesso effettuato come {email}",
     "viewWishlist": "Vedi la wishlist",
+    "viewOrders": "Cronologia ordini",
     "signOut": "Esci"
+  },
+  "orders": {
+    "title": "Cronologia ordini",
+    "empty": "Non hai ancora effettuato ordini.",
+    "emptyBody": "Gli ordini effettuati da accesso eseguito appariranno qui.",
+    "backToAccount": "Torna all'account",
+    "placedOn": "Effettuato il {date}",
+    "total": "Totale",
+    "status_paid": "Pagato",
+    "status_refunded": "Rimborsato"
   }
 }

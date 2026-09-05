@@ -96,6 +96,8 @@
     "continueShopping": "Fortsätt handla",
     "subtotal": "Delsumma",
     "shippingNote": "Frakt och skatter beräknas i kassan",
+    "freeShippingProgress": "Lägg till {amount} till för att låsa upp fri standardfrakt.",
+    "freeShippingUnlocked": "Du har låst upp fri standardfrakt!",
     "billedInEur": "Betalning sker alltid i EUR, oavsett vilken valuta som visas.",
     "checkout": "Till kassan",
     "remove": "Ta bort",
@@ -119,7 +121,6 @@
     "about": "Om oss",
     "ourStory": "Vår Historia",
     "journal": "Journal",
-    "sourcing": "Ursprung",
     "help": "Hjälp",
     "shipping": "Frakt",
     "returns": "Returer",
@@ -146,7 +147,7 @@
     "q3": "Kan jag returnera eller byta en vara?",
     "a3": "Vi inspekterar noggrant varje vara vid fotografering och packning, så vi kan tyvärr inte acceptera returer eller byten för skador som rapporteras efter leverans. För att förhindra att varor byts ut accepterar vi inga returer under några omständigheter. Men vi vill att du ska känna dig trygg innan köpet! Har du några frågor eller funderingar, tveka inte att höra av dig i förväg. Vi hjälper gärna till!",
     "q4": "Så... var får orangekoko egentligen tag på allt det här?",
-    "a4": "Vi köper in från licensierade återförsäljare av märkesvaror, certifierade pantbanker och privata antikmarknader. Varje föremål verifieras innan det når dig.",
+    "a4": "Vi köper in direkt från privata samlare och personliga samlingar runtom i Japan — smycken som valts ut och vårdats av en enda person, inte massvara från andrahandsbutiker. Bakom varje föremål finns en historia: vem som bar det, vart det rest, vad det betydde för den personen — och den historien är en del av det du tar hem. Varje föremål verifieras innan det når dig.",
     "q5": "Vilket skick är produkterna i just nu?",
     "a5": "En liten notering innan du blir förälskad i något: det här är vintageföremål. Det innebär att små repor, lätta bruksskador och enstaka tecken på ett väl levt liv hör till. Söker du perfektion är det här nog inte rätt ställe för dig. Uppskattar du saker som faktiskt har varit någonstans — välkommen.",
     "q6": "Kan jag få rabatt?",
@@ -156,7 +157,60 @@
     "q8": "Är måtten och bilderna pålitliga?",
     "a8": "Uppmätta och inspekterade för hand, så det kan finnas någon millimeters avvikelse, eller ibland en liten detalj som missats. Om skicket betyder mycket för dig, hör gärna av dig innan du köper.\n\nVad gäller bilderna är de tagna av oss personligen, så tänk på att färgerna kan skilja sig något från det verkliga föremålet beroende på din skärm och belysning.",
     "q9": "Varför behöver jag inte oroa mig för allergier eller konstiga lukter?",
-    "a9": "Inga husdjur hemma hos oss — så noll djurhår, noll djurlukt. Och vi tål verkligen inte cigarettrök, så det finns absolut inget av det heller. Det som kommer till dig är rent, neutralt och redo att bäras."
+    "a9": "Inga husdjur i vår studio — så noll djurhår, noll djurlukt. Och vi tål verkligen inte cigarettrök, så det finns absolut inget av det heller."
+  },
+  "projectsPage": {
+    "issueLabel": "Nummer 01",
+    "seasonLabel": "Höst",
+    "title": "Höstens urval",
+    "intro": "När ljuset blir bärnstensfärgat och luften skarpare dras vi till föremål som bär sin egen värme — mattat guld, djupa lackröda toner, koralls och bärnstens stilla tyngd. Den här säsongens urval samlar vintagefynd som känns som hösten själv: obrådskande, lite melankoliska, och just därför så vackra.",
+    "comingSoonTitle": "Föremål kommer snart",
+    "comingSoonBody": "Vi håller just nu på att leta fram och fotografera säsongens urval — kom tillbaka snart, eller utforska hela vår kollektion under tiden."
+  },
+  "chat": {
+    "pageIntro": "Fråga om storlek, skick, frakt eller något annat — vår assistent kan hjälpa dig direkt.",
+    "notConfigured": "Livechatten är inte inställd än — mejla oss direkt nedan.",
+    "intro": "Hej! Fråga mig vad som helst om våra smycken, frakt eller policyer.",
+    "placeholder": "Skriv din fråga…",
+    "send": "Skicka",
+    "thinking": "Tänker…",
+    "error": "Något gick fel. Försök igen, eller mejla oss direkt.",
+    "escalation": "Hittar du inte svaret? Mejla oss direkt så återkommer vi personligen."
+  },
+  "shippingPage": {
+    "intro": "Vi skickar från Japan till EU, Storbritannien, Norge, Island och Schweiz med spårbara, försäkrade transportörer.",
+    "freeTitle": "Fri standardfrakt över {amount}",
+    "freeBody": "Handla för {amount} eller mer så blir försäkrad standardfrakt automatiskt gratis i kassan — ingen kod behövs.",
+    "standardName": "Standard, spårbar (Japan Post e-packet)",
+    "expressName": "Express, försäkrad (Japan Post EMS)",
+    "daysRange": "{min}–{max} arbetsdagar",
+    "countriesTitle": "Vart vi skickar",
+    "note": "Visade priser gäller per beställning och debiteras i EUR i kassan, oavsett vilken valuta som visas."
+  },
+  "returns": {
+    "intro": "Eftersom varje föremål vi säljer är unikt — vintage, tidigare älskat och ibland decennier gammalt — bygger vårt sätt att hantera returer på den omsorg vi lägger ner innan leverans, snarare än efter.",
+    "policyTitle": "Vår policy",
+    "policyBody": "Varje föremål inspekteras, mäts och fotograferas noggrant när det läggs upp, så att du får precis det du ser. Av den anledningen, och för att skydda våra unika föremåls integritet, kan vi inte erbjuda returer eller byten när en beställning väl har skickats.",
+    "beforeTitle": "Innan du beställer",
+    "beforeBody": "Vi vet att det krävs lite förtroende att köpa vintage online, så vi vill att du ska känna dig helt trygg innan du går till kassan. Har du någon fråga alls — om skick, storlek, material eller något annat i annonsen — hör av dig innan köpet. Vi delar gärna fler bilder eller detaljer.",
+    "issueTitle": "Om något inte stämmer",
+    "issueBody": "I det sällsynta fallet att din beställning kommer skadad under transporten eller inte matchar annonsen, kontakta oss inom 48 timmar efter leverans med bilder, så löser vi det tillsammans."
+  },
+  "brand": {
+    "title": "Vad orange betyder",
+    "philosophy1": "orange är inte en färg — det är en känsla. Ögonblicket då eftermiddagsljuset saktar in. En stilla värme som stannar nära livet utan att tränga sig på.",
+    "philosophy2": "Inte skapat för att fånga blicken, utan för att stanna kvar hos dig i vardagen. Vi tror inte att smycken ständigt behöver bevisa sin närvaro. De bästa föremålen följer dig helt enkelt tyst — lämnar en tyngd mot huden, spår i tiden. Det är där orange börjar.",
+    "philosophy3": "Som ett kuraterat utrymme söker vi samtida hantverk och japanska vintagesmycken — inte för att de bländar, utan för att de förtjänar att bäras år efter år, om och om igen.",
+    "philosophy4": "Hantverk, textur, en känsla för tid — det är våra kriterier. Hos orangekoko är smycket mer som ett dagligt vitamin för livet.",
+    "philosophy5": "Litet, men nödvändigt. Milt, men taget på allvar.",
+    "closing": "orange skapar ingen impuls. orange lämnar ett intryck."
+  },
+  "about": {
+    "expandedEyebrow": "Med mina egna ord",
+    "expandedBody1": "Jag har alltid dragits till japanska vintagesmycken — inte de polerade bakom glas, utan föremålen man hittar bord för bord på små loppmarknader, i städer de flesta reseguider hoppar över.",
+    "expandedBody2": "Jag letar upp dem själv, och det finaste är nästan aldrig föremålet i sig — det är historien som följer med. Säljarna är ofta de ursprungliga ägarna, eller deras familjer, och de berättar var ett föremål har rest, vem som bar det och vid vilket tillfälle, varför det till slut lades åt sidan. Sådana historier finns inte i storstadsbutiker.",
+    "expandedBody3": "Det som fortsätter att förvåna mig är hur väl dessa föremål har klarat sig genom tiden. Japan har en stillsam, djupt rotad kultur av att ta hand om saker — laga i stället för att byta ut, förvara med omtanke, föra vidare i stället för att slänga. Just den vanan av omsorgsfull förvaring är anledningen till att ett föremål från decennier tillbaka fortfarande kan nå dig i bärbart skick, med sin historia intakt istället för utplånad.",
+    "expandedBody4": "Det är det orangekoko bygger på: föremål värda den sortens omsorg, och historierna de bär med sig."
   },
   "account": {
     "title": "Konto",
@@ -168,6 +222,17 @@
     "signInError": "Något gick fel. Försök igen.",
     "signedInAs": "Inloggad som {email}",
     "viewWishlist": "Visa önskelista",
+    "viewOrders": "Orderhistorik",
     "signOut": "Logga ut"
+  },
+  "orders": {
+    "title": "Orderhistorik",
+    "empty": "Du har inte lagt några beställningar än.",
+    "emptyBody": "Beställningar som läggs medan du är inloggad visas här.",
+    "backToAccount": "Tillbaka till kontot",
+    "placedOn": "Lagd {date}",
+    "total": "Totalt",
+    "status_paid": "Betald",
+    "status_refunded": "Återbetald"
   }
 }
