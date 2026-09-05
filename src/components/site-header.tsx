@@ -109,6 +109,24 @@ export function SiteHeader() {
             <Link href="/about" className="py-2 uppercase tracking-[0.08em] text-sm" onClick={() => setMenuOpen(false)}>
               {t("about")}
             </Link>
+            <div className="my-2 flex gap-5 border-t border-line pt-3 sm:hidden">
+              <Link
+                href="/search"
+                className="flex items-center gap-2 py-1 text-sm"
+                onClick={() => setMenuOpen(false)}
+              >
+                <Search size={17} />
+                {t("search")}
+              </Link>
+              <Link
+                href="/account"
+                className="flex items-center gap-2 py-1 text-sm"
+                onClick={() => setMenuOpen(false)}
+              >
+                <User size={17} className={sessionStatus === "authenticated" ? "fill-accent text-accent" : undefined} />
+                {t("account")}
+              </Link>
+            </div>
             <div className="pt-2">
               <LanguageSwitcher />
             </div>
