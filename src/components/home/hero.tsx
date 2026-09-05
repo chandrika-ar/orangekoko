@@ -12,7 +12,7 @@ export function Hero() {
         alt=""
         fill
         priority
-        className="object-cover"
+        className="object-cover object-[78%_center]"
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
