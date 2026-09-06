@@ -1,13 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useWishlistStore } from "@/store/wishlist-store";
+import { useServerWishlistStore } from "@/store/server-wishlist-store";
 
 /**
  * Anonymous visitors keep their wishlist in localStorage (useWishlistStore).
  * Signed-in visitors get a server-backed wishlist tied to their account
  * instead, fetched from /api/wishlist — the two are not merged on sign-in.
+ * Both stores are shared singletons so every component reflects the same
+ * state — toggling the heart in one place updates it everywhere, including
+ * the header's wishlist count.
  */
 export function useWishlist() {
   const { status } = useSession();
@@ -15,10 +19,14 @@ export function useWishlist() {
 
   const localIds = useWishlistStore((s) => s.productIds);
   const localToggle = useWishlistStore((s) => s.toggle);
-  const [serverIds, setServerIds] = useState<string[]>([]);
+
+  const serverIds = useServerWishlistStore((s) => s.productIds);
+  const serverLoaded = useServerWishlistStore((s) => s.loaded);
+  const setServerIds = useServerWishlistStore((s) => s.setProductIds);
+  const serverToggle = useServerWishlistStore((s) => s.toggle);
 
   useEffect(() => {
-    if (!authenticated) return;
+    if (!authenticated || serverLoaded) return;
     let cancelled = false;
     fetch("/api/wishlist")
       .then((res) => res.json())
@@ -28,7 +36,7 @@ export function useWishlist() {
     return () => {
       cancelled = true;
     };
-  }, [authenticated]);
+  }, [authenticated, serverLoaded, setServerIds]);
 
   const productIds = authenticated ? serverIds : localIds;
 
@@ -38,17 +46,9 @@ export function useWishlist() {
         localToggle(productId);
         return;
       }
-      const removing = serverIds.includes(productId);
-      setServerIds((prev) =>
-        removing ? prev.filter((id) => id !== productId) : [...prev, productId],
-      );
-      fetch("/api/wishlist", {
-        method: removing ? "DELETE" : "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId }),
-      });
+      serverToggle(productId);
     },
-    [authenticated, serverIds, localToggle],
+    [authenticated, localToggle, serverToggle],
   );
 
   const has = useCallback(
