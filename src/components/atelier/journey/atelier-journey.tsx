@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { CanvasStage } from "@/components/atelier/three/canvas-stage";
 import { ExperienceFallback } from "@/components/atelier/three/experience-fallback";
 import { useWebglSupport } from "@/components/atelier/three/use-webgl-support";
+import { TryOnStage } from "@/components/atelier/try-on/try-on-stage";
 import { Scene } from "./scene";
 import type { JourneyItem, JourneyStage } from "./types";
 
@@ -135,16 +136,18 @@ export default function AtelierJourney({ items }: { items: JourneyItem[] }) {
         </div>
       )}
 
-      {/* try-on placeholder */}
+      {/* try-on room */}
       {stage === "tryon" && (
-        <div className="absolute inset-0 flex items-center justify-center bg-cream-deep/95 px-6 text-center">
-          <div className="max-w-sm">
+        <div className="absolute inset-0 overflow-y-auto bg-cream-deep/95 px-6 py-10 text-center">
+          <div className="mx-auto w-full max-w-xs">
             <p className="text-[11px] uppercase tracking-[0.15em] text-accent">{t("doorEyebrow")}</p>
             <h2 className="mt-2 font-display text-2xl text-ink">{t("doorTitle")}</h2>
             <p className="mt-2 text-sm text-ink-soft">
               {t("tryingOn")} <strong className="text-ink">{selected?.title ?? items[0]?.title}</strong>
             </p>
-            <p className="mt-4 text-xs leading-relaxed text-ink-soft">{t("tryOnNote")}</p>
+            <div className="mt-5">
+              <TryOnStage item={selected ?? items[0] ?? null} />
+            </div>
             <button
               type="button"
               onClick={() => setStage("room")}

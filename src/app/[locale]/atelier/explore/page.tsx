@@ -16,6 +16,7 @@ export default async function AtelierExplorePage({
     slug: p.slug,
     title: p.title,
     priceLabel: formatPrice(p.priceCents, p.currency, locale),
+    category: p.category,
   }));
 
   return (

@@ -20,6 +20,7 @@ export default async function AtelierTryOnPage({
     slug: p.slug,
     title: p.title,
     priceLabel: formatPrice(p.priceCents, p.currency, locale),
+    category: p.category,
   }));
 
   return (

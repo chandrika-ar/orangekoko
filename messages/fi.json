@@ -189,11 +189,16 @@
     "doorEyebrow": "Atelier · Try-on (preview)",
     "doorTitle": "You're through the door",
     "tryingOn": "Trying on",
-    "tryOnNote": "The real version requests camera access here and tracks face and neck landmarks locally on your device — nothing is uploaded.",
     "backToRoom": "← Back to the shop floor",
     "fallbackTitle": "This room needs a newer browser",
     "fallbackBody": "We couldn't start the 3D room here. Have a look at the collection instead.",
-    "fallbackCta": "Go to the shop"
+    "fallbackCta": "Go to the shop",
+    "cameraHeading": "See how it looks",
+    "cameraNote": "This runs entirely on your device — your camera feed is never uploaded or stored.",
+    "cameraAllow": "Turn on camera",
+    "cameraDenied": "We couldn't access your camera. You can still browse the collection.",
+    "cameraUnsupported": "This browser doesn't support camera access here. You can still browse the collection.",
+    "approxPlacement": "Approximate placement — full face tracking is a planned upgrade"
   },
   "process": {
     "title": "Jokaisen korun takana",
