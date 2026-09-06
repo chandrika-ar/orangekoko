@@ -3,24 +3,27 @@
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
-import { makeCardTexture } from "./card-texture";
-import type { JourneyItem, JourneyStage } from "./types";
+import { makeCardTexture, makeSignTexture } from "./card-texture";
+import type { CategoryRoom } from "./get-journey-items";
+import type { JourneyStage } from "./types";
 
-// Room layout constants — everything else in this file is derived from these.
-const RADIUS = 3.4; // radius of the jewelry ring
+// Layout constants. Room-length values (door/entrance position, floor and
+// wall spans) are derived from these plus the number of category rooms —
+// see the `layout` memo below — since a 500-SKU catalogue means the corridor
+// can be one room long or several, depending on how many categories have
+// stock right now.
+const RADIUS_CAT = 2.8; // radius of each category's display ring
+const ROOM_PITCH = RADIUS_CAT * 2 + 3; // distance between consecutive room centers
 const CARD_Y = 1.95;
 const DOOR_W = 1.1;
 const DOOR_H = 2.2;
-const DOOR_Z = -(RADIUS + 2.6);
-const DOOR_TRIGGER_Z = DOOR_Z + 1.6; // walking this close auto-opens the door
 const ROOM_HALF_W = 4.6;
-const ENTRANCE_Z = RADIUS + 4.2;
 const PLAYER_CLAMP_X = ROOM_HALF_W - 0.5;
 const SELECT_RADIUS = 2.1;
+const COUNTER_RADIUS = RADIUS_CAT * 0.62; // matches the counter cylinder's top radius below
+const COUNTER_COLLISION_RADIUS = COUNTER_RADIUS + 0.35;
 const MOVE_SPEED = 3.3;
 const DOOR_DURATION = 1.6;
-
-const PLAYER_START = new THREE.Vector3(0, 0, ENTRANCE_Z - 1.0);
 
 const COLORS = {
   cream: "#f6f1e9",
@@ -32,12 +35,8 @@ const COLORS = {
   brass: "#b8863f",
 };
 
-function angleFor(index: number, total: number) {
-  return (index / total) * Math.PI * 2;
-}
-
 export function Scene({
-  items,
+  rooms,
   stage,
   selectedIndex,
   reduceMotion,
@@ -48,7 +47,7 @@ export function Scene({
   onReachDoor,
   onDoorComplete,
 }: {
-  items: JourneyItem[];
+  rooms: CategoryRoom[];
   stage: JourneyStage;
   selectedIndex: number | null;
   reduceMotion: boolean;
@@ -68,9 +67,46 @@ export function Scene({
   const bodyRef = useRef<THREE.Mesh>(null);
   const headRef = useRef<THREE.Mesh>(null);
 
+  // One room per category, strung along -Z: the first room in the array is
+  // farthest from the door (nearest the entrance), the last sits just before
+  // it at z=0. Each room gets its own ring, counter, and signpost.
+  const layout = useMemo(() => {
+    const roomCenterZ = rooms.map((_, i) => (rooms.length - 1 - i) * ROOM_PITCH);
+    const doorZ = -(RADIUS_CAT + 2.6);
+    const doorTriggerZ = doorZ + 1.6;
+    const entranceZ = (roomCenterZ[0] ?? 0) + RADIUS_CAT + 4.2;
+    const cards = rooms.flatMap((room, roomIndex) => {
+      const centerZ = roomCenterZ[roomIndex];
+      return room.items.map((item, i) => {
+        const angle = (i / room.items.length) * Math.PI * 2;
+        return {
+          item,
+          angle,
+          centerZ,
+          x: RADIUS_CAT * Math.sin(angle),
+          z: centerZ + RADIUS_CAT * Math.cos(angle),
+        };
+      });
+    });
+    const signs = rooms.map((room, i) => ({
+      label: room.label,
+      z: roomCenterZ[i] + RADIUS_CAT + 1.7,
+    }));
+    return { roomCenterZ, doorZ, doorTriggerZ, entranceZ, cards, signs };
+  }, [rooms]);
+
+  const playerStart = useMemo(
+    () => new THREE.Vector3(0, 0, layout.entranceZ - 1),
+    [layout.entranceZ],
+  );
+
   const cardTextures = useMemo(
-    () => items.map((item) => makeCardTexture(item, displayFont, sansFont)),
-    [items, displayFont, sansFont],
+    () => layout.cards.map(({ item }) => makeCardTexture(item, displayFont, sansFont)),
+    [layout.cards, displayFont, sansFont],
+  );
+  const signTextures = useMemo(
+    () => layout.signs.map(({ label }) => makeSignTexture(label, displayFont)),
+    [layout.signs, displayFont],
   );
 
   const keys = useRef<Record<string, boolean>>({});
@@ -91,11 +127,6 @@ export function Scene({
   // don't allow mutating a value a hook returned.
   const doorCamFrom = useRef<THREE.Vector3 | null>(null);
   const doorPlayerFrom = useRef<THREE.Vector3 | null>(null);
-
-  const cardAngles = useMemo(
-    () => items.map((_, i) => angleFor(i, items.length)),
-    [items],
-  );
 
   // keyboard input
   useEffect(() => {
@@ -132,7 +163,7 @@ export function Scene({
     doorDone.current = false;
     doorCamFrom.current = null;
     doorPlayerFrom.current = null;
-    if (playerRef.current) playerRef.current.position.copy(PLAYER_START);
+    if (playerRef.current) playerRef.current.position.copy(playerStart);
     if (playerRef.current) playerRef.current.rotation.y = Math.PI;
     if (doorPivotRef.current) doorPivotRef.current.rotation.y = 0;
     if (doorGlowRef.current) doorGlowRef.current.intensity = 0;
@@ -150,7 +181,7 @@ export function Scene({
       });
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stage]);
+  }, [stage, playerStart]);
 
   function handleFloorClick(event: ThreeEvent<MouseEvent>) {
     if (stage !== "room") return;
@@ -162,9 +193,15 @@ export function Scene({
     return (event: ThreeEvent<MouseEvent>) => {
       if (stage !== "room") return;
       event.stopPropagation();
-      const angle = cardAngles[index];
-      const dir = new THREE.Vector2(Math.sin(angle), Math.cos(angle));
-      moveTarget.current = { x: dir.x * (RADIUS - 1.15), z: dir.y * (RADIUS - 1.15) };
+      const card = layout.cards[index];
+      const dir = new THREE.Vector2(card.x, card.z - card.centerZ).normalize();
+      // Stop just outside the counter's solid collision radius, not partway
+      // toward the ring center — the counter physically blocks anything closer.
+      const standDist = COUNTER_COLLISION_RADIUS + 0.15;
+      moveTarget.current = {
+        x: dir.x * standDist,
+        z: card.centerZ + dir.y * standDist,
+      };
     };
   }
 
@@ -213,7 +250,28 @@ export function Scene({
         player.position.x += lastDirX.current * speed.current * dt;
         player.position.z += lastDirZ.current * speed.current * dt;
         player.position.x = THREE.MathUtils.clamp(player.position.x, -PLAYER_CLAMP_X, PLAYER_CLAMP_X);
-        player.position.z = THREE.MathUtils.clamp(player.position.z, DOOR_TRIGGER_Z, ENTRANCE_Z - 0.5);
+        player.position.z = THREE.MathUtils.clamp(
+          player.position.z,
+          layout.doorTriggerZ,
+          layout.entranceZ - 0.5,
+        );
+
+        // Each room's display counter is solid. Snapping straight back to
+        // the boundary (pure radial push-out) traps anyone walking dead
+        // straight at the center — x never leaves 0, so they'd sit pinned
+        // against it forever holding "forward". Instead slide clockwise
+        // around the rim while in contact, so holding one direction still
+        // carries you all the way around and out the other side.
+        layout.roomCenterZ.forEach((centerZ) => {
+          const dz = player.position.z - centerZ;
+          const dist = Math.hypot(player.position.x, dz);
+          if (dist > 0.0001 && dist < COUNTER_COLLISION_RADIUS) {
+            const angle = Math.atan2(player.position.x, dz) + 2 * dt;
+            player.position.x = COUNTER_COLLISION_RADIUS * Math.sin(angle);
+            player.position.z = centerZ + COUNTER_COLLISION_RADIUS * Math.cos(angle);
+          }
+        });
+
         const targetHeading = Math.atan2(lastDirX.current, lastDirZ.current);
         const diff = Math.atan2(Math.sin(targetHeading - player.rotation.y), Math.cos(targetHeading - player.rotation.y));
         player.rotation.y += diff * (reduceMotion ? 1 : Math.min(dt * 10, 1));
@@ -223,7 +281,7 @@ export function Scene({
         if (headRef.current) headRef.current.position.y = 1.02 + bob;
       }
 
-      if (player.position.z <= DOOR_TRIGGER_Z + 0.02) {
+      if (player.position.z <= layout.doorTriggerZ + 0.02) {
         onReachDoor();
       }
 
@@ -276,12 +334,12 @@ export function Scene({
       const eased = progress < 0.5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2;
 
       if (!doorCamFrom.current) doorCamFrom.current = camera.position.clone();
-      const to = new THREE.Vector3(-0.2, 1.5, DOOR_Z + 2.1);
+      const to = new THREE.Vector3(-0.2, 1.5, layout.doorZ + 2.1);
       camera.position.lerpVectors(doorCamFrom.current, to, eased);
-      camera.lookAt(-0.2, DOOR_H / 2, DOOR_Z);
+      camera.lookAt(-0.2, DOOR_H / 2, layout.doorZ);
 
       if (!doorPlayerFrom.current) doorPlayerFrom.current = player.position.clone();
-      player.position.lerpVectors(doorPlayerFrom.current, new THREE.Vector3(-0.2, 0, DOOR_Z - 0.3), eased);
+      player.position.lerpVectors(doorPlayerFrom.current, new THREE.Vector3(-0.2, 0, layout.doorZ - 0.3), eased);
 
       if (doorPivotRef.current) doorPivotRef.current.rotation.y = -1.95 * eased;
       if (doorGlowRef.current) doorGlowRef.current.intensity = 2.4 * eased;
@@ -303,6 +361,11 @@ export function Scene({
     }
   });
 
+  const floorZMin = layout.doorZ - 0.6;
+  const floorZMax = layout.entranceZ + 0.6;
+  const floorCenterZ = (floorZMin + floorZMax) / 2;
+  const floorDepth = floorZMax - floorZMin;
+
   return (
     <>
       <hemisphereLight args={[COLORS.cream, COLORS.inkSoft, 0.9]} />
@@ -311,112 +374,119 @@ export function Scene({
       <fog attach="fog" args={[COLORS.cream, 7, 24]} />
 
       {/* floor */}
-      <mesh
-        rotation-x={-Math.PI / 2}
-        position={[0, 0, (DOOR_Z - 0.6 + ENTRANCE_Z + 0.6) / 2]}
-        onClick={handleFloorClick}
-      >
-        <planeGeometry args={[ROOM_HALF_W * 2, ENTRANCE_Z + 0.6 - (DOOR_Z - 0.6)]} />
+      <mesh rotation-x={-Math.PI / 2} position={[0, 0, floorCenterZ]} onClick={handleFloorClick}>
+        <planeGeometry args={[ROOM_HALF_W * 2, floorDepth]} />
         <meshStandardMaterial color="#d9c7a8" roughness={0.9} />
       </mesh>
 
       {/* walls */}
       {[-1, 1].map((side) => (
-        <mesh
-          key={side}
-          position={[side * ROOM_HALF_W, 1.55, (DOOR_Z - 0.6 + ENTRANCE_Z + 0.6) / 2]}
-          rotation-y={(-side * Math.PI) / 2}
-        >
-          <planeGeometry args={[ENTRANCE_Z + 0.6 - (DOOR_Z - 0.6), 3.1]} />
+        <mesh key={side} position={[side * ROOM_HALF_W, 1.55, floorCenterZ]} rotation-y={(-side * Math.PI) / 2}>
+          <planeGeometry args={[floorDepth, 3.1]} />
           <meshStandardMaterial color={COLORS.creamDeep} roughness={0.95} side={THREE.DoubleSide} />
         </mesh>
       ))}
 
-      {/* shop props: shelves + lanterns along the walls */}
-      {[DOOR_Z + 1.4, (DOOR_Z + ENTRANCE_Z) / 2, ENTRANCE_Z - 1.6].map((z) =>
-        [-1, 1].map((side) => {
-          const x = side * (ROOM_HALF_W - 0.55);
-          return (
-            <group key={`${z}-${side}`} position={[x, 0, z]}>
-              <mesh position={[0, 0.45, 0]}>
-                <boxGeometry args={[0.5, 0.9, 0.5]} />
-                <meshStandardMaterial color={COLORS.brass} roughness={0.6} metalness={0.25} />
-              </mesh>
-              <pointLight args={[COLORS.accentSoft, 0.5, 3.2]} position={[0, 1.15, 0]} />
-              <mesh position={[0, 1.15, 0]}>
-                <sphereGeometry args={[0.14, 12, 12]} />
-                <meshStandardMaterial color={COLORS.accentSoft} emissive={COLORS.accent} emissiveIntensity={0.6} />
-              </mesh>
-            </group>
-          );
-        }),
-      )}
-
-      {/* ring of floating jewelry cards */}
-      {items.map((item, i) => {
-        const angle = cardAngles[i];
-        const x = RADIUS * Math.sin(angle);
-        const z = RADIUS * Math.cos(angle);
-        return (
-          <group
-            key={item.slug}
-            ref={(el) => {
-              cardRefs.current[i] = el;
-            }}
-            position={[x, CARD_Y, z]}
-            rotation-y={angle}
-            onClick={handleCardClick(i)}
-          >
-            {/* rotation lives on the group, not the mesh, so it stays in sync
-                with the card's shadow (see below) */}
-            <mesh>
-              <planeGeometry args={[1.15, 1.55]} />
-              <meshBasicMaterial map={cardTextures[i]} transparent side={THREE.DoubleSide} />
+      {/* shop props: a shelf + lantern flanking each room's entrance sign */}
+      {layout.signs.map((sign) =>
+        [-1, 1].map((side) => (
+          <group key={`${sign.z}-${side}`} position={[side * (ROOM_HALF_W - 0.55), 0, sign.z]}>
+            <mesh position={[0, 0.45, 0]}>
+              <boxGeometry args={[0.5, 0.9, 0.5]} />
+              <meshStandardMaterial color={COLORS.brass} roughness={0.6} metalness={0.25} />
             </mesh>
-            <mesh position={[0, -1.93, 0]} rotation-x={-Math.PI / 2}>
-              <circleGeometry args={[0.62, 24]} />
-              <meshBasicMaterial color={COLORS.ink} transparent opacity={0.12} />
+            <pointLight args={[COLORS.accentSoft, 0.5, 3.2]} position={[0, 1.15, 0]} />
+            <mesh position={[0, 1.15, 0]}>
+              <sphereGeometry args={[0.14, 12, 12]} />
+              <meshStandardMaterial color={COLORS.accentSoft} emissive={COLORS.accent} emissiveIntensity={0.6} />
             </mesh>
           </group>
-        );
-      })}
+        )),
+      )}
+
+      {/* category signposts, one per room threshold */}
+      {layout.signs.map((sign, i) => (
+        <mesh key={sign.z} position={[0, 2.5, sign.z]}>
+          <planeGeometry args={[2.2, 0.55]} />
+          <meshBasicMaterial map={signTextures[i]} side={THREE.DoubleSide} />
+        </mesh>
+      ))}
+
+      {/* a display counter per room: a round wooden base under each ring */}
+      {layout.roomCenterZ.map((z) => (
+        <group key={z} position={[0, 0, z]}>
+          <mesh position={[0, 0.45, 0]}>
+            <cylinderGeometry args={[RADIUS_CAT * 0.55, COUNTER_RADIUS, 0.9, 32]} />
+            <meshStandardMaterial color="#8a5a34" roughness={0.7} />
+          </mesh>
+          <mesh position={[0, 0.9, 0]} rotation-x={Math.PI / 2}>
+            <torusGeometry args={[COUNTER_RADIUS - 0.04, 0.035, 8, 32]} />
+            <meshStandardMaterial color={COLORS.brass} metalness={0.5} roughness={0.4} />
+          </mesh>
+        </group>
+      ))}
+
+      {/* rings of floating jewelry cards, one ring per category room */}
+      {layout.cards.map((card, i) => (
+        <group
+          key={`${card.item.category}-${card.item.slug}`}
+          ref={(el) => {
+            cardRefs.current[i] = el;
+          }}
+          position={[card.x, CARD_Y, card.z]}
+          rotation-y={card.angle}
+          onClick={handleCardClick(i)}
+        >
+          {/* rotation lives on the group, not the mesh, so it stays in sync
+              with the card's shadow (see below). Front and back are separate
+              meshes rather than one double-sided plane — a single texture on
+              both sides would show the title mirror-reversed from behind,
+              which is routinely visible once the corridor has more than one
+              room to walk past. */}
+          <mesh>
+            <planeGeometry args={[1.15, 1.55]} />
+            <meshBasicMaterial map={cardTextures[i]} transparent side={THREE.FrontSide} />
+          </mesh>
+          <mesh rotation-y={Math.PI}>
+            <planeGeometry args={[1.15, 1.55]} />
+            <meshStandardMaterial color={COLORS.creamDeep} roughness={0.85} side={THREE.FrontSide} />
+          </mesh>
+          <mesh position={[0, -1.93, 0]} rotation-x={-Math.PI / 2}>
+            <circleGeometry args={[0.62, 24]} />
+            <meshBasicMaterial color={COLORS.ink} transparent opacity={0.12} />
+          </mesh>
+        </group>
+      ))}
 
       {/* selection glow ring beneath the nearest card */}
-      {selectedIndex !== null && (
-        <mesh
-          rotation-x={-Math.PI / 2}
-          position={[
-            RADIUS * Math.sin(cardAngles[selectedIndex]),
-            0.03,
-            RADIUS * Math.cos(cardAngles[selectedIndex]),
-          ]}
-        >
+      {selectedIndex !== null && layout.cards[selectedIndex] && (
+        <mesh rotation-x={-Math.PI / 2} position={[layout.cards[selectedIndex].x, 0.03, layout.cards[selectedIndex].z]}>
           <ringGeometry args={[0.58, 0.72, 40]} />
           <meshBasicMaterial color={COLORS.accent} transparent opacity={0.55} side={THREE.DoubleSide} />
         </mesh>
       )}
 
       {/* vintage door: DOOR_W wide, DOOR_H tall, hinged at its left edge */}
-      <group ref={doorPivotRef} position={[-DOOR_W / 2, 0, DOOR_Z]}>
+      <group ref={doorPivotRef} position={[-DOOR_W / 2, 0, layout.doorZ]}>
         <mesh position={[DOOR_W / 2, DOOR_H / 2, 0]}>
           <planeGeometry args={[DOOR_W, DOOR_H]} />
           <meshStandardMaterial color="#a9713f" roughness={0.7} />
         </mesh>
       </group>
-      <mesh position={[0, DOOR_H, DOOR_Z]} rotation-z={Math.PI}>
+      <mesh position={[0, DOOR_H, layout.doorZ]} rotation-z={Math.PI}>
         <torusGeometry args={[DOOR_W / 2 + 0.12, 0.08, 8, 24, Math.PI]} />
         <meshStandardMaterial color={COLORS.brass} roughness={0.5} metalness={0.4} />
       </mesh>
       {[-1, 1].map((side) => (
-        <mesh key={side} position={[side * (DOOR_W / 2 + 0.06), DOOR_H / 2, DOOR_Z]}>
+        <mesh key={side} position={[side * (DOOR_W / 2 + 0.06), DOOR_H / 2, layout.doorZ]}>
           <boxGeometry args={[0.1, DOOR_H, 0.1]} />
           <meshStandardMaterial color={COLORS.brass} roughness={0.5} metalness={0.4} />
         </mesh>
       ))}
-      <pointLight ref={doorGlowRef} args={[COLORS.accentSoft, 0, 8]} position={[0, DOOR_H * 0.65, DOOR_Z - 0.4]} />
+      <pointLight ref={doorGlowRef} args={[COLORS.accentSoft, 0, 8]} position={[0, DOOR_H * 0.65, layout.doorZ - 0.4]} />
 
       {/* the player: a small stylized figure standing in for the customer */}
-      <group ref={playerRef} position={PLAYER_START} rotation-y={Math.PI}>
+      <group ref={playerRef} position={playerStart} rotation-y={Math.PI}>
         <mesh ref={bodyRef} position={[0, 0.52, 0]}>
           <capsuleGeometry args={[0.26, 0.55, 4, 8]} />
           <meshStandardMaterial color={COLORS.ink} roughness={0.7} />

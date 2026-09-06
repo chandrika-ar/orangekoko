@@ -1,12 +1,11 @@
 import { getTranslations } from "next-intl/server";
-import { getAllProducts, formatPrice } from "@/lib/products";
+import { getJourneyRooms } from "@/components/atelier/journey/get-journey-items";
 import { AtelierJourneyLoader } from "@/components/atelier/journey/atelier-journey-loader";
 import { MusubiIcon } from "@/components/atelier/musubi-icon";
 
 // Try-on shares the same journey as /atelier/explore: you have to pick a
 // piece before you can try it on, so both routes start in the same room —
 // this page differs only in its marketing copy above the experience.
-
 export default async function AtelierTryOnPage({
   params,
 }: {
@@ -14,14 +13,7 @@ export default async function AtelierTryOnPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations("atelierPage");
-  const products = await getAllProducts();
-
-  const items = products.slice(0, 8).map((p) => ({
-    slug: p.slug,
-    title: p.title,
-    priceLabel: formatPrice(p.priceCents, p.currency, locale),
-    category: p.category,
-  }));
+  const rooms = await getJourneyRooms(locale);
 
   return (
     <div>
@@ -29,7 +21,7 @@ export default async function AtelierTryOnPage({
         <MusubiIcon size={16} className="text-accent" />
         {t("eyebrow")}
       </div>
-      <AtelierJourneyLoader items={items} />
+      <AtelierJourneyLoader rooms={rooms} />
     </div>
   );
 }

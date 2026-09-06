@@ -1,18 +1,22 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { CanvasStage } from "@/components/atelier/three/canvas-stage";
 import { ExperienceFallback } from "@/components/atelier/three/experience-fallback";
 import { useWebglSupport } from "@/components/atelier/three/use-webgl-support";
 import { TryOnStage } from "@/components/atelier/try-on/try-on-stage";
+import type { CategoryRoom } from "./get-journey-items";
 import { Scene } from "./scene";
-import type { JourneyItem, JourneyStage } from "./types";
+import type { JourneyStage } from "./types";
 
-export default function AtelierJourney({ items }: { items: JourneyItem[] }) {
+export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
   const t = useTranslations("atelierJourney");
   const support = useWebglSupport();
+  // Flattened in the same room-then-item order Scene lays cards out in, so
+  // `selectedIndex` (an index into this list) means the same card in both.
+  const items = useMemo(() => rooms.flatMap((r) => r.items), [rooms]);
 
   const [stage, setStage] = useState<JourneyStage>("room");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -61,7 +65,7 @@ export default function AtelierJourney({ items }: { items: JourneyItem[] }) {
       >
         <CanvasStage>
           <Scene
-            items={items}
+            rooms={rooms}
             stage={stage}
             selectedIndex={selectedIndex}
             reduceMotion={reduceMotion}

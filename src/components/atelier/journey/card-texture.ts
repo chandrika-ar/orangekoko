@@ -45,6 +45,36 @@ export function makeCardTexture(item: JourneyItem, displayFont: string, sansFont
   return texture;
 }
 
+/** A wide category signpost, e.g. "PIERCED EARRINGS", drawn the same way as
+ * the cards — no font fetch, reuses the page's own computed font. */
+export function makeSignTexture(label: string, displayFont: string) {
+  const width = 512;
+  const height = 128;
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return new THREE.CanvasTexture(canvas);
+
+  ctx.fillStyle = "#211c17";
+  ctx.fillRect(0, 0, width, height);
+  ctx.strokeStyle = "#b8863f";
+  ctx.lineWidth = 3;
+  ctx.strokeRect(6, 6, width - 12, height - 12);
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = "#f6f1e9";
+  ctx.font = `500 40px ${displayFont}`;
+  // Manual letter-spacing: canvas has no tracking property.
+  const spaced = label.toUpperCase().split("").join("  ");
+  ctx.fillText(spaced, width / 2, height / 2 + 2);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+
 function wrapText(
   ctx: CanvasRenderingContext2D,
   text: string,
