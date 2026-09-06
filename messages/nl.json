@@ -159,6 +159,49 @@
     "q9": "Waarom hoef ik me geen zorgen te maken over allergieën of vreemde geurtjes?",
     "a9": "Geen huisdieren in onze studio — dus geen haartjes, geen dierengeur. En we kunnen sigarettenrook echt niet uitstaan, dus daar is ook helemaal niets van."
   },
+  "atelierPage": {
+    "eyebrow": "orangekoko atelier",
+    "title": "Drie manieren om ons te bezoeken",
+    "intro": "Dit is onze studio, online geopend. Dwaal door de ruimte, kijk hoe een stuk wordt verzorgd, of pas een paar dingen.",
+    "exploreTitle": "Verken de ruimte",
+    "exploreBody": "Loop langs de planken van onze studio in Osaka, hoek voor hoek.",
+    "exploreCta": "Bekijken",
+    "exploreComingSoonBody": "We bouwen deze ruimte nu — hij is binnenkort te bezoeken.",
+    "processTitle": "Achter elk stuk",
+    "processBody": "Bekijk wat er gebeurt tussen de aankomst van een stuk en het moment dat het u bereikt.",
+    "processCta": "Bekijken",
+    "tryOnTitle": "Pas het",
+    "tryOnBody": "Zie hoe een stuk u staat, rechtstreeks via uw camera.",
+    "tryOnCta": "Bekijken",
+    "tryOnComingSoonBody": "We bouwen deze functie nu — hij is binnenkort klaar om te proberen.",
+    "comingSoon": "Binnenkort",
+    "backToAtelier": "Terug naar het atelier"
+  },
+  "process": {
+    "title": "Achter elk stuk",
+    "intro": "Een korte blik op wat er gebeurt voordat een stuk u bereikt.",
+    "previous": "Vorige stap",
+    "next": "Volgende stap",
+    "arriveLabel": "Aankomst",
+    "arriveCaption": "Elk stuk komt precies aan zoals het geleefd heeft — gedragen, met een verhaal, onvolmaakt.",
+    "cleanLabel": "Reiniging",
+    "cleanCaption": "Met de hand en zachtjes gereinigd — nooit zo dat het zijn ouderdom wegneemt.",
+    "inspectLabel": "Inspectie",
+    "inspectCaption": "Gecontroleerd onder fel licht: sluitingen, zettingen, stenen, elke rand.",
+    "wrapLabel": "Inpakken",
+    "wrapCaption": "Verpakt in zijdepapier, zoals het verdient te worden behandeld.",
+    "sealLabel": "Verzegeld",
+    "sealCaption": "Verzegeld en verzonden vanuit onze studio in Osaka."
+  },
+  "atelier": {
+    "eyebrow": "Het orangekoko Atelier",
+    "title": "Stap binnen in het atelier",
+    "subtitle": "Dwaal langs de planken, kijk hoe een stuk met de hand wordt klaargemaakt, en zie hoe het u staat — zonder deze pagina te verlaten.",
+    "cta": "Naar binnen",
+    "featureExplore": "Verken de ruimte",
+    "featureProcess": "Achter elk stuk",
+    "featureTryOn": "Pas het"
+  },
   "projectsPage": {
     "issueLabel": "Nummer 01",
     "seasonLabel": "Herfst",
@@ -198,8 +241,9 @@
   },
   "brand": {
     "title": "Wat orange betekent",
+    "lead": "Voordat we verdergaan — een woord over onze naam, en wat ‘orange’ voor ons betekent.",
     "philosophy1": "orange is geen kleur — het is een gevoel. Het moment waarop het middaglicht vertraagt. Een stille warmte die dicht bij het leven blijft, zonder zich op te dringen.",
-    "philosophy2": "Niet gemaakt om op te vallen, maar om bij u te blijven in het dagelijks leven. Wij geloven dat een sieraad niet voortdurend zijn aanwezigheid hoeft te bewijzen. De mooiste stukken vergezellen u simpelweg in stilte — ze laten een gewicht achter op de huid, sporen in de tijd. Daar begint orange.",
+    "philosophy2": "Niet gemaakt om op te vallen, maar om bij u te blijven in het dagelijks leven. Wij geloven dat een sieraad niet voortdurend zijn aanwezigheid hoeft te bewijzen. De mooiste stukken vergezellen u simpelweg in stilte — ze laten een gewicht achter op de huid, sporen in de tijd. Daar begint orangekoko.",
     "philosophy3": "Als gecureerde plek zoeken we hedendaags handwerk en Japanse vintage sieraden — niet omdat ze schitteren, maar omdat ze het waard zijn om jarenlang gedragen te worden, keer op keer.",
     "philosophy4": "Vakmanschap, textuur, een gevoel voor tijd — dat zijn onze criteria. Bij orangekoko is een sieraad meer een dagelijkse vitamine voor het leven.",
     "philosophy5": "Klein, maar noodzakelijk. Zacht, maar serieus genomen.",
@@ -210,6 +254,7 @@
     "expandedBody1": "Eerlijk gezegd hou ik al heel lang van Japanse vintage sieraden — en dan niet de gepolijste stukken achter een etalageruit. Ik bedoel de stukken die je tafel voor tafel tegenkomt op een klein vlooienmarktje, zo'n plek die nooit in een reisgids staat.",
     "expandedBody2": "Ik zoek ze zelf op, en het mooiste is bijna nooit het stuk zelf — het is het verhaal dat erbij komt. De verkopers zijn vaak de oorspronkelijke eigenaars, of hun familie, en ze vertellen waar een stuk naartoe reisde, wie het bij welke gelegenheid droeg, waarom het uiteindelijk opzij werd gelegd. Zulke verhalen bestaan niet in winkels in grote steden.",
     "expandedBody3": "Wat me blijft verbazen, is hoe goed deze stukken de tijd hebben doorstaan. Japan kent een stille, diepgewortelde cultuur van zorg voor dingen — repareren in plaats van vervangen, met aandacht bewaren, dingen doorgeven in plaats van weggooien. Die gewoonte van zorgvuldig bewaren is precies waarom een stuk van decennia geleden u nog steeds in draagbare staat kan bereiken, met zijn geschiedenis intact in plaats van uitgewist.",
+    "expandedBodyArtisan": "Naast deze vintage vondsten werk ik inmiddels ook samen met een handvol hedendaagse ambachtslieden wiens stukken diezelfde geest dragen — gemaakt in kleine oplages, bedoeld om jarenlang gedragen te worden in plaats van één seizoen, elk stuk gevormd door een hand in plaats van een machine.",
     "expandedBody4": "Daarop is orangekoko gebouwd: stukken die dat soort zorg verdienen, en de verhalen die ze meebrengen."
   },
   "account": {

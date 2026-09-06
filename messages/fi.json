@@ -159,6 +159,49 @@
     "q9": "Miksi minun ei tarvitse huolehtia allergioista tai oudoista hajuista?",
     "a9": "Studiollamme ei ole lemmikkejä — eli ei karvoja, ei eläinten hajua. Emmekä todellakaan siedä savukkeen savua, joten sitäkään ei ole lainkaan."
   },
+  "atelierPage": {
+    "eyebrow": "orangekoko-ateljee",
+    "title": "Kolme tapaa vierailla",
+    "intro": "Tämä on studiomme, avattuna verkossa. Vaella tilassa, katso kuinka korusta huolehditaan, tai sovita muutamaa asiaa.",
+    "exploreTitle": "Tutki tilaa",
+    "exploreBody": "Kävele Osakan studiomme hyllyjen välissä, kulma kerrallaan.",
+    "exploreCta": "Katso lisää",
+    "exploreComingSoonBody": "Rakennamme tätä tilaa parhaillaan — se on pian valmis koettavaksi.",
+    "processTitle": "Jokaisen korun takana",
+    "processBody": "Katso, mitä tapahtuu korun saapumisen ja sen sinulle päätymisen välillä.",
+    "processCta": "Katso lisää",
+    "tryOnTitle": "Sovita sitä",
+    "tryOnBody": "Katso, miltä koru näyttää sinulla, suoraan kamerastasi.",
+    "tryOnCta": "Katso lisää",
+    "tryOnComingSoonBody": "Rakennamme tätä ominaisuutta parhaillaan — se on pian valmis kokeiltavaksi.",
+    "comingSoon": "Tulossa pian",
+    "backToAtelier": "Takaisin ateljeehen"
+  },
+  "process": {
+    "title": "Jokaisen korun takana",
+    "intro": "Nopea katsaus siihen, mitä tapahtuu ennen kuin koru saapuu sinulle.",
+    "previous": "Edellinen vaihe",
+    "next": "Seuraava vaihe",
+    "arriveLabel": "Saapuminen",
+    "arriveCaption": "Jokainen koru saapuu juuri sellaisena kuin se on elänyt — käytettynä, tarinoita täynnä, epätäydellisenä.",
+    "cleanLabel": "Puhdistus",
+    "cleanCaption": "Puhdistettu käsin, hellävaroin — ei koskaan tavalla, joka häivyttäisi sen ikää.",
+    "inspectLabel": "Tarkastus",
+    "inspectCaption": "Tarkastettu kirkkaassa valossa: lukot, kehykset, kivet, jokainen reuna.",
+    "wrapLabel": "Kääriminen",
+    "wrapCaption": "Käärittynä silkkipaperiin, niin kuin sen ansaitsee tulla käsitellyksi.",
+    "sealLabel": "Sinetöity",
+    "sealCaption": "Sinetöity ja lähetetty studiostamme Osakasta."
+  },
+  "atelier": {
+    "eyebrow": "orangekoko-ateljee",
+    "title": "Astu sisään ateljeehen",
+    "subtitle": "Vaella hyllyjen välissä, katso kuinka koru valmistellaan käsin, ja näe miltä se näyttää sinulla — poistumatta koskaan tältä sivulta.",
+    "cta": "Astu sisään",
+    "featureExplore": "Tutki tilaa",
+    "featureProcess": "Jokaisen korun takana",
+    "featureTryOn": "Sovita sitä"
+  },
   "projectsPage": {
     "issueLabel": "Numero 01",
     "seasonLabel": "Syksy",
@@ -198,8 +241,9 @@
   },
   "brand": {
     "title": "Mitä orange tarkoittaa",
+    "lead": "Ennen kaikkea muuta — muutama sana nimestämme ja siitä, mitä ‘orange’ meille tarkoittaa.",
     "philosophy1": "orange ei ole väri — se on tunne. Hetki, jolloin iltapäivän valo hidastuu. Hiljainen lämpö, joka pysyy lähellä elämää tunkeutumatta siihen.",
-    "philosophy2": "Ei tehty huomion herättämiseen, vaan pysymään mukanasi arjessa. Uskomme, ettei korun tarvitse jatkuvasti todistaa läsnäoloaan. Parhaat korut yksinkertaisesti kulkevat mukanasi hiljaa — jättäen painon iholle, jälkiä aikaan. Siitä orange alkaa.",
+    "philosophy2": "Ei tehty huomion herättämiseen, vaan pysymään mukanasi arjessa. Uskomme, ettei korun tarvitse jatkuvasti todistaa läsnäoloaan. Parhaat korut yksinkertaisesti kulkevat mukanasi hiljaa — jättäen painon iholle, jälkiä aikaan. Siitä orangekoko alkaa.",
     "philosophy3": "Kuratoituna tilana etsimme nykyaikaista käsityötaidetta ja japanilaisia vintagekoruja — emme siksi, että ne hohtavat, vaan koska ne ansaitsevat tulla käytetyiksi vuosien ajan, yhä uudelleen.",
     "philosophy4": "Käsityötaito, tekstuuri, ajantaju — nämä ovat kriteerimme. orangekokolla koru on lähempänä päivittäistä vitamiinia elämälle.",
     "philosophy5": "Pieni, mutta välttämätön. Hellä, mutta vakavasti otettu.",
@@ -210,6 +254,7 @@
     "expandedBody1": "Rehellisesti sanottuna olen aina rakastanut japanilaisia vintagekoruja — enkä tarkoita niitä kiiltäviä kappaleita näyteikkunan lasin takana. Tarkoitan niitä, joita löytää pöytä toisensa jälkeen jostain pikkukaupungin kirpputorilta, sellaisesta paikasta, josta yksikään matkaopas ei koskaan mainitse.",
     "expandedBody2": "Etsin niitä itse, ja kaunein osa ei ole juuri koskaan koru itse — vaan sen mukana tuleva tarina. Myyjät ovat usein alkuperäisiä omistajia tai heidän perheenjäseniään, ja he kertovat, minne koru on matkustanut, kuka sitä käytti ja mihin tilaisuuteen, miksi se lopulta laitettiin syrjään. Tällaisia tarinoita ei löydy suurkaupunkien liikkeistä.",
     "expandedBody3": "Se, mikä yhä yllättää minut, on kuinka hyvin nämä korut ovat kestäneet aikaa. Japanissa on hiljainen, syvälle juurtunut tapa huolehtia esineistä — korjata pois heittämisen sijaan, säilyttää harkiten, siirtää eteenpäin sen sijaan, että heittäisi pois. Juuri tämä huolellisen säilyttämisen tapa selittää, miksi vuosikymmeniä vanha koru voi vielä saapua sinulle käyttökuntoisena, historiansa ehjänä eikä hävinneenä.",
+    "expandedBodyArtisan": "Näiden vintage-löytöjen rinnalla olen alkanut työskennellä myös muutaman nykytaiteilija-käsityöläisen kanssa, joiden korut kantavat samaa henkeä — valmistettu pienissä erissä, tarkoitettu käytettäväksi vuosia yhden sesongin sijaan, jokainen käsin muotoiltu koneen sijaan.",
     "expandedBody4": "Tähän orangekoko perustuu: koruihin, jotka ansaitsevat tuollaista huolenpitoa, ja tarinoihin, joita ne tuovat mukanaan."
   },
   "account": {

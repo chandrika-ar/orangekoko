@@ -159,6 +159,49 @@
     "q9": "Why don't I need to worry about allergies or weird smells?",
     "a9": "No pets in our studio — so zero fur, zero pet odours. And we genuinely cannot stand cigarette smoke, so there's absolutely none of that either."
   },
+  "atelierPage": {
+    "eyebrow": "orangekoko atelier",
+    "title": "Three ways to visit",
+    "intro": "This is our studio, opened up online. Wander the room, watch a piece being cared for, or try a few things on for size.",
+    "exploreTitle": "Explore the room",
+    "exploreBody": "Walk the shelves of our Osaka studio, one corner at a time.",
+    "exploreCta": "Take a look",
+    "exploreComingSoonBody": "We're building this room now — it'll be ready to walk through soon.",
+    "processTitle": "Behind every piece",
+    "processBody": "Watch what happens between a piece arriving and it reaching you.",
+    "processCta": "Take a look",
+    "tryOnTitle": "Try it on",
+    "tryOnBody": "See how a piece sits on you, right from your camera.",
+    "tryOnCta": "Take a look",
+    "tryOnComingSoonBody": "We're building this feature now — it'll be ready to try soon.",
+    "comingSoon": "Coming soon",
+    "backToAtelier": "Back to the atelier"
+  },
+  "process": {
+    "title": "Behind every piece",
+    "intro": "A quick look at what happens before a piece reaches you.",
+    "previous": "Previous step",
+    "next": "Next step",
+    "arriveLabel": "Arrival",
+    "arriveCaption": "Every piece arrives exactly as it lived — worn, storied, imperfect.",
+    "cleanLabel": "Cleaning",
+    "cleanCaption": "Cleaned by hand, gently — never anything that would erase its age.",
+    "inspectLabel": "Inspection",
+    "inspectCaption": "Checked under bright light: clasps, settings, stones, every edge.",
+    "wrapLabel": "Wrapping",
+    "wrapCaption": "Wrapped in tissue, the way it deserves to be handled.",
+    "sealLabel": "Sealed",
+    "sealCaption": "Sealed and sent from our studio in Osaka."
+  },
+  "atelier": {
+    "eyebrow": "The orangekoko Atelier",
+    "title": "Step inside the atelier",
+    "subtitle": "Wander the shelves, watch a piece being readied by hand, and see how it looks on you — all without leaving this page.",
+    "cta": "Enter",
+    "featureExplore": "Explore the room",
+    "featureProcess": "Behind every piece",
+    "featureTryOn": "Try it on"
+  },
   "projectsPage": {
     "issueLabel": "Issue No. 01",
     "seasonLabel": "Autumn",
@@ -198,8 +241,9 @@
   },
   "brand": {
     "title": "What orange means",
+    "lead": "Before anything else — a word about our name, and what ‘orange’ means to us.",
     "philosophy1": "orange is not a color — it's a feeling. The moment afternoon light slows down. A quiet warmth that stays close to life without intruding.",
-    "philosophy2": "Not made to catch your eye, but to stay with you in the everyday. We believe jewelry doesn't need to constantly prove its presence. The best pieces simply accompany you in silence — leaving weight on the skin, leaving traces in time. That's where orange begins.",
+    "philosophy2": "Not made to catch your eye, but to stay with you in the everyday. We believe jewelry doesn't need to constantly prove its presence. The best pieces simply accompany you in silence — leaving weight on the skin, leaving traces in time. That's where orangekoko begins.",
     "philosophy3": "As a curated space, we seek out contemporary artisan works and vintage Japanese jewelry — not because they dazzle, but because they're worth wearing for years, worth returning to again and again.",
     "philosophy4": "Craft, texture, a sense of time — these are our criteria. At orangekoko, jewelry is closer to a daily vitamin for living.",
     "philosophy5": "Small, but necessary. Gentle, but taken seriously.",
@@ -210,6 +254,7 @@
     "expandedBody1": "Honestly, I've always loved Japanese vintage jewelry — and not the polished pieces sitting behind glass in a shop window. I mean the ones spread out table by table at some small-town flea market, the kind of place that never makes it into a guidebook.",
     "expandedBody2": "I go looking for them myself, and the best part is rarely the piece — it's the story that comes with it. The sellers are often the original owners, or their families, and they'll tell you where a piece traveled, who wore it and to what occasion, why it was finally set aside. Stories like that don't exist in big-city shops.",
     "expandedBody3": "What keeps surprising me is how well these pieces have survived. Japan has a quiet, deep-rooted habit of caring for things — mending rather than replacing, storing with intention, passing objects down instead of throwing them away. That habit of careful keeping is exactly why a piece from decades ago can still reach you in wearable condition, its history intact rather than worn away.",
+    "expandedBodyArtisan": "Alongside these vintage finds, I've also started working with a handful of contemporary artisans whose pieces carry that same spirit — made in small batches, meant to be worn for years rather than a season, each one shaped by a maker's hand rather than a machine.",
     "expandedBody4": "That's what orangekoko is built on: pieces worth that kind of care, and the stories that come with them."
   },
   "account": {

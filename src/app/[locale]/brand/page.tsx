@@ -21,7 +21,8 @@ export default async function BrandPage() {
       <div className="mx-auto max-w-xl px-4 pt-16 pb-10 text-center sm:px-6 lg:px-8">
         <p className="text-[11px] uppercase tracking-[0.15em] text-ink-soft">{t("brand")}</p>
         <h1 className="mt-2 font-display text-3xl">{tb("title")}</h1>
-        <p className="mx-auto mt-8 max-w-md font-display text-2xl italic leading-snug">
+        <p className="mx-auto mt-6 max-w-sm text-sm text-ink-soft">{tb("lead")}</p>
+        <p className="mx-auto mt-8 max-w-md text-balance font-display text-2xl italic leading-snug">
           {tb("philosophy1")}
         </p>
       </div>
@@ -56,8 +57,8 @@ export default async function BrandPage() {
 
       <div className="mx-auto max-w-xl px-4 py-16 text-center sm:px-6 lg:px-8">
         <div className="mx-auto space-y-3 text-sm leading-relaxed text-ink-soft">
-          <p>{tb("philosophy4")}</p>
-          <p>{tb("philosophy5")}</p>
+          <p className="text-balance">{tb("philosophy4")}</p>
+          <p className="text-balance">{tb("philosophy5")}</p>
         </div>
         <p className="mt-8 font-display text-xl italic">{tb("closing")}</p>
       </div>

@@ -7,6 +7,7 @@ import { ProductGallery } from "@/components/shop/product-gallery";
 import { ProductActions } from "@/components/shop/product-actions";
 import { Accordion } from "@/components/shop/accordion";
 import { ProductCard } from "@/components/shop/product-card";
+import { ProcessFilmstrip } from "@/components/atelier/process-filmstrip";
 
 export default async function ProductPage({
   params,
@@ -18,6 +19,7 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const t = await getTranslations("product");
+  const tp = await getTranslations("process");
   const related = (await getProductsByCategory(product.category))
     .filter((p) => p.id !== product.id)
     .slice(0, 4);
@@ -121,6 +123,14 @@ export default async function ProductPage({
           </div>
         </div>
       </div>
+
+      <section className="mt-20 border-t border-line pt-16">
+        <h2 className="text-center font-display text-2xl">{tp("title")}</h2>
+        <p className="mx-auto mt-2 max-w-sm text-center text-sm text-ink-soft">
+          {tp("intro")}
+        </p>
+        <ProcessFilmstrip className="mt-8" />
+      </section>
 
       {related.length > 0 && (
         <section className="mt-20">

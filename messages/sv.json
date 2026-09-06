@@ -159,6 +159,49 @@
     "q9": "Varför behöver jag inte oroa mig för allergier eller konstiga lukter?",
     "a9": "Inga husdjur i vår studio — så noll djurhår, noll djurlukt. Och vi tål verkligen inte cigarettrök, så det finns absolut inget av det heller."
   },
+  "atelierPage": {
+    "eyebrow": "orangekoko-ateljén",
+    "title": "Tre sätt att besöka oss",
+    "intro": "Det här är vår studio, öppnad online. Vandra runt i rummet, se ett smycke tas om hand, eller prova några saker.",
+    "exploreTitle": "Utforska rummet",
+    "exploreBody": "Gå längs hyllorna i vår studio i Osaka, hörn för hörn.",
+    "exploreCta": "Ta en titt",
+    "exploreComingSoonBody": "Vi bygger det här rummet just nu — det är snart klart att vandra i.",
+    "processTitle": "Bakom varje smycke",
+    "processBody": "Se vad som händer mellan att ett smycke anländer och att det når dig.",
+    "processCta": "Ta en titt",
+    "tryOnTitle": "Prova det",
+    "tryOnBody": "Se hur ett smycke sitter på dig, direkt från din kamera.",
+    "tryOnCta": "Ta en titt",
+    "tryOnComingSoonBody": "Vi bygger den här funktionen just nu — den är snart redo att prova.",
+    "comingSoon": "Kommer snart",
+    "backToAtelier": "Tillbaka till ateljén"
+  },
+  "process": {
+    "title": "Bakom varje smycke",
+    "intro": "En snabb titt på vad som händer innan ett smycke når dig.",
+    "previous": "Föregående steg",
+    "next": "Nästa steg",
+    "arriveLabel": "Ankomst",
+    "arriveCaption": "Varje smycke anländer precis som det levt — buret, fyllt av historia, ofullkomligt.",
+    "cleanLabel": "Rengöring",
+    "cleanCaption": "Rengjort för hand, varsamt — aldrig på ett sätt som suddar ut dess ålder.",
+    "inspectLabel": "Kontroll",
+    "inspectCaption": "Kontrollerat i starkt ljus: lås, infattningar, stenar, varje kant.",
+    "wrapLabel": "Inslagning",
+    "wrapCaption": "Inslaget i silkespapper, precis så som det förtjänar att hanteras.",
+    "sealLabel": "Förseglat",
+    "sealCaption": "Förseglat och skickat från vår studio i Osaka."
+  },
+  "atelier": {
+    "eyebrow": "orangekoko-ateljén",
+    "title": "Kliv in i ateljén",
+    "subtitle": "Vandra längs hyllorna, se ett smycke förberedas för hand, och se hur det ser ut på dig — utan att någonsin lämna den här sidan.",
+    "cta": "Kliv in",
+    "featureExplore": "Utforska rummet",
+    "featureProcess": "Bakom varje smycke",
+    "featureTryOn": "Prova det"
+  },
   "projectsPage": {
     "issueLabel": "Nummer 01",
     "seasonLabel": "Höst",
@@ -198,8 +241,9 @@
   },
   "brand": {
     "title": "Vad orange betyder",
+    "lead": "Innan vi går vidare — några ord om vårt namn, och vad ‘orange’ betyder för oss.",
     "philosophy1": "orange är inte en färg — det är en känsla. Ögonblicket då eftermiddagsljuset saktar in. En stilla värme som stannar nära livet utan att tränga sig på.",
-    "philosophy2": "Inte skapat för att fånga blicken, utan för att stanna kvar hos dig i vardagen. Vi tror inte att smycken ständigt behöver bevisa sin närvaro. De bästa föremålen följer dig helt enkelt tyst — lämnar en tyngd mot huden, spår i tiden. Det är där orange börjar.",
+    "philosophy2": "Inte skapat för att fånga blicken, utan för att stanna kvar hos dig i vardagen. Vi tror inte att smycken ständigt behöver bevisa sin närvaro. De bästa föremålen följer dig helt enkelt tyst — lämnar en tyngd mot huden, spår i tiden. Det är där orangekoko börjar.",
     "philosophy3": "Som ett kuraterat utrymme söker vi samtida hantverk och japanska vintagesmycken — inte för att de bländar, utan för att de förtjänar att bäras år efter år, om och om igen.",
     "philosophy4": "Hantverk, textur, en känsla för tid — det är våra kriterier. Hos orangekoko är smycket mer som ett dagligt vitamin för livet.",
     "philosophy5": "Litet, men nödvändigt. Milt, men taget på allvar.",
@@ -210,6 +254,7 @@
     "expandedBody1": "Ärligt talat har jag alltid älskat japanska vintagesmycken — och då inte de blanka, putsade sakerna bakom ett skyltfönster. Jag menar de som ligger utspridda bord för bord på någon liten loppmarknad, en sån plats som aldrig hamnar i någon reseguide.",
     "expandedBody2": "Jag letar upp dem själv, och det finaste är nästan aldrig föremålet i sig — det är historien som följer med. Säljarna är ofta de ursprungliga ägarna, eller deras familjer, och de berättar var ett föremål har rest, vem som bar det och vid vilket tillfälle, varför det till slut lades åt sidan. Sådana historier finns inte i storstadsbutiker.",
     "expandedBody3": "Det som fortsätter att förvåna mig är hur väl dessa föremål har klarat sig genom tiden. Japan har en stillsam, djupt rotad kultur av att ta hand om saker — laga i stället för att byta ut, förvara med omtanke, föra vidare i stället för att slänga. Just den vanan av omsorgsfull förvaring är anledningen till att ett föremål från decennier tillbaka fortfarande kan nå dig i bärbart skick, med sin historia intakt istället för utplånad.",
+    "expandedBodyArtisan": "Vid sidan av dessa vintagefynd har jag också börjat samarbeta med en handfull samtida hantverkare vars föremål bär samma anda — tillverkade i små serier, tänkta att bäras i flera år snarare än en säsong, vart och ett format av en hand snarare än en maskin.",
     "expandedBody4": "Det är det orangekoko bygger på: föremål värda den sortens omsorg, och historierna de bär med sig."
   },
   "account": {

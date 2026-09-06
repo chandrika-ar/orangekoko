@@ -159,6 +159,49 @@
     "q9": "Warum muss ich mir keine Sorgen wegen Allergien oder seltsamer Gerüche machen?",
     "a9": "Bei uns im Studio gibt es keine Haustiere – also null Tierhaare, null Tiergeruch. Und Zigarettenrauch können wir absolut nicht ausstehen, davon gibt es bei uns also auch nichts."
   },
+  "atelierPage": {
+    "eyebrow": "orangekoko Atelier",
+    "title": "Drei Wege, uns zu besuchen",
+    "intro": "Das ist unser Studio, online geöffnet. Schlendern Sie durch den Raum, sehen Sie zu, wie ein Stück gepflegt wird, oder probieren Sie ein paar Dinge an.",
+    "exploreTitle": "Den Raum erkunden",
+    "exploreBody": "Gehen Sie Stück für Stück durch die Regale unseres Studios in Osaka.",
+    "exploreCta": "Ansehen",
+    "exploreComingSoonBody": "Wir bauen diesen Raum gerade — er wird bald begehbar sein.",
+    "processTitle": "Hinter jedem Stück",
+    "processBody": "Sehen Sie, was zwischen der Ankunft eines Stücks und dem Moment geschieht, in dem es Sie erreicht.",
+    "processCta": "Ansehen",
+    "tryOnTitle": "Anprobieren",
+    "tryOnBody": "Sehen Sie, wie ein Stück an Ihnen sitzt — direkt über Ihre Kamera.",
+    "tryOnCta": "Ansehen",
+    "tryOnComingSoonBody": "Wir arbeiten gerade an dieser Funktion — sie wird bald bereit zum Ausprobieren sein.",
+    "comingSoon": "Demnächst",
+    "backToAtelier": "Zurück zum Atelier"
+  },
+  "process": {
+    "title": "Hinter jedem Stück",
+    "intro": "Ein kurzer Blick darauf, was geschieht, bevor ein Stück Sie erreicht.",
+    "previous": "Vorheriger Schritt",
+    "next": "Nächster Schritt",
+    "arriveLabel": "Ankunft",
+    "arriveCaption": "Jedes Stück kommt genau so an, wie es gelebt hat — getragen, mit Geschichte, unperfekt.",
+    "cleanLabel": "Reinigung",
+    "cleanCaption": "Von Hand und behutsam gereinigt — nie so, dass sein Alter verwischt wird.",
+    "inspectLabel": "Prüfung",
+    "inspectCaption": "Bei hellem Licht geprüft: Verschlüsse, Fassungen, Steine, jede Kante.",
+    "wrapLabel": "Verpackung",
+    "wrapCaption": "In Seidenpapier gehüllt, so wie es behandelt werden sollte.",
+    "sealLabel": "Versiegelt",
+    "sealCaption": "Versiegelt und verschickt aus unserem Studio in Osaka."
+  },
+  "atelier": {
+    "eyebrow": "Das orangekoko Atelier",
+    "title": "Betreten Sie das Atelier",
+    "subtitle": "Schlendern Sie durch die Regale, sehen Sie zu, wie ein Stück von Hand vorbereitet wird, und wie es an Ihnen aussieht — ganz ohne diese Seite zu verlassen.",
+    "cta": "Eintreten",
+    "featureExplore": "Den Raum erkunden",
+    "featureProcess": "Hinter jedem Stück",
+    "featureTryOn": "Anprobieren"
+  },
   "projectsPage": {
     "issueLabel": "Ausgabe Nr. 01",
     "seasonLabel": "Herbst",
@@ -198,8 +241,9 @@
   },
   "brand": {
     "title": "Was orange bedeutet",
+    "lead": "Bevor es weitergeht — ein Wort zu unserem Namen und dazu, was ‘orange’ für uns bedeutet.",
     "philosophy1": "orange ist keine Farbe — es ist ein Gefühl. Der Moment, in dem sich das Nachmittagslicht verlangsamt. Eine stille Wärme, die dem Leben nahebleibt, ohne sich aufzudrängen.",
-    "philosophy2": "Nicht gemacht, um aufzufallen, sondern um im Alltag zu bleiben. Wir glauben, dass Schmuck seine Präsenz nicht ständig beweisen muss. Die schönsten Stücke begleiten Sie einfach still — sie hinterlassen ein Gewicht auf der Haut, Spuren in der Zeit. Dort beginnt orange.",
+    "philosophy2": "Nicht gemacht, um aufzufallen, sondern um im Alltag zu bleiben. Wir glauben, dass Schmuck seine Präsenz nicht ständig beweisen muss. Die schönsten Stücke begleiten Sie einfach still — sie hinterlassen ein Gewicht auf der Haut, Spuren in der Zeit. Dort beginnt orangekoko.",
     "philosophy3": "Als kuratierter Raum suchen wir zeitgenössische Handwerkskunst und japanischen Vintage-Schmuck — nicht weil sie funkeln, sondern weil sie es wert sind, jahrelang getragen zu werden, immer wieder.",
     "philosophy4": "Handwerk, Textur, ein Gefühl für Zeit — das sind unsere Kriterien. Bei orangekoko ist Schmuck eher wie ein tägliches Vitamin fürs Leben.",
     "philosophy5": "Klein, aber notwendig. Sanft, aber ernst gemeint.",
@@ -210,6 +254,7 @@
     "expandedBody1": "Ehrlich gesagt, japanischen Vintage-Schmuck liebe ich schon lange — und nicht die polierten Stücke hinter Glas im Schaufenster. Ich meine die, die man Tisch für Tisch auf irgendeinem kleinen Flohmarkt findet, so einem Ort, der es nie in einen Reiseführer schafft.",
     "expandedBody2": "Ich suche sie selbst, und das Schönste daran ist selten das Stück selbst — es ist die Geschichte, die mitkommt. Die Verkäufer sind oft die ursprünglichen Besitzer oder deren Familien, und sie erzählen, wohin ein Stück gereist ist, wer es zu welchem Anlass getragen hat, warum es schließlich beiseitegelegt wurde. Solche Geschichten gibt es in Großstadtläden nicht.",
     "expandedBody3": "Was mich immer wieder überrascht, ist, wie gut diese Stücke die Zeit überdauert haben. Japan hat eine stille, tief verwurzelte Kultur der Pflege von Dingen — reparieren statt ersetzen, mit Bedacht aufbewahren, Dinge weitergeben statt wegzuwerfen. Diese Gewohnheit der sorgfältigen Aufbewahrung ist genau der Grund, warum ein Stück aus vergangenen Jahrzehnten Sie noch immer in tragbarem Zustand erreichen kann — mit intakter statt ausgelöschter Geschichte.",
+    "expandedBodyArtisan": "Neben diesen Vintage-Fundstücken arbeite ich inzwischen auch mit einer Handvoll zeitgenössischer Kunsthandwerker:innen zusammen, deren Arbeiten denselben Geist tragen — in kleinen Serien gefertigt, gedacht für Jahre statt für eine Saison, jedes Stück von einer Hand geformt statt von einer Maschine.",
     "expandedBody4": "Darauf baut orangekoko auf: Stücke, die diese Art von Sorgfalt verdienen, und die Geschichten, die sie mitbringen."
   },
   "account": {

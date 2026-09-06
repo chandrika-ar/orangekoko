@@ -159,6 +159,49 @@
     "q9": "Hvorfor behøver jeg ikke bekymre mig om allergier eller mærkelige lugte?",
     "a9": "Ingen kæledyr i vores studie — så nul dyrehår, nul dyrelugt. Og vi kan virkelig ikke holde ud med cigaretrøg, så der er heller absolut intet af det."
   },
+  "atelierPage": {
+    "eyebrow": "orangekoko-atelieret",
+    "title": "Tre måder at besøge os på",
+    "intro": "Dette er vores studie, åbnet online. Vandre rundt i rummet, se et smykke blive passet, eller prøv et par ting.",
+    "exploreTitle": "Udforsk rummet",
+    "exploreBody": "Gå langs hylderne i vores studie i Osaka, hjørne for hjørne.",
+    "exploreCta": "Tag et kig",
+    "exploreComingSoonBody": "Vi bygger dette rum lige nu — det er snart klar til at gå igennem.",
+    "processTitle": "Bag hvert smykke",
+    "processBody": "Se hvad der sker, fra et smykke ankommer, til det når frem til dig.",
+    "processCta": "Tag et kig",
+    "tryOnTitle": "Prøv det",
+    "tryOnBody": "Se hvordan et smykke sidder på dig, direkte fra dit kamera.",
+    "tryOnCta": "Tag et kig",
+    "tryOnComingSoonBody": "Vi bygger denne funktion lige nu — den er snart klar til at prøve.",
+    "comingSoon": "Kommer snart",
+    "backToAtelier": "Tilbage til atelieret"
+  },
+  "process": {
+    "title": "Bag hvert smykke",
+    "intro": "Et hurtigt kig på, hvad der sker, før et smykke når frem til dig.",
+    "previous": "Forrige trin",
+    "next": "Næste trin",
+    "arriveLabel": "Ankomst",
+    "arriveCaption": "Hvert smykke ankommer præcis som det har levet — båret, fyldt med historie, ufuldkomment.",
+    "cleanLabel": "Rengøring",
+    "cleanCaption": "Rengjort i hånden, forsigtigt — aldrig på en måde der udvisker dets alder.",
+    "inspectLabel": "Eftersyn",
+    "inspectCaption": "Tjekket i skarpt lys: lukninger, fatninger, sten, hver kant.",
+    "wrapLabel": "Indpakning",
+    "wrapCaption": "Pakket ind i silkepapir, sådan som det fortjener at blive behandlet.",
+    "sealLabel": "Forseglet",
+    "sealCaption": "Forseglet og sendt fra vores studie i Osaka."
+  },
+  "atelier": {
+    "eyebrow": "orangekoko-atelieret",
+    "title": "Træd ind i atelieret",
+    "subtitle": "Vandre langs hylderne, se et smykke blive gjort klar i hånden, og se hvordan det ser ud på dig — uden nogensinde at forlade denne side.",
+    "cta": "Træd ind",
+    "featureExplore": "Udforsk rummet",
+    "featureProcess": "Bag hvert smykke",
+    "featureTryOn": "Prøv det"
+  },
   "projectsPage": {
     "issueLabel": "Nummer 01",
     "seasonLabel": "Efterår",
@@ -198,8 +241,9 @@
   },
   "brand": {
     "title": "Hvad orange betyder",
+    "lead": "Før noget andet — et par ord om vores navn, og hvad ‘orange’ betyder for os.",
     "philosophy1": "orange er ikke en farve — det er en følelse. Det øjeblik, hvor eftermiddagslyset sænker farten. En stille varme, der forbliver tæt på livet uden at trænge sig på.",
-    "philosophy2": "Ikke skabt for at fange blikket, men for at blive hos dig i hverdagen. Vi tror ikke, at smykker konstant behøver at bevise deres tilstedeværelse. De bedste stykker følger dig blot i stilhed — og efterlader en vægt på huden, spor i tiden. Det er der, orange begynder.",
+    "philosophy2": "Ikke skabt for at fange blikket, men for at blive hos dig i hverdagen. Vi tror ikke, at smykker konstant behøver at bevise deres tilstedeværelse. De bedste stykker følger dig blot i stilhed — og efterlader en vægt på huden, spor i tiden. Det er der, orangekoko begynder.",
     "philosophy3": "Som et kurateret rum søger vi nutidigt håndværk og japanske vintage smykker — ikke fordi de blænder, men fordi de fortjener at blive båret i årevis, igen og igen.",
     "philosophy4": "Håndværk, tekstur, en fornemmelse for tid — det er vores kriterier. Hos orangekoko er et smykke mere som et dagligt vitamin for livet.",
     "philosophy5": "Lille, men nødvendigt. Blidt, men taget alvorligt.",
@@ -210,6 +254,7 @@
     "expandedBody1": "Ærligt talt har jeg altid elsket japanske vintage smykker — og ikke de polerede stykker bag en butiksrude. Jeg mener dem, man finder spredt ud bord for bord på et lille loppemarked i en by, ingen rejseguide nogensinde nævner.",
     "expandedBody2": "Jeg opsøger dem selv, og det bedste er sjældent stykket i sig selv — det er historien, der følger med. Sælgerne er ofte de oprindelige ejere, eller deres familier, og de fortæller, hvor et stykke har rejst hen, hvem der bar det, og til hvilken lejlighed, hvorfor det til sidst blev lagt til side. Den slags historier findes ikke i storbybutikker.",
     "expandedBody3": "Det, der bliver ved med at overraske mig, er, hvor godt disse stykker har overlevet tiden. Japan har en stille, dybt forankret kultur for at passe på ting — reparere frem for at udskifte, opbevare med omtanke, give videre i stedet for at smide væk. Netop den vane med omhyggelig opbevaring er grunden til, at et stykke fra årtier tilbage stadig kan nå dig i en stand, man kan bære, med sin historie intakt i stedet for udvisket.",
+    "expandedBodyArtisan": "Ved siden af disse vintagefund er jeg også begyndt at samarbejde med en håndfuld nutidige håndværkere, hvis stykker bærer den samme ånd — fremstillet i små serier, tænkt til at blive båret i årevis frem for én sæson, hvert eneste formet af en hånd frem for en maskine.",
     "expandedBody4": "Det er det, orangekoko er bygget på: stykker, der fortjener den slags omsorg, og de historier, de bringer med sig."
   },
   "account": {

@@ -34,6 +34,7 @@ export default async function AboutPage() {
           <p>{ta("expandedBody1")}</p>
           <p>{ta("expandedBody2")}</p>
           <p>{ta("expandedBody3")}</p>
+          <p>{ta("expandedBodyArtisan")}</p>
           <p>{ta("expandedBody4")}</p>
         </div>
       </div>
