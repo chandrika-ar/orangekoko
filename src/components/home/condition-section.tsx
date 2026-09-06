@@ -24,6 +24,9 @@ export function ConditionSection() {
               ))}
             </ul>
           </div>
+          <p className="mx-auto mt-6 max-w-md text-xs text-ink-soft lg:mx-0">
+            {t("conditionSecondhandNote")}
+          </p>
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
