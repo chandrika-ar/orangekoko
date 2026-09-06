@@ -36,10 +36,8 @@ export function CustomerModel({
 
   useEffect(() => {
     const idle = actions.idle;
-    const walk = actions.walk;
-    if (!idle || !walk) return;
+    if (!idle) return;
     idle.reset().play();
-    walk.reset().play().setEffectiveWeight(0);
     wasMoving.current = false;
   }, [actions]);
 
@@ -52,8 +50,8 @@ export function CustomerModel({
       wasMoving.current = moving;
       const from = moving ? idle : walk;
       const to = moving ? walk : idle;
-      to.reset().play();
-      to.crossFadeFrom(from, 0.25, true);
+      to.reset().fadeIn(0.25).play();
+      from.fadeOut(0.25);
     }
   });
 

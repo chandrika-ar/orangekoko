@@ -24,6 +24,7 @@ const SELECT_RADIUS = 2.1;
 const COUNTER_RADIUS = RADIUS_CAT * 0.62; // matches the counter cylinder's top radius below
 const COUNTER_COLLISION_RADIUS = COUNTER_RADIUS + 0.35;
 const MOVE_SPEED = 3.3;
+const MAX_CLICK_MOVE = 6; // cap on how far a single floor click can send the player
 const DOOR_DURATION = 1.6;
 
 const COLORS = {
@@ -184,9 +185,20 @@ export function Scene({
   }, [stage, playerStart]);
 
   function handleFloorClick(event: ThreeEvent<MouseEvent>) {
-    if (stage !== "room") return;
+    if (stage !== "room" || !playerRef.current) return;
     event.stopPropagation();
-    moveTarget.current = { x: event.point.x, z: event.point.z };
+    // Clamp how far a single click can send the player — an unclamped target
+    // can land many rooms away (a click near the horizon in this perspective
+    // maps to a huge world-space distance), which reads as teleporting
+    // rather than walking there. Capping it means a distant click just
+    // starts them walking that way; a second click carries them further.
+    const player = playerRef.current.position;
+    const dx = event.point.x - player.x;
+    const dz = event.point.z - player.z;
+    const dist = Math.hypot(dx, dz);
+    const clamped = Math.min(dist, MAX_CLICK_MOVE);
+    const scale = dist > 0.0001 ? clamped / dist : 0;
+    moveTarget.current = { x: player.x + dx * scale, z: player.z + dz * scale };
   }
 
   function handleCardClick(index: number) {
