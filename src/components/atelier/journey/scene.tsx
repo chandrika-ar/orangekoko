@@ -4,6 +4,7 @@ import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { makeCardTexture, makeSignTexture } from "./card-texture";
+import { CustomerModel } from "./customer-model";
 import type { CategoryRoom } from "./get-journey-items";
 import type { JourneyStage } from "./types";
 
@@ -64,8 +65,7 @@ export function Scene({
   const doorPivotRef = useRef<THREE.Group>(null);
   const doorGlowRef = useRef<THREE.PointLight>(null);
   const cardRefs = useRef<(THREE.Group | null)[]>([]);
-  const bodyRef = useRef<THREE.Mesh>(null);
-  const headRef = useRef<THREE.Mesh>(null);
+  const movingRef = useRef(false);
 
   // One room per category, strung along -Z: the first room in the array is
   // farthest from the door (nearest the entrance), the last sits just before
@@ -246,6 +246,7 @@ export function Scene({
       speed.current = THREE.MathUtils.lerp(speed.current, targetSpeed, accel);
 
       const moving = speed.current > 0.02;
+      movingRef.current = moving;
       if (moving) {
         player.position.x += lastDirX.current * speed.current * dt;
         player.position.z += lastDirZ.current * speed.current * dt;
@@ -275,10 +276,6 @@ export function Scene({
         const targetHeading = Math.atan2(lastDirX.current, lastDirZ.current);
         const diff = Math.atan2(Math.sin(targetHeading - player.rotation.y), Math.cos(targetHeading - player.rotation.y));
         player.rotation.y += diff * (reduceMotion ? 1 : Math.min(dt * 10, 1));
-        const bobAmount = reduceMotion ? 0 : Math.min(speed.current / MOVE_SPEED, 1) * 0.035;
-        const bob = Math.sin(t * 9) * bobAmount;
-        if (bodyRef.current) bodyRef.current.position.y = 0.52 + bob;
-        if (headRef.current) headRef.current.position.y = 1.02 + bob;
       }
 
       if (player.position.z <= layout.doorTriggerZ + 0.02) {
@@ -485,20 +482,9 @@ export function Scene({
       ))}
       <pointLight ref={doorGlowRef} args={[COLORS.accentSoft, 0, 8]} position={[0, DOOR_H * 0.65, layout.doorZ - 0.4]} />
 
-      {/* the player: a small stylized figure standing in for the customer */}
+      {/* the player: a rigged customer figure walking the shop floor */}
       <group ref={playerRef} position={playerStart} rotation-y={Math.PI}>
-        <mesh ref={bodyRef} position={[0, 0.52, 0]}>
-          <capsuleGeometry args={[0.26, 0.55, 4, 8]} />
-          <meshStandardMaterial color={COLORS.ink} roughness={0.7} />
-        </mesh>
-        <mesh ref={headRef} position={[0, 1.02, 0]}>
-          <sphereGeometry args={[0.22, 16, 16]} />
-          <meshStandardMaterial color={COLORS.accentSoft} roughness={0.6} />
-        </mesh>
-        <mesh position={[0, 1.02, 0.22]} rotation-x={Math.PI / 2}>
-          <coneGeometry args={[0.06, 0.16, 8]} />
-          <meshStandardMaterial color={COLORS.accent} />
-        </mesh>
+        <CustomerModel movingRef={movingRef} reduceMotion={reduceMotion} />
         <mesh position={[0, 0.015, 0]} rotation-x={-Math.PI / 2}>
           <circleGeometry args={[0.34, 20]} />
           <meshBasicMaterial color={COLORS.ink} transparent opacity={0.2} />
