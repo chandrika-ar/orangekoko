@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { WaxSeal } from "@/components/atelier/wax-seal";
 import { FilmGrainOverlay } from "@/components/atelier/film-grain-overlay";
 import { MusubiIcon } from "@/components/atelier/musubi-icon";
@@ -20,9 +21,30 @@ export async function AtelierEntryBanner() {
             {t("subtitle")}
           </p>
           <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.1em] text-ink-soft lg:justify-start">
-            <li>{t("featureExplore")}</li>
-            <li>{t("featureProcess")}</li>
-            <li>{t("featureTryOn")}</li>
+            <li>
+              <Link
+                href="/atelier/explore"
+                className="border-b border-transparent pb-0.5 transition-colors hover:border-ink hover:text-ink"
+              >
+                {t("featureExplore")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/atelier/process"
+                className="border-b border-transparent pb-0.5 transition-colors hover:border-ink hover:text-ink"
+              >
+                {t("featureProcess")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/atelier/try-on"
+                className="border-b border-transparent pb-0.5 transition-colors hover:border-ink hover:text-ink"
+              >
+                {t("featureTryOn")}
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="flex flex-col items-center gap-3 justify-self-center">
