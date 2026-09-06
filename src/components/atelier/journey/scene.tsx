@@ -37,6 +37,13 @@ const COLORS = {
   brass: "#b8863f",
 };
 
+// A little curio-shop clutter — jewel-toned jars, a paper lantern, a dried
+// flower bunch — echoing the warm, cluttered antique-shop reference photos,
+// rather than the bare pedestal-and-glow-orb this corridor started with.
+const JEWEL_TONES = ["#2f6f52", "#2b4c7e", "#8a2338", "#c9862c"];
+const DRIED_FLOWER = "#a9707a";
+const DRIED_FLOWER_DARK = "#7c5350";
+
 export function Scene({
   rooms,
   stage,
@@ -396,22 +403,72 @@ export function Scene({
         </mesh>
       ))}
 
-      {/* shop props: a shelf + lantern flanking each room's entrance sign */}
+      {/* shop props: a curio shelf + hanging paper lantern flanking each
+          room's entrance sign, plus a dried-flower bunch over the sign
+          itself — the cluttered, warm-lit antique-shop feel from reference */}
       {layout.signs.map((sign) =>
         [-1, 1].map((side) => (
           <group key={`${sign.z}-${side}`} position={[side * (ROOM_HALF_W - 0.55), 0, sign.z]}>
+            {/* shelf pedestal */}
             <mesh position={[0, 0.45, 0]}>
               <boxGeometry args={[0.5, 0.9, 0.5]} />
               <meshStandardMaterial color={COLORS.brass} roughness={0.6} metalness={0.25} />
             </mesh>
-            <pointLight args={[COLORS.accentSoft, 0.5, 3.2]} position={[0, 1.15, 0]} />
-            <mesh position={[0, 1.15, 0]}>
-              <sphereGeometry args={[0.14, 12, 12]} />
-              <meshStandardMaterial color={COLORS.accentSoft} emissive={COLORS.accent} emissiveIntensity={0.6} />
+            {/* a couple of small jewel-toned jars cluttering the shelf top */}
+            {[0, 1].map((j) => (
+              <group key={j} position={[(j - 0.5) * 0.14, 0.9, j * 0.1 - 0.05]}>
+                <mesh position={[0, 0.08, 0]}>
+                  <cylinderGeometry args={[0.07, 0.08, 0.16, 10]} />
+                  <meshStandardMaterial color={JEWEL_TONES[j * 2 + (side > 0 ? 0 : 1)]} roughness={0.35} metalness={0.15} />
+                </mesh>
+                <mesh position={[0, 0.17, 0]}>
+                  <sphereGeometry args={[0.045, 8, 8]} />
+                  <meshStandardMaterial color={COLORS.brass} roughness={0.5} metalness={0.5} />
+                </mesh>
+              </group>
+            ))}
+            {/* paper lantern hanging above the shelf */}
+            <mesh position={[0, 2.85, 0]}>
+              <cylinderGeometry args={[0.012, 0.012, 1.1, 6]} />
+              <meshStandardMaterial color={COLORS.inkSoft} roughness={0.8} />
             </mesh>
+            <pointLight args={[COLORS.accentSoft, 0.55, 3.4]} position={[0, 2.25, 0]} />
+            <mesh position={[0, 2.25, 0]} scale={[1, 1.25, 1]}>
+              <sphereGeometry args={[0.19, 14, 14]} />
+              <meshStandardMaterial color={COLORS.accentSoft} emissive={COLORS.accent} emissiveIntensity={0.55} roughness={0.6} />
+            </mesh>
+            {[-1, 1].map((cap) => (
+              <mesh key={cap} position={[0, 2.25 + cap * 0.24, 0]}>
+                <cylinderGeometry args={[cap > 0 ? 0.05 : 0.09, cap > 0 ? 0.02 : 0.02, 0.06, 10]} />
+                <meshStandardMaterial color={COLORS.brass} roughness={0.5} metalness={0.45} />
+              </mesh>
+            ))}
           </group>
         )),
       )}
+
+      {/* a dried-flower bunch tied above each room's signpost */}
+      {layout.signs.map((sign) => (
+        <group key={`flowers-${sign.z}`} position={[0, 3.0, sign.z]}>
+          <mesh>
+            <torusGeometry args={[0.04, 0.012, 6, 12]} />
+            <meshStandardMaterial color={COLORS.brass} roughness={0.5} metalness={0.5} />
+          </mesh>
+          {Array.from({ length: 6 }).map((_, i) => {
+            const spread = (i / 5 - 0.5) * 1.1;
+            return (
+              <mesh
+                key={i}
+                position={[spread * 0.22, -0.22 - Math.abs(spread) * 0.08, 0.02]}
+                rotation-z={spread * 0.6}
+              >
+                <coneGeometry args={[0.035, 0.42, 6]} />
+                <meshStandardMaterial color={i % 2 === 0 ? DRIED_FLOWER : DRIED_FLOWER_DARK} roughness={0.9} />
+              </mesh>
+            );
+          })}
+        </group>
+      ))}
 
       {/* category signposts, one per room threshold */}
       {layout.signs.map((sign, i) => (
