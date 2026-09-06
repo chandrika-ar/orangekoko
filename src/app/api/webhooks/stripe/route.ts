@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { sanityWriteClient } from "@/sanity/lib/client";
+import { pool } from "@/lib/db";
 import type Stripe from "stripe";
 
 /**
@@ -59,6 +60,37 @@ export async function POST(req: NextRequest) {
             ),
         ),
       );
+    }
+
+    if (pool) {
+      try {
+        const lineItems = await getStripe().checkout.sessions.listLineItems(
+          session.id,
+          { limit: 100 },
+        );
+        const items = lineItems.data.map((li) => ({
+          title: li.description,
+          amountCents: li.amount_total,
+          currency: li.currency,
+          quantity: li.quantity,
+        }));
+        const userId = session.metadata?.userId;
+
+        await pool.query(
+          `INSERT INTO orders (user_id, stripe_session_id, status, amount_total_cents, currency, line_items)
+           VALUES ($1, $2, 'paid', $3, $4, $5)
+           ON CONFLICT (stripe_session_id) DO NOTHING`,
+          [
+            userId ? Number(userId) : null,
+            session.id,
+            session.amount_total ?? 0,
+            session.currency ?? "eur",
+            JSON.stringify(items),
+          ],
+        );
+      } catch (err) {
+        console.error("Failed to record order", session.id, err);
+      }
     }
   }
 

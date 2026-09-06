@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.124.0",
     "@auth/pg-adapter": "^1.11.3",
     "@sanity/image-url": "^2.1.1",
     "@stripe/stripe-js": "^9.14.0",

@@ -5,6 +5,9 @@ import { X } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { cartSubtotalCents, useCartStore } from "@/store/cart-store";
 import { useDisplayPrice } from "@/lib/use-display-price";
+import { FREE_SHIPPING_THRESHOLD_CENTS } from "@/lib/shipping";
+import { formatPrice } from "@/lib/products";
+import { useLocale } from "next-intl";
 
 function LinePrice({ cents, currency }: { cents: number; currency: string }) {
   return <>{useDisplayPrice(cents, currency).formatted}</>;
@@ -12,6 +15,7 @@ function LinePrice({ cents, currency }: { cents: number; currency: string }) {
 
 export function CartDrawer() {
   const t = useTranslations("cart");
+  const locale = useLocale();
   const isOpen = useCartStore((s) => s.isOpen);
   const close = useCartStore((s) => s.close);
   const lines = useCartStore((s) => s.lines);
@@ -21,6 +25,7 @@ export function CartDrawer() {
 
   const subtotal = cartSubtotalCents(lines);
   const currency = lines[0]?.currency ?? "EUR";
+  const remainingForFreeShipping = FREE_SHIPPING_THRESHOLD_CENTS - subtotal;
 
   return (
     <div className="fixed inset-0 z-50">
@@ -85,6 +90,13 @@ export function CartDrawer() {
                 <span>{t("subtotal")}</span>
                 <span><LinePrice cents={subtotal} currency={currency} /></span>
               </div>
+              <p className="mt-2 text-xs text-accent">
+                {remainingForFreeShipping > 0
+                  ? t("freeShippingProgress", {
+                      amount: formatPrice(remainingForFreeShipping, "EUR", locale),
+                    })
+                  : t("freeShippingUnlocked")}
+              </p>
               <p className="mt-1 text-xs text-ink-soft">{t("shippingNote")}</p>
               <p className="mt-1 text-xs text-ink-soft">{t("billedInEur")}</p>
               <Link

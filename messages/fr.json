@@ -96,6 +96,8 @@
     "continueShopping": "Continuer mes achats",
     "subtotal": "Sous-total",
     "shippingNote": "Livraison et taxes calculées lors du paiement",
+    "freeShippingProgress": "Ajoutez encore {amount} pour débloquer la livraison standard offerte.",
+    "freeShippingUnlocked": "Vous avez débloqué la livraison standard offerte !",
     "billedInEur": "Le paiement est toujours effectué en EUR, quelle que soit la devise affichée.",
     "checkout": "Paiement",
     "remove": "Retirer",
@@ -119,7 +121,6 @@
     "about": "À propos",
     "ourStory": "Notre histoire",
     "journal": "Journal",
-    "sourcing": "Sourcing",
     "help": "Aide",
     "shipping": "Livraison",
     "returns": "Retours",
@@ -146,7 +147,7 @@
     "q3": "Puis-je retourner ou échanger un article ?",
     "a3": "Nous inspectons soigneusement chaque pièce lors de la prise de photos et de l'emballage ; nous ne pouvons donc malheureusement pas accepter de retours ou d'échanges pour des dommages signalés après la livraison. Afin d'éviter les échanges de pièces, nous n'acceptons aucun retour, quelles que soient les circonstances. Cela dit, nous voulons que vous vous sentiez en confiance avant d'acheter ! Si vous avez la moindre question, n'hésitez pas à nous la poser au préalable. Nous sommes ravis de vous aider !",
     "q4": "Alors… d'où orangekoko tire-t-elle ces trésors ?",
-    "a4": "Nous nous approvisionnons auprès de boutiques de revente de marques agréées, de prêteurs sur gages certifiés et de marchés d'antiquités privés. Chaque pièce est vérifiée avant de vous parvenir.",
+    "a4": "Nous nous approvisionnons directement auprès de collectionneurs privés et de collections personnelles à travers le Japon — des bijoux choisis et conservés par une seule personne, pas des stocks de revente en masse. Chaque pièce porte une histoire : qui l'a portée, où elle a voyagé, ce qu'elle représentait pour cette personne — et cette histoire fait partie de ce que vous ramenez chez vous. Chaque pièce est vérifiée avant de vous parvenir.",
     "q5": "Dans quel état sont les produits ?",
     "a5": "Une petite précision avant que vous ne tombiez sous le charme : ce sont des pièces vintage. Cela signifie que de petites rayures, des marques d'usure légères et quelques signes d'une vie bien remplie font partie du lot. Si vous cherchez la perfection, ce n'est probablement pas pour vous. Si vous appréciez les objets qui ont une histoire — bienvenue.",
     "q6": "Puis-je avoir une réduction ?",
@@ -156,7 +157,60 @@
     "q8": "Les mesures et les photos sont-elles fiables ?",
     "a8": "Mesurées et inspectées à la main, il peut donc y avoir une variation d'un ou deux millimètres, ou parfois un petit détail qui nous a échappé. Si l'état de la pièce est très important pour vous, n'hésitez pas à nous contacter avant d'acheter.\n\nQuant aux photos, elles sont prises par nous-mêmes ; gardez à l'esprit que les couleurs peuvent légèrement varier par rapport à l'article réel selon votre écran et l'éclairage.",
     "q9": "Pourquoi n'ai-je pas à me soucier des allergies ou des odeurs ?",
-    "a9": "Pas d'animaux chez nous — donc zéro poil, zéro odeur animale. Et nous ne supportons vraiment pas la fumée de cigarette, donc il n'y en a absolument aucune non plus. Ce que vous recevez est propre, neutre et prêt à porter."
+    "a9": "Pas d'animaux dans notre atelier — donc zéro poil, zéro odeur animale. Et nous ne supportons vraiment pas la fumée de cigarette, donc il n'y en a absolument aucune non plus."
+  },
+  "projectsPage": {
+    "issueLabel": "Numéro 01",
+    "seasonLabel": "Automne",
+    "title": "La sélection d'automne",
+    "intro": "Quand la lumière devient ambrée et que l'air se fait plus vif, nous sommes attirés par des pièces qui portent leur propre chaleur — ors patinés, rouges laqués profonds, le poids silencieux du corail et de l'ambre. Cette sélection saisonnière réunit des trouvailles vintage qui évoquent l'automne lui-même : posées, un peu mélancoliques, et d'autant plus belles.",
+    "comingSoonTitle": "Pièces bientôt disponibles",
+    "comingSoonBody": "Nous sommes actuellement en train de sourcer et de photographier la sélection de cette saison — revenez bientôt, ou découvrez notre collection complète en attendant."
+  },
+  "chat": {
+    "pageIntro": "Posez vos questions sur la taille, l'état, la livraison ou autre chose — notre assistant peut vous aider tout de suite.",
+    "notConfigured": "Le chat en direct n'est pas encore configuré — merci de nous écrire directement ci-dessous.",
+    "intro": "Bonjour ! Posez-moi vos questions sur nos pièces, la livraison ou nos politiques.",
+    "placeholder": "Tapez votre question…",
+    "send": "Envoyer",
+    "thinking": "En train de réfléchir…",
+    "error": "Une erreur est survenue. Veuillez réessayer, ou écrivez-nous directement.",
+    "escalation": "Vous ne trouvez pas votre réponse ? Écrivez-nous directement, nous vous répondrons personnellement."
+  },
+  "shippingPage": {
+    "intro": "Nous expédions depuis le Japon vers l'UE, le Royaume-Uni, la Norvège, l'Islande et la Suisse, avec des transporteurs suivis et assurés.",
+    "freeTitle": "Livraison standard offerte dès {amount}",
+    "freeBody": "À partir de {amount} d'achat, la livraison standard suivie est automatiquement offerte au paiement — sans code promo.",
+    "standardName": "Standard suivi (Japan Post e-packet)",
+    "expressName": "Express assuré (Japan Post EMS)",
+    "daysRange": "{min}–{max} jours ouvrés",
+    "countriesTitle": "Où nous livrons",
+    "note": "Les prix indiqués s'appliquent par commande et sont facturés en EUR au paiement, quelle que soit la devise affichée."
+  },
+  "returns": {
+    "intro": "Comme chaque pièce que nous vendons est unique — vintage, déjà aimée et parfois vieille de plusieurs décennies —, notre politique de retour repose sur le soin apporté avant l'expédition, plutôt qu'après.",
+    "policyTitle": "Notre politique",
+    "policyBody": "Chaque article est soigneusement inspecté, mesuré et photographié au moment de sa mise en ligne, afin que vous receviez exactement ce que vous voyez. Pour cette raison, et pour préserver l'intégrité de nos pièces uniques, nous ne pouvons pas accepter de retours ou d'échanges une fois la commande expédiée.",
+    "beforeTitle": "Avant de commander",
+    "beforeBody": "Nous savons qu'acheter du vintage en ligne demande un peu de confiance, c'est pourquoi nous voulons que vous vous sentiez pleinement en confiance avant de passer commande. Si vous avez la moindre question — sur l'état, la taille, les matériaux, ou tout autre point de l'annonce — écrivez-nous avant d'acheter. Nous sommes toujours ravis de partager des photos ou des détails supplémentaires.",
+    "issueTitle": "Si quelque chose ne va pas",
+    "issueBody": "Dans le cas rare où votre commande arriverait endommagée pendant le transport ou ne correspondrait pas à l'annonce, contactez-nous dans les 48 heures suivant la livraison avec des photos, et nous trouverons une solution ensemble."
+  },
+  "brand": {
+    "title": "Ce que signifie orange",
+    "philosophy1": "orange n'est pas une couleur — c'est une sensation. Le moment où la lumière de l'après-midi ralentit. Une chaleur discrète qui reste proche de la vie sans s'imposer.",
+    "philosophy2": "Non pas fait pour attirer le regard, mais pour rester avec vous au quotidien. Nous croyons qu'un bijou n'a pas besoin de constamment prouver sa présence. Les plus belles pièces vous accompagnent simplement en silence — laissant un poids sur la peau, des traces dans le temps. C'est là que commence orange.",
+    "philosophy3": "En tant qu'espace curaté, nous recherchons des créations artisanales contemporaines et des bijoux vintage japonais — non pas parce qu'ils éblouissent, mais parce qu'ils méritent d'être portés pendant des années, encore et encore.",
+    "philosophy4": "Le savoir-faire, la texture, un sens du temps — voilà nos critères. Chez orangekoko, le bijou se rapproche d'une vitamine quotidienne pour la vie.",
+    "philosophy5": "Petit, mais nécessaire. Doux, mais pris au sérieux.",
+    "closing": "orange ne crée pas d'impulsion. orange laisse une impression."
+  },
+  "about": {
+    "expandedEyebrow": "Dans mes propres mots",
+    "expandedBody1": "Pour être honnête, j'ai toujours adoré les bijoux vintage japonais — et pas les pièces bien polies derrière une vitrine. Je parle de celles qu'on trouve étalées table après table sur un petit marché aux puces, dans un coin qu'aucun guide de voyage ne mentionne.",
+    "expandedBody2": "Je pars moi-même à leur recherche, et le plus beau n'est presque jamais la pièce elle-même — c'est l'histoire qui l'accompagne. Les vendeurs sont souvent les propriétaires d'origine, ou leur famille, et ils racontent où une pièce a voyagé, qui l'a portée et pour quelle occasion, pourquoi elle a fini par être mise de côté. Ces histoires n'existent pas dans les boutiques des grandes villes.",
+    "expandedBody3": "Ce qui continue de me surprendre, c'est à quel point ces pièces ont bien traversé le temps. Le Japon a une culture discrète et profondément ancrée du soin des objets — réparer plutôt que remplacer, ranger avec intention, transmettre plutôt que jeter. C'est cette habitude de conservation soigneuse qui explique qu'une pièce vieille de plusieurs décennies puisse encore vous parvenir en état d'être portée, son histoire intacte plutôt qu'effacée.",
+    "expandedBody4": "C'est sur cela qu'orangekoko est construit : des pièces qui méritent ce genre de soin, et les histoires qui les accompagnent."
   },
   "account": {
     "title": "Compte",
@@ -168,6 +222,17 @@
     "signInError": "Une erreur est survenue. Veuillez réessayer.",
     "signedInAs": "Connecté(e) en tant que {email}",
     "viewWishlist": "Voir la liste de souhaits",
+    "viewOrders": "Historique des commandes",
     "signOut": "Se déconnecter"
+  },
+  "orders": {
+    "title": "Historique des commandes",
+    "empty": "Vous n'avez pas encore passé de commande.",
+    "emptyBody": "Les commandes passées en étant connecté·e apparaîtront ici.",
+    "backToAccount": "Retour au compte",
+    "placedOn": "Passée le {date}",
+    "total": "Total",
+    "status_paid": "Payée",
+    "status_refunded": "Remboursée"
   }
 }

@@ -96,6 +96,8 @@
     "continueShopping": "Continue shopping",
     "subtotal": "Subtotal",
     "shippingNote": "Shipping & taxes calculated at checkout",
+    "freeShippingProgress": "Add {amount} more to unlock free standard shipping.",
+    "freeShippingUnlocked": "You've unlocked free standard shipping!",
     "billedInEur": "All charges are billed in EUR regardless of displayed currency.",
     "checkout": "Checkout",
     "remove": "Remove",
@@ -119,7 +121,6 @@
     "about": "About",
     "ourStory": "Our Story",
     "journal": "Journal",
-    "sourcing": "Sourcing",
     "help": "Help",
     "shipping": "Shipping",
     "returns": "Returns",
@@ -146,7 +147,7 @@
     "q3": "Can I return or exchange an item?",
     "a3": "We carefully inspect every item during photography and packing, so unfortunately we are unable to accept returns or exchanges for damage reported after delivery. To prevent item-switching, we do not accept returns under any circumstances. That said, we want you to feel confident before purchasing! If you have any questions or concerns, please don't hesitate to ask beforehand. We're happy to help!",
     "q4": "So… where does orangekoko even source these things?",
-    "a4": "We source from licensed brand resale shops, certified pawnbrokers, and private antique markets. Every piece goes through verification before it reaches you.",
+    "a4": "We source directly from private collectors and personal collections across Japan — jewelry chosen and cared for by one person, not mass secondhand inventory. Behind every piece is a story: who wore it, where it traveled, what it meant to them — and that story is part of what you're bringing home. Every piece goes through verification before it reaches you.",
     "q5": "What's the current situation with their products?",
     "a5": "A quick note before you fall in love with something: these are vintage pieces. That means small scratches, minor scuffs, and the occasional sign of a life well-lived are part of the package. If you're chasing perfection, this probably isn't your aisle. If you appreciate things that have actually been somewhere — welcome.",
     "q6": "Can I get a discount?",
@@ -156,7 +157,60 @@
     "q8": "Are the measurements and photos reliable?",
     "a8": "Measured and inspected by hand, so there may be a millimeter or two of variance, or the occasional tiny detail we've missed. If condition matters a lot to you, feel free to message us first.\n\nAs for the photos — they're taken by us personally, so please do keep in mind that colours may vary slightly from the actual item depending on your screen and lighting conditions.",
     "q9": "Why don't I need to worry about allergies or weird smells?",
-    "a9": "No pets in the house — so zero fur, zero pet odours. And we genuinely cannot stand cigarette smoke, so there's absolutely none of that either. What arrives is clean, neutral, and ready to wear."
+    "a9": "No pets in our studio — so zero fur, zero pet odours. And we genuinely cannot stand cigarette smoke, so there's absolutely none of that either."
+  },
+  "projectsPage": {
+    "issueLabel": "Issue No. 01",
+    "seasonLabel": "Autumn",
+    "title": "The Autumn Edit",
+    "intro": "As the light turns amber and the air sharpens, we're drawn to pieces that carry warmth of their own — burnished golds, deep lacquer reds, the quiet weight of coral and amber. This season's edit gathers vintage finds that feel like autumn itself: unhurried, a little melancholic, and all the more beautiful for it.",
+    "comingSoonTitle": "Pieces coming soon",
+    "comingSoonBody": "We're currently sourcing and photographing this season's selection — check back soon, or explore our full collection in the meantime."
+  },
+  "chat": {
+    "pageIntro": "Ask about sizing, condition, shipping, or anything else — our assistant can help right away.",
+    "notConfigured": "Live chat isn't set up yet — please email us directly below.",
+    "intro": "Hi! Ask me anything about our pieces, shipping, or policies.",
+    "placeholder": "Type your question…",
+    "send": "Send",
+    "thinking": "Thinking…",
+    "error": "Something went wrong. Please try again, or email us directly.",
+    "escalation": "Can't find your answer here? Email us directly and we'll get back to you personally."
+  },
+  "shippingPage": {
+    "intro": "We ship from Japan to the EU, UK, Norway, Iceland and Switzerland with tracked, insured carriers.",
+    "freeTitle": "Free standard shipping over {amount}",
+    "freeBody": "Spend {amount} or more and standard tracked shipping is automatically free at checkout — no code needed.",
+    "standardName": "Standard tracked (Japan Post e-packet)",
+    "expressName": "Express insured (Japan Post EMS)",
+    "daysRange": "{min}–{max} business days",
+    "countriesTitle": "Where we ship",
+    "note": "Shown prices apply per order and are billed in EUR at checkout, regardless of your selected currency display."
+  },
+  "returns": {
+    "intro": "Because every piece we sell is one of one — vintage, previously loved, and sometimes decades old — our approach to returns is built around the care we take before your order ships, rather than after.",
+    "policyTitle": "Our policy",
+    "policyBody": "Every item is carefully inspected, measured and photographed at the time of listing, so what you see is exactly what you'll receive. Because of this, and to protect the integrity of one-of-one pieces, we're unable to accept returns or exchanges once an order has shipped.",
+    "beforeTitle": "Before you order",
+    "beforeBody": "We know buying vintage online takes a little trust, so we want you to feel completely confident before you check out. If you have any question at all — about condition, sizing, materials, or anything in the listing — message us first. We're always happy to share extra photos or details.",
+    "issueTitle": "If something isn't right",
+    "issueBody": "In the rare case your order arrives damaged in transit or doesn't match its listing, contact us within 48 hours of delivery with photos and we'll work with you to make it right."
+  },
+  "brand": {
+    "title": "What orange means",
+    "philosophy1": "orange is not a color — it's a feeling. The moment afternoon light slows down. A quiet warmth that stays close to life without intruding.",
+    "philosophy2": "Not made to catch your eye, but to stay with you in the everyday. We believe jewelry doesn't need to constantly prove its presence. The best pieces simply accompany you in silence — leaving weight on the skin, leaving traces in time. That's where orange begins.",
+    "philosophy3": "As a curated space, we seek out contemporary artisan works and vintage Japanese jewelry — not because they dazzle, but because they're worth wearing for years, worth returning to again and again.",
+    "philosophy4": "Craft, texture, a sense of time — these are our criteria. At orangekoko, jewelry is closer to a daily vitamin for living.",
+    "philosophy5": "Small, but necessary. Gentle, but taken seriously.",
+    "closing": "orange doesn't create impulse. orange leaves an impression."
+  },
+  "about": {
+    "expandedEyebrow": "In my own words",
+    "expandedBody1": "Honestly, I've always loved Japanese vintage jewelry — and not the polished pieces sitting behind glass in a shop window. I mean the ones spread out table by table at some small-town flea market, the kind of place that never makes it into a guidebook.",
+    "expandedBody2": "I go looking for them myself, and the best part is rarely the piece — it's the story that comes with it. The sellers are often the original owners, or their families, and they'll tell you where a piece traveled, who wore it and to what occasion, why it was finally set aside. Stories like that don't exist in big-city shops.",
+    "expandedBody3": "What keeps surprising me is how well these pieces have survived. Japan has a quiet, deep-rooted habit of caring for things — mending rather than replacing, storing with intention, passing objects down instead of throwing them away. That habit of careful keeping is exactly why a piece from decades ago can still reach you in wearable condition, its history intact rather than worn away.",
+    "expandedBody4": "That's what orangekoko is built on: pieces worth that kind of care, and the stories that come with them."
   },
   "account": {
     "title": "Account",
@@ -168,6 +222,17 @@
     "signInError": "Something went wrong. Please try again.",
     "signedInAs": "Signed in as {email}",
     "viewWishlist": "View wishlist",
+    "viewOrders": "Order history",
     "signOut": "Sign out"
+  },
+  "orders": {
+    "title": "Order History",
+    "empty": "You haven't placed any orders yet.",
+    "emptyBody": "Orders placed while signed in will show up here.",
+    "backToAccount": "Back to account",
+    "placedOn": "Placed on {date}",
+    "total": "Total",
+    "status_paid": "Paid",
+    "status_refunded": "Refunded"
   }
 }

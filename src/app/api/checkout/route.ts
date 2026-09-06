@@ -3,6 +3,7 @@ import { getStripe } from "@/lib/stripe";
 import { getProductBySlug } from "@/lib/products";
 import { SHIPPABLE_COUNTRIES, toStripeShippingOptions } from "@/lib/shipping";
 import { routing } from "@/i18n/routing";
+import { auth } from "@/auth";
 
 interface CheckoutRequestBody {
   slugs: string[];
@@ -62,6 +63,7 @@ export async function POST(req: NextRequest) {
   try {
     const stripe = getStripe();
     const origin = req.nextUrl.origin;
+    const authSession = await auth();
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -75,8 +77,13 @@ export async function POST(req: NextRequest) {
       shipping_options: toStripeShippingOptions(subtotalCents),
       success_url: `${origin}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/${locale}/checkout/cancel`,
-      // Read back by the webhook to mark exactly these products sold.
-      metadata: { productIds: productIds.join(",") },
+      // Read back by the webhook to mark exactly these products sold, and
+      // to attribute the order to an account for order-history purposes
+      // (only when the customer was signed in at checkout).
+      metadata: {
+        productIds: productIds.join(","),
+        userId: authSession?.user?.id ?? "",
+      },
     });
 
     return NextResponse.json({ url: session.url });
