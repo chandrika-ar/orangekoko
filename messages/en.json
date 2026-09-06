@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — One-of-a-kind vintage jewelry from Japan",
-    "description": "orangekoko brings singular vintage jewelry sourced across Japan to Europe. Every piece is one of one, worn before, carrying its own trace of time."
+    "title": "orangekoko — Vintage jewelry from Japan, sourced with care",
+    "description": "orangekoko brings vintage jewelry sourced across Japan to Europe. Every piece has been worn before, carrying its own trace of time."
   },
   "announcement": {
     "freeShipping": "Complimentary shipping on orders over €120",
@@ -27,10 +27,10 @@
     "allJewelry": "All Jewelry"
   },
   "hero": {
-    "eyebrow": "One of one, always",
+    "eyebrow": "Chosen with care, always",
     "titleLine1": "Selected vintage",
     "titleLine2": "for every version of you.",
-    "subtitle": "One-of-one jewelry, sourced in Japan, with age, patina and atmosphere",
+    "subtitle": "Vintage jewelry, sourced in Japan, with age, patina and atmosphere",
     "cta": "Shop new arrivals"
   },
   "home": {
@@ -42,7 +42,7 @@
     "storyTitleLine1": "Sourced in Japan,",
     "storyTitleLine2": "chosen with intention.",
     "storyBody1": "We travel across Japan to find pieces with a beauty that time alone can create.",
-    "storyBody2": "Each one-of-one treasure is selected by hand for its craftsmanship, material and quiet presence.",
+    "storyBody2": "Each treasure is selected by hand for its craftsmanship, material and quiet presence.",
     "storyBody3": "We believe vintage jewelry carries memory — and becomes part of yours.",
     "storyCta": "About our journey",
     "newArrivalsTitle": "Latest Discoveries",
@@ -55,19 +55,17 @@
     "condition3": "We check clasps, settings and stones by hand.",
     "condition4": "We describe condition clearly so you can shop with confidence.",
     "condition5": "What you see is what you receive.",
-    "condition6": "Original. Authentic. One-of-one.",
+    "condition6": "Original. Authentic. Hand-checked.",
     "feature1Title": "Worldwide Shipping",
     "feature1Body": "Carefully packed in Japan and shipped with care.",
     "feature2Title": "Thoughtful Wrapping",
     "feature2Body": "Mindful packaging, ready to give or keep.",
     "feature3Title": "Authentic & Curated",
-    "feature3Body": "One-of-one vintage, sourced in Japan and selected by hand.",
+    "feature3Body": "Vintage, sourced in Japan and selected by hand.",
     "feature4Title": "Here to Help",
     "feature4Body": "Our team is here for you before and after your order."
   },
   "product": {
-    "oneOfOne": "One of one",
-    "onlyOneAvailable": "Only one of this piece exists",
     "sold": "Sold",
     "condition": "Condition",
     "materials": "Materials",
@@ -127,7 +125,7 @@
     "contact": "Contact",
     "faq": "FAQ",
     "newsletter": "Stay in the Know",
-    "newsletterHint": "Be first to see new one-of-one pieces.",
+    "newsletterHint": "Be first to see new pieces.",
     "newsletterThanks": "Thank you — you're on the list.",
     "emailPlaceholder": "Your email",
     "subscribe": "Subscribe",
@@ -231,9 +229,9 @@
     "note": "Shown prices apply per order and are billed in EUR at checkout, regardless of your selected currency display."
   },
   "returns": {
-    "intro": "Because every piece we sell is one of one — vintage, previously loved, and sometimes decades old — our approach to returns is built around the care we take before your order ships, rather than after.",
+    "intro": "Because most of our pieces are vintage — previously loved, and sometimes decades old — our approach to returns is built around the care we take before your order ships, rather than after.",
     "policyTitle": "Our policy",
-    "policyBody": "Every item is carefully inspected, measured and photographed at the time of listing, so what you see is exactly what you'll receive. Because of this, and to protect the integrity of one-of-one pieces, we're unable to accept returns or exchanges once an order has shipped.",
+    "policyBody": "Every item is carefully inspected, measured and photographed at the time of listing, so what you see is exactly what you'll receive. Because of this, we're unable to accept returns or exchanges once an order has shipped.",
     "beforeTitle": "Before you order",
     "beforeBody": "We know buying vintage online takes a little trust, so we want you to feel completely confident before you check out. If you have any question at all — about condition, sizing, materials, or anything in the listing — message us first. We're always happy to share extra photos or details.",
     "issueTitle": "If something isn't right",

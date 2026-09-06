@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — Bijoux vintage uniques du Japon",
-    "description": "orangekoko apporte en Europe des bijoux vintage uniques dénichés à travers le Japon. Chaque pièce est unique, déjà portée, et garde sa propre trace du temps."
+    "title": "orangekoko — Bijoux vintage du Japon, sourcés avec soin",
+    "description": "orangekoko apporte en Europe des bijoux vintage dénichés à travers le Japon. Chaque pièce a déjà été portée et garde sa propre trace du temps."
   },
   "announcement": {
     "freeShipping": "Livraison offerte dès 120 € d'achat",
@@ -27,10 +27,10 @@
     "allJewelry": "Tous les bijoux"
   },
   "hero": {
-    "eyebrow": "Toujours une pièce unique",
+    "eyebrow": "Choisi avec soin, toujours",
     "titleLine1": "Vintage sélectionné",
     "titleLine2": "pour chaque version de vous.",
-    "subtitle": "Bijoux uniques, sourcés au Japon, avec âge, patine et atmosphère",
+    "subtitle": "Bijoux vintage, sourcés au Japon, avec âge, patine et atmosphère",
     "cta": "Découvrir les nouveautés"
   },
   "home": {
@@ -42,7 +42,7 @@
     "storyTitleLine1": "Trouvé au Japon,",
     "storyTitleLine2": "choisi avec intention.",
     "storyBody1": "Nous parcourons le Japon pour trouver des pièces à la beauté que seul le temps peut créer.",
-    "storyBody2": "Chaque trésor unique est sélectionné à la main pour son savoir-faire, sa matière et sa présence discrète.",
+    "storyBody2": "Chaque trésor est sélectionné à la main pour son savoir-faire, sa matière et sa présence discrète.",
     "storyBody3": "Nous croyons que le bijou vintage porte une mémoire — et qu'il devient partie de la vôtre.",
     "storyCta": "En savoir plus sur notre histoire",
     "newArrivalsTitle": "Dernières découvertes",
@@ -55,19 +55,17 @@
     "condition3": "Nous vérifions fermoirs, sertissages et pierres à la main.",
     "condition4": "Nous décrivons l'état clairement pour que vous achetiez en toute confiance.",
     "condition5": "Ce que vous voyez est ce que vous recevez.",
-    "condition6": "Original. Authentique. Pièce unique.",
+    "condition6": "Original. Authentique. Vérifié à la main.",
     "feature1Title": "Livraison internationale",
     "feature1Body": "Emballé avec soin au Japon et expédié avec attention.",
     "feature2Title": "Emballage soigné",
     "feature2Body": "Un emballage pensé, prêt à offrir ou à garder.",
     "feature3Title": "Authentique & sélectionné",
-    "feature3Body": "Vintage unique, sourcé au Japon et choisi à la main.",
+    "feature3Body": "Vintage, sourcé au Japon et choisi à la main.",
     "feature4Title": "À votre écoute",
     "feature4Body": "Notre équipe est là pour vous, avant et après votre commande."
   },
   "product": {
-    "oneOfOne": "Pièce unique",
-    "onlyOneAvailable": "Un seul exemplaire de cette pièce existe",
     "sold": "Vendu",
     "condition": "État",
     "materials": "Matériaux",
@@ -127,7 +125,7 @@
     "contact": "Contact",
     "faq": "FAQ",
     "newsletter": "Restez informé·e",
-    "newsletterHint": "Soyez les premiers informés des nouvelles pièces uniques.",
+    "newsletterHint": "Soyez les premiers informés des nouvelles pièces.",
     "newsletterThanks": "Merci — vous êtes inscrit·e.",
     "emailPlaceholder": "Votre e-mail",
     "subscribe": "S'abonner",
@@ -231,9 +229,9 @@
     "note": "Les prix indiqués s'appliquent par commande et sont facturés en EUR au paiement, quelle que soit la devise affichée."
   },
   "returns": {
-    "intro": "Comme chaque pièce que nous vendons est unique — vintage, déjà aimée et parfois vieille de plusieurs décennies —, notre politique de retour repose sur le soin apporté avant l'expédition, plutôt qu'après.",
+    "intro": "Comme la plupart de nos pièces sont vintage — déjà aimées et parfois vieilles de plusieurs décennies —, notre politique de retour repose sur le soin apporté avant l'expédition, plutôt qu'après.",
     "policyTitle": "Notre politique",
-    "policyBody": "Chaque article est soigneusement inspecté, mesuré et photographié au moment de sa mise en ligne, afin que vous receviez exactement ce que vous voyez. Pour cette raison, et pour préserver l'intégrité de nos pièces uniques, nous ne pouvons pas accepter de retours ou d'échanges une fois la commande expédiée.",
+    "policyBody": "Chaque article est soigneusement inspecté, mesuré et photographié au moment de sa mise en ligne, afin que vous receviez exactement ce que vous voyez. Pour cette raison, nous ne pouvons pas accepter de retours ou d'échanges une fois la commande expédiée.",
     "beforeTitle": "Avant de commander",
     "beforeBody": "Nous savons qu'acheter du vintage en ligne demande un peu de confiance, c'est pourquoi nous voulons que vous vous sentiez pleinement en confiance avant de passer commande. Si vous avez la moindre question — sur l'état, la taille, les matériaux, ou tout autre point de l'annonce — écrivez-nous avant d'acheter. Nous sommes toujours ravis de partager des photos ou des détails supplémentaires.",
     "issueTitle": "Si quelque chose ne va pas",

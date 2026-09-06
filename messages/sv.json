@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — Unika vintagesmycken från Japan",
-    "description": "orangekoko för unika vintagesmycken från hela Japan till Europa. Varje smycke är ett unikum, tidigare buret, och bär sitt eget spår av tid."
+    "title": "orangekoko — Vintagesmycken från Japan, utvalda med omsorg",
+    "description": "orangekoko för vintagesmycken från hela Japan till Europa. Varje smycke har burits tidigare och bär sitt eget spår av tid."
   },
   "announcement": {
     "freeShipping": "Fri frakt på beställningar över 120 €",
@@ -27,10 +27,10 @@
     "allJewelry": "Alla Smycken"
   },
   "hero": {
-    "eyebrow": "Unikt, alltid",
+    "eyebrow": "Utvalt med omsorg, alltid",
     "titleLine1": "Utvalt vintage",
     "titleLine2": "för varje version av dig.",
-    "subtitle": "Unika smycken från Japan, med ålder, patina och atmosfär",
+    "subtitle": "Vintagesmycken från Japan, med ålder, patina och atmosfär",
     "cta": "Se nyheter"
   },
   "home": {
@@ -42,7 +42,7 @@
     "storyTitleLine1": "Funnet i Japan,",
     "storyTitleLine2": "utvalt med omsorg.",
     "storyBody1": "Vi reser genom hela Japan för att hitta smycken med en skönhet som bara tiden kan skapa.",
-    "storyBody2": "Varje unikt fynd väljs ut för hand utifrån hantverk, material och sin stilla utstrålning.",
+    "storyBody2": "Varje fynd väljs ut för hand utifrån hantverk, material och sin stilla utstrålning.",
     "storyBody3": "Vi tror att vintagesmycken bär minnen — och blir en del av dina.",
     "storyCta": "Om vår resa",
     "newArrivalsTitle": "Senaste fynden",
@@ -55,19 +55,17 @@
     "condition3": "Vi kontrollerar lås, infattningar och stenar för hand.",
     "condition4": "Vi beskriver skicket tydligt så att du kan handla med förtroende.",
     "condition5": "Det du ser är det du får.",
-    "condition6": "Original. Äkta. Unikt.",
+    "condition6": "Original. Äkta. Handkontrollerat.",
     "feature1Title": "Frakt över hela världen",
     "feature1Body": "Noggrant packat i Japan och skickat med omsorg.",
     "feature2Title": "Genomtänkt förpackning",
     "feature2Body": "Omtänksam förpackning, redo att ge bort eller behålla.",
     "feature3Title": "Äkta & Utvalt",
-    "feature3Body": "Unikt vintage, funnet i Japan och utvalt för hand.",
+    "feature3Body": "Vintage, funnet i Japan och utvalt för hand.",
     "feature4Title": "Här för dig",
     "feature4Body": "Vårt team finns till hands före och efter din beställning."
   },
   "product": {
-    "oneOfOne": "Unikt exemplar",
-    "onlyOneAvailable": "Endast ett exemplar av detta smycke finns",
     "sold": "Sålt",
     "condition": "Skick",
     "materials": "Material",
@@ -127,7 +125,7 @@
     "contact": "Kontakt",
     "faq": "Vanliga frågor",
     "newsletter": "Håll dig uppdaterad",
-    "newsletterHint": "Var först med att se nya unika smycken.",
+    "newsletterHint": "Var först med att se nya smycken.",
     "newsletterThanks": "Tack — du står nu på listan.",
     "emailPlaceholder": "Din e-postadress",
     "subscribe": "Prenumerera",
@@ -231,9 +229,9 @@
     "note": "Visade priser gäller per beställning och debiteras i EUR i kassan, oavsett vilken valuta som visas."
   },
   "returns": {
-    "intro": "Eftersom varje föremål vi säljer är unikt — vintage, tidigare älskat och ibland decennier gammalt — bygger vårt sätt att hantera returer på den omsorg vi lägger ner innan leverans, snarare än efter.",
+    "intro": "Eftersom de flesta av våra smycken är vintage — tidigare älskade och ibland decennier gamla — bygger vårt sätt att hantera returer på den omsorg vi lägger ner innan leverans, snarare än efter.",
     "policyTitle": "Vår policy",
-    "policyBody": "Varje föremål inspekteras, mäts och fotograferas noggrant när det läggs upp, så att du får precis det du ser. Av den anledningen, och för att skydda våra unika föremåls integritet, kan vi inte erbjuda returer eller byten när en beställning väl har skickats.",
+    "policyBody": "Varje föremål inspekteras, mäts och fotograferas noggrant när det läggs upp, så att du får precis det du ser. Av den anledningen kan vi inte erbjuda returer eller byten när en beställning väl har skickats.",
     "beforeTitle": "Innan du beställer",
     "beforeBody": "Vi vet att det krävs lite förtroende att köpa vintage online, så vi vill att du ska känna dig helt trygg innan du går till kassan. Har du någon fråga alls — om skick, storlek, material eller något annat i annonsen — hör av dig innan köpet. Vi delar gärna fler bilder eller detaljer.",
     "issueTitle": "Om något inte stämmer",

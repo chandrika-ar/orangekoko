@@ -39,10 +39,7 @@ export default async function ProductPage({
         />
 
         <div>
-          <p className="text-[11px] uppercase tracking-[0.15em] text-accent">
-            {t("oneOfOne")}
-          </p>
-          <h1 className="mt-2 font-display text-3xl">{product.title}</h1>
+          <h1 className="font-display text-3xl">{product.title}</h1>
           <p className="mt-2 text-lg">
             {formatPrice(displayCents, displayCurrency, locale)}
           </p>
@@ -50,7 +47,6 @@ export default async function ProductPage({
           {isConverted && (
             <p className="mt-1 text-xs text-ink-soft">{t("approxNote")}</p>
           )}
-          <p className="mt-3 text-sm text-ink-soft">{t("onlyOneAvailable")}</p>
 
           <div className="mt-6">
             <ProductActions product={product} />

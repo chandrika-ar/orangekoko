@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — Unike vintagesmykker fra Japan",
-    "description": "orangekoko bringer enestående vintagesmykker fra hele Japan til Europa. Hvert smykke er ett av sitt slag, tidligere brukt, og bærer sitt eget spor av tid."
+    "title": "orangekoko — Vintagesmykker fra Japan, utvalgt med omhu",
+    "description": "orangekoko bringer vintagesmykker fra hele Japan til Europa. Hvert smykke har vært brukt før og bærer sitt eget spor av tid."
   },
   "announcement": {
     "freeShipping": "Fri frakt på bestillinger over 120 €",
@@ -27,10 +27,10 @@
     "allJewelry": "Alle Smykker"
   },
   "hero": {
-    "eyebrow": "Ett av ett, alltid",
+    "eyebrow": "Utvalgt med omhu, alltid",
     "titleLine1": "Utvalgt vintage",
     "titleLine2": "for hver versjon av deg.",
-    "subtitle": "Unike smykker fra Japan, med alder, patina og atmosfære",
+    "subtitle": "Vintagesmykker fra Japan, med alder, patina og atmosfære",
     "cta": "Se nyheter"
   },
   "home": {
@@ -42,7 +42,7 @@
     "storyTitleLine1": "Funnet i Japan,",
     "storyTitleLine2": "utvalgt med omhu.",
     "storyBody1": "Vi reiser gjennom hele Japan for å finne smykker med en skjønnhet bare tiden kan skape.",
-    "storyBody2": "Hvert unike funn velges ut for hånd for sitt håndverk, materiale og sin stille tilstedeværelse.",
+    "storyBody2": "Hvert funn velges ut for hånd for sitt håndverk, materiale og sin stille tilstedeværelse.",
     "storyBody3": "Vi tror at vintagesmykker bærer minner — og blir en del av dine.",
     "storyCta": "Om vår reise",
     "newArrivalsTitle": "Siste funn",
@@ -55,19 +55,17 @@
     "condition3": "Vi sjekker låser, innfatninger og steiner for hånd.",
     "condition4": "Vi beskriver tilstanden tydelig, så du kan handle med trygghet.",
     "condition5": "Det du ser, er det du får.",
-    "condition6": "Originalt. Autentisk. Unikt.",
+    "condition6": "Originalt. Autentisk. Håndsjekket.",
     "feature1Title": "Frakt over hele verden",
     "feature1Body": "Nøye pakket i Japan og sendt med omtanke.",
     "feature2Title": "Gjennomtenkt innpakning",
     "feature2Body": "Omtenksom innpakning, klar til å gi bort eller beholde.",
     "feature3Title": "Ekte & Kuratert",
-    "feature3Body": "Unikt vintage, funnet i Japan og utvalgt for hånd.",
+    "feature3Body": "Vintage, funnet i Japan og utvalgt for hånd.",
     "feature4Title": "Her for deg",
     "feature4Body": "Teamet vårt er her for deg før og etter bestillingen din."
   },
   "product": {
-    "oneOfOne": "Ett av ett",
-    "onlyOneAvailable": "Det finnes bare ett eksemplar av dette smykket",
     "sold": "Solgt",
     "condition": "Tilstand",
     "materials": "Materialer",
@@ -127,7 +125,7 @@
     "contact": "Kontakt",
     "faq": "Ofte Stilte Spørsmål",
     "newsletter": "Hold deg oppdatert",
-    "newsletterHint": "Vær først ute med å se nye unike smykker.",
+    "newsletterHint": "Vær først ute med å se nye smykker.",
     "newsletterThanks": "Takk — du står nå på listen.",
     "emailPlaceholder": "Din e-postadresse",
     "subscribe": "Meld deg på",
@@ -231,9 +229,9 @@
     "note": "Viste priser gjelder per bestilling og belastes i EUR i kassen, uansett hvilken valuta som vises."
   },
   "returns": {
-    "intro": "Fordi hvert smykke vi selger er unikt — vintage, tidligere elsket og noen ganger flere tiår gammelt — bygger vår tilnærming til retur på omsorgen vi legger ned før forsendelse, fremfor etterpå.",
+    "intro": "Fordi de fleste smykkene vi selger er vintage — tidligere elsket og noen ganger flere tiår gamle — bygger vår tilnærming til retur på omsorgen vi legger ned før forsendelse, fremfor etterpå.",
     "policyTitle": "Vår policy",
-    "policyBody": "Hvert stykke blir nøye inspisert, målt og fotografert når det legges ut, slik at du får akkurat det du ser. Av denne grunn, og for å beskytte integriteten til våre unike smykker, kan vi ikke tilby retur eller bytte når en bestilling først er sendt.",
+    "policyBody": "Hvert stykke blir nøye inspisert, målt og fotografert når det legges ut, slik at du får akkurat det du ser. Av denne grunn kan vi ikke tilby retur eller bytte når en bestilling først er sendt.",
     "beforeTitle": "Før du bestiller",
     "beforeBody": "Vi vet at det krever litt tillit å kjøpe vintage på nett, så vi vil at du skal føle deg helt trygg før du fullfører kjøpet. Har du et spørsmål i det hele tatt — om tilstand, størrelse, materialer eller noe annet i annonsen — skriv til oss først. Vi deler gjerne flere bilder eller detaljer.",
     "issueTitle": "Hvis noe ikke stemmer",

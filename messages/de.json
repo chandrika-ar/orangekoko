@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — Einzigartiger Vintage-Schmuck aus Japan",
-    "description": "orangekoko bringt einzigartigen Vintage-Schmuck aus ganz Japan nach Europa. Jedes Stück ist ein Unikat, bereits getragen und trägt seine eigene Spur der Zeit."
+    "title": "orangekoko — Vintage-Schmuck aus Japan, mit Sorgfalt ausgewählt",
+    "description": "orangekoko bringt Vintage-Schmuck aus ganz Japan nach Europa. Jedes Stück wurde bereits getragen und trägt seine eigene Spur der Zeit."
   },
   "announcement": {
     "freeShipping": "Kostenloser Versand ab €120 Bestellwert",
@@ -27,10 +27,10 @@
     "allJewelry": "Aller Schmuck"
   },
   "hero": {
-    "eyebrow": "Immer nur ein Unikat",
+    "eyebrow": "Mit Sorgfalt ausgewählt, immer",
     "titleLine1": "Ausgewählte Vintage-Stücke",
     "titleLine2": "für jede Version von dir.",
-    "subtitle": "Unikatschmuck aus Japan — mit Alter, Patina und Atmosphäre",
+    "subtitle": "Vintage-Schmuck aus Japan — mit Alter, Patina und Atmosphäre",
     "cta": "Neuheiten entdecken"
   },
   "home": {
@@ -42,7 +42,7 @@
     "storyTitleLine1": "Gefunden in Japan,",
     "storyTitleLine2": "mit Bedacht ausgewählt.",
     "storyBody1": "Wir bereisen ganz Japan, um Stücke von einer Schönheit zu finden, die nur die Zeit erschaffen kann.",
-    "storyBody2": "Jedes Unikat wird von Hand ausgewählt — nach Verarbeitung, Material und stiller Ausstrahlung.",
+    "storyBody2": "Jedes Stück wird von Hand ausgewählt — nach Verarbeitung, Material und stiller Ausstrahlung.",
     "storyBody3": "Wir glauben, dass Vintage-Schmuck Erinnerung trägt — und Teil Ihrer eigenen wird.",
     "storyCta": "Mehr über unsere Reise",
     "newArrivalsTitle": "Neu entdeckt",
@@ -55,19 +55,17 @@
     "condition3": "Wir prüfen Verschlüsse, Fassungen und Steine von Hand.",
     "condition4": "Wir beschreiben den Zustand klar, damit Sie mit Vertrauen einkaufen können.",
     "condition5": "Was Sie sehen, ist, was Sie erhalten.",
-    "condition6": "Original. Authentisch. Unikat.",
+    "condition6": "Original. Authentisch. Handgeprüft.",
     "feature1Title": "Weltweiter Versand",
     "feature1Body": "Sorgfältig in Japan verpackt und mit Sorgfalt versendet.",
     "feature2Title": "Achtsame Verpackung",
     "feature2Body": "Durchdachte Verpackung, bereit zum Verschenken oder Behalten.",
     "feature3Title": "Echt & kuratiert",
-    "feature3Body": "Unikat-Vintage, in Japan beschafft und von Hand ausgewählt.",
+    "feature3Body": "Vintage, in Japan beschafft und von Hand ausgewählt.",
     "feature4Title": "Für Sie da",
     "feature4Body": "Unser Team unterstützt Sie vor und nach Ihrer Bestellung."
   },
   "product": {
-    "oneOfOne": "Unikat",
-    "onlyOneAvailable": "Von diesem Stück existiert nur eines",
     "sold": "Verkauft",
     "condition": "Zustand",
     "materials": "Materialien",
@@ -127,7 +125,7 @@
     "contact": "Kontakt",
     "faq": "FAQ",
     "newsletter": "Bleiben Sie informiert",
-    "newsletterHint": "Seien Sie die Ersten, die neue Unikate sehen.",
+    "newsletterHint": "Seien Sie die Ersten, die neue Stücke sehen.",
     "newsletterThanks": "Danke — Sie sind jetzt auf der Liste.",
     "emailPlaceholder": "Ihre E-Mail",
     "subscribe": "Abonnieren",
@@ -231,9 +229,9 @@
     "note": "Die angezeigten Preise gelten pro Bestellung und werden beim Checkout in EUR abgerechnet, unabhängig von der angezeigten Währung."
   },
   "returns": {
-    "intro": "Da jedes unserer Stücke ein Unikat ist — Vintage, bereits geliebt und manchmal Jahrzehnte alt —, basiert unser Umgang mit Rückgaben auf der Sorgfalt, die wir vor dem Versand walten lassen, statt danach.",
+    "intro": "Da die meisten unserer Stücke Vintage sind — bereits geliebt und manchmal Jahrzehnte alt —, basiert unser Umgang mit Rückgaben auf der Sorgfalt, die wir vor dem Versand walten lassen, statt danach.",
     "policyTitle": "Unsere Richtlinie",
-    "policyBody": "Jedes Stück wird zum Zeitpunkt der Einstellung sorgfältig geprüft, vermessen und fotografiert, sodass Sie genau das erhalten, was Sie sehen. Aus diesem Grund, und um die Unversehrtheit unserer Unikate zu schützen, können wir Rückgaben oder Umtausch nach Versand der Bestellung nicht anbieten.",
+    "policyBody": "Jedes Stück wird zum Zeitpunkt der Einstellung sorgfältig geprüft, vermessen und fotografiert, sodass Sie genau das erhalten, was Sie sehen. Aus diesem Grund können wir Rückgaben oder Umtausch nach Versand der Bestellung nicht anbieten.",
     "beforeTitle": "Vor Ihrer Bestellung",
     "beforeBody": "Wir wissen, dass der Kauf von Vintage-Schmuck online etwas Vertrauen erfordert, deshalb möchten wir, dass Sie sich vor dem Checkout ganz sicher fühlen. Wenn Sie irgendeine Frage haben — zu Zustand, Größe, Material oder irgendetwas in der Beschreibung — schreiben Sie uns vorher. Wir teilen gerne zusätzliche Fotos oder Details.",
     "issueTitle": "Wenn etwas nicht stimmt",

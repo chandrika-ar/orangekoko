@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — Unieke vintage sieraden uit Japan",
-    "description": "orangekoko brengt unieke vintage sieraden uit heel Japan naar Europa. Elk stuk is uniek, eerder gedragen, en draagt zijn eigen spoor van tijd."
+    "title": "orangekoko — Vintage sieraden uit Japan, met zorg gekozen",
+    "description": "orangekoko brengt vintage sieraden uit heel Japan naar Europa. Elk stuk is eerder gedragen en draagt zijn eigen spoor van tijd."
   },
   "announcement": {
     "freeShipping": "Gratis verzending vanaf €120",
@@ -27,10 +27,10 @@
     "allJewelry": "Alle Sieraden"
   },
   "hero": {
-    "eyebrow": "Eén van één, altijd",
+    "eyebrow": "Met zorg gekozen, altijd",
     "titleLine1": "Zorgvuldig gekozen vintage",
     "titleLine2": "voor elke versie van jou.",
-    "subtitle": "Unieke sieraden uit Japan — met ouderdom, patina en sfeer",
+    "subtitle": "Vintage sieraden uit Japan — met ouderdom, patina en sfeer",
     "cta": "Bekijk nieuwe items"
   },
   "home": {
@@ -42,7 +42,7 @@
     "storyTitleLine1": "Gevonden in Japan,",
     "storyTitleLine2": "met zorg gekozen.",
     "storyBody1": "We reizen door heel Japan op zoek naar stukken met een schoonheid die alleen de tijd kan scheppen.",
-    "storyBody2": "Elk uniek sieraad wordt met de hand geselecteerd om zijn vakmanschap, materiaal en stille uitstraling.",
+    "storyBody2": "Elk sieraad wordt met de hand geselecteerd om zijn vakmanschap, materiaal en stille uitstraling.",
     "storyBody3": "Wij geloven dat vintage sieraden herinneringen dragen — en deel worden van de uwe.",
     "storyCta": "Meer over onze reis",
     "newArrivalsTitle": "Laatste vondsten",
@@ -55,19 +55,17 @@
     "condition3": "We controleren sluitingen, zettingen en stenen met de hand.",
     "condition4": "We beschrijven de staat duidelijk, zodat u met vertrouwen kunt winkelen.",
     "condition5": "Wat u ziet, is wat u ontvangt.",
-    "condition6": "Origineel. Authentiek. Uniek.",
+    "condition6": "Origineel. Authentiek. Met de hand gecontroleerd.",
     "feature1Title": "Wereldwijde verzending",
     "feature1Body": "Zorgvuldig verpakt in Japan en met zorg verzonden.",
     "feature2Title": "Doordachte verpakking",
     "feature2Body": "Attente verpakking, klaar om te geven of te bewaren.",
     "feature3Title": "Authentiek & Samengesteld",
-    "feature3Body": "Uniek vintage, gezocht in Japan en met de hand geselecteerd.",
+    "feature3Body": "Vintage, gezocht in Japan en met de hand geselecteerd.",
     "feature4Title": "Voor u klaar",
     "feature4Body": "Ons team staat voor en na uw bestelling voor u klaar."
   },
   "product": {
-    "oneOfOne": "Eén van één",
-    "onlyOneAvailable": "Er bestaat maar één exemplaar van dit stuk",
     "sold": "Verkocht",
     "condition": "Staat",
     "materials": "Materialen",
@@ -127,7 +125,7 @@
     "contact": "Contact",
     "faq": "Veelgestelde vragen",
     "newsletter": "Blijf op de hoogte",
-    "newsletterHint": "Wees de eerste die nieuwe unieke stukken ziet.",
+    "newsletterHint": "Wees de eerste die nieuwe stukken ziet.",
     "newsletterThanks": "Dank u — u staat op de lijst.",
     "emailPlaceholder": "Uw e-mailadres",
     "subscribe": "Aanmelden",
@@ -231,9 +229,9 @@
     "note": "Getoonde prijzen gelden per bestelling en worden bij het afrekenen in EUR afgerekend, ongeacht de weergegeven valuta."
   },
   "returns": {
-    "intro": "Omdat elk stuk dat we verkopen uniek is — vintage, eerder gedragen en soms tientallen jaren oud — is ons retourbeleid gebaseerd op de zorg die we vóór verzending besteden, in plaats van erna.",
+    "intro": "Omdat de meeste stukken die we verkopen vintage zijn — eerder gedragen en soms tientallen jaren oud — is ons retourbeleid gebaseerd op de zorg die we vóór verzending besteden, in plaats van erna.",
     "policyTitle": "Ons beleid",
-    "policyBody": "Elk stuk wordt bij het plaatsen zorgvuldig geïnspecteerd, gemeten en gefotografeerd, zodat u precies ontvangt wat u ziet. Om deze reden, en om de integriteit van onze unieke stukken te beschermen, kunnen we geen retouren of ruilingen accepteren zodra een bestelling is verzonden.",
+    "policyBody": "Elk stuk wordt bij het plaatsen zorgvuldig geïnspecteerd, gemeten en gefotografeerd, zodat u precies ontvangt wat u ziet. Om deze reden kunnen we geen retouren of ruilingen accepteren zodra een bestelling is verzonden.",
     "beforeTitle": "Voordat u bestelt",
     "beforeBody": "We weten dat het online kopen van vintage wat vertrouwen vraagt, dus willen we dat u zich volledig zeker voelt voordat u afrekent. Heeft u een vraag — over de staat, maat, materialen of iets anders in de vermelding — stuur ons dan eerst een bericht. We delen graag extra foto's of details.",
     "issueTitle": "Als er iets mis is",
