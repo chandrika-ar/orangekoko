@@ -11,7 +11,10 @@ export function ConditionSection() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_220px] lg:px-8">
         <div className="text-center lg:text-left">
           <h2 className="font-display text-3xl">{t("conditionTitle")}</h2>
-          <span className="mx-auto mt-3 mb-8 block h-px w-10 bg-accent lg:mx-0" />
+          <span className="mx-auto mt-3 mb-6 block h-px w-10 bg-accent lg:mx-0" />
+          <p className="mx-auto mb-6 max-w-md text-sm text-ink-soft lg:mx-0">
+            {t("conditionSecondhandNote")}
+          </p>
           <div className="grid grid-cols-1 gap-x-10 gap-y-2 text-left text-sm leading-relaxed text-ink-soft sm:grid-cols-2">
             <ul className="space-y-2">
               {left.map((line) => (
@@ -24,9 +27,6 @@ export function ConditionSection() {
               ))}
             </ul>
           </div>
-          <p className="mx-auto mt-6 max-w-md text-xs text-ink-soft lg:mx-0">
-            {t("conditionSecondhandNote")}
-          </p>
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
