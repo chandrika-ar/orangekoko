@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import { ImagePlaceholder } from "@/components/image-placeholder";
 
 export default async function BrandPage() {
@@ -21,10 +22,15 @@ export default async function BrandPage() {
       </div>
 
       <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 px-4 py-6 sm:px-6 md:grid-cols-2 lg:px-8">
-        <ImagePlaceholder
-          label="Vintage Japanese vanity table, mirror and small jewelry dish, warm light"
-          aspect="aspect-[4/5]"
-        />
+        <div className="relative aspect-[4/5] w-full overflow-hidden bg-cream-deep">
+          <Image
+            src="/brand-vanity.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="(min-width: 768px) 50vw, 100vw"
+          />
+        </div>
         <p className="text-sm leading-relaxed text-ink-soft">{tb("philosophy2")}</p>
       </div>
 
