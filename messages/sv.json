@@ -176,6 +176,25 @@
     "comingSoon": "Kommer snart",
     "backToAtelier": "Tillbaka till ateljén"
   },
+  "atelierJourney": {
+    "eyebrow": "THE ORANGEKOKO ATELIER",
+    "title": "Walk the floor, pick a piece",
+    "reduceMotion": "Reduce motion",
+    "hintMove": "Arrow keys or WASD to walk · click to move there",
+    "kickerIdle": "Walk up to a piece",
+    "kickerNearby": "Nearby",
+    "viewDetails": "View details",
+    "tryOnCta": "Try this piece on →",
+    "promptDoor": "Walk to the door to enter the Try-On Room",
+    "doorEyebrow": "Atelier · Try-on (preview)",
+    "doorTitle": "You're through the door",
+    "tryingOn": "Trying on",
+    "tryOnNote": "The real version requests camera access here and tracks face and neck landmarks locally on your device — nothing is uploaded.",
+    "backToRoom": "← Back to the shop floor",
+    "fallbackTitle": "This room needs a newer browser",
+    "fallbackBody": "We couldn't start the 3D room here. Have a look at the collection instead.",
+    "fallbackCta": "Go to the shop"
+  },
   "process": {
     "title": "Bakom varje smycke",
     "intro": "En snabb titt på vad som händer innan ett smycke når dig.",
