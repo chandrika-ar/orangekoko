@@ -28,10 +28,7 @@ export default async function AboutPage() {
           <p>{t("storyBody1")}</p>
           <p>{t("storyBody2")}</p>
           <p>{t("storyBody3")}</p>
-          <p className="pt-2 text-[11px] uppercase tracking-[0.15em] text-ink-soft">
-            {ta("expandedEyebrow")}
-          </p>
-          <p>{ta("expandedBody1")}</p>
+          <p className="pt-2">{ta("expandedBody1")}</p>
           <p>{ta("expandedBody2")}</p>
           <p>{ta("expandedBody3")}</p>
           <p>{ta("expandedBodyArtisan")}</p>
