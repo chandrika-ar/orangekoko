@@ -75,6 +75,12 @@ export function Scene({
 
   const keys = useRef<Record<string, boolean>>({});
   const moveTarget = useRef<{ x: number; z: number } | null>(null);
+  // Current speed eases toward the target (0 or MOVE_SPEED) instead of
+  // snapping, and the last held direction persists through that ease-out so
+  // a released key glides to a stop instead of stopping dead mid-step.
+  const speed = useRef(0);
+  const lastDirX = useRef(0);
+  const lastDirZ = useRef(0);
   const lastSelected = useRef<number | null>(null);
   const doorStart = useRef<number | null>(null);
   const doorDone = useRef(false);
@@ -131,6 +137,9 @@ export function Scene({
     if (doorPivotRef.current) doorPivotRef.current.rotation.y = 0;
     if (doorGlowRef.current) doorGlowRef.current.intensity = 0;
     moveTarget.current = null;
+    speed.current = 0;
+    lastDirX.current = 0;
+    lastDirZ.current = 0;
     lastSelected.current = null;
     onSelect(null);
     cardRefs.current.forEach((group) => {
@@ -166,37 +175,50 @@ export function Scene({
     if (!player) return;
 
     if (stage === "room") {
-      let dx = 0;
-      let dz = 0;
+      let inputX = 0;
+      let inputZ = 0;
       const k = keys.current;
       const kx = (k["arrowleft"] || k["a"] ? -1 : 0) + (k["arrowright"] || k["d"] ? 1 : 0);
       const kz = (k["arrowup"] || k["w"] ? -1 : 0) + (k["arrowdown"] || k["s"] ? 1 : 0);
       if (kx !== 0 || kz !== 0) {
         const len = Math.hypot(kx, kz) || 1;
-        dx = kx / len;
-        dz = kz / len;
+        inputX = kx / len;
+        inputZ = kz / len;
       } else if (moveTarget.current) {
         const tdx = moveTarget.current.x - player.position.x;
         const tdz = moveTarget.current.z - player.position.z;
         const dist = Math.hypot(tdx, tdz);
         if (dist > 0.12) {
-          dx = tdx / dist;
-          dz = tdz / dist;
+          inputX = tdx / dist;
+          inputZ = tdz / dist;
         } else {
           moveTarget.current = null;
         }
       }
 
-      const moving = dx !== 0 || dz !== 0;
+      const hasInput = inputX !== 0 || inputZ !== 0;
+      if (hasInput) {
+        lastDirX.current = inputX;
+        lastDirZ.current = inputZ;
+      }
+
+      // Ease speed toward its target instead of snapping, so a step starts
+      // and ends with a glide rather than a jump-cut.
+      const targetSpeed = hasInput ? MOVE_SPEED : 0;
+      const accel = reduceMotion ? 1 : Math.min(dt * 7, 1);
+      speed.current = THREE.MathUtils.lerp(speed.current, targetSpeed, accel);
+
+      const moving = speed.current > 0.02;
       if (moving) {
-        player.position.x += dx * MOVE_SPEED * dt;
-        player.position.z += dz * MOVE_SPEED * dt;
+        player.position.x += lastDirX.current * speed.current * dt;
+        player.position.z += lastDirZ.current * speed.current * dt;
         player.position.x = THREE.MathUtils.clamp(player.position.x, -PLAYER_CLAMP_X, PLAYER_CLAMP_X);
         player.position.z = THREE.MathUtils.clamp(player.position.z, DOOR_TRIGGER_Z, ENTRANCE_Z - 0.5);
-        const targetHeading = Math.atan2(dx, dz);
+        const targetHeading = Math.atan2(lastDirX.current, lastDirZ.current);
         const diff = Math.atan2(Math.sin(targetHeading - player.rotation.y), Math.cos(targetHeading - player.rotation.y));
         player.rotation.y += diff * (reduceMotion ? 1 : Math.min(dt * 10, 1));
-        const bob = reduceMotion ? 0 : Math.sin(t * 9) * 0.035;
+        const bobAmount = reduceMotion ? 0 : Math.min(speed.current / MOVE_SPEED, 1) * 0.035;
+        const bob = Math.sin(t * 9) * bobAmount;
         if (bodyRef.current) bodyRef.current.position.y = 0.52 + bob;
         if (headRef.current) headRef.current.position.y = 1.02 + bob;
       }
