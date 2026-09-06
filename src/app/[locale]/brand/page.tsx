@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import { ImagePlaceholder } from "@/components/image-placeholder";
 
 export default async function BrandPage() {
   const t = await getTranslations("nav");
@@ -8,10 +7,16 @@ export default async function BrandPage() {
 
   return (
     <div>
-      <ImagePlaceholder
-        label="Brand hero — ikebana arrangement beside a paper window, soft daylight"
-        aspect="aspect-[16/8]"
-      />
+      <div className="relative aspect-[16/8] w-full overflow-hidden bg-cream-deep">
+        <Image
+          src="/brand-hero-ikebana.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
 
       <div className="mx-auto max-w-xl px-4 pt-16 pb-10 text-center sm:px-6 lg:px-8">
         <p className="text-[11px] uppercase tracking-[0.15em] text-ink-soft">{t("brand")}</p>
@@ -38,11 +43,15 @@ export default async function BrandPage() {
         <p className="order-2 text-sm leading-relaxed text-ink-soft md:order-1">
           {tb("philosophy3")}
         </p>
-        <ImagePlaceholder
-          label="Paper parasol resting against a wooden engawa, dappled afternoon light"
-          aspect="aspect-[4/5]"
-          className="order-1 md:order-2"
-        />
+        <div className="relative order-1 aspect-[4/5] w-full overflow-hidden bg-cream-deep md:order-2">
+          <Image
+            src="/brand-parasol.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="(min-width: 768px) 50vw, 100vw"
+          />
+        </div>
       </div>
 
       <div className="mx-auto max-w-xl px-4 py-16 text-center sm:px-6 lg:px-8">

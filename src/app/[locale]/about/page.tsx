@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { ImagePlaceholder } from "@/components/image-placeholder";
+import Image from "next/image";
 
 export default async function AboutPage() {
   const t = await getTranslations("home");
@@ -7,10 +7,16 @@ export default async function AboutPage() {
 
   return (
     <div>
-      <ImagePlaceholder
-        label="About hero — founder or workspace image, warm natural light"
-        aspect="aspect-[16/7]"
-      />
+      <div className="relative aspect-[16/7] w-full overflow-hidden bg-cream-deep">
+        <Image
+          src="/about-hero.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
       <div className="mx-auto max-w-2xl px-4 py-14 text-center sm:px-6 lg:px-8">
         <p className="text-[11px] uppercase tracking-[0.15em] text-ink-soft">
           {t("storyEyebrow")}

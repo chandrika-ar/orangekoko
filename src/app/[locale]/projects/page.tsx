@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { ProductCard } from "@/components/shop/product-card";
@@ -13,10 +14,16 @@ export default async function ProjectsPage() {
 
   return (
     <div>
-      <ImagePlaceholder
-        label="Autumn Edit hero — maple leaves and lacquerware on a low wooden table, golden hour light"
-        aspect="aspect-[16/8]"
-      />
+      <div className="relative aspect-[16/8] w-full overflow-hidden bg-cream-deep">
+        <Image
+          src="/projects-autumn-hero.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
 
       <div className="mx-auto max-w-xl px-4 pt-16 pb-10 text-center sm:px-6 lg:px-8">
         <p className="text-[11px] uppercase tracking-[0.15em] text-ink-soft">
