@@ -26,9 +26,12 @@ const COUNTER_RADIUS = RADIUS_CAT * 0.62; // matches the counter cylinder's top 
 // Tied to the card ring's own radius, not the (smaller) physical counter —
 // walking straight at a card used to sail right past it into the gap
 // between the counter's edge and where the cards actually float, since
-// nothing was there to stop it. This stops the player right at the cards,
-// as if the display case extends out that far.
-const COUNTER_COLLISION_RADIUS = RADIUS_CAT - 0.3;
+// nothing was there to stop it. The 0.5 margin leaves room for the
+// character model's own depth (shoulders/dress front) between where she
+// stops and the card plane — too little and she visibly sinks into the
+// card; the model's real silhouette isn't known at this layer, so this is
+// a considered estimate rather than a measured value.
+const COUNTER_COLLISION_RADIUS = RADIUS_CAT - 0.5;
 const MOVE_SPEED = 3.3;
 const MAX_CLICK_MOVE = 6; // cap on how far a single floor click can send the player
 const DOOR_DURATION = 1.6;
