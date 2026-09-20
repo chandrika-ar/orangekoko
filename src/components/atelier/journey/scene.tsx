@@ -6,6 +6,7 @@ import * as THREE from "three";
 import { makeCardTexture, makeSignTexture } from "./card-texture";
 import { CustomerModel } from "./customer-model";
 import type { CategoryRoom } from "./get-journey-items";
+import { makeWallPanelTexture, makeWoodFloorTexture } from "./surface-texture";
 import type { JourneyStage } from "./types";
 
 // Layout constants. Room-length values (door/entrance position, floor and
@@ -27,20 +28,32 @@ const MOVE_SPEED = 3.3;
 const MAX_CLICK_MOVE = 6; // cap on how far a single floor click can send the player
 const DOOR_DURATION = 1.6;
 
+// A deep-brown antique-shop palette: wood and brass carry almost every
+// surface, so the room reads as one material story instead of a scatter of
+// unrelated solid-color blocks. Cream stays reserved for the parchment
+// cards and signage, where the contrast against the dark room is the point
+// — everything else lives in the wood/brass family, varying in value
+// (light/dark) rather than hue.
 const COLORS = {
-  cream: "#f6f1e9",
-  creamDeep: "#efe7d8",
-  ink: "#211c17",
-  inkSoft: "#4a433b",
+  cream: "#e8d9bd",
+  creamDeep: "#dcc9a3",
+  ink: "#140f0a",
+  inkSoft: "#2a1f16",
   accent: "#c9622c",
-  accentSoft: "#e7ad82",
-  brass: "#b8863f",
+  accentSoft: "#e2a262",
+  brass: "#a9793f",
+  wood: "#3a2a1d",
+  woodDeep: "#241a12",
+  woodLight: "#5a4130",
 };
 
-// A little curio-shop clutter — jewel-toned jars, a paper lantern, a dried
-// flower bunch — echoing the warm, cluttered antique-shop reference photos,
-// rather than the bare pedestal-and-glow-orb this corridor started with.
-const JEWEL_TONES = ["#2f6f52", "#2b4c7e", "#8a2338", "#c9862c"];
+// A little curio-shop clutter — glass jars, a paper lantern, a dried flower
+// bunch — echoing the warm, cluttered antique-shop reference photos, rather
+// than the bare pedestal-and-glow-orb this corridor started with. The jars
+// vary in value within the same amber-glass family rather than cycling
+// through unrelated hues, so they read as "a shelf of old jars" rather than
+// a row of crayons.
+const JAR_GLASS_TONES = ["#6b4423", "#3f2e1c", "#7a5c3a", "#523a24"];
 const DRIED_FLOWER = "#a9707a";
 const DRIED_FLOWER_DARK = "#7c5350";
 
@@ -116,6 +129,8 @@ export function Scene({
     () => layout.signs.map(({ label }) => makeSignTexture(label, displayFont)),
     [layout.signs, displayFont],
   );
+  const floorTexture = useMemo(() => makeWoodFloorTexture(), []);
+  const wallTexture = useMemo(() => makeWallPanelTexture(), []);
 
   const keys = useRef<Record<string, boolean>>({});
   const moveTarget = useRef<{ x: number; z: number } | null>(null);
@@ -382,24 +397,32 @@ export function Scene({
   const floorCenterZ = (floorZMin + floorZMax) / 2;
   const floorDepth = floorZMax - floorZMin;
 
+  // Tile size in world units — cheap to set every render, and repeat/wrap
+  // changes don't force a texture re-upload the way pixel edits would.
+  floorTexture.repeat.set((ROOM_HALF_W * 2) / 2, floorDepth / 2);
+  wallTexture.repeat.set(floorDepth / 3, 3.1 / 3);
+
   return (
     <>
-      <hemisphereLight args={[COLORS.cream, COLORS.inkSoft, 0.9]} />
-      <directionalLight args={[COLORS.accentSoft, 0.8]} position={[3, 7, 5]} />
-      <pointLight args={[COLORS.cream, 0.35]} position={[-4, 3, 3]} />
-      <fog attach="fog" args={[COLORS.cream, 7, 24]} />
+      {/* The wood surfaces themselves carry the dark, deep-brown mood now —
+          these lights stay bright enough to actually reveal that material,
+          rather than darkening the room twice over into near-blackness. */}
+      <hemisphereLight args={[COLORS.cream, COLORS.woodDeep, 1.15]} />
+      <directionalLight args={[COLORS.accentSoft, 1.1]} position={[3, 7, 5]} />
+      <pointLight args={[COLORS.accentSoft, 0.45]} position={[-4, 3, 3]} />
+      <fog attach="fog" args={[COLORS.wood, 9, 26]} />
 
       {/* floor */}
       <mesh rotation-x={-Math.PI / 2} position={[0, 0, floorCenterZ]} onClick={handleFloorClick}>
         <planeGeometry args={[ROOM_HALF_W * 2, floorDepth]} />
-        <meshStandardMaterial color="#d9c7a8" roughness={0.9} />
+        <meshStandardMaterial map={floorTexture} roughness={0.9} />
       </mesh>
 
       {/* walls */}
       {[-1, 1].map((side) => (
         <mesh key={side} position={[side * ROOM_HALF_W, 1.55, floorCenterZ]} rotation-y={(-side * Math.PI) / 2}>
           <planeGeometry args={[floorDepth, 3.1]} />
-          <meshStandardMaterial color={COLORS.creamDeep} roughness={0.95} side={THREE.DoubleSide} />
+          <meshStandardMaterial map={wallTexture} roughness={0.95} side={THREE.DoubleSide} />
         </mesh>
       ))}
 
@@ -412,14 +435,14 @@ export function Scene({
             {/* shelf pedestal */}
             <mesh position={[0, 0.45, 0]}>
               <boxGeometry args={[0.5, 0.9, 0.5]} />
-              <meshStandardMaterial color={COLORS.brass} roughness={0.6} metalness={0.25} />
+              <meshStandardMaterial color={COLORS.wood} roughness={0.7} />
             </mesh>
             {/* a couple of small jewel-toned jars cluttering the shelf top */}
             {[0, 1].map((j) => (
               <group key={j} position={[(j - 0.5) * 0.14, 0.9, j * 0.1 - 0.05]}>
                 <mesh position={[0, 0.08, 0]}>
                   <cylinderGeometry args={[0.07, 0.08, 0.16, 10]} />
-                  <meshStandardMaterial color={JEWEL_TONES[j * 2 + (side > 0 ? 0 : 1)]} roughness={0.35} metalness={0.15} />
+                  <meshStandardMaterial color={JAR_GLASS_TONES[j * 2 + (side > 0 ? 0 : 1)]} roughness={0.35} metalness={0.15} />
                 </mesh>
                 <mesh position={[0, 0.17, 0]}>
                   <sphereGeometry args={[0.045, 8, 8]} />
@@ -427,9 +450,10 @@ export function Scene({
                 </mesh>
               </group>
             ))}
-            {/* paper lantern hanging above the shelf */}
-            <mesh position={[0, 2.85, 0]}>
-              <cylinderGeometry args={[0.012, 0.012, 1.1, 6]} />
+            {/* paper lantern hanging above the shelf — string stays short
+                of the 3.1-high ceiling so it doesn't poke through it */}
+            <mesh position={[0, 2.7, 0]}>
+              <cylinderGeometry args={[0.012, 0.012, 0.8, 6]} />
               <meshStandardMaterial color={COLORS.inkSoft} roughness={0.8} />
             </mesh>
             <pointLight args={[COLORS.accentSoft, 0.55, 3.4]} position={[0, 2.25, 0]} />
@@ -470,12 +494,20 @@ export function Scene({
         </group>
       ))}
 
-      {/* category signposts, one per room threshold */}
+      {/* category signposts, one per room threshold — front and back are
+          separate meshes for the same reason as the cards: a single
+          double-sided texture shows mirror-reversed from behind. */}
       {layout.signs.map((sign, i) => (
-        <mesh key={sign.z} position={[0, 2.5, sign.z]}>
-          <planeGeometry args={[2.2, 0.55]} />
-          <meshBasicMaterial map={signTextures[i]} side={THREE.DoubleSide} />
-        </mesh>
+        <group key={sign.z} position={[0, 2.5, sign.z]}>
+          <mesh>
+            <planeGeometry args={[2.2, 0.55]} />
+            <meshBasicMaterial map={signTextures[i]} side={THREE.FrontSide} />
+          </mesh>
+          <mesh rotation-y={Math.PI}>
+            <planeGeometry args={[2.2, 0.55]} />
+            <meshStandardMaterial color={COLORS.ink} roughness={0.85} side={THREE.FrontSide} />
+          </mesh>
+        </group>
       ))}
 
       {/* a display counter per room: a round wooden base under each ring */}
@@ -483,7 +515,7 @@ export function Scene({
         <group key={z} position={[0, 0, z]}>
           <mesh position={[0, 0.45, 0]}>
             <cylinderGeometry args={[RADIUS_CAT * 0.55, COUNTER_RADIUS, 0.9, 32]} />
-            <meshStandardMaterial color="#8a5a34" roughness={0.7} />
+            <meshStandardMaterial color={COLORS.wood} roughness={0.7} />
           </mesh>
           <mesh position={[0, 0.9, 0]} rotation-x={Math.PI / 2}>
             <torusGeometry args={[COUNTER_RADIUS - 0.04, 0.035, 8, 32]} />
@@ -536,7 +568,7 @@ export function Scene({
       <group ref={doorPivotRef} position={[-DOOR_W / 2, 0, layout.doorZ]}>
         <mesh position={[DOOR_W / 2, DOOR_H / 2, 0]}>
           <planeGeometry args={[DOOR_W, DOOR_H]} />
-          <meshStandardMaterial color="#a9713f" roughness={0.7} />
+          <meshStandardMaterial color={COLORS.woodLight} roughness={0.7} />
         </mesh>
       </group>
       <mesh position={[0, DOOR_H, layout.doorZ]} rotation-z={Math.PI}>
