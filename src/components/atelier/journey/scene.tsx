@@ -23,15 +23,14 @@ const ROOM_HALF_W = 4.6;
 const PLAYER_CLAMP_X = ROOM_HALF_W - 0.5;
 const SELECT_RADIUS = 2.1;
 const COUNTER_RADIUS = RADIUS_CAT * 0.62; // matches the counter cylinder's top radius below
-// Tied to the card ring's own radius, not the (smaller) physical counter —
-// walking straight at a card used to sail right past it into the gap
-// between the counter's edge and where the cards actually float, since
-// nothing was there to stop it. The 0.5 margin leaves room for the
-// character model's own depth (shoulders/dress front) between where she
-// stops and the card plane — too little and she visibly sinks into the
-// card; the model's real silhouette isn't known at this layer, so this is
-// a considered estimate rather than a measured value.
-const COUNTER_COLLISION_RADIUS = RADIUS_CAT - 0.5;
+// Bigger than the card ring's own radius, not smaller — the player walks
+// in from *outside* the ring (from the entrance, moving toward the
+// counter), so stopping her at a radius smaller than RADIUS_CAT means she
+// has already walked past the card and in behind it before the collision
+// catches her, however small the margin. Stopping outside RADIUS_CAT
+// instead means she meets the card on the way in, before reaching it —
+// the card ends up just ahead of her, not behind her or overlapping her.
+const COUNTER_COLLISION_RADIUS = RADIUS_CAT + 0.35;
 const MOVE_SPEED = 3.3;
 const MAX_CLICK_MOVE = 6; // cap on how far a single floor click can send the player
 const DOOR_DURATION = 1.6;
@@ -184,10 +183,19 @@ export function Scene({
   // sets an unclamped move target (unlike a floor click, which caps how far
   // one click can send her) and lets the normal per-frame movement and the
   // existing doorTriggerZ check below carry her the rest of the way.
+  //
+  // Targeting x=0 exactly would be a problem: every room center sits at
+  // x=0 too, so a path heading dead straight at one hits its collision
+  // circle with zero sideways component — direction recomputed each frame
+  // still points straight at the same boundary point, forever (the
+  // collision below is a hard stop now, not the old sliding correction
+  // that used to break exactly this kind of symmetry). Aiming the walk a
+  // little off-center avoids ever setting up that exact standoff, still
+  // comfortably inside the DOOR_W-wide opening she's walking toward.
   useEffect(() => {
     if (doorRequestToken !== lastDoorToken.current) {
       lastDoorToken.current = doorRequestToken;
-      if (stage === "room") moveTarget.current = { x: 0, z: layout.doorTriggerZ - 0.3 };
+      if (stage === "room") moveTarget.current = { x: 0.2, z: layout.doorTriggerZ - 0.3 };
     }
   }, [doorRequestToken, stage, layout.doorTriggerZ]);
 
@@ -241,9 +249,10 @@ export function Scene({
       event.stopPropagation();
       const card = layout.cards[index];
       const dir = new THREE.Vector2(card.x, card.z - card.centerZ).normalize();
-      // Stop just outside the counter's solid collision radius, not partway
-      // toward the ring center — the counter physically blocks anything closer.
-      const standDist = COUNTER_COLLISION_RADIUS + 0.15;
+      // Same distance the walking collision itself stops her at (see
+      // COUNTER_COLLISION_RADIUS) — clicking a card should land her exactly
+      // where walking up to it herself would.
+      const standDist = COUNTER_COLLISION_RADIUS;
       moveTarget.current = {
         x: dir.x * standDist,
         z: card.centerZ + dir.y * standDist,
