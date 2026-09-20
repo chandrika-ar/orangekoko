@@ -23,7 +23,12 @@ const ROOM_HALF_W = 4.6;
 const PLAYER_CLAMP_X = ROOM_HALF_W - 0.5;
 const SELECT_RADIUS = 2.1;
 const COUNTER_RADIUS = RADIUS_CAT * 0.62; // matches the counter cylinder's top radius below
-const COUNTER_COLLISION_RADIUS = COUNTER_RADIUS + 0.35;
+// Tied to the card ring's own radius, not the (smaller) physical counter —
+// walking straight at a card used to sail right past it into the gap
+// between the counter's edge and where the cards actually float, since
+// nothing was there to stop it. This stops the player right at the cards,
+// as if the display case extends out that far.
+const COUNTER_COLLISION_RADIUS = RADIUS_CAT - 0.3;
 const MOVE_SPEED = 3.3;
 const MAX_CLICK_MOVE = 6; // cap on how far a single floor click can send the player
 const DOOR_DURATION = 1.6;
