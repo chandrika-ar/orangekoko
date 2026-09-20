@@ -24,6 +24,11 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
   const [doorRequestToken, setDoorRequestToken] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(support.reducedMotion);
   const [hasMoved, setHasMoved] = useState(false);
+  // Locked in when "try this piece on" is clicked, so whatever she happens
+  // to be nearest to along the walk to the door doesn't change what she's
+  // actually trying on — that's only allowed to change via the switcher
+  // once she's through the door.
+  const [tryOnItem, setTryOnItem] = useState<JourneyItem | null>(null);
 
   // The ring cards draw their own labels onto a canvas texture rather than
   // fetching a font at runtime (see card-texture.ts), so they need the site's
@@ -52,10 +57,14 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
 
   const selected = selectedIndex !== null ? items[selectedIndex] : null;
   const worn = selected ?? items[0] ?? null;
+  // Falls back to `worn` for the walk-straight-to-the-door-herself path,
+  // where there was no button click to lock anything in.
+  const shown = tryOnItem ?? worn;
 
-  function selectItem(item: JourneyItem) {
-    const index = items.findIndex((i) => i.slug === item.slug);
-    if (index !== -1) setSelectedIndex(index);
+  function requestTryOn() {
+    if (!worn) return;
+    setTryOnItem(worn);
+    setDoorRequestToken((n) => n + 1);
   }
 
   return (
@@ -130,7 +139,7 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
             <button
               type="button"
               disabled={!selected}
-              onClick={() => setDoorRequestToken((n) => n + 1)}
+              onClick={requestTryOn}
               className="border border-accent bg-accent px-4 py-2 text-[11px] uppercase tracking-[0.1em] text-white transition-colors hover:shadow-[0_8px_20px_rgba(201,98,44,0.4)] disabled:pointer-events-none disabled:opacity-35"
             >
               {t("tryOnCta")}
@@ -154,15 +163,18 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
             <p className="text-[11px] uppercase tracking-[0.15em] text-accent">{t("doorEyebrow")}</p>
             <h2 className="mt-2 font-display text-2xl text-ink">{t("doorTitle")}</h2>
             <p className="mt-2 text-sm text-ink-soft">
-              {t("tryingOn")} <strong className="text-ink">{worn?.title}</strong>
+              {t("tryingOn")} <strong className="text-ink">{shown?.title}</strong>
             </p>
             <div className="mt-5">
-              <TryOnStage item={worn} />
+              <TryOnStage item={shown} />
             </div>
-            {worn && <TryOnSwitcher rooms={rooms} current={worn} onSelect={selectItem} />}
+            {shown && <TryOnSwitcher rooms={rooms} current={shown} onSelect={setTryOnItem} />}
             <button
               type="button"
-              onClick={() => setStage("room")}
+              onClick={() => {
+                setTryOnItem(null);
+                setStage("room");
+              }}
               className="mt-6 border border-ink px-5 py-2.5 text-[11px] uppercase tracking-[0.1em] transition-colors hover:bg-ink hover:text-white"
             >
               {t("backToRoom")}

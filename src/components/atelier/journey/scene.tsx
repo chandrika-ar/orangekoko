@@ -176,13 +176,17 @@ export function Scene({
     };
   }, []);
 
-  // explicit "try this piece on" button request, mirrors walking up to the door
+  // "try this piece on" button request: walk her there herself rather than
+  // cutting straight to the door animation from wherever she's standing —
+  // sets an unclamped move target (unlike a floor click, which caps how far
+  // one click can send her) and lets the normal per-frame movement and the
+  // existing doorTriggerZ check below carry her the rest of the way.
   useEffect(() => {
     if (doorRequestToken !== lastDoorToken.current) {
       lastDoorToken.current = doorRequestToken;
-      if (stage === "room") onReachDoor();
+      if (stage === "room") moveTarget.current = { x: 0, z: layout.doorTriggerZ - 0.3 };
     }
-  }, [doorRequestToken, stage, onReachDoor]);
+  }, [doorRequestToken, stage, layout.doorTriggerZ]);
 
   // reset physical scene state whenever we return to the room stage
   useEffect(() => {
@@ -296,17 +300,15 @@ export function Scene({
           layout.entranceZ - 0.5,
         );
 
-        // Each room's display counter is solid. Snapping straight back to
-        // the boundary (pure radial push-out) traps anyone walking dead
-        // straight at the center — x never leaves 0, so they'd sit pinned
-        // against it forever holding "forward". Instead slide clockwise
-        // around the rim while in contact, so holding one direction still
-        // carries you all the way around and out the other side.
+        // Each room's display counter (and the cards ringed around it) is
+        // solid — walking straight at one just stops her there, projected
+        // radially back onto the boundary in whatever direction she
+        // approached from, the same way a real display case would.
         layout.roomCenterZ.forEach((centerZ) => {
           const dz = player.position.z - centerZ;
           const dist = Math.hypot(player.position.x, dz);
           if (dist > 0.0001 && dist < COUNTER_COLLISION_RADIUS) {
-            const angle = Math.atan2(player.position.x, dz) + 2 * dt;
+            const angle = Math.atan2(player.position.x, dz);
             player.position.x = COUNTER_COLLISION_RADIUS * Math.sin(angle);
             player.position.z = centerZ + COUNTER_COLLISION_RADIUS * Math.cos(angle);
           }
