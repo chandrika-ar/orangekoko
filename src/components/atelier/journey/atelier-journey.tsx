@@ -7,9 +7,10 @@ import { CanvasStage } from "@/components/atelier/three/canvas-stage";
 import { ExperienceFallback } from "@/components/atelier/three/experience-fallback";
 import { useWebglSupport } from "@/components/atelier/three/use-webgl-support";
 import { TryOnStage } from "@/components/atelier/try-on/try-on-stage";
+import { TryOnSwitcher } from "@/components/atelier/try-on/try-on-switcher";
 import type { CategoryRoom } from "./get-journey-items";
 import { Scene } from "./scene";
-import type { JourneyStage } from "./types";
+import type { JourneyItem, JourneyStage } from "./types";
 
 export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
   const t = useTranslations("atelierJourney");
@@ -50,6 +51,12 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
   }
 
   const selected = selectedIndex !== null ? items[selectedIndex] : null;
+  const worn = selected ?? items[0] ?? null;
+
+  function selectItem(item: JourneyItem) {
+    const index = items.findIndex((i) => i.slug === item.slug);
+    if (index !== -1) setSelectedIndex(index);
+  }
 
   return (
     <section className="relative h-[78vh] min-h-[560px] overflow-hidden border-y border-line bg-cream-deep">
@@ -147,11 +154,12 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
             <p className="text-[11px] uppercase tracking-[0.15em] text-accent">{t("doorEyebrow")}</p>
             <h2 className="mt-2 font-display text-2xl text-ink">{t("doorTitle")}</h2>
             <p className="mt-2 text-sm text-ink-soft">
-              {t("tryingOn")} <strong className="text-ink">{selected?.title ?? items[0]?.title}</strong>
+              {t("tryingOn")} <strong className="text-ink">{worn?.title}</strong>
             </p>
             <div className="mt-5">
-              <TryOnStage item={selected ?? items[0] ?? null} />
+              <TryOnStage item={worn} />
             </div>
+            {worn && <TryOnSwitcher rooms={rooms} current={worn} onSelect={selectItem} />}
             <button
               type="button"
               onClick={() => setStage("room")}
