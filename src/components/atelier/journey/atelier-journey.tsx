@@ -97,7 +97,7 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
 
       {/* top chrome */}
       <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between gap-4 p-5">
-        <div className="max-w-sm">
+        <div className="max-w-sm rounded-sm border border-line bg-white/80 px-3 py-2 backdrop-blur-sm">
           <p className="text-[11px] uppercase tracking-[0.15em] text-ink-soft">{t("eyebrow")}</p>
           <h1 className="mt-1 font-display text-2xl text-ink">{t("title")}</h1>
         </div>
@@ -118,32 +118,33 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
         </div>
       )}
 
-      {/* selection info panel */}
-      {stage === "room" && (
+      {/* selection info panel — only appears once she's actually standing near
+          a piece, so it reads as a contextual game prompt rather than a
+          permanently-visible box with a dead "—" placeholder */}
+      {stage === "room" && selected && (
         <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 p-5">
           <div className="min-w-[220px] border border-line bg-white/85 px-4 py-3 backdrop-blur-sm">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-ink-soft">
-              {selected ? t("kickerNearby") : t("kickerIdle")}
-            </p>
-            <p className="mt-1 font-display text-lg text-ink">{selected ? selected.title : "—"}</p>
-            <p className="text-xs text-accent">{selected ? selected.priceLabel : ""}</p>
+            <p className="text-[10px] uppercase tracking-[0.14em] text-ink-soft">{t("kickerNearby")}</p>
+            <p className="mt-1 font-display text-lg text-ink">{selected.title}</p>
+            <p className="text-xs text-accent">{selected.priceLabel}</p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex items-end gap-3">
             <Link
-              href={selected ? `/product/${selected.slug}` : "/shop"}
-              aria-disabled={!selected}
-              className="border border-ink px-4 py-2 text-[11px] uppercase tracking-[0.1em] text-ink transition-colors hover:bg-ink hover:text-white aria-disabled:pointer-events-none aria-disabled:opacity-35"
+              href={`/product/${selected.slug}`}
+              className="border border-ink px-4 py-2 text-[11px] uppercase tracking-[0.1em] text-ink transition-colors hover:bg-ink hover:text-white"
             >
               {t("viewDetails")}
             </Link>
-            <button
-              type="button"
-              disabled={!selected}
-              onClick={requestTryOn}
-              className="border border-accent bg-accent px-4 py-2 text-[11px] uppercase tracking-[0.1em] text-white transition-colors hover:shadow-[0_8px_20px_rgba(201,98,44,0.4)] disabled:pointer-events-none disabled:opacity-35"
-            >
-              {t("tryOnCta")}
-            </button>
+            <div className="flex flex-col items-center">
+              <span className="mb-0.5 animate-bounce text-lg leading-none text-accent">▾</span>
+              <button
+                type="button"
+                onClick={requestTryOn}
+                className="border border-accent bg-accent px-4 py-2 text-[11px] uppercase tracking-[0.1em] text-white shadow-[0_0_0_4px_rgba(201,98,44,0.25),0_8px_20px_rgba(201,98,44,0.4)] transition-colors hover:shadow-[0_0_0_6px_rgba(201,98,44,0.3),0_8px_20px_rgba(201,98,44,0.5)]"
+              >
+                {t("tryOnCta")}
+              </button>
+            </div>
           </div>
         </div>
       )}

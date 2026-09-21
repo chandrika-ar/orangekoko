@@ -76,13 +76,38 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
   }
 
   const isNecklace = item?.category === "necklaces";
+  const photo = item?.imageUrl;
 
   return (
     <div className="relative mx-auto aspect-[3/4] w-full max-w-xs overflow-hidden rounded-sm border border-line bg-ink">
       <video ref={videoRef} muted playsInline className="h-full w-full -scale-x-100 object-cover" />
 
       {isNecklace ? (
-        <span className="absolute left-1/2 top-[64%] h-3 w-3 -translate-x-1/2 rounded-full bg-accent shadow-[0_0_10px_rgba(201,98,44,0.8)]" />
+        photo ? (
+          // eslint-disable-next-line @next/next/no-img-element -- small fixed-position overlay thumbnail, not a page image
+          <img
+            src={photo}
+            alt=""
+            className="absolute left-1/2 top-[62%] h-16 w-16 -translate-x-1/2 rounded-full border-2 border-white/80 bg-white object-cover shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+          />
+        ) : (
+          <span className="absolute left-1/2 top-[64%] h-3 w-3 -translate-x-1/2 rounded-full bg-accent shadow-[0_0_10px_rgba(201,98,44,0.8)]" />
+        )
+      ) : photo ? (
+        <>
+          {/* eslint-disable-next-line @next/next/no-img-element -- small fixed-position overlay thumbnail, not a page image */}
+          <img
+            src={photo}
+            alt=""
+            className="absolute left-[36%] top-[44%] h-10 w-10 -translate-x-1/2 rounded-full border-2 border-white/80 bg-white object-cover shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element -- small fixed-position overlay thumbnail, not a page image */}
+          <img
+            src={photo}
+            alt=""
+            className="absolute left-[64%] top-[44%] h-10 w-10 -translate-x-1/2 rounded-full border-2 border-white/80 bg-white object-cover shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+          />
+        </>
       ) : (
         <>
           <span className="absolute left-[36%] top-[46%] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-accent shadow-[0_0_8px_rgba(201,98,44,0.8)]" />
