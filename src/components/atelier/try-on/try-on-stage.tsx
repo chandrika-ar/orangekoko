@@ -3,24 +3,37 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { CameraGate } from "./camera-gate";
+import { startFaceTracking, type FaceAnchors } from "./face-tracking";
 import type { JourneyItem } from "../journey/types";
 
 type CameraState = "idle" | "requesting" | "granted" | "denied" | "unsupported";
 
+// Fallback screen position (fraction of the video box) for whenever a face
+// isn't currently being tracked — no face in frame yet, the model is still
+// loading, or tracking failed to start at all. Matches where these used to
+// sit permanently before real tracking existed.
+const DEFAULT_POS = {
+  necklace: { x: 0.5, y: 0.62 },
+  earLeft: { x: 0.36, y: 0.44 },
+  earRight: { x: 0.64, y: 0.44 },
+};
+const NECKLACE_SIZE = 60;
+const EAR_SIZE = 40;
+
 /**
- * Live camera mirror with an approximately-placed overlay for the selected
- * piece — NOT face-tracked yet. Real landmark tracking (see the design doc's
- * "阶段一/阶段二" split) needs a model fetched from Google's model host plus
- * the @mediapipe/tasks-vision WASM runtime, and — more importantly — a human
- * looking at a real face through a real camera to tune where the landmarks
- * actually put the earring/necklace. Neither is possible to verify from a
- * sandboxed dev container, so this ships the honest, testable slice: real
- * camera access, real mirror, a fixed approximate position.
+ * Live camera mirror with the selected piece overlaid at the wearer's actual
+ * ear/neck position, tracked frame-by-frame from MediaPipe face landmarks
+ * (see face-tracking.ts) — falls back to a fixed approximate position
+ * whenever no face is currently detected, so the view never shows nothing.
  */
 export function TryOnStage({ item }: { item: JourneyItem | null }) {
   const t = useTranslations("atelierJourney");
+  const stageRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const necklaceRef = useRef<HTMLDivElement>(null);
+  const earLeftRef = useRef<HTMLDivElement>(null);
+  const earRightRef = useRef<HTMLDivElement>(null);
   const [cameraState, setCameraState] = useState<CameraState>("idle");
 
   useEffect(() => {
@@ -38,6 +51,84 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
     if (cameraState !== "granted" || !videoRef.current || !streamRef.current) return;
     videoRef.current.srcObject = streamRef.current;
     videoRef.current.play().catch(() => {});
+  }, [cameraState]);
+
+  // Positions the three overlay boxes each frame — imperative, not React
+  // state, so this can run at video framerate without a re-render per frame
+  // (the same pattern the 3D scene uses for its own per-frame updates).
+  useEffect(() => {
+    if (cameraState !== "granted" || !videoRef.current) return;
+    const video = videoRef.current;
+
+    function place(
+      el: HTMLDivElement | null,
+      xPx: number,
+      yPx: number,
+      sizePx: number,
+      rotateRad: number,
+    ) {
+      if (!el) return;
+      el.style.width = `${sizePx}px`;
+      el.style.height = `${sizePx}px`;
+      el.style.transform = `translate(${xPx - sizePx / 2}px, ${yPx - sizePx / 2}px) rotate(${rotateRad}rad)`;
+    }
+
+    function placeDefaults() {
+      const box = stageRef.current;
+      if (!box) return;
+      const w = box.clientWidth;
+      const h = box.clientHeight;
+      place(necklaceRef.current, DEFAULT_POS.necklace.x * w, DEFAULT_POS.necklace.y * h, NECKLACE_SIZE, 0);
+      place(earLeftRef.current, DEFAULT_POS.earLeft.x * w, DEFAULT_POS.earLeft.y * h, EAR_SIZE, 0);
+      place(earRightRef.current, DEFAULT_POS.earRight.x * w, DEFAULT_POS.earRight.y * h, EAR_SIZE, 0);
+    }
+
+    // Maps a landmark normalized to the raw camera frame into a pixel
+    // position within the (possibly differently-aspected) display box,
+    // replicating the same crop/scale `object-cover` applies to the video
+    // itself — otherwise tracked points drift off the actual face whenever
+    // the camera's native aspect ratio doesn't match the box.
+    function toBoxPx(nx: number, ny: number) {
+      const box = stageRef.current;
+      if (!box || !video.videoWidth || !video.videoHeight) return null;
+      const boxW = box.clientWidth;
+      const boxH = box.clientHeight;
+      const scale = Math.max(boxW / video.videoWidth, boxH / video.videoHeight);
+      const renderedW = video.videoWidth * scale;
+      const renderedH = video.videoHeight * scale;
+      const offsetX = (boxW - renderedW) / 2;
+      const offsetY = (boxH - renderedH) / 2;
+      return { x: offsetX + nx * renderedW, y: offsetY + ny * renderedH, renderedW, renderedH };
+    }
+
+    function onFrame(anchors: FaceAnchors | null) {
+      if (!anchors) {
+        placeDefaults();
+        return;
+      }
+      const left = toBoxPx(anchors.leftEar.x, anchors.leftEar.y);
+      const right = toBoxPx(anchors.rightEar.x, anchors.rightEar.y);
+      const neck = toBoxPx(anchors.neck.x, anchors.neck.y);
+      if (!left || !right || !neck) {
+        placeDefaults();
+        return;
+      }
+      const earSpanPx = Math.hypot(right.x - left.x, right.y - left.y);
+      const rollRad = Math.atan2(right.y - left.y, right.x - left.x);
+      const earSize = clamp(earSpanPx * 0.32, 22, 90);
+      const neckSize = clamp(earSpanPx * 0.55, 28, 120);
+
+      place(earLeftRef.current, left.x, left.y, earSize, rollRad);
+      place(earRightRef.current, right.x, right.y, earSize, rollRad);
+      place(necklaceRef.current, neck.x, neck.y, neckSize, rollRad);
+    }
+
+    placeDefaults();
+    const stop = startFaceTracking(video, onFrame, () => {
+      // Model/WASM failed to load (offline, blocked CDN, unsupported
+      // browser) — the fixed default position placed above just stays put.
+    });
+    return stop;
   }, [cameraState]);
 
   async function requestCamera() {
@@ -79,45 +170,45 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
   const photo = item?.imageUrl;
 
   return (
-    <div className="relative mx-auto aspect-[3/4] w-full max-w-xs overflow-hidden rounded-sm border border-line bg-ink">
-      <video ref={videoRef} muted playsInline className="h-full w-full -scale-x-100 object-cover" />
+    <div ref={stageRef} className="relative mx-auto aspect-[3/4] w-full max-w-xs overflow-hidden rounded-sm border border-line bg-ink">
+      {/* video + overlays share one mirror transform so tracked points (computed
+          against the raw, unmirrored camera frame) land in the right spot
+          without needing to flip the math by hand */}
+      <div className="absolute inset-0 -scale-x-100">
+        <video ref={videoRef} muted playsInline className="h-full w-full object-cover" />
 
-      {isNecklace ? (
-        photo ? (
-          // eslint-disable-next-line @next/next/no-img-element -- small fixed-position overlay thumbnail, not a page image
-          <img
-            src={photo}
-            alt=""
-            className="absolute left-1/2 top-[62%] h-16 w-16 -translate-x-1/2 rounded-full border-2 border-white/80 bg-white object-cover shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
-          />
-        ) : (
-          <span className="absolute left-1/2 top-[64%] h-3 w-3 -translate-x-1/2 rounded-full bg-accent shadow-[0_0_10px_rgba(201,98,44,0.8)]" />
-        )
-      ) : photo ? (
-        <>
-          {/* eslint-disable-next-line @next/next/no-img-element -- small fixed-position overlay thumbnail, not a page image */}
-          <img
-            src={photo}
-            alt=""
-            className="absolute left-[36%] top-[44%] h-10 w-10 -translate-x-1/2 rounded-full border-2 border-white/80 bg-white object-cover shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element -- small fixed-position overlay thumbnail, not a page image */}
-          <img
-            src={photo}
-            alt=""
-            className="absolute left-[64%] top-[44%] h-10 w-10 -translate-x-1/2 rounded-full border-2 border-white/80 bg-white object-cover shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
-          />
-        </>
-      ) : (
-        <>
-          <span className="absolute left-[36%] top-[46%] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-accent shadow-[0_0_8px_rgba(201,98,44,0.8)]" />
-          <span className="absolute left-[64%] top-[46%] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-accent shadow-[0_0_8px_rgba(201,98,44,0.8)]" />
-        </>
-      )}
+        <div ref={necklaceRef} className={`absolute left-0 top-0 ${isNecklace ? "" : "hidden"}`}>
+          <OverlayDot photo={photo} shadow="shadow-[0_2px_10px_rgba(0,0,0,0.5)]" />
+        </div>
+        <div ref={earLeftRef} className={`absolute left-0 top-0 ${isNecklace ? "hidden" : ""}`}>
+          <OverlayDot photo={photo} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+        </div>
+        <div ref={earRightRef} className={`absolute left-0 top-0 ${isNecklace ? "hidden" : ""}`}>
+          <OverlayDot photo={photo} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+        </div>
+      </div>
 
       <p className="absolute inset-x-0 bottom-0 bg-ink/70 px-3 py-1.5 text-center text-[9px] uppercase tracking-[0.08em] text-white">
         {t("approxPlacement")}
       </p>
     </div>
   );
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function OverlayDot({ photo, shadow }: { photo: string | undefined; shadow: string }) {
+  if (photo) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element -- small tracked overlay thumbnail, not a page image
+      <img
+        src={photo}
+        alt=""
+        className={`h-full w-full rounded-full border-2 border-white/80 bg-white object-cover ${shadow}`}
+      />
+    );
+  }
+  return <div className={`h-full w-full rounded-full bg-accent ${shadow}`} />;
 }
