@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "@/i18n/navigation";
 import { CanvasStage } from "@/components/atelier/three/canvas-stage";
 import { ExperienceFallback } from "@/components/atelier/three/experience-fallback";
 import { useWebglSupport } from "@/components/atelier/three/use-webgl-support";
@@ -33,6 +34,12 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
   // fetching a font at runtime (see card-texture.ts), so they need the site's
   // actual computed font stacks, read off real DOM elements using those classes.
   const fontProbeRef = useRef<HTMLDivElement>(null);
+  // Positioned every frame by Scene (see its anchorRef prop) to track the
+  // nearest card's on-screen projection — a plain ref rather than React
+  // state so the panel can follow the card at frame rate without a
+  // per-frame re-render, using the same imperative pattern the 3D scene
+  // itself uses for its lights and door animation.
+  const anchorRef = useRef<HTMLDivElement>(null);
   const [fonts, setFonts] = useState({ display: "Georgia, serif", sans: "Arial, sans-serif" });
   useEffect(() => {
     const probe = fontProbeRef.current;
@@ -87,12 +94,56 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
             displayFont={fonts.display}
             sansFont={fonts.sans}
             onSelect={setSelectedIndex}
-            onTryOn={requestTryOn}
             onReachDoor={() => setStage((s) => (s === "room" ? "door" : s))}
             onDoorComplete={() => setStage("tryon")}
+            anchorRef={anchorRef}
           />
         </CanvasStage>
       </div>
+
+      {/* "nearby item" callout — positioned every frame by Scene (via
+          anchorRef) to sit right above whatever card she's standing at,
+          with a tail pointing straight down at it, so it reads as a
+          contextual game prompt rather than a fixed corner button
+          disconnected from what it acts on */}
+      {stage === "room" && selected && (
+        <div
+          ref={anchorRef}
+          className="absolute flex w-[210px] -translate-x-1/2 -translate-y-[calc(100%+14px)] flex-col items-stretch gap-2 rounded-sm border border-line bg-white/95 p-3 text-left shadow-[0_10px_28px_rgba(0,0,0,0.4)]"
+        >
+          <span className="absolute -bottom-[7px] left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-b border-r border-line bg-white/95" />
+          <div className="flex items-center gap-2">
+            {selected.imageUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element -- small fixed-size overlay thumbnail in a screen-tracked callout, not a page image
+              <img
+                src={selected.imageUrl}
+                alt=""
+                className="h-10 w-10 shrink-0 rounded-sm border border-line object-cover"
+              />
+            ) : null}
+            <div className="min-w-0">
+              <p className="text-[9px] uppercase tracking-[0.14em] text-ink-soft">{t("kickerNearby")}</p>
+              <p className="truncate font-display text-sm leading-tight text-ink">{selected.title}</p>
+              <p className="text-xs text-accent">{selected.priceLabel}</p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Link
+              href={`/product/${selected.slug}`}
+              className="flex-1 border border-ink px-2 py-1.5 text-center text-[9px] uppercase tracking-[0.1em] text-ink transition-colors hover:bg-ink hover:text-white"
+            >
+              {t("viewDetails")}
+            </Link>
+            <button
+              type="button"
+              onClick={() => requestTryOn(selected)}
+              className="flex-1 border border-accent bg-accent px-2 py-1.5 text-[9px] uppercase tracking-[0.1em] text-white shadow-[0_0_0_3px_rgba(201,98,44,0.25)] transition-colors hover:shadow-[0_0_0_4px_rgba(201,98,44,0.35)]"
+            >
+              {t("tryOnCta")}
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* top chrome */}
       <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between gap-4 p-5">

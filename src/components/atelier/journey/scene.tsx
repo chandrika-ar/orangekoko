@@ -1,16 +1,18 @@
 "use client";
 
-import { Html } from "@react-three/drei";
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
-import { useTranslations } from "next-intl";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, type RefObject } from "react";
 import * as THREE from "three";
-import { Link } from "@/i18n/navigation";
 import { makeCardTexture, makeSignTexture } from "./card-texture";
 import { CustomerModel } from "./customer-model";
 import type { CategoryRoom } from "./get-journey-items";
 import { makeGlowTexture, makeWallPanelTexture, makeWoodFloorTexture } from "./surface-texture";
-import type { JourneyItem, JourneyStage } from "./types";
+import type { JourneyStage } from "./types";
+
+// World-space offset (above the card's own origin) that the on-screen
+// "nearby item" callout tracks — see the projection in the room-stage
+// useFrame block below.
+const CARD_ANCHOR_OFFSET = new THREE.Vector3(0, 1.05, 0);
 
 // Layout constants. Room-length values (door/entrance position, floor and
 // wall spans) are derived from these plus the number of category rooms —
@@ -77,9 +79,9 @@ export function Scene({
   displayFont,
   sansFont,
   onSelect,
-  onTryOn,
   onReachDoor,
   onDoorComplete,
+  anchorRef,
 }: {
   rooms: CategoryRoom[];
   stage: JourneyStage;
@@ -90,12 +92,17 @@ export function Scene({
   displayFont: string;
   sansFont: string;
   onSelect: (index: number | null) => void;
-  onTryOn: (item: JourneyItem) => void;
   onReachDoor: () => void;
   onDoorComplete: () => void;
+  /** Positioned (left/top, in px) every frame to track the nearest card's
+      on-screen projection — see atelier-journey.tsx, which renders the
+      actual "nearby item" panel content at that position. Kept as a plain
+      DOM ref rather than routing this through React state or drei's <Html>
+      so it updates every frame without a re-render, using the same
+      imperative-ref pattern already used for the lights/door below. */
+  anchorRef: RefObject<HTMLDivElement | null>;
 }) {
-  const t = useTranslations("atelierJourney");
-  const { camera } = useThree();
+  const { camera, size } = useThree();
   const playerRef = useRef<THREE.Group>(null);
   const playerLightRef = useRef<THREE.PointLight>(null);
   const doorPivotRef = useRef<THREE.Group>(null);
@@ -413,6 +420,23 @@ export function Scene({
       const lookAt = player.position.clone().addScaledVector(forward, 1.6);
       lookAt.y = player.position.y + 1.2;
       camera.lookAt(lookAt);
+
+      // Project the nearest card's anchor point to a screen-space pixel
+      // position, after the camera above has already been moved this frame
+      // — the "nearby item" panel (rendered by the parent, outside the
+      // canvas) reads this ref to sit right above whatever card it's about,
+      // rather than as a fixed corner panel disconnected from it.
+      const nearestGroup = nearest !== null ? cardRefs.current[nearest] : null;
+      if (nearestGroup && anchorRef.current) {
+        camera.updateMatrixWorld();
+        const world = nearestGroup.localToWorld(CARD_ANCHOR_OFFSET.clone());
+        world.project(camera);
+        anchorRef.current.style.display = world.z < 1 ? "block" : "none";
+        anchorRef.current.style.left = `${((world.x + 1) / 2) * size.width}px`;
+        anchorRef.current.style.top = `${((1 - world.y) / 2) * size.height}px`;
+      } else if (anchorRef.current) {
+        anchorRef.current.style.display = "none";
+      }
     }
 
     if (stage === "door") {
@@ -619,48 +643,6 @@ export function Scene({
             <circleGeometry args={[0.62, 24]} />
             <meshBasicMaterial color={COLORS.ink} transparent opacity={0.12} />
           </mesh>
-
-          {/* the "nearby item" prompt, anchored right above whichever card
-              she's actually standing at — reads as a game NPC/interact
-              callout pointing straight down at the piece it's about, rather
-              than a fixed corner button disconnected from what it acts on */}
-          {stage === "room" && selectedIndex === i && (
-            <Html center position={[0, 1.05, 0]} zIndexRange={[10, 0]}>
-              <div className="relative flex w-[210px] flex-col items-stretch gap-2 rounded-sm border border-line bg-white/95 p-3 text-left shadow-[0_10px_28px_rgba(0,0,0,0.4)]">
-                <span className="absolute -bottom-[7px] left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-b border-r border-line bg-white/95" />
-                <div className="flex items-center gap-2">
-                  {card.item.imageUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element -- small fixed-size overlay thumbnail inside a Html-anchored 3D callout, not a page image
-                    <img
-                      src={card.item.imageUrl}
-                      alt=""
-                      className="h-10 w-10 shrink-0 rounded-sm border border-line object-cover"
-                    />
-                  ) : null}
-                  <div className="min-w-0">
-                    <p className="text-[9px] uppercase tracking-[0.14em] text-ink-soft">{t("kickerNearby")}</p>
-                    <p className="truncate font-display text-sm leading-tight text-ink">{card.item.title}</p>
-                    <p className="text-xs text-accent">{card.item.priceLabel}</p>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <Link
-                    href={`/product/${card.item.slug}`}
-                    className="flex-1 border border-ink px-2 py-1.5 text-center text-[9px] uppercase tracking-[0.1em] text-ink transition-colors hover:bg-ink hover:text-white"
-                  >
-                    {t("viewDetails")}
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={() => onTryOn(card.item)}
-                    className="flex-1 border border-accent bg-accent px-2 py-1.5 text-[9px] uppercase tracking-[0.1em] text-white shadow-[0_0_0_3px_rgba(201,98,44,0.25)] transition-colors hover:shadow-[0_0_0_4px_rgba(201,98,44,0.35)]"
-                  >
-                    {t("tryOnCta")}
-                  </button>
-                </div>
-              </div>
-            </Html>
-          )}
         </group>
       ))}
 
