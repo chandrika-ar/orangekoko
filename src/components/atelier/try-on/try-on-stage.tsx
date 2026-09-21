@@ -29,6 +29,17 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
     };
   }, []);
 
+  // The <video> element below only exists once cameraState is "granted" —
+  // while permission is still being requested, this component renders
+  // CameraGate instead, so videoRef.current is null at that point no matter
+  // what. Attaching the stream has to wait until the video element has
+  // actually mounted, which happens on the render this effect reacts to.
+  useEffect(() => {
+    if (cameraState !== "granted" || !videoRef.current || !streamRef.current) return;
+    videoRef.current.srcObject = streamRef.current;
+    videoRef.current.play().catch(() => {});
+  }, [cameraState]);
+
   async function requestCamera() {
     if (!navigator.mediaDevices?.getUserMedia) {
       setCameraState("unsupported");
@@ -41,10 +52,6 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
         audio: false,
       });
       streamRef.current = stream;
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        await videoRef.current.play();
-      }
       setCameraState("granted");
     } catch {
       setCameraState("denied");
