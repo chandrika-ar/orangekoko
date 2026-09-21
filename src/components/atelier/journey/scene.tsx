@@ -1,13 +1,16 @@
 "use client";
 
+import { Html } from "@react-three/drei";
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
+import { Link } from "@/i18n/navigation";
 import { makeCardTexture, makeSignTexture } from "./card-texture";
 import { CustomerModel } from "./customer-model";
 import type { CategoryRoom } from "./get-journey-items";
 import { makeGlowTexture, makeWallPanelTexture, makeWoodFloorTexture } from "./surface-texture";
-import type { JourneyStage } from "./types";
+import type { JourneyItem, JourneyStage } from "./types";
 
 // Layout constants. Room-length values (door/entrance position, floor and
 // wall spans) are derived from these plus the number of category rooms —
@@ -74,6 +77,7 @@ export function Scene({
   displayFont,
   sansFont,
   onSelect,
+  onTryOn,
   onReachDoor,
   onDoorComplete,
 }: {
@@ -86,11 +90,14 @@ export function Scene({
   displayFont: string;
   sansFont: string;
   onSelect: (index: number | null) => void;
+  onTryOn: (item: JourneyItem) => void;
   onReachDoor: () => void;
   onDoorComplete: () => void;
 }) {
+  const t = useTranslations("atelierJourney");
   const { camera } = useThree();
   const playerRef = useRef<THREE.Group>(null);
+  const playerLightRef = useRef<THREE.PointLight>(null);
   const doorPivotRef = useRef<THREE.Group>(null);
   const doorGlowRef = useRef<THREE.PointLight>(null);
   const doorGlowSpriteRef = useRef<THREE.Mesh>(null);
@@ -353,6 +360,15 @@ export function Scene({
         player.rotation.y += diff * (reduceMotion ? 1 : Math.min(dt * 10, 1));
       }
 
+      // A soft light that travels with her, like a lantern she's carrying —
+      // the fixed room lights only really reach the area right around each
+      // display ring, so a long corridor between two category rooms (or the
+      // stretch back to the entrance) would otherwise read as a genuinely
+      // unlit dead zone with nothing to see or do.
+      if (playerLightRef.current) {
+        playerLightRef.current.position.set(player.position.x, 2.3, player.position.z);
+      }
+
       if (player.position.z <= layout.doorTriggerZ + 0.02) {
         onReachDoor();
       }
@@ -455,6 +471,11 @@ export function Scene({
       <hemisphereLight args={[COLORS.cream, COLORS.woodDeep, 1.15]} />
       <directionalLight args={[COLORS.accentSoft, 1.1]} position={[3, 7, 5]} />
       <pointLight args={[COLORS.accentSoft, 0.45]} position={[-4, 3, 3]} />
+      <pointLight
+        ref={playerLightRef}
+        args={[COLORS.accentSoft, 1, 7.5]}
+        position={[playerStart.x, 2.3, playerStart.z]}
+      />
       <fog attach="fog" args={[COLORS.wood, 9, 26]} />
 
       {/* floor */}
@@ -598,6 +619,48 @@ export function Scene({
             <circleGeometry args={[0.62, 24]} />
             <meshBasicMaterial color={COLORS.ink} transparent opacity={0.12} />
           </mesh>
+
+          {/* the "nearby item" prompt, anchored right above whichever card
+              she's actually standing at — reads as a game NPC/interact
+              callout pointing straight down at the piece it's about, rather
+              than a fixed corner button disconnected from what it acts on */}
+          {stage === "room" && selectedIndex === i && (
+            <Html center position={[0, 1.05, 0]} zIndexRange={[10, 0]}>
+              <div className="relative flex w-[210px] flex-col items-stretch gap-2 rounded-sm border border-line bg-white/95 p-3 text-left shadow-[0_10px_28px_rgba(0,0,0,0.4)]">
+                <span className="absolute -bottom-[7px] left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-b border-r border-line bg-white/95" />
+                <div className="flex items-center gap-2">
+                  {card.item.imageUrl ? (
+                    // eslint-disable-next-line @next/next/no-img-element -- small fixed-size overlay thumbnail inside a Html-anchored 3D callout, not a page image
+                    <img
+                      src={card.item.imageUrl}
+                      alt=""
+                      className="h-10 w-10 shrink-0 rounded-sm border border-line object-cover"
+                    />
+                  ) : null}
+                  <div className="min-w-0">
+                    <p className="text-[9px] uppercase tracking-[0.14em] text-ink-soft">{t("kickerNearby")}</p>
+                    <p className="truncate font-display text-sm leading-tight text-ink">{card.item.title}</p>
+                    <p className="text-xs text-accent">{card.item.priceLabel}</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Link
+                    href={`/product/${card.item.slug}`}
+                    className="flex-1 border border-ink px-2 py-1.5 text-center text-[9px] uppercase tracking-[0.1em] text-ink transition-colors hover:bg-ink hover:text-white"
+                  >
+                    {t("viewDetails")}
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => onTryOn(card.item)}
+                    className="flex-1 border border-accent bg-accent px-2 py-1.5 text-[9px] uppercase tracking-[0.1em] text-white shadow-[0_0_0_3px_rgba(201,98,44,0.25)] transition-colors hover:shadow-[0_0_0_4px_rgba(201,98,44,0.35)]"
+                  >
+                    {t("tryOnCta")}
+                  </button>
+                </div>
+              </div>
+            </Html>
+          )}
         </group>
       ))}
 

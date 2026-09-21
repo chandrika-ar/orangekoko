@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "@/i18n/navigation";
 import { CanvasStage } from "@/components/atelier/three/canvas-stage";
 import { ExperienceFallback } from "@/components/atelier/three/experience-fallback";
 import { useWebglSupport } from "@/components/atelier/three/use-webgl-support";
@@ -61,9 +60,8 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
   // where there was no button click to lock anything in.
   const shown = tryOnItem ?? worn;
 
-  function requestTryOn() {
-    if (!worn) return;
-    setTryOnItem(worn);
+  function requestTryOn(item: JourneyItem) {
+    setTryOnItem(item);
     setDoorRequestToken((n) => n + 1);
   }
 
@@ -89,6 +87,7 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
             displayFont={fonts.display}
             sansFont={fonts.sans}
             onSelect={setSelectedIndex}
+            onTryOn={requestTryOn}
             onReachDoor={() => setStage((s) => (s === "room" ? "door" : s))}
             onDoorComplete={() => setStage("tryon")}
           />
@@ -115,45 +114,6 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
       {stage === "room" && !hasMoved && (
         <div className="pointer-events-none absolute left-1/2 top-16 -translate-x-1/2 rounded-full border border-line bg-white/80 px-4 py-2 text-[10px] uppercase tracking-[0.12em] text-ink-soft">
           {t("hintMove")}
-        </div>
-      )}
-
-      {/* selection info panel — only appears once she's actually standing near
-          a piece, so it reads as a contextual game prompt rather than a
-          permanently-visible box with a dead "—" placeholder */}
-      {stage === "room" && selected && (
-        <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 p-5">
-          <div className="min-w-[220px] border border-line bg-white/85 px-4 py-3 backdrop-blur-sm">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-ink-soft">{t("kickerNearby")}</p>
-            <p className="mt-1 font-display text-lg text-ink">{selected.title}</p>
-            <p className="text-xs text-accent">{selected.priceLabel}</p>
-          </div>
-          <div className="flex items-end gap-3">
-            <Link
-              href={`/product/${selected.slug}`}
-              className="border border-ink px-4 py-2 text-[11px] uppercase tracking-[0.1em] text-ink transition-colors hover:bg-ink hover:text-white"
-            >
-              {t("viewDetails")}
-            </Link>
-            <div className="flex flex-col items-center">
-              <span className="mb-0.5 animate-bounce text-lg leading-none text-accent">▾</span>
-              <button
-                type="button"
-                onClick={requestTryOn}
-                className="border border-accent bg-accent px-4 py-2 text-[11px] uppercase tracking-[0.1em] text-white shadow-[0_0_0_4px_rgba(201,98,44,0.25),0_8px_20px_rgba(201,98,44,0.4)] transition-colors hover:shadow-[0_0_0_6px_rgba(201,98,44,0.3),0_8px_20px_rgba(201,98,44,0.5)]"
-              >
-                {t("tryOnCta")}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {stage === "room" && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-24 flex justify-center">
-          <p className="rounded-full border border-line bg-white/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.12em] text-ink-soft">
-            {t("promptDoor")}
-          </p>
         </div>
       )}
 
