@@ -6,7 +6,7 @@ import * as THREE from "three";
 import { makeCardTexture, makeSignTexture } from "./card-texture";
 import { CustomerModel } from "./customer-model";
 import type { CategoryRoom } from "./get-journey-items";
-import { makeWallPanelTexture, makeWoodFloorTexture } from "./surface-texture";
+import { makeGlowTexture, makeWallPanelTexture, makeWoodFloorTexture } from "./surface-texture";
 import type { JourneyStage } from "./types";
 
 // Layout constants. Room-length values (door/entrance position, floor and
@@ -32,6 +32,7 @@ const COUNTER_RADIUS = RADIUS_CAT * 0.62; // matches the counter cylinder's top 
 // the card ends up just ahead of her, not behind her or overlapping her.
 const COUNTER_COLLISION_RADIUS = RADIUS_CAT + 0.35;
 const MOVE_SPEED = 3.3;
+const AUTO_WALK_SPEED = 5; // brisker than manual walking for the "try this piece on" walk to the door
 const MAX_CLICK_MOVE = 6; // cap on how far a single floor click can send the player
 const DOOR_DURATION = 1.6;
 
@@ -92,6 +93,7 @@ export function Scene({
   const playerRef = useRef<THREE.Group>(null);
   const doorPivotRef = useRef<THREE.Group>(null);
   const doorGlowRef = useRef<THREE.PointLight>(null);
+  const doorGlowSpriteRef = useRef<THREE.Mesh>(null);
   const cardRefs = useRef<(THREE.Group | null)[]>([]);
   const movingRef = useRef(false);
 
@@ -138,9 +140,15 @@ export function Scene({
   );
   const floorTexture = useMemo(() => makeWoodFloorTexture(), []);
   const wallTexture = useMemo(() => makeWallPanelTexture(), []);
+  const glowTexture = useMemo(() => makeGlowTexture(), []);
 
   const keys = useRef<Record<string, boolean>>({});
   const moveTarget = useRef<{ x: number; z: number } | null>(null);
+  // True only for the walk kicked off by "try this piece on" — cleared the
+  // moment she arrives, or the moment anything else takes over movement
+  // (a manual key press, a floor/card click), so the speed boost below
+  // never lingers past that one walk.
+  const autoWalking = useRef(false);
   // Current speed eases toward the target (0 or MOVE_SPEED) instead of
   // snapping, and the last held direction persists through that ease-out so
   // a released key glides to a stop instead of stopping dead mid-step.
@@ -165,7 +173,10 @@ export function Scene({
       if (navKeys.includes(e.key)) e.preventDefault();
       keys.current[e.key.toLowerCase()] = true;
       const moveKeys = ["arrowup", "arrowdown", "arrowleft", "arrowright", "w", "a", "s", "d"];
-      if (moveKeys.includes(e.key.toLowerCase())) moveTarget.current = null;
+      if (moveKeys.includes(e.key.toLowerCase())) {
+        moveTarget.current = null;
+        autoWalking.current = false;
+      }
     }
     function onKeyUp(e: KeyboardEvent) {
       keys.current[e.key.toLowerCase()] = false;
@@ -195,7 +206,10 @@ export function Scene({
   useEffect(() => {
     if (doorRequestToken !== lastDoorToken.current) {
       lastDoorToken.current = doorRequestToken;
-      if (stage === "room") moveTarget.current = { x: 0.2, z: layout.doorTriggerZ - 0.3 };
+      if (stage === "room") {
+        moveTarget.current = { x: 0.2, z: layout.doorTriggerZ - 0.3 };
+        autoWalking.current = true;
+      }
     }
   }, [doorRequestToken, stage, layout.doorTriggerZ]);
 
@@ -210,7 +224,12 @@ export function Scene({
     if (playerRef.current) playerRef.current.rotation.y = Math.PI;
     if (doorPivotRef.current) doorPivotRef.current.rotation.y = 0;
     if (doorGlowRef.current) doorGlowRef.current.intensity = 0;
+    if (doorGlowSpriteRef.current) {
+      doorGlowSpriteRef.current.scale.setScalar(0.001);
+      (doorGlowSpriteRef.current.material as THREE.MeshBasicMaterial).opacity = 0;
+    }
     moveTarget.current = null;
+    autoWalking.current = false;
     speed.current = 0;
     lastDirX.current = 0;
     lastDirZ.current = 0;
@@ -241,6 +260,7 @@ export function Scene({
     const clamped = Math.min(dist, MAX_CLICK_MOVE);
     const scale = dist > 0.0001 ? clamped / dist : 0;
     moveTarget.current = { x: player.x + dx * scale, z: player.z + dz * scale };
+    autoWalking.current = false;
   }
 
   function handleCardClick(index: number) {
@@ -257,6 +277,7 @@ export function Scene({
         x: dir.x * standDist,
         z: card.centerZ + dir.y * standDist,
       };
+      autoWalking.current = false;
     };
   }
 
@@ -285,6 +306,7 @@ export function Scene({
           inputZ = tdz / dist;
         } else {
           moveTarget.current = null;
+          autoWalking.current = false;
         }
       }
 
@@ -296,7 +318,7 @@ export function Scene({
 
       // Ease speed toward its target instead of snapping, so a step starts
       // and ends with a glide rather than a jump-cut.
-      const targetSpeed = hasInput ? MOVE_SPEED : 0;
+      const targetSpeed = hasInput ? (autoWalking.current ? AUTO_WALK_SPEED : MOVE_SPEED) : 0;
       const accel = reduceMotion ? 1 : Math.min(dt * 7, 1);
       speed.current = THREE.MathUtils.lerp(speed.current, targetSpeed, accel);
 
@@ -392,7 +414,11 @@ export function Scene({
       player.position.lerpVectors(doorPlayerFrom.current, new THREE.Vector3(-0.2, 0, layout.doorZ - 0.3), eased);
 
       if (doorPivotRef.current) doorPivotRef.current.rotation.y = -1.95 * eased;
-      if (doorGlowRef.current) doorGlowRef.current.intensity = 2.4 * eased;
+      if (doorGlowRef.current) doorGlowRef.current.intensity = 3.2 * eased;
+      if (doorGlowSpriteRef.current) {
+        doorGlowSpriteRef.current.scale.setScalar(0.4 + eased * 2.4);
+        (doorGlowSpriteRef.current.material as THREE.MeshBasicMaterial).opacity = eased;
+      }
 
       cardRefs.current.forEach((group) => {
         group?.traverse((child) => {
@@ -600,11 +626,25 @@ export function Scene({
           <meshStandardMaterial color={COLORS.brass} roughness={0.5} metalness={0.4} />
         </mesh>
       ))}
-      <pointLight ref={doorGlowRef} args={[COLORS.accentSoft, 0, 8]} position={[0, DOOR_H * 0.65, layout.doorZ - 0.4]} />
+      <pointLight ref={doorGlowRef} args={[COLORS.accentSoft, 0, 10]} position={[0, DOOR_H * 0.65, layout.doorZ - 0.4]} />
+      {/* the visible shape of that light spilling through the doorway as it
+          opens — a plain point light has no visible glow of its own without
+          bloom post-processing, which this scene doesn't have */}
+      <mesh ref={doorGlowSpriteRef} position={[0, DOOR_H * 0.55, layout.doorZ - 0.15]} scale={0.001}>
+        <planeGeometry args={[1, 1]} />
+        <meshBasicMaterial
+          map={glowTexture}
+          transparent
+          opacity={0}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
 
       {/* the player: a rigged customer figure walking the shop floor */}
       <group ref={playerRef} position={playerStart} rotation-y={Math.PI}>
-        <CustomerModel movingRef={movingRef} reduceMotion={reduceMotion} />
+        <CustomerModel movingRef={movingRef} speedRef={speed} baseSpeed={MOVE_SPEED} reduceMotion={reduceMotion} />
         <mesh position={[0, 0.015, 0]} rotation-x={-Math.PI / 2}>
           <circleGeometry args={[0.34, 20]} />
           <meshBasicMaterial color={COLORS.ink} transparent opacity={0.2} />

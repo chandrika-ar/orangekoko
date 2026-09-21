@@ -122,9 +122,19 @@ export function makeSignTexture(label: string, displayFont: string) {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillStyle = "#f6f1e9";
-  ctx.font = `500 40px ${displayFont}`;
-  // Manual letter-spacing: canvas has no tracking property.
+  // Manual letter-spacing: canvas has no tracking property. How wide that
+  // renders depends entirely on the actual active font (a dev sandbox
+  // falling back to a generic serif measures narrower than the real
+  // display font a live site loads), so measure it and shrink to fit
+  // rather than assuming a fixed size always clears the canvas — a fixed
+  // size clipped both ends of longer labels under the real font.
   const spaced = label.toUpperCase().split("").join("  ");
+  const maxTextWidth = width - 80;
+  const baseSize = 40;
+  ctx.font = `500 ${baseSize}px ${displayFont}`;
+  const measured = ctx.measureText(spaced).width;
+  const fontSize = measured > maxTextWidth ? Math.floor((baseSize * maxTextWidth) / measured) : baseSize;
+  ctx.font = `500 ${fontSize}px ${displayFont}`;
   ctx.fillText(spaced, width / 2, height / 2 + 2);
 
   const texture = new THREE.CanvasTexture(canvas);

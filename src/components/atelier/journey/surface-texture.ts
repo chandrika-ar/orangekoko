@@ -91,3 +91,26 @@ export function makeWallPanelTexture() {
   texture.colorSpace = THREE.SRGBColorSpace;
   return texture;
 }
+
+/** A soft warm radial glow — used for the light spilling through the
+ * doorway as it opens. A point light alone has no visible shape without
+ * post-processing bloom this scene doesn't have; this gives it one. */
+export function makeGlowTexture() {
+  const size = 256;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  const texture = new THREE.CanvasTexture(canvas);
+  if (!ctx) return texture;
+
+  const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  gradient.addColorStop(0, "rgba(255,241,214,1)");
+  gradient.addColorStop(0.35, "rgba(255,205,140,0.75)");
+  gradient.addColorStop(1, "rgba(255,205,140,0)");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, size, size);
+
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}

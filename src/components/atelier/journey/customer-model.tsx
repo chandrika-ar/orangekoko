@@ -38,9 +38,17 @@ function extendVrmLoader(loader: any) {
  */
 export function CustomerModel({
   movingRef,
+  speedRef,
+  baseSpeed,
   reduceMotion,
 }: {
   movingRef: MutableRefObject<boolean>;
+  /** Current move speed, so the walk clip can play faster when she's
+   * covering ground faster (the "try this piece on" auto-walk) instead of
+   * her feet sliding under a body moving quicker than they're stepping. */
+  speedRef: MutableRefObject<number>;
+  /** The move speed the walk clip's own pace was tuned to match. */
+  baseSpeed: number;
   reduceMotion: boolean;
 }) {
   const group = useRef<THREE.Group>(null);
@@ -85,6 +93,7 @@ export function CustomerModel({
       to.reset().fadeIn(0.25).play();
       from.fadeOut(0.25);
     }
+    walk.setEffectiveTimeScale(THREE.MathUtils.clamp(speedRef.current / baseSpeed, 0.6, 1.8));
   });
 
   return <primitive ref={group} object={vrm.scene} />;
