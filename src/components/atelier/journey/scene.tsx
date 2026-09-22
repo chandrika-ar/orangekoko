@@ -427,15 +427,28 @@ export function Scene({
       // canvas) reads this ref to sit right above whatever card it's about,
       // rather than as a fixed corner panel disconnected from it.
       const nearestGroup = nearest !== null ? cardRefs.current[nearest] : null;
-      if (nearestGroup && anchorRef.current) {
+      const anchorEl = anchorRef.current;
+      if (nearestGroup && anchorEl) {
         camera.updateMatrixWorld();
         const world = nearestGroup.localToWorld(CARD_ANCHOR_OFFSET.clone());
         world.project(camera);
-        anchorRef.current.style.display = world.z < 1 ? "block" : "none";
-        anchorRef.current.style.left = `${((world.x + 1) / 2) * size.width}px`;
-        anchorRef.current.style.top = `${((1 - world.y) / 2) * size.height}px`;
-      } else if (anchorRef.current) {
-        anchorRef.current.style.display = "none";
+        anchorEl.style.display = world.z < 1 ? "block" : "none";
+        const rawLeft = ((world.x + 1) / 2) * size.width;
+        const rawTop = ((1 - world.y) / 2) * size.height;
+        // The panel is translated up-and-centered on this point (see its
+        // -translate-x-1/2 -translate-y-[...] classes in atelier-journey.tsx)
+        // and its containing section clips overflow, so an anchor too close
+        // to an edge would otherwise push the panel itself out of view —
+        // clamp using its own measured size so it always stays fully
+        // on-screen regardless of where the card lands in the frame.
+        const pad = 8;
+        const w = anchorEl.offsetWidth || 210;
+        const h = anchorEl.offsetHeight || 90;
+        const tailGap = 14;
+        anchorEl.style.left = `${THREE.MathUtils.clamp(rawLeft, w / 2 + pad, size.width - w / 2 - pad)}px`;
+        anchorEl.style.top = `${THREE.MathUtils.clamp(rawTop, h + tailGap + pad, size.height - pad + tailGap)}px`;
+      } else if (anchorEl) {
+        anchorEl.style.display = "none";
       }
     }
 
