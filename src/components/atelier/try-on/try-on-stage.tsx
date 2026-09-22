@@ -66,6 +66,12 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
     if (cameraState !== "granted" || !videoRef.current) return;
     const video = videoRef.current;
 
+    // Anchored by its top-center edge, not its middle — a real earring or
+    // pendant hangs *below* where it actually attaches (the earlobe, the
+    // neck) rather than floating centered on that point, and pairing that
+    // with transform-origin: 50% 0% (see the JSX) means head tilt swings
+    // it naturally from that attach point too, like it's actually hanging
+    // off her, instead of just spinning a floating circle in place.
     function place(
       el: HTMLDivElement | null,
       xPx: number,
@@ -76,7 +82,7 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
       if (!el) return;
       el.style.width = `${sizePx}px`;
       el.style.height = `${sizePx}px`;
-      el.style.transform = `translate(${xPx - sizePx / 2}px, ${yPx - sizePx / 2}px) rotate(${rotateRad}rad)`;
+      el.style.transform = `translate(${xPx - sizePx / 2}px, ${yPx}px) rotate(${rotateRad}rad)`;
     }
 
     function placeDefaults() {
@@ -185,13 +191,25 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
       <div className="absolute inset-0 -scale-x-100">
         <video ref={videoRef} muted playsInline className="h-full w-full object-cover" />
 
-        <div ref={necklaceRef} className={`absolute left-0 top-0 ${isNecklace ? "" : "hidden"}`}>
+        <div
+          ref={necklaceRef}
+          className={`absolute left-0 top-0 ${isNecklace ? "" : "hidden"}`}
+          style={{ transformOrigin: "50% 0%" }}
+        >
           <OverlayDot photo={photo} shadow="shadow-[0_2px_10px_rgba(0,0,0,0.5)]" />
         </div>
-        <div ref={earLeftRef} className={`absolute left-0 top-0 ${isNecklace ? "hidden" : ""}`}>
+        <div
+          ref={earLeftRef}
+          className={`absolute left-0 top-0 ${isNecklace ? "hidden" : ""}`}
+          style={{ transformOrigin: "50% 0%" }}
+        >
           <OverlayDot photo={photo} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
         </div>
-        <div ref={earRightRef} className={`absolute left-0 top-0 ${isNecklace ? "hidden" : ""}`}>
+        <div
+          ref={earRightRef}
+          className={`absolute left-0 top-0 ${isNecklace ? "hidden" : ""}`}
+          style={{ transformOrigin: "50% 0%" }}
+        >
           <OverlayDot photo={photo} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
         </div>
       </div>
