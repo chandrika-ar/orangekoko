@@ -158,6 +158,21 @@ export function Scene({
 
   const keys = useRef<Record<string, boolean>>({});
   const moveTarget = useRef<{ x: number; z: number } | null>(null);
+  // A click/tap target that's blocked by a collision boundary (see the
+  // handleFloorClick projection below, meant to prevent exactly this) would
+  // otherwise leave her stuck playing her walk animation against it
+  // forever, since she's never actually getting closer to the un-clamped
+  // point some other, unforeseen edge case might still leave behind — she'd
+  // look "out of control" even with nothing being pressed anymore. This is
+  // a last-resort backstop: if she hasn't gotten meaningfully closer to
+  // wherever she's headed for half a second, just give up on that target.
+  const moveTargetBestDist = useRef(Infinity);
+  const moveTargetStuckSince = useRef<number | null>(null);
+  function setMoveTarget(target: { x: number; z: number } | null) {
+    moveTarget.current = target;
+    moveTargetBestDist.current = Infinity;
+    moveTargetStuckSince.current = null;
+  }
   // True only for the walk kicked off by "try this piece on" — cleared the
   // moment she arrives, or the moment anything else takes over movement
   // (a manual key press, a floor/card click), so the speed boost below
@@ -188,7 +203,7 @@ export function Scene({
       keys.current[e.key.toLowerCase()] = true;
       const moveKeys = ["arrowup", "arrowdown", "arrowleft", "arrowright", "w", "a", "s", "d"];
       if (moveKeys.includes(e.key.toLowerCase())) {
-        moveTarget.current = null;
+        setMoveTarget(null);
         autoWalking.current = false;
       }
     }
@@ -221,7 +236,7 @@ export function Scene({
     if (doorRequestToken !== lastDoorToken.current) {
       lastDoorToken.current = doorRequestToken;
       if (stage === "room") {
-        moveTarget.current = { x: 0.2, z: layout.doorTriggerZ - 0.3 };
+        setMoveTarget({ x: 0.2, z: layout.doorTriggerZ - 0.3 });
         autoWalking.current = true;
       }
     }
@@ -242,7 +257,7 @@ export function Scene({
       doorGlowSpriteRef.current.scale.setScalar(0.001);
       (doorGlowSpriteRef.current.material as THREE.MeshBasicMaterial).opacity = 0;
     }
-    moveTarget.current = null;
+    setMoveTarget(null);
     autoWalking.current = false;
     speed.current = 0;
     lastDirX.current = 0;
@@ -273,7 +288,28 @@ export function Scene({
     const dist = Math.hypot(dx, dz);
     const clamped = Math.min(dist, MAX_CLICK_MOVE);
     const scale = dist > 0.0001 ? clamped / dist : 0;
-    moveTarget.current = { x: player.x + dx * scale, z: player.z + dz * scale };
+    let targetX = player.x + dx * scale;
+    let targetZ = player.z + dz * scale;
+
+    // A click landing inside a display ring's own collision radius was
+    // never actually reachable: she'd walk into the boundary and get held
+    // there every frame while still "trying" to reach the original point
+    // beyond it, which never counts as arrival — so she'd just keep
+    // playing her walk animation in place indefinitely, looking exactly
+    // like the movement had gotten stuck on even though nothing's being
+    // pressed anymore. Project the target onto the boundary itself
+    // instead, the same way walking into it herself already resolves.
+    layout.roomCenterZ.forEach((centerZ) => {
+      const rdz = targetZ - centerZ;
+      const rdist = Math.hypot(targetX, rdz);
+      if (rdist > 0.0001 && rdist < COUNTER_COLLISION_RADIUS) {
+        const angle = Math.atan2(targetX, rdz);
+        targetX = COUNTER_COLLISION_RADIUS * Math.sin(angle);
+        targetZ = centerZ + COUNTER_COLLISION_RADIUS * Math.cos(angle);
+      }
+    });
+
+    setMoveTarget({ x: targetX, z: targetZ });
     autoWalking.current = false;
   }
 
@@ -287,10 +323,10 @@ export function Scene({
       // COUNTER_COLLISION_RADIUS) — clicking a card should land her exactly
       // where walking up to it herself would.
       const standDist = COUNTER_COLLISION_RADIUS;
-      moveTarget.current = {
+      setMoveTarget({
         x: dir.x * standDist,
         z: card.centerZ + dir.y * standDist,
-      };
+      });
       autoWalking.current = false;
     };
   }
@@ -318,8 +354,23 @@ export function Scene({
         if (dist > 0.12) {
           inputX = tdx / dist;
           inputZ = tdz / dist;
+          // Backstop for any target a collision boundary keeps her from
+          // ever actually reaching: if she hasn't gotten meaningfully
+          // closer in half a second, stop pursuing it instead of walking
+          // in place against it forever.
+          if (dist < moveTargetBestDist.current - 0.02) {
+            moveTargetBestDist.current = dist;
+            moveTargetStuckSince.current = null;
+          } else if (moveTargetStuckSince.current === null) {
+            moveTargetStuckSince.current = t;
+          } else if (t - moveTargetStuckSince.current > 0.5) {
+            setMoveTarget(null);
+            autoWalking.current = false;
+            inputX = 0;
+            inputZ = 0;
+          }
         } else {
-          moveTarget.current = null;
+          setMoveTarget(null);
           autoWalking.current = false;
         }
       }
