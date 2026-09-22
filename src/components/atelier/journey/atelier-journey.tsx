@@ -51,6 +51,19 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
     });
   }, []);
 
+  // The arrow-key/WASD movement Scene listens for is bound to `window`
+  // (see scene.tsx), not to the div below, so a keydown there never
+  // actually bubbles into this component's own onKeyDown — a
+  // keyboard-only player would otherwise never clear the "how to move"
+  // hint at all, however long they'd already been walking around.
+  useEffect(() => {
+    function onKeyDown() {
+      setHasMoved(true);
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   if (support.webgl === false) {
     return (
       <ExperienceFallback
@@ -79,11 +92,7 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
           .
         </span>
       </div>
-      <div
-        className="absolute inset-0"
-        onPointerDown={() => setHasMoved(true)}
-        onKeyDown={() => setHasMoved(true)}
-      >
+      <div className="absolute inset-0" onPointerDown={() => setHasMoved(true)}>
         <CanvasStage>
           <Scene
             rooms={rooms}
@@ -161,8 +170,11 @@ export default function AtelierJourney({ rooms }: { rooms: CategoryRoom[] }) {
         </label>
       </div>
 
-      {/* movement hint */}
-      {stage === "room" && !hasMoved && (
+      {/* movement hint — hidden once she's standing next to something, both
+          because that's proof she already knows how to move, and because
+          it would otherwise land in the same screen space as the nearby-item
+          panel above */}
+      {stage === "room" && !hasMoved && !selected && (
         <div className="pointer-events-none absolute left-1/2 top-16 -translate-x-1/2 rounded-full border border-line bg-white/80 px-4 py-2 text-[10px] uppercase tracking-[0.12em] text-ink-soft">
           {t("hintMove")}
         </div>
