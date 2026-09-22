@@ -199,6 +199,14 @@ function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
 }
 
+// A hard-edged circle with a solid white ring reads as a sticker pasted on
+// top of the video, not something actually worn — most of that comes from
+// the product photo's own flat studio-white background showing right up to
+// a crisp boundary. Feathering the edge into transparency (rather than
+// framing it with an opaque border) lets that background dissolve into the
+// skin tone instead of announcing itself as a photo.
+const FEATHERED_MASK = "radial-gradient(circle, black 55%, transparent 78%)";
+
 function OverlayDot({ photo, shadow }: { photo: string | undefined; shadow: string }) {
   if (photo) {
     return (
@@ -206,7 +214,8 @@ function OverlayDot({ photo, shadow }: { photo: string | undefined; shadow: stri
       <img
         src={photo}
         alt=""
-        className={`h-full w-full rounded-full border-2 border-white/80 bg-white object-cover ${shadow}`}
+        className={`h-full w-full rounded-full object-cover ${shadow}`}
+        style={{ maskImage: FEATHERED_MASK, WebkitMaskImage: FEATHERED_MASK }}
       />
     );
   }

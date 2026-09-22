@@ -41,14 +41,22 @@ function getLandmarker(): Promise<FaceLandmarker> {
 }
 
 // Canonical MediaPipe face-mesh indices. There's no ear or neck landmark in
-// the mesh (it only covers the front of the face), so ear position is
-// approximated by the temple/cheek points level with the ears, and the
-// necklace position by projecting down from the chin — both standard
-// approximations in open-source AR try-on demos built on this same model.
-const LEFT_TEMPLE = 234;
-const RIGHT_TEMPLE = 454;
+// the mesh at all (it only covers the front of the face), so both anchors
+// are approximations built from the nearest points the mesh does have.
+//
+// The jaw-contour points at roughly earlobe height (132/361) are a much
+// closer match than the temple/cheekbone points (234/454) an earlier
+// version of this used — those sit up near eye level, which is why the
+// overlay was landing on the cheeks instead of the ears. Even 132/361 are
+// still *on* the face surface, though, and a real earlobe hangs out past
+// the jawline — so each point is also pushed further outward, away from
+// the opposite jaw point, by a fraction of the face's own width, rather
+// than relying on a separate "center" landmark to extrapolate from.
+const LEFT_JAW = 132;
+const RIGHT_JAW = 361;
 const CHIN = 152;
 const FOREHEAD = 10;
+const EAR_OUTWARD_FACTOR = 0.22;
 
 // All coordinates are normalized (0..1) against the raw camera frame, i.e.
 // *not* accounting for object-cover cropping or the mirrored on-screen
@@ -63,11 +71,16 @@ export interface FaceAnchors {
 }
 
 export function computeFaceAnchors(landmarks: NormalizedLandmark[]): FaceAnchors | null {
-  const l = landmarks[LEFT_TEMPLE];
-  const r = landmarks[RIGHT_TEMPLE];
+  const lj = landmarks[LEFT_JAW];
+  const rj = landmarks[RIGHT_JAW];
   const chin = landmarks[CHIN];
   const forehead = landmarks[FOREHEAD];
-  if (!l || !r || !chin || !forehead) return null;
+  if (!lj || !rj || !chin || !forehead) return null;
+
+  const dxJaw = lj.x - rj.x;
+  const dyJaw = lj.y - rj.y;
+  const leftEar = { x: lj.x + dxJaw * EAR_OUTWARD_FACTOR, y: lj.y + dyJaw * EAR_OUTWARD_FACTOR };
+  const rightEar = { x: rj.x - dxJaw * EAR_OUTWARD_FACTOR, y: rj.y - dyJaw * EAR_OUTWARD_FACTOR };
 
   // Below the chin, continuing the forehead->chin line, roughly to collar
   // height — there's no neck/shoulder landmark in the mesh to anchor to.
@@ -75,11 +88,7 @@ export function computeFaceAnchors(landmarks: NormalizedLandmark[]): FaceAnchors
   const dy = chin.y - forehead.y;
   const neck = { x: chin.x + dx * 0.55, y: chin.y + dy * 0.55 };
 
-  return {
-    leftEar: { x: l.x, y: l.y },
-    rightEar: { x: r.x, y: r.y },
-    neck,
-  };
+  return { leftEar, rightEar, neck };
 }
 
 /**
