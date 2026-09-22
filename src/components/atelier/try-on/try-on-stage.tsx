@@ -124,12 +124,19 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
       const left = toBoxPx(anchors.leftEar.x, anchors.leftEar.y);
       const right = toBoxPx(anchors.rightEar.x, anchors.rightEar.y);
       const neck = toBoxPx(anchors.neck.x, anchors.neck.y);
-      if (!left || !right || !neck) {
+      const eyeL = toBoxPx(anchors.eyeLeft.x, anchors.eyeLeft.y);
+      const eyeR = toBoxPx(anchors.eyeRight.x, anchors.eyeRight.y);
+      if (!left || !right || !neck || !eyeL || !eyeR) {
         placeDefaults();
         return;
       }
       const earSpanPx = Math.hypot(right.x - left.x, right.y - left.y);
-      const rollRad = Math.atan2(right.y - left.y, right.x - left.x);
+      // Rotation comes from the eye corners, not the ear anchors — those
+      // are already an extrapolated approximation (see face-tracking.ts),
+      // and two nearby, uncertain points make atan2 read far more tilted
+      // than the head actually is for even a small amount of per-point
+      // noise. The eye corners are a much more stable, wider baseline.
+      const rollRad = Math.atan2(eyeR.y - eyeL.y, eyeR.x - eyeL.x);
       const earSize = clamp(earSpanPx * 0.32, 22, 90);
       const neckSize = clamp(earSpanPx * 0.55, 28, 120);
 

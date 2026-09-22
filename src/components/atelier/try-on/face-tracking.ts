@@ -55,12 +55,24 @@ function getLandmarker(): Promise<FaceLandmarker> {
 // still *on* the face surface, though, and a real earlobe hangs out past
 // the jawline — so each point is also pushed further outward, away from
 // the opposite jaw point, by a fraction of the face's own width, rather
-// than relying on a separate "center" landmark to extrapolate from.
+// than relying on a separate "center" landmark to extrapolate from. A
+// report of the earrings landing too far out brought that factor down
+// from an initial, too-aggressive 0.22.
 const LEFT_JAW = 132;
 const RIGHT_JAW = 361;
 const CHIN = 152;
 const FOREHEAD = 10;
-const EAR_OUTWARD_FACTOR = 0.22;
+const EAR_OUTWARD_FACTOR = 0.08;
+// 132/361 aren't a well-documented mirror-symmetric pair, and a report of
+// the earrings hanging visibly crooked even for a level, front-on face
+// suggests they're not reliable enough as a *rotation* reference (small
+// per-point noise in an already-approximate landmark reads as a much
+// larger angle once you're computing atan2 between just two points close
+// together). The outer eye corners (33/263) are canonical, well-separated,
+// and exactly what most face-filter roll-angle calculations use — using
+// those for rotation only, decoupled from the ear/neck position anchors.
+const EYE_OUTER_LEFT = 33;
+const EYE_OUTER_RIGHT = 263;
 
 // All coordinates are normalized (0..1) against the raw camera frame, i.e.
 // *not* accounting for object-cover cropping or the mirrored on-screen
@@ -72,6 +84,8 @@ export interface FaceAnchors {
   leftEar: { x: number; y: number };
   rightEar: { x: number; y: number };
   neck: { x: number; y: number };
+  eyeLeft: { x: number; y: number };
+  eyeRight: { x: number; y: number };
 }
 
 export function computeFaceAnchors(landmarks: NormalizedLandmark[]): FaceAnchors | null {
@@ -79,7 +93,9 @@ export function computeFaceAnchors(landmarks: NormalizedLandmark[]): FaceAnchors
   const rj = landmarks[RIGHT_JAW];
   const chin = landmarks[CHIN];
   const forehead = landmarks[FOREHEAD];
-  if (!lj || !rj || !chin || !forehead) return null;
+  const eyeLeft = landmarks[EYE_OUTER_LEFT];
+  const eyeRight = landmarks[EYE_OUTER_RIGHT];
+  if (!lj || !rj || !chin || !forehead || !eyeLeft || !eyeRight) return null;
 
   const dxJaw = lj.x - rj.x;
   const dyJaw = lj.y - rj.y;
@@ -92,7 +108,13 @@ export function computeFaceAnchors(landmarks: NormalizedLandmark[]): FaceAnchors
   const dy = chin.y - forehead.y;
   const neck = { x: chin.x + dx * 0.55, y: chin.y + dy * 0.55 };
 
-  return { leftEar, rightEar, neck };
+  return {
+    leftEar,
+    rightEar,
+    neck,
+    eyeLeft: { x: eyeLeft.x, y: eyeLeft.y },
+    eyeRight: { x: eyeRight.x, y: eyeRight.y },
+  };
 }
 
 /**
