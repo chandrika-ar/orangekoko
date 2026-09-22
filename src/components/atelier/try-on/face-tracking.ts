@@ -86,6 +86,20 @@ export interface FaceAnchors {
   neck: { x: number; y: number };
   eyeLeft: { x: number; y: number };
   eyeRight: { x: number; y: number };
+  // The raw, un-adjusted landmarks the anchors above are built from —
+  // exposed so a debug overlay can show exactly what MediaPipe itself is
+  // detecting, separate from anything this file's own math then does to
+  // it (an outward push, an extrapolated neck point, ...). See the small
+  // debug dots in try-on-stage.tsx, added after two rounds of blind
+  // parameter tuning failed to converge — there was no way to tell
+  // whether the raw detection or the derived math was the actual problem
+  // without being able to see the raw points directly.
+  debugRaw: {
+    leftJaw: { x: number; y: number };
+    rightJaw: { x: number; y: number };
+    chin: { x: number; y: number };
+    forehead: { x: number; y: number };
+  };
 }
 
 export function computeFaceAnchors(landmarks: NormalizedLandmark[]): FaceAnchors | null {
@@ -114,6 +128,12 @@ export function computeFaceAnchors(landmarks: NormalizedLandmark[]): FaceAnchors
     neck,
     eyeLeft: { x: eyeLeft.x, y: eyeLeft.y },
     eyeRight: { x: eyeRight.x, y: eyeRight.y },
+    debugRaw: {
+      leftJaw: { x: lj.x, y: lj.y },
+      rightJaw: { x: rj.x, y: rj.y },
+      chin: { x: chin.x, y: chin.y },
+      forehead: { x: forehead.x, y: forehead.y },
+    },
   };
 }
 

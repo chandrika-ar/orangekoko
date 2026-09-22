@@ -36,6 +36,17 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
   const necklaceRef = useRef<HTMLDivElement>(null);
   const earLeftRef = useRef<HTMLDivElement>(null);
   const earRightRef = useRef<HTMLDivElement>(null);
+  // Small diagnostic dots at the raw landmarks the overlay math is built
+  // from (see face-tracking.ts's debugRaw) — added after two rounds of
+  // blind position/rotation tuning didn't converge, with no way to tell
+  // whether MediaPipe's own detection or this file's derived math was the
+  // actual problem. Remove once positioning is confirmed accurate.
+  const dbgEyeLRef = useRef<HTMLDivElement>(null);
+  const dbgEyeRRef = useRef<HTMLDivElement>(null);
+  const dbgJawLRef = useRef<HTMLDivElement>(null);
+  const dbgJawRRef = useRef<HTMLDivElement>(null);
+  const dbgChinRef = useRef<HTMLDivElement>(null);
+  const dbgForeheadRef = useRef<HTMLDivElement>(null);
   const [cameraState, setCameraState] = useState<CameraState>("idle");
   // "idle" (nothing has run yet), "active" (the model loaded and is
   // currently reading real face positions) or "unavailable" (the model/WASM
@@ -87,6 +98,18 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
       el.style.transform = `translate(${xPx - sizePx / 2}px, ${yPx}px) rotate(${rotateRad}rad)`;
     }
 
+    function placeDot(el: HTMLDivElement | null, xPx: number, yPx: number) {
+      if (!el) return;
+      el.style.display = "block";
+      el.style.transform = `translate(${xPx - 4}px, ${yPx - 4}px)`;
+    }
+
+    function hideDebugDots() {
+      [dbgEyeLRef, dbgEyeRRef, dbgJawLRef, dbgJawRRef, dbgChinRef, dbgForeheadRef].forEach((ref) => {
+        if (ref.current) ref.current.style.display = "none";
+      });
+    }
+
     function placeDefaults() {
       const box = stageRef.current;
       if (!box) return;
@@ -95,6 +118,7 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
       place(necklaceRef.current, DEFAULT_POS.necklace.x * w, DEFAULT_POS.necklace.y * h, NECKLACE_SIZE, 0);
       place(earLeftRef.current, DEFAULT_POS.earLeft.x * w, DEFAULT_POS.earLeft.y * h, EAR_SIZE, 0);
       place(earRightRef.current, DEFAULT_POS.earRight.x * w, DEFAULT_POS.earRight.y * h, EAR_SIZE, 0);
+      hideDebugDots();
     }
 
     // Maps a landmark normalized to the raw camera frame into a pixel
@@ -143,6 +167,17 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
       place(earLeftRef.current, left.x, left.y, earSize, rollRad);
       place(earRightRef.current, right.x, right.y, earSize, rollRad);
       place(necklaceRef.current, neck.x, neck.y, neckSize, rollRad);
+
+      placeDot(dbgEyeLRef.current, eyeL.x, eyeL.y);
+      placeDot(dbgEyeRRef.current, eyeR.x, eyeR.y);
+      const jawL = toBoxPx(anchors.debugRaw.leftJaw.x, anchors.debugRaw.leftJaw.y);
+      const jawR = toBoxPx(anchors.debugRaw.rightJaw.x, anchors.debugRaw.rightJaw.y);
+      const chinPx = toBoxPx(anchors.debugRaw.chin.x, anchors.debugRaw.chin.y);
+      const foreheadPx = toBoxPx(anchors.debugRaw.forehead.x, anchors.debugRaw.forehead.y);
+      if (jawL) placeDot(dbgJawLRef.current, jawL.x, jawL.y);
+      if (jawR) placeDot(dbgJawRRef.current, jawR.x, jawR.y);
+      if (chinPx) placeDot(dbgChinRef.current, chinPx.x, chinPx.y);
+      if (foreheadPx) placeDot(dbgForeheadRef.current, foreheadPx.x, foreheadPx.y);
     }
 
     placeDefaults();
@@ -220,6 +255,19 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
         >
           <OverlayDot photo={cutoutPhoto} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
         </div>
+
+        {/* Diagnostic dots at the raw landmarks — see the comment on the
+            refs above. Small enough not to be mistaken for part of the
+            actual try-on experience, but visible enough to read off a
+            screenshot: yellow/cyan = eye corners (rotation reference),
+            magenta/orange = jaw points (ear position reference, before
+            the outward push), white = chin, lime = forehead. */}
+        <div ref={dbgEyeLRef} className="absolute left-0 top-0 hidden h-2 w-2 rounded-full bg-yellow-300" />
+        <div ref={dbgEyeRRef} className="absolute left-0 top-0 hidden h-2 w-2 rounded-full bg-cyan-300" />
+        <div ref={dbgJawLRef} className="absolute left-0 top-0 hidden h-2 w-2 rounded-full bg-fuchsia-500" />
+        <div ref={dbgJawRRef} className="absolute left-0 top-0 hidden h-2 w-2 rounded-full bg-orange-500" />
+        <div ref={dbgChinRef} className="absolute left-0 top-0 hidden h-2 w-2 rounded-full bg-white" />
+        <div ref={dbgForeheadRef} className="absolute left-0 top-0 hidden h-2 w-2 rounded-full bg-lime-400" />
       </div>
 
       {/* Small, language-agnostic status dot: green once real face tracking
