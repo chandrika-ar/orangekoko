@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { CameraGate } from "./camera-gate";
+import { cutoutNearWhite } from "./cutout";
 import { startFaceTracking, type FaceAnchors } from "./face-tracking";
 import type { JourneyItem } from "../journey/types";
 
@@ -28,6 +29,7 @@ const EAR_SIZE = 40;
  */
 export function TryOnStage({ item }: { item: JourneyItem | null }) {
   const t = useTranslations("atelierJourney");
+  const cutoutPhoto = useCutoutPhoto(item?.imageUrl);
   const stageRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -181,7 +183,6 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
   }
 
   const isNecklace = item?.category === "necklaces";
-  const photo = item?.imageUrl;
 
   return (
     <div ref={stageRef} className="relative mx-auto aspect-[3/4] w-full max-w-xs overflow-hidden rounded-sm border border-line bg-ink">
@@ -196,21 +197,21 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
           className={`absolute left-0 top-0 ${isNecklace ? "" : "hidden"}`}
           style={{ transformOrigin: "50% 0%" }}
         >
-          <OverlayDot photo={photo} shadow="shadow-[0_2px_10px_rgba(0,0,0,0.5)]" />
+          <OverlayDot photo={cutoutPhoto} shadow="shadow-[0_2px_10px_rgba(0,0,0,0.5)]" />
         </div>
         <div
           ref={earLeftRef}
           className={`absolute left-0 top-0 ${isNecklace ? "hidden" : ""}`}
           style={{ transformOrigin: "50% 0%" }}
         >
-          <OverlayDot photo={photo} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+          <OverlayDot photo={cutoutPhoto} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
         </div>
         <div
           ref={earRightRef}
           className={`absolute left-0 top-0 ${isNecklace ? "hidden" : ""}`}
           style={{ transformOrigin: "50% 0%" }}
         >
-          <OverlayDot photo={photo} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+          <OverlayDot photo={cutoutPhoto} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
         </div>
       </div>
 
@@ -243,9 +244,14 @@ function clamp(value: number, min: number, max: number) {
 // A hard-edged circle with a solid white ring reads as a sticker pasted on
 // top of the video, not something actually worn — most of that comes from
 // the product photo's own flat studio-white background showing right up to
-// a crisp boundary. Feathering the edge into transparency (rather than
-// framing it with an opaque border) lets that background dissolve into the
-// skin tone instead of announcing itself as a photo.
+// a crisp boundary. `photo` is the *cutout* version (see cutout.ts, applied
+// in useCutoutPhoto below) with that background already made transparent,
+// so the item's own silhouette is what shows, not a white square — object-
+// contain rather than object-cover, so an elongated piece (a long chain,
+// a wide pair of drops) isn't cropped into a circle it was never meant to
+// fill. The feathered mask stays only as a safety net for the brief window
+// before the cutout is ready (or if it fails), where `photo` is still the
+// plain, white-backed original.
 const FEATHERED_MASK = "radial-gradient(circle, black 55%, transparent 78%)";
 
 function OverlayDot({ photo, shadow }: { photo: string | undefined; shadow: string }) {
@@ -255,10 +261,51 @@ function OverlayDot({ photo, shadow }: { photo: string | undefined; shadow: stri
       <img
         src={photo}
         alt=""
-        className={`h-full w-full rounded-full object-cover ${shadow}`}
+        className={`h-full w-full object-contain ${shadow}`}
         style={{ maskImage: FEATHERED_MASK, WebkitMaskImage: FEATHERED_MASK }}
       />
     );
   }
   return <div className={`h-full w-full rounded-full bg-accent ${shadow}`} />;
+}
+
+/** Runs the selected item's photo through the near-white cutout (see
+ * cutout.ts) once per photo URL, caching results across re-selection so
+ * switching back to an already-processed item is instant. Returns the
+ * original photo immediately (so something shows right away) and swaps to
+ * the cutout once it's ready. */
+const cutoutCache = new Map<string, string>();
+
+function useCutoutPhoto(photo: string | undefined) {
+  // Ready results are cached synchronously (module-scope Map, keyed by the
+  // source photo URL), so they're derived directly during render rather
+  // than round-tripped through state — only the genuinely async case (a
+  // photo not processed yet) needs an effect + setState at all.
+  const [pending, setPending] = useState<{ photo: string; url: string } | null>(null);
+
+  useEffect(() => {
+    if (!photo || cutoutCache.has(photo)) return;
+    let cancelled = false;
+    const img = new Image();
+    img.onload = () => {
+      if (cancelled) return;
+      const cutout = cutoutNearWhite(img);
+      cutoutCache.set(photo, cutout);
+      setPending({ photo, url: cutout });
+    };
+    // Routed through /_next/image rather than fetched directly — reading
+    // pixel data back out of the canvas below requires the image to have
+    // loaded without tainting it, which a cross-origin fetch can't
+    // guarantee (see the identical fix for the 3D card's own photo texture).
+    img.src = `/_next/image?url=${encodeURIComponent(photo)}&w=320&q=90`;
+    return () => {
+      cancelled = true;
+    };
+  }, [photo]);
+
+  if (!photo) return undefined;
+  const cached = cutoutCache.get(photo);
+  if (cached) return cached;
+  if (pending && pending.photo === photo) return pending.url;
+  return photo;
 }
