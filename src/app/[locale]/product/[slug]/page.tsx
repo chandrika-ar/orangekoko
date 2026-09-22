@@ -5,6 +5,7 @@ import { CURRENCY_BY_LOCALE, convertCents, getExchangeRates } from "@/lib/curren
 import type { Locale } from "@/i18n/routing";
 import { ProductGallery } from "@/components/shop/product-gallery";
 import { ProductActions } from "@/components/shop/product-actions";
+import { ProductTryOn } from "@/components/shop/product-try-on";
 import { Accordion } from "@/components/shop/accordion";
 import { ProductCard } from "@/components/shop/product-card";
 import { ProcessFilmstrip } from "@/components/atelier/process-filmstrip";
@@ -48,8 +49,12 @@ export default async function ProductPage({
             <p className="mt-1 text-xs text-ink-soft">{t("approxNote")}</p>
           )}
 
-          <div className="mt-6">
+          <div className="mt-6 space-y-3">
             <ProductActions product={product} />
+            <ProductTryOn
+              product={product}
+              priceLabel={formatPrice(displayCents, displayCurrency, locale)}
+            />
           </div>
 
           <dl className="mt-8 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-line pt-6 text-sm">

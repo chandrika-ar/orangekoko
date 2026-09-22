@@ -199,7 +199,7 @@
     "cameraAllow": "Turn on camera",
     "cameraDenied": "We couldn't access your camera. You can still browse the collection.",
     "cameraUnsupported": "This browser doesn't support camera access here. You can still browse the collection.",
-    "approxPlacement": "Approximate placement — full face tracking is a planned upgrade"
+    "approxPlacement": "Positioned using face tracking — an approximate fit"
   },
   "process": {
     "title": "Behind every piece",

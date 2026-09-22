@@ -199,7 +199,7 @@
     "cameraAllow": "Käynnistä kamera",
     "cameraDenied": "Emme päässeet käsiksi kameraasi. Voit silti selata mallistoa.",
     "cameraUnsupported": "Tämä selain ei tue kameran käyttöä täällä. Voit silti selata mallistoa.",
-    "approxPlacement": "Likimääräinen sijoittelu — täysi kasvojenseuranta on suunnitteilla"
+    "approxPlacement": "Sijoittelu kasvojenseurannan avulla — likimääräinen"
   },
   "process": {
     "title": "Jokaisen korun takana",

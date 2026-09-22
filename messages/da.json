@@ -199,7 +199,7 @@
     "cameraAllow": "Slå kamera til",
     "cameraDenied": "Vi kunne ikke få adgang til dit kamera. Du kan stadig gennemse kollektionen.",
     "cameraUnsupported": "Denne browser understøtter ikke kameraadgang her. Du kan stadig gennemse kollektionen.",
-    "approxPlacement": "Omtrentlig placering — fuld ansigtssporing er en planlagt opdatering"
+    "approxPlacement": "Placering med ansigtssporing — en tilnærmelse"
   },
   "process": {
     "title": "Bag hvert smykke",

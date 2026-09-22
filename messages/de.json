@@ -199,7 +199,7 @@
     "cameraAllow": "Kamera einschalten",
     "cameraDenied": "Wir konnten nicht auf Ihre Kamera zugreifen. Sie können die Kollektion weiterhin durchstöbern.",
     "cameraUnsupported": "Dieser Browser unterstützt hier keinen Kamerazugriff. Sie können die Kollektion weiterhin durchstöbern.",
-    "approxPlacement": "Ungefähre Platzierung — vollständiges Gesichts-Tracking ist geplant"
+    "approxPlacement": "Positionierung per Gesichtserkennung — eine Annäherung"
   },
   "process": {
     "title": "Hinter jedem Stück",

@@ -199,7 +199,7 @@
     "cameraAllow": "Attiva fotocamera",
     "cameraDenied": "Non siamo riusciti ad accedere alla tua fotocamera. Puoi comunque sfogliare la collezione.",
     "cameraUnsupported": "Questo browser non supporta l'accesso alla fotocamera qui. Puoi comunque sfogliare la collezione.",
-    "approxPlacement": "Posizionamento approssimativo — il tracciamento completo del viso è un aggiornamento previsto"
+    "approxPlacement": "Posizionamento tramite rilevamento del viso — un'approssimazione"
   },
   "process": {
     "title": "Dietro ogni pezzo",

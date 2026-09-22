@@ -199,7 +199,7 @@
     "cameraAllow": "Slå på kameran",
     "cameraDenied": "Vi kunde inte komma åt din kamera. Du kan fortfarande bläddra i kollektionen.",
     "cameraUnsupported": "Den här webbläsaren stöder inte kameraåtkomst här. Du kan fortfarande bläddra i kollektionen.",
-    "approxPlacement": "Ungefärlig placering — fullständig ansiktsspårning är en planerad uppdatering"
+    "approxPlacement": "Placering med ansiktsspårning — en approximation"
   },
   "process": {
     "title": "Bakom varje smycke",

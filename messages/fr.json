@@ -199,7 +199,7 @@
     "cameraAllow": "Activer la caméra",
     "cameraDenied": "Nous n'avons pas pu accéder à votre caméra. Vous pouvez tout de même parcourir la collection.",
     "cameraUnsupported": "Ce navigateur ne permet pas l'accès à la caméra ici. Vous pouvez tout de même parcourir la collection.",
-    "approxPlacement": "Placement approximatif — le suivi facial complet est une amélioration prévue"
+    "approxPlacement": "Positionnement par suivi facial — une approximation"
   },
   "process": {
     "title": "Derrière chaque pièce",
