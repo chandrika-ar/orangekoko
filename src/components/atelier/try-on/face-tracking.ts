@@ -9,13 +9,17 @@ import {
   type NormalizedLandmark,
 } from "@mediapipe/tasks-vision";
 
-// Self-hosting the ~30MB of WASM binaries (three variants, picked at runtime
-// by SIMD support) in this repo isn't worth it for a generic third-party
-// runtime blob — jsdelivr is the CDN MediaPipe's own docs point at, and is
-// what every other consumer of this package relies on.
-const WASM_BASE_URL = `https://cdn.jsdelivr.net/npm/@mediapipe/[email protected]/wasm`;
-const MODEL_URL =
-  "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task";
+// Self-hosted rather than pulled from jsdelivr/Google at runtime: a report
+// of the overlay staying frozen at its fallback position even with no face
+// in frame at all — meaning tracking was never actually starting — pointed
+// at the third-party CDN fetch itself as the likely failure (ad blockers
+// and some mobile/corporate networks block exactly this kind of "tracking"-
+// named vendor script, or a model host, even when the rest of the site
+// loads fine). Same-origin means neither can be blocked independently of
+// the app itself. Only the two variants FilesetResolver.forVisionTasks
+// actually requests (SIMD and non-SIMD) are here — see public/mediapipe.
+const WASM_BASE_URL = "/mediapipe/wasm";
+const MODEL_URL = "/mediapipe/face_landmarker.task";
 
 let landmarkerPromise: Promise<FaceLandmarker> | null = null;
 

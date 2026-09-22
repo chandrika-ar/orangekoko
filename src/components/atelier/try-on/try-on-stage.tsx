@@ -35,6 +35,12 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
   const earLeftRef = useRef<HTMLDivElement>(null);
   const earRightRef = useRef<HTMLDivElement>(null);
   const [cameraState, setCameraState] = useState<CameraState>("idle");
+  // "idle" (nothing has run yet), "active" (the model loaded and is
+  // currently reading real face positions) or "unavailable" (the model/WASM
+  // failed to load, or loaded but this browser has never actually returned
+  // a detected face) — surfaced as a small status dot so it's visible in a
+  // screenshot rather than a silent, invisible fallback.
+  const [trackingStatus, setTrackingStatus] = useState<"idle" | "active" | "unavailable">("idle");
 
   useEffect(() => {
     return () => {
@@ -102,6 +108,7 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
     }
 
     function onFrame(anchors: FaceAnchors | null) {
+      setTrackingStatus(anchors ? "active" : "idle");
       if (!anchors) {
         placeDefaults();
         return;
@@ -125,8 +132,9 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
 
     placeDefaults();
     const stop = startFaceTracking(video, onFrame, () => {
-      // Model/WASM failed to load (offline, blocked CDN, unsupported
+      // Model/WASM failed to load (offline, blocked host, unsupported
       // browser) — the fixed default position placed above just stays put.
+      setTrackingStatus("unavailable");
     });
     return stop;
   }, [cameraState]);
@@ -187,6 +195,21 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
           <OverlayDot photo={photo} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
         </div>
       </div>
+
+      {/* Small, language-agnostic status dot: green once real face tracking
+          is actually reading a face, gray while idle/loading, red if the
+          model failed to load entirely — so a screenshot alone shows
+          whether the overlay above is really tracked or just the fallback
+          position, instead of that being invisible. */}
+      <span
+        className={`absolute right-2 top-2 h-2.5 w-2.5 rounded-full border border-white/50 ${
+          trackingStatus === "active"
+            ? "bg-emerald-400"
+            : trackingStatus === "unavailable"
+              ? "bg-red-500"
+              : "bg-white/40"
+        }`}
+      />
 
       <p className="absolute inset-x-0 bottom-0 bg-ink/70 px-3 py-1.5 text-center text-[9px] uppercase tracking-[0.08em] text-white">
         {t("approxPlacement")}
