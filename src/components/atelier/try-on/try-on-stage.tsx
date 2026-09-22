@@ -293,11 +293,25 @@ function useCutoutPhoto(photo: string | undefined) {
       cutoutCache.set(photo, cutout);
       setPending({ photo, url: cutout });
     };
+    img.onerror = () => {
+      // A silent failure here (a rejected /_next/image request, a network
+      // error) previously looked identical to "the cutout ran and found
+      // nothing to remove" — there was no way to tell them apart. Logging
+      // at least means a failure is visible in devtools instead of only
+      // showing up as an unexplained "nothing changed" report.
+      if (!cancelled) console.error("Try-on photo cutout failed to load:", img.src);
+    };
     // Routed through /_next/image rather than fetched directly — reading
     // pixel data back out of the canvas below requires the image to have
     // loaded without tainting it, which a cross-origin fetch can't
     // guarantee (see the identical fix for the 3D card's own photo texture).
-    img.src = `/_next/image?url=${encodeURIComponent(photo)}&w=320&q=90`;
+    // w=640&q=75 — Next's image optimizer only serves widths/qualities it
+    // was configured for (defaults: deviceSizes for width, [75] for
+    // quality); 320 and 90 aren't in those lists and get flatly rejected
+    // with a 400, which silently killed this whole pipeline until caught
+    // by hand — img.onload never fires, so it looked like no processing
+    // had happened at all rather than an obvious broken-image failure.
+    img.src = `/_next/image?url=${encodeURIComponent(photo)}&w=640&q=75`;
     return () => {
       cancelled = true;
     };
