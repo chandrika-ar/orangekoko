@@ -70,7 +70,6 @@ export function makeCardTexture(item: JourneyItem, displayFont: string, sansFont
 
   if (item.imageUrl) {
     const img = new Image();
-    img.crossOrigin = "anonymous";
     img.onload = () => {
       if (!ctx) return;
       drawFrame();
@@ -78,10 +77,18 @@ export function makeCardTexture(item: JourneyItem, displayFont: string, sansFont
       drawLabels();
       texture.needsUpdate = true;
     };
-    // A failed fetch (or a CDN that won't serve this image cross-origin)
-    // just leaves the placeholder up — never worth surfacing as an error
-    // for a decorative card in a 3D room.
-    img.src = item.imageUrl;
+    // A failed fetch just leaves the placeholder up — never worth surfacing
+    // as an error for a decorative card in a 3D room.
+    //
+    // Routed through Next's own image optimizer rather than fetched from
+    // cdn.sanity.io directly: drawing a cross-origin image onto a canvas
+    // that's then uploaded to WebGL as a texture requires the image to have
+    // loaded in actual CORS mode (img.crossOrigin = "anonymous") or the
+    // canvas is "tainted" and texture upload throws — and that depends on
+    // Sanity's CDN consistently sending the right CORS headers for every
+    // request pattern, which isn't guaranteed. Going through /_next/image
+    // instead makes this a same-origin request, sidestepping CORS entirely.
+    img.src = `/_next/image?url=${encodeURIComponent(item.imageUrl)}&w=640&q=75`;
   }
 
   return texture;
