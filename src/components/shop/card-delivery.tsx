@@ -1,4 +1,3 @@
-import { Link } from "@/i18n/navigation";
 import { FREE_SHIPPING_THRESHOLD_CENTS } from "@/lib/shipping";
 import { formatPrice } from "@/lib/products";
 import { useLocale, useTranslations } from "next-intl";
@@ -6,7 +5,6 @@ import { useLocale, useTranslations } from "next-intl";
 export function CardDelivery() {
   const t = useTranslations("cardShop");
   const shipping = useTranslations("shippingPage");
-  const footer = useTranslations("footer");
   const locale = useLocale();
   const amount = formatPrice(FREE_SHIPPING_THRESHOLD_CENTS, "EUR", locale);
   return (
@@ -16,7 +14,6 @@ export function CardDelivery() {
         <p>{t("minimumCards")}</p>
         <p>{t("deliveryBody")}</p>
         <p>{shipping("freeBody", { amount })}</p>
-        <Link href="/shipping" className="inline-block border-b border-ink pb-1 text-sm hover:text-accent">{footer("shipping")}</Link>
         <p>{t("mixedOrder")}</p>
       </div>
     </aside>

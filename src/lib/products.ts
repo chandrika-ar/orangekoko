@@ -26,12 +26,10 @@ export interface Product {
   currency: "EUR";
   /** Number of placeholder image slots to render when there are no real photos yet. */
   imageCount: number;
-  /** Real photo URLs from Sanity. Absent for the local sample catalogue. */
+  /** Real photo URLs from Sanity. Absent until real photographs are uploaded. */
   imageUrls?: string[];
   condition: string;
   materials: string;
-  era: string;
-  origin: string;
   measurements: string;
   description: string[];
   sold?: boolean;
@@ -61,8 +59,6 @@ interface SanityProductDoc {
   images?: SanityImageSource[];
   condition: string;
   materials: string;
-  era: string;
-  origin: string;
   measurements: string;
   description: string[];
   sold?: boolean;
@@ -91,8 +87,6 @@ const PRODUCT_PROJECTION = `{
   images,
   condition,
   materials,
-  era,
-  origin,
   measurements,
   description,
   sold,
@@ -126,8 +120,6 @@ function mapSanityProduct(doc: SanityProductDoc): Product {
       .filter((url): url is string => Boolean(url)),
     condition: doc.condition,
     materials: doc.materials,
-    era: doc.era,
-    origin: doc.origin,
     measurements: doc.measurements,
     description: doc.description,
     sold: doc.sold,

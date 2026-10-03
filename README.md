@@ -64,13 +64,13 @@ npm run dev
    - `NEXT_PUBLIC_SANITY_PROJECT_ID` = 你的 Project ID
    - `NEXT_PUBLIC_SANITY_DATASET` = `production`
    加完后 Redeploy 一次。
-5. 之后打开 `https://你的域名/studio`,用你刚才注册 Sanity 的账号登录,就能看到一个"Product"列表,点 "Create" 新建商品:填标题、选分类、填价格(欧元)、上传照片(支持拖拽多张、可以框选每张图的焦点区域裁切)、填 Condition / Materials / Era / Sourced in / Measurements / Description,点右上角 Publish 保存。网站几分钟内自动显示,不用推代码、不用找我。
+5. 之后打开 `https://你的域名/studio`,用你刚才注册 Sanity 的账号登录,就能看到一个"Product"列表,点 "Create" 新建商品:填标题、选分类、填价格(欧元)、上传照片(支持拖拽多张、可以框选每张图的焦点区域裁切)、填 Finish / Materials / Maker / Craft technique / Made in / Measurements / Description,点右上角 Publish 保存。网站几分钟内自动显示,不用推代码、不用找我。
 6. 某件卖出后,回到 `/studio` 打开这件商品,把 "Sold" 开关打开,Publish 保存——网站上会立刻标记"已售罄",而且我们的下单接口现在也会在真正生成付款链接前实时核对这个状态,避免同一件孤品被两个人同时买到(比之前纯代码硬编码的方案安全很多,虽然严格意义上仍不是 100% 无竞态,但已经覆盖了绝大多数场景)。
 7. 谁能登录 `/studio` 编辑?只有你在 Sanity 项目设置(Members)里邀请过的账号才能登录进去改东西,`/studio` 这个网址本身公开不要紧,没被邀请的人打开也进不去后台。
 
-在没有配置 `NEXT_PUBLIC_SANITY_PROJECT_ID` 之前(比如你现在预览这个链接时),网站会自动显示 `src/lib/products.ts` 里的 8 个占位商品作为兜底演示数据——配置完 Sanity 后会自动切换成你在后台填的真实商品,不需要额外改代码。
+未配置 Sanity 或没有发布真实商品时，网站显示空目录，不提供虚构的示例商品。首饰必须确认日本手工艺人来源并填写制作人等信息；贺卡按单张建立商品，三张优惠使用同一商品的价格字段。
 
-首页 Hero 人像、Our Story 配图、分类卡片这几张"氛围图"暂时没接入 Sanity(它们不是逐日更新的商品图,是很少换的品牌视觉),继续按下面第 2 条的方式发给我处理即可。
+首页、Brand 和 Our Story 的品牌配图保存在项目内；商品图片与商品资料通过 Sanity 管理。
 
 ### 邮件订阅(Footer 的 "Stay in the Know")
 
@@ -109,7 +109,7 @@ Contact 页面现在有一个 AI 聊天框,能直接回答顾客关于尺寸、�
 
 ## 上线前必须做的事(重要程度从高到低)
 
-### 1. 防止超卖(重要 — 每件都是孤品)
+### 1. 库存与付款
 
 已经全自动了:`/api/checkout` 在生成付款链接前会实时查一次 Sanity 里的 `sold` 状态,付款成功后 Stripe 会通知 `/api/webhooks/stripe`,由它自动把对应商品在 Sanity 里标记为 `sold: true`——你不需要手动去 `/studio` 点开关。
 
@@ -118,30 +118,22 @@ Contact 页面现在有一个 AI 聊天框,能直接回答顾客关于尺寸、�
 - `SANITY_API_TOKEN` — Sanity → API → Tokens → Add API token,角色选 **Editor**,把生成的 token 填到 Vercel 的 Environment Variables 里(不要告诉我这个 token,它有写入权限,直接填到 Vercel 后台,不用经过我)
 - `STRIPE_WEBHOOK_SECRET` — 等你配置 Stripe 生产环境、在 Stripe 后台添加了指向 `/api/webhooks/stripe` 的 Webhook 端点后就会拿到,同样填到 Vercel
 
-在这两个变量配置好之前,`sold` 状态只能手动在 `/studio` 里改,不影响你现在测试网站其他功能。
+结账还需要配置 Sanity、Stripe 密钥和四种 Webhook 事件；配置不完整时不会创建付款链接。库存预留、预售与释放流程见 [运营说明](docs/cards-operations.md)，正式售卖前须实际测试。
 
 ### 2. 真实图片
 
 商品图片已经通过 `/studio`(见上方"内容管理"一节)管理,上传后自动出现在商品详情页和列表页,不需要碰代码。
 
-还剩几张不属于"商品"的品牌氛围图仍是占位区(带说明文字的斜纹方块),需要你发真实照片给我替换:
-
-- 首页 Hero 人像(占位说明:"自然欧洲女性人像,柔和日光,佩戴单品,避免生硬的合成皮肤质感"）
-- Our Story 板块配图(占位说明:"手工创作与工艺细节"）
-- 分类卡片 3 张(耳夹/耳钉/项链平铺图,也可以等有真实商品图后从里面挑)
-- Condition & Authenticity 装饰图
-- About 页头图 + Sourcing 图
-
-把真实照片发给我,我来替换对应组件里的 `<ImagePlaceholder>`(组件在 `src/components/image-placeholder.tsx`)。
+首页、Brand 和 Our Story 已分别使用独立品牌配图。商品列表和详情页仍需上传真实商品照片，品牌氛围图不会作为虚构商品出售。
 
 ### 3. 真实商品数据
 
-已经不需要改代码文件了——去 `/studio` 按上方步骤填写即可,结构(小标题分区:Condition / Materials / Era / Sourced in / Measurements + Description / Details & Condition / Shipping & Returns / Care 折叠区)已经跟参考网站保持一致。`src/lib/products.ts` 里保留的 8 条占位数据只在没配置 Sanity 时作为兜底演示,配置好之后可以不用管它。
+已经不需要改代码文件了——去 `/studio` 按上方步骤填写即可,结构(小标题分区:Finish / Materials / Maker / Craft technique / Made in / Measurements + Description / Details & Condition / Shipping & Returns / Care 折叠区)已经跟参考网站保持一致。不再使用占位商品。旧商品不会自动改成日本手工艺人的作品，必须核实资料后重新发布。
 
 ### 4. Stripe 生产环境配置
 
 - Stripe 后台开通 iDEAL、Bancontact、SEPA 直接借记、Klarna、giropay、Przelewy24 等你需要的欧洲支付方式(Dashboard → Settings → Payment methods)。Checkout 会自动根据买家所在地区展示可用方式,代码里不需要写死。
-- 配置 Webhook endpoint 指向 `https://你的域名/api/webhooks/stripe`,订阅 `checkout.session.completed` 事件。
+- 配置 Webhook endpoint 指向 `https://你的域名/api/webhooks/stripe`,订阅 `checkout.session.completed`、`checkout.session.expired`、`checkout.session.async_payment_succeeded` 和 `checkout.session.async_payment_failed` 事件。
 - 税务:欧盟跨境电商涉及 VAT / OSS 申报,Stripe Tax 可以自动计算,但需要你在 Stripe 后台单独开通并配置——这部分是财务/合规问题,不是代码问题,建议上线前找当地会计确认。
 
 ### 5. 法务页面
