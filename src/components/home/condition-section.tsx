@@ -13,7 +13,7 @@ export function ConditionSection() {
           <h2 className="font-display text-3xl">{t("conditionTitle")}</h2>
           <span className="mx-auto mt-3 mb-6 block h-px w-10 bg-accent lg:mx-0" />
           <p className="mx-auto mb-6 max-w-md text-sm text-ink-soft lg:mx-0">
-            {t("conditionSecondhandNote")}
+            {t("craftNote")}
           </p>
           <div className="grid grid-cols-1 gap-x-10 gap-y-2 text-left text-sm leading-relaxed text-ink-soft sm:grid-cols-2">
             <ul className="space-y-2">

@@ -1,3 +1,4 @@
+import { CardDelivery } from "@/components/shop/card-delivery";
 import { getTranslations, getLocale } from "next-intl/server";
 import { SimplePage } from "@/components/simple-page";
 import { computeShippingOptions, FREE_SHIPPING_THRESHOLD_CENTS, SHIPPABLE_COUNTRIES } from "@/lib/shipping";
@@ -43,6 +44,7 @@ export default async function ShippingPage() {
       <p>{countryNames.join(", ")}</p>
 
       <p className="text-xs text-ink-soft">{ts("note")}</p>
+      <CardDelivery />
     </SimplePage>
   );
 }

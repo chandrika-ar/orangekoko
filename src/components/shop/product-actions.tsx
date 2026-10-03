@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Heart } from "lucide-react";
+import { availableQuantity } from "@/lib/commerce";
 import clsx from "clsx";
 import { useCartStore } from "@/store/cart-store";
 import { useWishlist } from "@/lib/use-wishlist";
@@ -10,6 +11,7 @@ import type { Product } from "@/lib/products";
 
 export function ProductActions({ product }: { product: Product }) {
   const t = useTranslations("product");
+  const available = availableQuantity(product);
   const addItem = useCartStore((s) => s.addItem);
   const inCart = useCartStore((s) =>
     s.lines.some((l) => l.productId === product.id),
@@ -21,7 +23,7 @@ export function ProductActions({ product }: { product: Product }) {
   return (
     <div className="flex items-stretch gap-3">
       <button
-        disabled={product.sold}
+        disabled={available === 0}
         onClick={() => {
           addItem({
             productId: product.id,
@@ -29,18 +31,20 @@ export function ProductActions({ product }: { product: Product }) {
             title: product.title,
             priceCents: product.priceCents,
             currency: product.currency,
+            maxQuantity: available,
+            dispatchBy: product.fulfilment === "preorder" ? product.dispatchBy : undefined,
           });
           setJustAdded(true);
           setTimeout(() => setJustAdded(false), 1800);
         }}
         className={clsx(
           "flex-1 border px-6 py-3.5 text-xs uppercase tracking-[0.12em] transition-colors",
-          product.sold
+          available === 0
             ? "cursor-not-allowed border-line text-ink-soft"
             : "border-ink bg-ink text-white hover:bg-transparent hover:text-ink",
         )}
       >
-        {product.sold
+        {available === 0
           ? t("sold")
           : inCart || justAdded
             ? t("addedToBag")

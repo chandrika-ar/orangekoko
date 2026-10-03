@@ -7,6 +7,7 @@ import Image from "next/image";
 export async function NewArrivalsRail() {
   const t = await getTranslations("home");
   const found = (await getAllProducts()).slice(0, 5);
+  if (found.length === 0) return <section className="mx-auto max-w-6xl px-6 py-14 text-center"><h2 className="font-display text-3xl">{t("newArrivalsTitle")}</h2><p className="mt-5 text-base text-ink-soft">{t("noProducts")}</p></section>;
   const slots: (Product | null)[] =
     found.length > 0 ? found : Array.from({ length: 5 }, () => null);
 

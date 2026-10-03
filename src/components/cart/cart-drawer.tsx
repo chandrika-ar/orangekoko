@@ -1,5 +1,6 @@
 "use client";
 
+import { CartQuantity } from "@/components/cart/cart-quantity";
 import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -15,6 +16,7 @@ function LinePrice({ cents, currency }: { cents: number; currency: string }) {
 
 export function CartDrawer() {
   const t = useTranslations("cart");
+  const tc = useTranslations("cardShop");
   const locale = useLocale();
   const isOpen = useCartStore((s) => s.isOpen);
   const close = useCartStore((s) => s.close);
@@ -73,8 +75,10 @@ export function CartDrawer() {
                       {line.title}
                     </Link>
                     <p className="mt-1 text-sm text-ink-soft">
-                      <LinePrice cents={line.priceCents} currency={line.currency} />
+                      <LinePrice cents={line.priceCents * line.quantity} currency={line.currency} />
                     </p>
+                  <CartQuantity line={line} />
+                  {line.dispatchBy && <p className="mt-2 text-sm text-accent">{tc("dispatchBy", { date: line.dispatchBy })}</p>}
                     <button
                       onClick={() => removeItem(line.productId)}
                       className="mt-1 text-[11px] uppercase tracking-[0.08em] text-ink-soft underline"
@@ -98,6 +102,7 @@ export function CartDrawer() {
                   : t("freeShippingUnlocked")}
               </p>
               <p className="mt-1 text-xs text-ink-soft">{t("shippingNote")}</p>
+              {lines.some((line) => line.dispatchBy) && <p className="mt-2 text-sm text-ink-soft">{tc("mixedOrder")}</p>}
               <p className="mt-1 text-xs text-ink-soft">{t("billedInEur")}</p>
               <Link
                 href="/checkout"

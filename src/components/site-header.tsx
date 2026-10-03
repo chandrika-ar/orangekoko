@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
 import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { JewelryNavigation } from "@/components/jewelry-navigation";
 import { Logo } from "@/components/logo";
 import { AnnouncementBar } from "@/components/announcement-bar";
 import { Link } from "@/i18n/navigation";
@@ -24,9 +25,6 @@ export function SiteHeader() {
 
   const navItems = [
     { href: "/new-arrivals", label: t("newArrivals") },
-    { href: "/ear-clips", label: t("earClips") },
-    { href: "/earrings-studs", label: t("earringsStuds") },
-    { href: "/necklaces", label: t("necklaces") },
     { href: "/handmade-cards", label: t("handmadeCards") },
     { href: "/projects", label: t("projects") },
     { href: "/brand", label: t("brand") },
@@ -46,6 +44,7 @@ export function SiteHeader() {
           </button>
 
           <nav className="hidden xl:flex items-center gap-4 text-[13px]">
+            <JewelryNavigation />
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -97,6 +96,7 @@ export function SiteHeader() {
 
         {menuOpen && (
           <nav className="xl:hidden flex flex-col gap-1 border-t border-line px-4 pb-4 pt-2">
+            <JewelryNavigation onNavigate={() => setMenuOpen(false)} />
             {navItems.map((item) => (
               <Link
                 key={item.href}

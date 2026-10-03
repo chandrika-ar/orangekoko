@@ -4,34 +4,24 @@ import { Link } from "@/i18n/navigation";
 
 export function Hero() {
   const t = useTranslations("hero");
-
+  const cards = useTranslations("cardShop");
   return (
-    <section className="relative flex h-[78vh] min-h-[520px] items-end overflow-hidden">
-      <Image
-        src="/hero-portrait.jpg"
-        alt=""
-        fill
-        priority
-        className="object-cover object-[55%_center]"
-        sizes="100vw"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
-      <div className="relative z-10 mx-auto w-full max-w-3xl px-6 pb-16 text-center text-white">
-        <h1 className="font-display text-4xl sm:text-5xl leading-tight">
-          {t("titleLine1")}
-          <br />
-          <span className="italic">{t("titleLine2")}</span>
-        </h1>
-        <p className="mx-auto mt-4 max-w-md text-xs uppercase tracking-[0.12em] text-white/90">
-          {t("subtitle")}
-        </p>
-        <Link
-          href="/new-arrivals"
-          className="mt-7 inline-block border border-white px-6 py-2.5 text-xs uppercase tracking-[0.12em] transition-colors hover:bg-white hover:text-ink"
-        >
-          {t("cta")}
-        </Link>
+    <section className="grid bg-cream-deep lg:grid-cols-[0.85fr_1.15fr]">
+      <div className="flex flex-col justify-center px-6 py-12 sm:px-12 sm:py-16 lg:py-24">
+        <p className="text-sm uppercase tracking-[0.15em] text-accent">Created &amp; Curated</p>
+        <h1 className="mt-5 font-display text-4xl leading-tight sm:text-5xl xl:text-6xl">{t("titleLine1")}<br /><span className="italic">{t("titleLine2")}</span></h1>
+        <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-soft">{t("subtitle")}</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/jewelry" className="border border-ink bg-ink px-5 py-3 text-sm text-white transition-colors hover:bg-accent">{cards("browseJewelry")}</Link>
+          <Link href="/handmade-cards" className="border border-ink px-5 py-3 text-sm transition-colors hover:bg-ink hover:text-white">{cards("browseCards")}</Link>
+        </div>
       </div>
+      <figure className="relative m-0">
+        <div className="relative aspect-[3/2] lg:aspect-auto lg:h-full lg:min-h-[560px]">
+          <Image src="/created-curated-hero.webp" alt={cards("heroAlt")} fill priority className="object-cover" sizes="(min-width: 1024px) 58vw, 100vw" />
+        </div>
+        <figcaption className="absolute bottom-3 right-3 max-w-[85%] bg-cream/90 px-3 py-1.5 text-xs text-ink">{cards("heroCaption")}</figcaption>
+      </figure>
     </section>
   );
 }

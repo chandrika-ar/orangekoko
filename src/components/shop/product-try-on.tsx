@@ -20,6 +20,8 @@ export function ProductTryOn({
   const t = useTranslations("atelierJourney");
   const [open, setOpen] = useState(false);
 
+  if (product.category === "handmade-cards") return null;
+
   const item: JourneyItem = {
     slug: product.slug,
     title: product.title,

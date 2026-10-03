@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { sanityWriteClient } from "@/sanity/lib/client";
+import { settleInventory } from "@/lib/inventory-reservations";
 import { pool } from "@/lib/db";
 import type Stripe from "stripe";
 
@@ -36,11 +37,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
-  if (event.type === "checkout.session.completed") {
+  if (event.type === "checkout.session.expired" || event.type === "checkout.session.async_payment_failed") {
+    const session = event.data.object as Stripe.Checkout.Session;
+    if (session.metadata?.inventoryReservation) {
+      try { await settleInventory(session.metadata.inventoryReservation, false); }
+      catch (err) { console.error("Inventory release failed", err); return NextResponse.json({ error: "Retry inventory release" }, { status: 500 }); }
+    }
+  }
+
+  if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
     const session = event.data.object as Stripe.Checkout.Session;
     const productIds = session.metadata?.productIds?.split(",").filter(Boolean) ?? [];
 
-    if (productIds.length === 0) {
+    if (session.payment_status !== "paid") return NextResponse.json({ received: true });
+    if (session.metadata?.inventoryReservation) {
+      try { await settleInventory(session.metadata.inventoryReservation, true); }
+      catch (err) { console.error("Inventory confirmation failed", err); return NextResponse.json({ error: "Retry inventory confirmation" }, { status: 500 }); }
+    } else if (productIds.length === 0) {
       console.warn("checkout.session.completed with no productIds metadata", session.id);
     } else if (!sanityWriteClient) {
       console.error(

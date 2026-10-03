@@ -59,7 +59,7 @@ export function computeShippingOptions(subtotalCents: number) {
   }));
 }
 
-export function toStripeShippingOptions(subtotalCents: number) {
+export function toStripeShippingOptions(subtotalCents: number, hasPreorder = false) {
   return computeShippingOptions(subtotalCents).map((option) => ({
     shipping_rate_data: {
       type: "fixed_amount" as const,
@@ -68,10 +68,10 @@ export function toStripeShippingOptions(subtotalCents: number) {
         option.labelKey === "standardTracked"
           ? "Standard tracked (Japan Post e-packet)"
           : "Express insured (Japan Post EMS)",
-      delivery_estimate: {
+      ...(hasPreorder ? {} : { delivery_estimate: {
         minimum: { unit: "business_day" as const, value: option.minDays },
         maximum: { unit: "business_day" as const, value: option.maxDays },
-      },
+      } }),
     },
   }));
 }

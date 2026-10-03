@@ -3,10 +3,15 @@ import { getStripe } from "@/lib/stripe";
 import { getProductBySlug } from "@/lib/products";
 import { SHIPPABLE_COUNTRIES, toStripeShippingOptions } from "@/lib/shipping";
 import { routing } from "@/i18n/routing";
+import { randomUUID } from "node:crypto";
+import { normalizeCartLines, validatePurchase } from "@/lib/commerce";
+import { reserveInventory } from "@/lib/inventory-reservations";
+import { sanityWriteClient } from "@/sanity/lib/client";
 import { auth } from "@/auth";
 
 interface CheckoutRequestBody {
-  slugs: string[];
+  items?: unknown;
+  slugs?: string[];
   locale: string;
 }
 
@@ -18,47 +23,39 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
+  if (!body || typeof body !== "object") return NextResponse.json({ error: "Invalid cart" }, { status: 400 });
+
   const locale = routing.locales.includes(body.locale as never)
     ? body.locale
     : routing.defaultLocale;
 
-  if (!Array.isArray(body.slugs) || body.slugs.length === 0) {
-    return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
+  let requested;
+  try {
+    requested = normalizeCartLines(body.items ?? (Array.isArray(body.slugs) ? body.slugs.map((slug) => ({ slug, quantity: 1 })) : undefined));
+  } catch {
+    return NextResponse.json({ error: "Invalid cart or quantity" }, { status: 400 });
   }
-
-  // Prices and availability are always resolved server-side from the
-  // product catalogue — never trust amounts sent from the client.
+  if (!sanityWriteClient || !process.env.STRIPE_WEBHOOK_SECRET) {
+    return NextResponse.json({ error: "Checkout inventory is not configured" }, { status: 503 });
+  }
+  const items = [];
   const lineItems = [];
-  const productIds: string[] = [];
-  for (const slug of body.slugs) {
-    const product = await getProductBySlug(slug);
-    if (!product) {
-      return NextResponse.json(
-        { error: `Unknown product: ${slug}` },
-        { status: 400 },
-      );
-    }
-    if (product.sold) {
-      return NextResponse.json(
-        { error: `"${product.title}" has already sold.` },
-        { status: 409 },
-      );
-    }
-    productIds.push(product.id);
-    lineItems.push({
-      quantity: 1,
-      price_data: {
-        currency: product.currency.toLowerCase(),
-        unit_amount: product.priceCents,
-        product_data: { name: product.title },
-      },
-    });
+  const dispatchDates: string[] = [];
+  for (const { slug, quantity } of requested) {
+    const product = await getProductBySlug(slug, { fresh: true });
+    if (!product || !product.revision) return NextResponse.json({ error: "Product unavailable" }, { status: 409 });
+    try { validatePurchase(product, quantity); }
+    catch { return NextResponse.json({ error: "Item is unavailable or requested quantity exceeds stock" }, { status: 409 }); }
+    items.push({ product, quantity });
+    if (product.fulfilment === "preorder" && product.dispatchBy) dispatchDates.push(product.dispatchBy);
+    lineItems.push({ quantity, price_data: {
+      currency: product.currency.toLowerCase(), unit_amount: product.priceCents,
+      product_data: { name: product.title, ...(product.fulfilment === "preorder" ? { description: `Preorder — dispatch by ${product.dispatchBy}` } : {}) },
+    }});
   }
-
-  const subtotalCents = lineItems.reduce(
-    (sum, item) => sum + item.price_data.unit_amount * item.quantity,
-    0,
-  );
+  const subtotalCents = lineItems.reduce((sum, item) => sum + item.price_data.unit_amount * item.quantity, 0);
+  const cancellationToken = randomUUID();
+  const reservationId = `inventory-reservation-${randomUUID()}`;
 
   try {
     const stripe = getStripe();
@@ -67,6 +64,7 @@ export async function POST(req: NextRequest) {
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      expires_at: Math.floor(Date.now() / 1000) + 30 * 60,
       line_items: lineItems,
       // Payment methods shown at checkout (cards, iDEAL, Bancontact, SEPA
       // Debit, Klarna, etc.) are controlled in the Stripe Dashboard under
@@ -74,19 +72,30 @@ export async function POST(req: NextRequest) {
       shipping_address_collection: {
         allowed_countries: [...SHIPPABLE_COUNTRIES],
       },
-      shipping_options: toStripeShippingOptions(subtotalCents),
+      shipping_options: toStripeShippingOptions(subtotalCents, dispatchDates.length > 0),
       success_url: `${origin}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/${locale}/checkout/cancel`,
+      cancel_url: `${origin}/${locale}/checkout/cancel?reservation=${reservationId}`,
       // Read back by the webhook to mark exactly these products sold, and
       // to attribute the order to an account for order-history purposes
       // (only when the customer was signed in at checkout).
       metadata: {
-        productIds: productIds.join(","),
+        cancellationToken,
+        inventoryReservation: reservationId,
+        dispatchBy: dispatchDates.sort().at(-1) ?? "",
         userId: authSession?.user?.id ?? "",
       },
     });
 
-    return NextResponse.json({ url: session.url });
+    try {
+      await reserveInventory(reservationId, session.id, items);
+    } catch (err) {
+      console.error("Inventory reservation failed", err);
+      await stripe.checkout.sessions.expire(session.id);
+      return NextResponse.json({ error: "Stock changed. Please review your cart and try again." }, { status: 409 });
+    }
+    const response = NextResponse.json({ url: session.url });
+    response.cookies.set(`orangekoko-checkout-${reservationId}`, JSON.stringify({ sessionId: session.id, token: cancellationToken }), { httpOnly: true, secure: req.nextUrl.protocol === "https:", sameSite: "lax", path: "/", maxAge: 1800 });
+    return response;
   } catch (err) {
     console.error("Stripe checkout session creation failed", err);
     return NextResponse.json(

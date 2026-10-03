@@ -23,7 +23,7 @@ export default function CheckoutPage() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        slugs: lines.map((l) => l.slug),
+        items: lines.map((l) => ({ slug: l.slug, quantity: l.quantity })),
         locale,
       }),
     })

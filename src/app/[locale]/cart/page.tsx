@@ -1,5 +1,6 @@
 "use client";
 
+import { CartQuantity } from "@/components/cart/cart-quantity";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cartSubtotalCents, useCartStore } from "@/store/cart-store";
@@ -14,6 +15,7 @@ function LinePrice({ cents, currency }: { cents: number; currency: string }) {
 
 export default function CartPage() {
   const t = useTranslations("cart");
+  const tc = useTranslations("cardShop");
   const locale = useLocale();
   const lines = useCartStore((s) => s.lines);
   const removeItem = useCartStore((s) => s.removeItem);
@@ -51,8 +53,10 @@ export default function CartPage() {
                     {line.title}
                   </Link>
                   <p className="mt-1 text-sm text-ink-soft">
-                    <LinePrice cents={line.priceCents} currency={line.currency} />
+                    <LinePrice cents={line.priceCents * line.quantity} currency={line.currency} />
                   </p>
+                  <CartQuantity line={line} />
+                  {line.dispatchBy && <p className="mt-2 text-sm text-accent">{tc("dispatchBy", { date: line.dispatchBy })}</p>}
                 </div>
                 <button
                   onClick={() => removeItem(line.productId)}
@@ -75,6 +79,7 @@ export default function CartPage() {
               : t("freeShippingUnlocked")}
           </p>
           <p className="mt-1 text-xs text-ink-soft">{t("shippingNote")}</p>
+              {lines.some((line) => line.dispatchBy) && <p className="mt-2 text-sm text-ink-soft">{tc("mixedOrder")}</p>}
           <p className="mt-1 text-xs text-ink-soft">{t("billedInEur")}</p>
           <Link
             href="/checkout"
