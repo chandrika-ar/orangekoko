@@ -24,7 +24,8 @@
     "account": "Account",
     "menu": "Menu",
     "close": "Sluiten",
-    "allJewelry": "Alle Sieraden"
+    "allJewelry": "Alle Sieraden",
+    "handmadeCards": "Handgemaakte kaarten"
   },
   "hero": {
     "eyebrow": "Met zorg gekozen, altijd",
@@ -301,5 +302,16 @@
     "total": "Totaal",
     "status_paid": "Betaald",
     "status_refunded": "Terugbetaald"
+  },
+  "cards": {
+    "eyebrow": "Created & Curated",
+    "title": "Handgemaakte kaarten",
+    "intro": "Originele wenskaarten, met de hand gemaakt — voor persoonlijke woorden, kleine details en bijzondere papierstructuren.",
+    "empty": "Er staan nog geen kaarten in de collectie.",
+    "jewelryCta": "Ontdek vintage sieraden",
+    "cta": "Ontdek de kaarten",
+    "previewBody": "Originele handgemaakte kaarten en vintage sieraden geselecteerd in Japan, verbonden door liefde voor mooie kleine dingen.",
+    "metaTitle": "Handgemaakte kaarten | orangekoko",
+    "metaDescription": "Originele wenskaarten, met de hand gemaakt — voor persoonlijke woorden, kleine details en bijzondere papierstructuren."
   }
 }

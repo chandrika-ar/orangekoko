@@ -24,7 +24,8 @@
     "account": "Konto",
     "menu": "Meny",
     "close": "Stäng",
-    "allJewelry": "Alla Smycken"
+    "allJewelry": "Alla Smycken",
+    "handmadeCards": "Handgjorda kort"
   },
   "hero": {
     "eyebrow": "Utvalt med omsorg, alltid",
@@ -301,5 +302,16 @@
     "total": "Totalt",
     "status_paid": "Betald",
     "status_refunded": "Återbetald"
+  },
+  "cards": {
+    "eyebrow": "Created & Curated",
+    "title": "Handgjorda kort",
+    "intro": "Originella gratulationskort gjorda för hand — för personliga hälsningar, små detaljer och vackra pappersstrukturer.",
+    "empty": "Det finns inga kort i kollektionen ännu.",
+    "jewelryCta": "Upptäck vintagesmycken",
+    "cta": "Upptäck korten",
+    "previewBody": "Handgjorda originalkort och vintagesmycken utvalda i Japan, förenade av kärleken till vackra små ting.",
+    "metaTitle": "Handgjorda kort | orangekoko",
+    "metaDescription": "Originella gratulationskort gjorda för hand — för personliga hälsningar, små detaljer och vackra pappersstrukturer."
   }
 }

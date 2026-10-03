@@ -24,7 +24,8 @@
     "account": "Konto",
     "menu": "Menu",
     "close": "Luk",
-    "allJewelry": "Alle Smykker"
+    "allJewelry": "Alle Smykker",
+    "handmadeCards": "Håndlavede kort"
   },
   "hero": {
     "eyebrow": "Udvalgt med omhu, altid",
@@ -301,5 +302,16 @@
     "total": "Total",
     "status_paid": "Betalt",
     "status_refunded": "Refunderet"
+  },
+  "cards": {
+    "eyebrow": "Created & Curated",
+    "title": "Håndlavede kort",
+    "intro": "Originale lykønskningskort lavet i hånden — til personlige hilsner, små detaljer og fine papirstrukturer.",
+    "empty": "Der er endnu ingen kort i kollektionen.",
+    "jewelryCta": "Se vintagesmykker",
+    "cta": "Se kortene",
+    "previewBody": "Originale håndlavede kort og vintagesmykker udvalgt i Japan, forbundet af kærligheden til smukke små ting.",
+    "metaTitle": "Håndlavede kort | orangekoko",
+    "metaDescription": "Originale lykønskningskort lavet i hånden — til personlige hilsner, små detaljer og fine papirstrukturer."
   }
 }

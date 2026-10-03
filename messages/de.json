@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — Vintage-Schmuck aus Japan, mit Sorgfalt ausgewählt",
-    "description": "orangekoko bringt Vintage-Schmuck aus ganz Japan nach Europa. Jedes Stück wurde bereits getragen und trägt seine eigene Spur der Zeit."
+    "title": "orangekoko — Handgemachte Grußkarten & Vintage-Schmuck aus Japan",
+    "description": "Eigene handgemachte Grußkarten und in Japan ausgewählter Vintage-Schmuck — verbunden durch die Liebe zu schönen kleinen Dingen."
   },
   "announcement": {
     "freeShipping": "Kostenloser Versand ab €120 Bestellwert",
@@ -24,13 +24,14 @@
     "account": "Konto",
     "menu": "Menü",
     "close": "Schließen",
-    "allJewelry": "Aller Schmuck"
+    "allJewelry": "Aller Schmuck",
+    "handmadeCards": "Grußkarten"
   },
   "hero": {
     "eyebrow": "Mit Sorgfalt ausgewählt, immer",
-    "titleLine1": "Ausgewählte Vintage-Stücke",
-    "titleLine2": "für jede Version von dir.",
-    "subtitle": "Vintage-Schmuck aus Japan — mit Alter, Patina und Atmosphäre",
+    "titleLine1": "Kleine Dinge,",
+    "titleLine2": "bleibende Geschichten.",
+    "subtitle": "Eigene handgemachte Grußkarten und in Japan ausgewählter Vintage-Schmuck.",
     "cta": "Neuheiten entdecken"
   },
   "home": {
@@ -38,12 +39,12 @@
     "earringsStudsLabel": "Ohrstecker",
     "earClipsLabel": "Ohrclips",
     "necklacesLabel": "Halsketten",
-    "storyEyebrow": "Unsere Geschichte",
-    "storyTitleLine1": "Gefunden in Japan,",
-    "storyTitleLine2": "mit Bedacht ausgewählt.",
-    "storyBody1": "Wir bereisen ganz Japan, um Stücke von einer Schönheit zu finden, die nur die Zeit erschaffen kann.",
-    "storyBody2": "Jedes Stück wird von Hand ausgewählt — nach Verarbeitung, Material und stiller Ausstrahlung.",
-    "storyBody3": "Wir glauben, dass Vintage-Schmuck Erinnerung trägt — und Teil Ihrer eigenen wird.",
+    "storyEyebrow": "Created & Curated",
+    "storyTitleLine1": "Von Hand gestaltet,",
+    "storyTitleLine2": "mit Bedacht entdeckt.",
+    "storyBody1": "orangekoko verbindet Dinge, die ich selbst gestalte, mit Schätzen, die ich in Japan entdecke.",
+    "storyBody2": "Jedes Vintage-Stück wird von Hand ausgewählt — für seine Verarbeitung, sein Material und die Schönheit der Zeit.",
+    "storyBody3": "Eigene handgemachte Grußkarten geben persönlichen Worten einen Platz auf Papier — eine weitere Art, die Freude an schönen kleinen Dingen zu teilen.",
     "storyCta": "Mehr über unsere Reise",
     "newArrivalsTitle": "Neu entdeckt",
     "newArrivalsSubtitle": "Neu gefunden in Japan",
@@ -267,16 +268,16 @@
     "lead": "Bevor es weitergeht — ein Wort zu unserem Namen und dazu, was ‘orange’ für uns bedeutet.",
     "philosophy1": "orange ist keine Farbe — es ist ein Gefühl. Der Moment, in dem sich das Nachmittagslicht verlangsamt. Eine stille Wärme, die dem Leben nahebleibt, ohne sich aufzudrängen.",
     "philosophy2": "Nicht gemacht, um aufzufallen, sondern um im Alltag zu bleiben. Wir glauben, dass Schmuck seine Präsenz nicht ständig beweisen muss. Die schönsten Stücke begleiten Sie einfach still — sie hinterlassen ein Gewicht auf der Haut, Spuren in der Zeit. Dort beginnt orangekoko.",
-    "philosophy3": "Als kuratierter Raum suchen wir zeitgenössische Handwerkskunst und japanischen Vintage-Schmuck — nicht weil sie funkeln, sondern weil sie es wert sind, jahrelang getragen zu werden, immer wieder.",
+    "philosophy3": "orangekoko ist ein Ort für in Japan ausgewählten Vintage-Schmuck und meine eigenen handgemachten Grußkarten. Eine Kollektion wird entdeckt, die andere gestaltet — verbunden durch die Liebe zu Handwerk, Texturen und kleinen Details.",
     "philosophy4": "Handwerk, Textur, ein Gefühl für Zeit — das sind unsere Kriterien. Bei orangekoko ist Schmuck eher wie ein tägliches Vitamin fürs Leben.",
     "philosophy5": "Klein, aber notwendig. Sanft, aber ernst gemeint.",
     "closing": "orange erzeugt keinen Impuls. orange hinterlässt einen Eindruck."
   },
   "about": {
-    "expandedBody1": "Das ist die Version, die wir aufschreiben. Die wahre beginnt bei mir: Ich liebe japanischen Vintage-Schmuck schon lange — und nicht die polierten Stücke hinter Glas im Schaufenster. Ich meine die, die man Tisch für Tisch auf irgendeinem kleinen Flohmarkt findet, so einem Ort, der es nie in einen Reiseführer schafft.",
+    "expandedBody1": "Die Geschichte beginnt mit mir: Ich liebe japanischen Vintage-Schmuck, besonders die Stücke, die auf einem Flohmarkt in einer kleinen Stadt darauf warten, entdeckt zu werden.",
     "expandedBody2": "Ich suche sie selbst, und das Schönste daran ist selten das Stück selbst — es ist die Geschichte, die mitkommt. Die Verkäufer sind oft die ursprünglichen Besitzer oder deren Familien, und sie erzählen, wohin ein Stück gereist ist, wer es zu welchem Anlass getragen hat, warum es schließlich beiseitegelegt wurde. Solche Geschichten gibt es in Großstadtläden nicht.",
     "expandedBody3": "Was mich immer wieder überrascht, ist, wie gut diese Stücke die Zeit überdauert haben. Japan hat eine stille, tief verwurzelte Kultur der Pflege von Dingen — reparieren statt ersetzen, mit Bedacht aufbewahren, Dinge weitergeben statt wegzuwerfen. Diese Gewohnheit der sorgfältigen Aufbewahrung ist genau der Grund, warum ein Stück aus vergangenen Jahrzehnten Sie noch immer in tragbarem Zustand erreichen kann — mit intakter statt ausgelöschter Geschichte.",
-    "expandedBodyArtisan": "Neben diesen Vintage-Fundstücken arbeite ich inzwischen auch mit einer Handvoll zeitgenössischer Kunsthandwerker:innen zusammen, deren Arbeiten denselben Geist tragen — in kleinen Serien gefertigt, gedacht für Jahre statt für eine Saison, jedes Stück von einer Hand geformt statt von einer Maschine.",
+    "expandedBodyArtisan": "Neben diesen Vintage-Fundstücken gestalte ich meine eigenen handgemachten Grußkarten. Sie haben hier ihren eigenen Platz neben dem Schmuck, den ich auswähle — ein Teil selbst gestaltet, ein Teil kuratiert, verbunden durch meine Liebe zu kleinen Details.",
     "expandedBody4": "Darauf baut orangekoko auf: Stücke, die diese Art von Sorgfalt verdienen, und die Geschichten, die sie mitbringen."
   },
   "account": {
@@ -301,5 +302,16 @@
     "total": "Gesamt",
     "status_paid": "Bezahlt",
     "status_refunded": "Erstattet"
+  },
+  "cards": {
+    "eyebrow": "Created & Curated",
+    "title": "Handgemachte Grußkarten",
+    "intro": "Eigene, von Hand gestaltete Grußkarten — für persönliche Worte, kleine Details und besondere Papierstrukturen.",
+    "empty": "Hier sind noch keine Karten gelistet.",
+    "jewelryCta": "Vintage-Schmuck entdecken",
+    "cta": "Grußkarten entdecken",
+    "previewBody": "Eigene handgemachte Grußkarten und in Japan ausgewählter Vintage-Schmuck — verbunden durch die Liebe zu schönen kleinen Dingen.",
+    "metaTitle": "Handgemachte Grußkarten | orangekoko",
+    "metaDescription": "Eigene, von Hand gestaltete Grußkarten — für persönliche Worte, kleine Details und besondere Papierstrukturen."
   }
 }

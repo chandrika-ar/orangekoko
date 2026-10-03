@@ -24,7 +24,8 @@
     "account": "Account",
     "menu": "Menu",
     "close": "Chiudi",
-    "allJewelry": "Tutti i Gioielli"
+    "allJewelry": "Tutti i Gioielli",
+    "handmadeCards": "Biglietti artigianali"
   },
   "hero": {
     "eyebrow": "Scelto con cura, sempre",
@@ -301,5 +302,16 @@
     "total": "Totale",
     "status_paid": "Pagato",
     "status_refunded": "Rimborsato"
+  },
+  "cards": {
+    "eyebrow": "Created & Curated",
+    "title": "Biglietti artigianali",
+    "intro": "Biglietti d’auguri originali fatti a mano, per messaggi personali, piccoli dettagli e texture di carta.",
+    "empty": "Non ci sono ancora biglietti nella collezione.",
+    "jewelryCta": "Scopri i gioielli vintage",
+    "cta": "Scopri i biglietti",
+    "previewBody": "Biglietti originali fatti a mano e gioielli vintage selezionati in Giappone, uniti dall’amore per le piccole cose belle.",
+    "metaTitle": "Biglietti artigianali | orangekoko",
+    "metaDescription": "Biglietti d’auguri originali fatti a mano, per messaggi personali, piccoli dettagli e texture di carta."
   }
 }

@@ -1,3 +1,4 @@
+import { CardsPreview } from "@/components/home/cards-preview";
 import { Hero } from "@/components/home/hero";
 import { CategoryGrid } from "@/components/home/category-grid";
 import { StorySection } from "@/components/home/story-section";
@@ -15,6 +16,7 @@ export default function HomePage() {
     <>
       <Hero />
       <CategoryGrid />
+      <CardsPreview />
       <StorySection />
       <NewArrivalsRail />
       <ConditionSection />

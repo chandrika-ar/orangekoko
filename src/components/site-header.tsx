@@ -27,6 +27,7 @@ export function SiteHeader() {
     { href: "/ear-clips", label: t("earClips") },
     { href: "/earrings-studs", label: t("earringsStuds") },
     { href: "/necklaces", label: t("necklaces") },
+    { href: "/handmade-cards", label: t("handmadeCards") },
     { href: "/projects", label: t("projects") },
     { href: "/brand", label: t("brand") },
   ];
@@ -44,7 +45,7 @@ export function SiteHeader() {
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
 
-          <nav className="hidden xl:flex items-center gap-6 text-[13px]">
+          <nav className="hidden xl:flex items-center gap-4 text-[13px]">
             {navItems.map((item) => (
               <Link
                 key={item.href}

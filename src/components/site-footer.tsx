@@ -52,6 +52,7 @@ export function SiteFooter() {
             <li><Link href="/ear-clips">{nav("earClips")}</Link></li>
             <li><Link href="/earrings-studs">{nav("earringsStuds")}</Link></li>
             <li><Link href="/necklaces">{nav("necklaces")}</Link></li>
+            <li><Link href="/handmade-cards">{nav("handmadeCards")}</Link></li>
           </ul>
         </div>
         <div>

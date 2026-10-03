@@ -24,7 +24,8 @@
     "account": "Cuenta",
     "menu": "Menú",
     "close": "Cerrar",
-    "allJewelry": "Todas las Joyas"
+    "allJewelry": "Todas las Joyas",
+    "handmadeCards": "Tarjetas artesanales"
   },
   "hero": {
     "eyebrow": "Elegida con cuidado, siempre",
@@ -301,5 +302,16 @@
     "total": "Total",
     "status_paid": "Pagado",
     "status_refunded": "Reembolsado"
+  },
+  "cards": {
+    "eyebrow": "Created & Curated",
+    "title": "Tarjetas artesanales",
+    "intro": "Tarjetas originales hechas a mano, para mensajes personales, pequeños detalles y texturas de papel.",
+    "empty": "Todavía no hay tarjetas en la colección.",
+    "jewelryCta": "Descubrir joyas vintage",
+    "cta": "Descubrir las tarjetas",
+    "previewBody": "Tarjetas originales hechas a mano y joyas vintage seleccionadas en Japón, unidas por el amor a las pequeñas cosas bonitas.",
+    "metaTitle": "Tarjetas artesanales | orangekoko",
+    "metaDescription": "Tarjetas originales hechas a mano, para mensajes personales, pequeños detalles y texturas de papel."
   }
 }

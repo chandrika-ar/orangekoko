@@ -24,7 +24,8 @@
     "account": "Compte",
     "menu": "Menu",
     "close": "Fermer",
-    "allJewelry": "Tous les bijoux"
+    "allJewelry": "Tous les bijoux",
+    "handmadeCards": "Cartes artisanales"
   },
   "hero": {
     "eyebrow": "Choisi avec soin, toujours",
@@ -301,5 +302,16 @@
     "total": "Total",
     "status_paid": "Payée",
     "status_refunded": "Remboursée"
+  },
+  "cards": {
+    "eyebrow": "Created & Curated",
+    "title": "Cartes artisanales",
+    "intro": "Des cartes de vœux originales faites à la main, pour des mots personnels, de petits détails et de belles textures de papier.",
+    "empty": "Aucune carte n’est encore répertoriée.",
+    "jewelryCta": "Découvrir les bijoux vintage",
+    "cta": "Découvrir les cartes",
+    "previewBody": "Des cartes originales faites à la main et des bijoux vintage sélectionnés au Japon, réunis par un amour des belles petites choses.",
+    "metaTitle": "Cartes artisanales | orangekoko",
+    "metaDescription": "Des cartes de vœux originales faites à la main, pour des mots personnels, de petits détails et de belles textures de papier."
   }
 }

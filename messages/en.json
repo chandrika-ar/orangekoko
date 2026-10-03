@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — Vintage jewelry from Japan, sourced with care",
-    "description": "orangekoko brings vintage jewelry sourced across Japan to Europe. Every piece has been worn before, carrying its own trace of time."
+    "title": "orangekoko — Handmade cards & vintage jewelry from Japan",
+    "description": "Original handmade cards and vintage jewelry selected in Japan, brought together through a love of beautiful little things."
   },
   "announcement": {
     "freeShipping": "Complimentary shipping on orders over €120",
@@ -24,13 +24,14 @@
     "account": "Account",
     "menu": "Menu",
     "close": "Close",
-    "allJewelry": "All Jewelry"
+    "allJewelry": "All Jewelry",
+    "handmadeCards": "Handmade Cards"
   },
   "hero": {
     "eyebrow": "Chosen with care, always",
-    "titleLine1": "Selected vintage",
-    "titleLine2": "for every version of you.",
-    "subtitle": "Vintage jewelry, sourced in Japan, with age, patina and atmosphere",
+    "titleLine1": "Little things,",
+    "titleLine2": "lasting stories.",
+    "subtitle": "Original handmade cards and vintage jewelry selected in Japan.",
     "cta": "Shop new arrivals"
   },
   "home": {
@@ -38,12 +39,12 @@
     "earringsStudsLabel": "Pierced Earrings",
     "earClipsLabel": "Ear Clips",
     "necklacesLabel": "Necklaces",
-    "storyEyebrow": "Our story",
-    "storyTitleLine1": "Sourced in Japan,",
-    "storyTitleLine2": "chosen with intention.",
-    "storyBody1": "We travel across Japan to find pieces with a beauty that time alone can create.",
-    "storyBody2": "Each treasure is selected by hand for its craftsmanship, material and quiet presence.",
-    "storyBody3": "We believe vintage jewelry carries memory — and becomes part of yours.",
+    "storyEyebrow": "Created & Curated",
+    "storyTitleLine1": "Made by hand,",
+    "storyTitleLine2": "found with intention.",
+    "storyBody1": "orangekoko brings together things I create and treasures I discover in Japan.",
+    "storyBody2": "Each vintage piece is selected by hand for its craftsmanship, material and the beauty of time.",
+    "storyBody3": "Original handmade greeting cards give personal messages a home on paper — another way to share a love of beautiful little things.",
     "storyCta": "About our journey",
     "newArrivalsTitle": "Latest Discoveries",
     "newArrivalsSubtitle": "Newly found in Japan",
@@ -267,16 +268,16 @@
     "lead": "Before anything else — a word about our name, and what ‘orange’ means to us.",
     "philosophy1": "orange is not a color — it's a feeling. The moment afternoon light slows down. A quiet warmth that stays close to life without intruding.",
     "philosophy2": "Not made to catch your eye, but to stay with you in the everyday. We believe jewelry doesn't need to constantly prove its presence. The best pieces simply accompany you in silence — leaving weight on the skin, leaving traces in time. That's where orangekoko begins.",
-    "philosophy3": "As a curated space, we seek out contemporary artisan works and vintage Japanese jewelry — not because they dazzle, but because they're worth wearing for years, worth returning to again and again.",
+    "philosophy3": "orangekoko is a place for vintage jewelry selected in Japan and my own handmade greeting cards. One collection is found, the other created — connected by a love of craft, texture and small details.",
     "philosophy4": "Craft, texture, a sense of time — these are our criteria. At orangekoko, jewelry is closer to a daily vitamin for living.",
     "philosophy5": "Small, but necessary. Gentle, but taken seriously.",
     "closing": "orange doesn't create impulse. orange leaves an impression."
   },
   "about": {
-    "expandedBody1": "That's the version we put in writing. The real one starts with me: I've always loved Japanese vintage jewelry, and not the polished pieces sitting behind glass in a shop window. I mean the ones spread out table by table at some small-town flea market, the kind of place that never makes it into a guidebook.",
+    "expandedBody1": "The story starts with me: I have always loved Japanese vintage jewelry, especially the pieces waiting to be discovered at a small-town flea market.",
     "expandedBody2": "I go looking for them myself, and the best part is rarely the piece — it's the story that comes with it. The sellers are often the original owners, or their families, and they'll tell you where a piece traveled, who wore it and to what occasion, why it was finally set aside. Stories like that don't exist in big-city shops.",
     "expandedBody3": "What keeps surprising me is how well these pieces have survived. Japan has a quiet, deep-rooted habit of caring for things — mending rather than replacing, storing with intention, passing objects down instead of throwing them away. That habit of careful keeping is exactly why a piece from decades ago can still reach you in wearable condition, its history intact rather than worn away.",
-    "expandedBodyArtisan": "Alongside these vintage finds, I've also started working with a handful of contemporary artisans whose pieces carry that same spirit — made in small batches, meant to be worn for years rather than a season, each one shaped by a maker's hand rather than a machine.",
+    "expandedBodyArtisan": "Alongside these vintage finds, I create my own handmade greeting cards. They have their own place here beside the jewelry I select — one part created, one part curated, connected by my love of small details.",
     "expandedBody4": "That's what orangekoko is built on: pieces worth that kind of care, and the stories that come with them."
   },
   "account": {
@@ -301,5 +302,16 @@
     "total": "Total",
     "status_paid": "Paid",
     "status_refunded": "Refunded"
+  },
+  "cards": {
+    "eyebrow": "Created & Curated",
+    "title": "Handmade cards",
+    "intro": "Original greeting cards made by hand — a place for personal messages, small details and paper textures.",
+    "empty": "There are no cards listed yet.",
+    "jewelryCta": "Explore vintage jewelry",
+    "cta": "Discover handmade cards",
+    "previewBody": "Original handmade cards and vintage jewelry selected in Japan, brought together through a love of beautiful little things.",
+    "metaTitle": "Handmade cards | orangekoko",
+    "metaDescription": "Original greeting cards made by hand — a place for personal messages, small details and paper textures."
   }
 }

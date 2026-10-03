@@ -24,7 +24,8 @@
     "account": "Tili",
     "menu": "Valikko",
     "close": "Sulje",
-    "allJewelry": "Kaikki Korut"
+    "allJewelry": "Kaikki Korut",
+    "handmadeCards": "Käsintehdyt kortit"
   },
   "hero": {
     "eyebrow": "Huolella valittu, aina",
@@ -301,5 +302,16 @@
     "total": "Yhteensä",
     "status_paid": "Maksettu",
     "status_refunded": "Hyvitetty"
+  },
+  "cards": {
+    "eyebrow": "Created & Curated",
+    "title": "Käsintehdyt kortit",
+    "intro": "Alkuperäisiä käsintehtyjä onnittelukortteja — henkilökohtaisia viestejä, pieniä yksityiskohtia ja kauniita paperipintoja varten.",
+    "empty": "Kokoelmassa ei ole vielä kortteja.",
+    "jewelryCta": "Tutustu vintagekoruihin",
+    "cta": "Tutustu kortteihin",
+    "previewBody": "Alkuperäiset käsintehdyt kortit ja Japanissa valitut vintagekorut yhdistyvät rakkaudesta kauniisiin pieniin asioihin.",
+    "metaTitle": "Käsintehdyt kortit | orangekoko",
+    "metaDescription": "Alkuperäisiä käsintehtyjä onnittelukortteja — henkilökohtaisia viestejä, pieniä yksityiskohtia ja kauniita paperipintoja varten."
   }
 }
