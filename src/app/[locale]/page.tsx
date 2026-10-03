@@ -1,8 +1,6 @@
 import { Hero } from "@/components/home/hero";
 import { CategoryGrid } from "@/components/home/category-grid";
-import { StorySection } from "@/components/home/story-section";
 import { NewArrivalsRail } from "@/components/home/new-arrivals-rail";
-import { ConditionSection } from "@/components/home/condition-section";
 import { FeaturesRow } from "@/components/home/features-row";
 // AtelierEntryBanner (the "Step inside the atelier" / 3D room section) is
 // paused for now — try-on moved to individual product pages instead (see
@@ -15,9 +13,7 @@ export default function HomePage() {
     <>
       <Hero />
       <CategoryGrid />
-      <StorySection />
       <NewArrivalsRail />
-      <ConditionSection />
       <FeaturesRow />
     </>
   );

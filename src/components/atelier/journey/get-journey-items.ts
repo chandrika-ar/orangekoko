@@ -33,7 +33,7 @@ export async function getJourneyRooms(locale: string): Promise<CategoryRoom[]> {
           slug: p.slug,
           title: p.title,
           priceLabel: formatPrice(p.priceCents, p.currency, locale),
-          category: p.category,
+          category: key,
           imageUrl: p.imageUrls?.[0],
         }));
       return { category: key, label: nav(NAV_KEY[key]), items };

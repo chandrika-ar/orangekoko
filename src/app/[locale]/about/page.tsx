@@ -9,7 +9,7 @@ export default async function AboutPage() {
     <div>
       <div className="relative aspect-[16/7] w-full overflow-hidden bg-cream-deep">
         <Image
-          src="/about-hero.jpg"
+          src="/about-studio-story.webp"
           alt=""
           fill
           priority

@@ -1,3 +1,5 @@
+import { CrossSell } from "@/components/shop/cross-sell";
+import { CardDetails } from "@/components/shop/card-details";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { getProductBySlug, getProductsByCategory, formatPrice } from "@/lib/products";
@@ -19,6 +21,8 @@ export default async function ProductPage({
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
+  const isCard = product.category === "handmade-cards";
+  const tc = await getTranslations("cardShop");
   const t = await getTranslations("product");
   const tp = await getTranslations("process");
   const related = (await getProductsByCategory(product.category))
@@ -51,10 +55,11 @@ export default async function ProductPage({
 
           <div className="mt-6 space-y-3">
             <ProductActions product={product} />
-            <ProductTryOn
+            {isCard && <CardDetails product={product} />}
+            {!isCard && <ProductTryOn
               product={product}
               priceLabel={formatPrice(displayCents, displayCurrency, locale)}
-            />
+            />}
           </div>
 
           <dl className="mt-8 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-line pt-6 text-sm">
@@ -70,18 +75,19 @@ export default async function ProductPage({
               </dt>
               <dd>{product.materials}</dd>
             </div>
-            <div>
+            {!isCard && <div>
               <dt className="text-[11px] uppercase tracking-[0.1em] text-ink-soft">
-                {t("era")}
+                {t("maker")}
               </dt>
-              <dd>{product.era}</dd>
-            </div>
-            <div>
+              <dd>{product.maker}</dd>
+            </div>}
+            {!isCard && <div>
               <dt className="text-[11px] uppercase tracking-[0.1em] text-ink-soft">
-                {t("origin")}
+                {t("madeIn")}
               </dt>
-              <dd>{product.origin}</dd>
-            </div>
+              <dd>{product.madeIn}</dd>
+            </div>}
+            {!isCard && product.craftTechnique && <div className="col-span-2"><dt className="text-[11px] uppercase tracking-[0.1em] text-ink-soft">{t("craftTechnique")}</dt><dd>{product.craftTechnique}</dd></div>}
             <div className="col-span-2">
               <dt className="text-[11px] uppercase tracking-[0.1em] text-ink-soft">
                 {t("measurements")}
@@ -113,11 +119,11 @@ export default async function ProductPage({
                 },
                 {
                   title: t("shippingTitle"),
-                  content: <p>{t("shippingBody")}</p>,
+                  content: <p>{isCard ? tc("deliveryBody") : t("shippingBody")}</p>,
                 },
                 {
                   title: t("careTitle"),
-                  content: <p>{t("careBody")}</p>,
+                  content: <p>{isCard ? tc("careBody") : t("careBody")}</p>,
                 },
               ]}
             />
@@ -125,13 +131,15 @@ export default async function ProductPage({
         </div>
       </div>
 
-      <section className="mt-20 border-t border-line pt-16">
+      {!isCard && <CrossSell product={product} />}
+
+      {!isCard && <section className="mt-20 border-t border-line pt-16">
         <h2 className="text-center font-display text-2xl">{tp("title")}</h2>
         <p className="mx-auto mt-2 max-w-sm text-center text-sm text-ink-soft">
           {tp("intro")}
         </p>
         <ProcessFilmstrip className="mt-8" />
-      </section>
+      </section>}
 
       {related.length > 0 && (
         <section className="mt-20">

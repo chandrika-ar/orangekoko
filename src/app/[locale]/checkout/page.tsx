@@ -1,5 +1,6 @@
 "use client";
 
+import { cardOrderAllowed } from "@/lib/commerce";
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
@@ -7,13 +8,14 @@ import { useCartStore } from "@/store/cart-store";
 
 export default function CheckoutPage() {
   const t = useTranslations("cart");
+  const tc = useTranslations("cardShop");
   const locale = useLocale();
   const router = useRouter();
   const lines = useCartStore((s) => s.lines);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (lines.length === 0) {
+    if (lines.length === 0 || !cardOrderAllowed(lines.map(line => ({...line, category: line.category ?? "unknown"})))) {
       router.replace("/cart");
       return;
     }
@@ -23,13 +25,13 @@ export default function CheckoutPage() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        slugs: lines.map((l) => l.slug),
+        items: lines.map((l) => ({ slug: l.slug, quantity: l.quantity })),
         locale,
       }),
     })
       .then(async (res) => {
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error ?? "Checkout failed");
+        if (!res.ok) throw new Error(data.code === "MINIMUM_CARDS" ? tc("minimumCards") : data.error ?? "Checkout failed");
         if (!cancelled) window.location.href = data.url;
       })
       .catch((err) => {

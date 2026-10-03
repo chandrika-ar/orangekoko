@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
 export function StorySection() {
@@ -29,14 +28,10 @@ export function StorySection() {
           {t("storyCta")}
         </Link>
       </div>
-      <div className="relative min-h-[420px] lg:min-h-[560px]">
-        <Image
-          src="/story-vanity.jpg"
-          alt=""
-          fill
-          className="object-cover"
-          sizes="(min-width: 1024px) 50vw, 100vw"
-        />
+      <div className="flex flex-col justify-center gap-8 bg-ink px-8 py-16 text-cream sm:px-14">
+        <span className="h-px w-12 bg-accent" />
+        <p className="font-display text-2xl leading-relaxed sm:text-3xl">{t("storyBody2")}</p>
+        <p className="max-w-md text-base leading-relaxed text-cream/80">{t("storyBody3")}</p>
       </div>
     </section>
   );

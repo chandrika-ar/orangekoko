@@ -8,6 +8,7 @@ import { ImagePlaceholder } from "@/components/image-placeholder";
 import { type Product } from "@/lib/products";
 import { useDisplayPrice } from "@/lib/use-display-price";
 import { useWishlist } from "@/lib/use-wishlist";
+import { availableQuantity } from "@/lib/commerce";
 import clsx from "clsx";
 
 export function ProductCard({ product }: { product: Product }) {
@@ -36,7 +37,7 @@ export function ProductCard({ product }: { product: Product }) {
               className="absolute inset-0 transition-opacity group-hover:opacity-90"
             />
           )}
-          {product.sold && (
+          {availableQuantity(product) === 0 && (
             <span className="absolute left-2 top-2 bg-ink px-2 py-1 text-[10px] uppercase tracking-[0.1em] text-white">
               {t("sold")}
             </span>

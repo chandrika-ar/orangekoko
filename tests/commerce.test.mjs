@@ -1,0 +1,99 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+const { availableQuantity, normalizeCartLines, validatePurchase } = await import('../src/lib/commerce.ts').catch(() => ({}));
+test('jewelry stays one-of-one; cards use stock or bounded preorder capacity', () => {
+ assert.equal(availableQuantity({category:'necklaces',sold:false}),1);
+ assert.equal(availableQuantity({category:'necklaces',sold:true}),0);
+ assert.equal(availableQuantity({category:'handmade-cards',stock:6}),6);
+ assert.equal(availableQuantity({category:'handmade-cards',stock:6,sold:true}),0);
+ assert.equal(availableQuantity({category:'handmade-cards',fulfilment:'preorder',preorderCapacity:4}),4);
+ assert.equal(availableQuantity({category:'handmade-cards'}),0);
+});
+test('duplicate requests aggregate and invalid quantities are rejected',()=>{
+ assert.deepEqual(normalizeCartLines([{slug:'card',quantity:2},{slug:'card',quantity:1}]),[{slug:'card',quantity:3}]);
+ for (const quantity of [0,-1,1.5,NaN,'3']) assert.throws(()=>normalizeCartLines([{slug:'card',quantity}]));
+ assert.throws(()=>normalizeCartLines(Array.from({length:101},()=>({slug:'x',quantity:1}))));
+});
+test('purchase validates inventory and preorder dispatch date',()=>{
+ assert.throws(()=>validatePurchase({category:'necklaces'},2));
+ assert.throws(()=>validatePurchase({category:'handmade-cards',stock:2},3));
+ assert.throws(()=>validatePurchase({category:'handmade-cards',fulfilment:'preorder',preorderCapacity:3},1));
+ assert.throws(()=>validatePurchase({category:'handmade-cards',fulfilment:'preorder',preorderCapacity:3,dispatchBy:'2020-01-01'},1));
+ assert.doesNotThrow(()=>validatePurchase({category:'handmade-cards',fulfilment:'preorder',preorderCapacity:3,dispatchBy:'2099-01-01'},2));
+});
+test('shipping keeps existing rates and never promises transit dates for preorders', async()=>{
+ const { computeShippingOptions, toStripeShippingOptions } = await import('../src/lib/shipping.ts');
+ assert.equal(computeShippingOptions(1000)[0].amountCents,990);
+ assert.equal(computeShippingOptions(12000)[0].amountCents,0);
+ assert.equal(computeShippingOptions(12000)[1].amountCents,2490);
+ assert.ok(toStripeShippingOptions(1000,false)[0].shipping_rate_data.delivery_estimate);
+ assert.equal(toStripeShippingOptions(1000,true)[0].shipping_rate_data.delivery_estimate,undefined);
+});
+test('cart caps jewelry at one, allows card packs, and clamps stock changes', async()=>{
+ const storage=new Map();
+ globalThis.window={localStorage:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)}};
+ const { useCartStore, cartSubtotalCents } = await import('../src/store/cart-store.ts');
+ const item={productId:'jewel',slug:'jewel',title:'Jewel',priceCents:5000,currency:'EUR'};
+ useCartStore.getState().clear();
+ useCartStore.getState().addItem(item);useCartStore.getState().addItem(item);
+ assert.equal(useCartStore.getState().lines[0].quantity,1);
+ const card={...item,productId:'card',slug:'card',priceCents:800,maxQuantity:4};
+ useCartStore.getState().addItem(card);useCartStore.getState().addItem(card);
+ assert.equal(useCartStore.getState().lines[1].quantity,2);
+ useCartStore.getState().setQuantity('card',99);assert.equal(useCartStore.getState().lines[1].quantity,4);
+ useCartStore.getState().addItem({...card,maxQuantity:2});assert.equal(useCartStore.getState().lines[1].quantity,2);
+ assert.equal(cartSubtotalCents(useCartStore.getState().lines),6600);
+ useCartStore.getState().clear();
+});
+test('every locale provides matching card and shopping message keys', async()=>{
+ const { readFile } = await import('node:fs/promises');
+ const { readdir } = await import('node:fs/promises');
+ const files=(await readdir(new URL('../messages/',import.meta.url))).filter(f=>f.endsWith('.json'));
+ assert.equal(files.length,10);
+ const english=JSON.parse(await readFile(new URL('../messages/en.json',import.meta.url),'utf8'));
+ for(const file of files){
+  const messages=JSON.parse(await readFile(new URL(`../messages/${file}`,import.meta.url),'utf8'));
+  for(const namespace of ['cards','cardShop','tryOnShop']){
+   assert.deepEqual(Object.keys(messages[namespace]).sort(),Object.keys(english[namespace]).sort(),`${file}: ${namespace}`);
+   for(const [key,value] of Object.entries(messages[namespace])) assert.ok(typeof value==='string' && value.trim(),`${file}: ${key}`);
+  }
+  assert.match(messages.cardShop.dispatchBy,/\{date\}/);
+  assert.ok(messages.nav.handmadeCards);
+ }
+});
+test('all ten locales consistently describe artisan-made jewelry rather than resale', async()=>{
+ const { readFile, readdir }=await import('node:fs/promises');
+ for(const file of (await readdir(new URL('../messages/',import.meta.url))).filter(f=>f.endsWith('.json'))){
+  const text=await readFile(new URL(`../messages/${file}`,import.meta.url),'utf8');
+  assert.doesNotMatch(text,/vintage|pre.?loved|second.?hand|patina|flea.market|estate.sale|中古|二手/i,file);
+  const messages=JSON.parse(text);assert.ok(messages.home.craftNote);assert.ok(messages.product.maker);assert.ok(messages.product.craftTechnique);assert.ok(messages.product.madeIn);
+  assert.deepEqual(Object.keys(messages.faq).sort(),Array.from({length:6},(_,i)=>[`q${i+1}`,`a${i+1}`]).flat().sort());
+ }
+});
+test('card-only orders need two physical cards; jewelry orders allow one card',async()=>{
+ const { cardOrderAllowed }=await import('../src/lib/commerce.ts');
+ assert.equal(cardOrderAllowed([{category:'handmade-cards',quantity:1}]),false);
+ assert.equal(cardOrderAllowed([{category:'handmade-cards',quantity:2}]),true);
+ assert.equal(cardOrderAllowed([{category:'handmade-cards',quantity:1},{category:'handmade-cards',quantity:1}]),true);
+ assert.equal(cardOrderAllowed([{category:'handmade-cards',quantity:1},{category:'necklaces',quantity:1}]),true);
+ assert.equal(cardOrderAllowed([{category:'necklaces',quantity:1}]),true);
+});
+test('three-card price applies to complete groups without losing remainder cards',async()=>{
+ const { purchaseTotalCents }=await import('../src/lib/commerce.ts');
+ assert.equal(purchaseTotalCents(800,2,2100),1600);
+ assert.equal(purchaseTotalCents(800,3,2100),2100);
+ assert.equal(purchaseTotalCents(800,4,2100),2900);
+ assert.equal(purchaseTotalCents(800,7,2100),5000);
+ assert.equal(purchaseTotalCents(800,3,2500),2400);
+ assert.equal(purchaseTotalCents(800,3),2400);
+});
+test('new arrivals split jewelry and single cards with an equal six-item limit',async()=>{
+ const { splitCollections }=await import('../src/lib/catalogue-view.ts');
+ const products=[...Array.from({length:8},(_,id)=>({id:'j'+id,category:'ear-clips'})),...Array.from({length:9},(_,id)=>({id:'c'+id,category:'handmade-cards',packSize:1})),{id:'old-pack',category:'handmade-cards',packSize:3}];
+ const result=splitCollections(products,6);
+ assert.equal(result.jewelry.length,6);assert.equal(result.cards.length,6);
+ assert.deepEqual(result.jewelry.map(p=>p.id),['j0','j1','j2','j3','j4','j5']);
+ assert.ok(result.cards.every(p=>p.category==='handmade-cards' && p.packSize===1));
+ const all=splitCollections(products);assert.equal(all.cards.length,9);assert.equal(all.jewelry.length,8);
+ assert.deepEqual(splitCollections([],6),{jewelry:[],cards:[]});
+});

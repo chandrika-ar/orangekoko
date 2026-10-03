@@ -1,5 +1,7 @@
 "use client";
 
+import { cardOrderAllowed, purchaseTotalCents } from "@/lib/commerce";
+import { CartQuantity } from "@/components/cart/cart-quantity";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cartSubtotalCents, useCartStore } from "@/store/cart-store";
@@ -14,9 +16,11 @@ function LinePrice({ cents, currency }: { cents: number; currency: string }) {
 
 export default function CartPage() {
   const t = useTranslations("cart");
+  const tc = useTranslations("cardShop");
   const locale = useLocale();
   const lines = useCartStore((s) => s.lines);
   const removeItem = useCartStore((s) => s.removeItem);
+  const allowed = cardOrderAllowed(lines.map(line => ({ ...line, category: line.category ?? "unknown" })));
   const subtotal = cartSubtotalCents(lines);
   const currency = lines[0]?.currency ?? "EUR";
   const remainingForFreeShipping = FREE_SHIPPING_THRESHOLD_CENTS - subtotal;
@@ -51,8 +55,10 @@ export default function CartPage() {
                     {line.title}
                   </Link>
                   <p className="mt-1 text-sm text-ink-soft">
-                    <LinePrice cents={line.priceCents} currency={line.currency} />
+                    <LinePrice cents={purchaseTotalCents(line.priceCents, line.quantity, line.threeCardPriceCents)} currency={line.currency} />
                   </p>
+                  <CartQuantity line={line} />
+                  {line.dispatchBy && <p className="mt-2 text-sm text-accent">{tc("dispatchBy", { date: line.dispatchBy })}</p>}
                 </div>
                 <button
                   onClick={() => removeItem(line.productId)}
@@ -75,12 +81,13 @@ export default function CartPage() {
               : t("freeShippingUnlocked")}
           </p>
           <p className="mt-1 text-xs text-ink-soft">{t("shippingNote")}</p>
+              {lines.some((line) => line.dispatchBy) && <p className="mt-2 text-sm text-ink-soft">{tc("mixedOrder")}</p>}
           <p className="mt-1 text-xs text-ink-soft">{t("billedInEur")}</p>
           <Link
-            href="/checkout"
+            href={allowed ? "/checkout" : "/cart"}
             className="mt-6 block w-full max-w-xs bg-ink py-3.5 text-center text-xs uppercase tracking-[0.12em] text-white hover:bg-accent sm:inline-block"
           >
-            {t("checkout")}
+            {allowed ? t("checkout") : tc("minimumCards")}
           </Link>
         </>
       )}

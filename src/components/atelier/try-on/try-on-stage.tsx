@@ -209,21 +209,21 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
 
         <div
           ref={necklaceRef}
-          className={`absolute left-0 top-0 ${isNecklace ? "" : "hidden"}`}
+          className={`absolute left-0 top-0 ${item && isNecklace ? "" : "hidden"}`}
           style={{ transformOrigin: "50% 0%" }}
         >
           <OverlayDot photo={cutoutPhoto} shadow="shadow-[0_2px_10px_rgba(0,0,0,0.5)]" />
         </div>
         <div
           ref={earLeftRef}
-          className={`absolute left-0 top-0 ${isNecklace ? "hidden" : ""}`}
+          className={`absolute left-0 top-0 ${!item || isNecklace ? "hidden" : ""}`}
           style={{ transformOrigin: "50% 0%" }}
         >
           <OverlayDot photo={cutoutPhoto} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
         </div>
         <div
           ref={earRightRef}
-          className={`absolute left-0 top-0 ${isNecklace ? "hidden" : ""}`}
+          className={`absolute left-0 top-0 ${!item || isNecklace ? "hidden" : ""}`}
           style={{ transformOrigin: "50% 0%" }}
         >
           <OverlayDot photo={cutoutPhoto} shadow="shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
@@ -246,7 +246,7 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
       />
 
       <p className="absolute inset-x-0 bottom-0 bg-ink/70 px-3 py-1.5 text-center text-[9px] uppercase tracking-[0.08em] text-white">
-        {t("approxPlacement")}
+        {item ? t("approxPlacement") : t("cameraHeading")}
       </p>
     </div>
   );

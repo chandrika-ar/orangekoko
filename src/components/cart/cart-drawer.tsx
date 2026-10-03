@@ -1,5 +1,7 @@
 "use client";
 
+import { cardOrderAllowed, purchaseTotalCents } from "@/lib/commerce";
+import { CartQuantity } from "@/components/cart/cart-quantity";
 import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -15,6 +17,7 @@ function LinePrice({ cents, currency }: { cents: number; currency: string }) {
 
 export function CartDrawer() {
   const t = useTranslations("cart");
+  const tc = useTranslations("cardShop");
   const locale = useLocale();
   const isOpen = useCartStore((s) => s.isOpen);
   const close = useCartStore((s) => s.close);
@@ -23,6 +26,7 @@ export function CartDrawer() {
 
   if (!isOpen) return null;
 
+  const allowed = cardOrderAllowed(lines.map(line => ({ ...line, category: line.category ?? "unknown" })));
   const subtotal = cartSubtotalCents(lines);
   const currency = lines[0]?.currency ?? "EUR";
   const remainingForFreeShipping = FREE_SHIPPING_THRESHOLD_CENTS - subtotal;
@@ -73,8 +77,10 @@ export function CartDrawer() {
                       {line.title}
                     </Link>
                     <p className="mt-1 text-sm text-ink-soft">
-                      <LinePrice cents={line.priceCents} currency={line.currency} />
+                      <LinePrice cents={purchaseTotalCents(line.priceCents, line.quantity, line.threeCardPriceCents)} currency={line.currency} />
                     </p>
+                  <CartQuantity line={line} />
+                  {line.dispatchBy && <p className="mt-2 text-sm text-accent">{tc("dispatchBy", { date: line.dispatchBy })}</p>}
                     <button
                       onClick={() => removeItem(line.productId)}
                       className="mt-1 text-[11px] uppercase tracking-[0.08em] text-ink-soft underline"
@@ -98,13 +104,14 @@ export function CartDrawer() {
                   : t("freeShippingUnlocked")}
               </p>
               <p className="mt-1 text-xs text-ink-soft">{t("shippingNote")}</p>
+              {lines.some((line) => line.dispatchBy) && <p className="mt-2 text-sm text-ink-soft">{tc("mixedOrder")}</p>}
               <p className="mt-1 text-xs text-ink-soft">{t("billedInEur")}</p>
               <Link
-                href="/checkout"
+                href={allowed ? "/checkout" : "/cart"}
                 onClick={close}
                 className="mt-4 block w-full bg-ink py-3.5 text-center text-xs uppercase tracking-[0.12em] text-white hover:bg-accent"
               >
-                {t("checkout")}
+                {allowed ? t("checkout") : tc("minimumCards")}
               </Link>
             </div>
           </>

@@ -5,7 +5,7 @@ export default async function FaqPage() {
   const t = await getTranslations("faq");
   const footerT = await getTranslations("footer");
 
-  const items = Array.from({ length: 9 }, (_, i) => {
+  const items = Array.from({ length: 6 }, (_, i) => {
     const n = i + 1;
     return {
       title: t(`q${n}`),
