@@ -60,7 +60,6 @@ export function SiteFooter() {
           </p>
           <ul className="space-y-2">
             <li><Link href="/about">{t("ourStory")}</Link></li>
-            <li><Link href="/about#sourcing">{t("sourcing")}</Link></li>
             <li><Link href="/journal">{t("journal")}</Link></li>
           </ul>
         </div>

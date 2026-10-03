@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — Joyas vintage únicas de Japón",
-    "description": "orangekoko trae a Europa joyas vintage únicas procedentes de todo Japón. Cada pieza es única en su tipo, ya lucida antes, y guarda su propia huella del tiempo."
+    "title": "orangekoko — Joyas vintage de Japón, elegidas con cuidado",
+    "description": "orangekoko trae a Europa joyas vintage procedentes de todo Japón. Cada pieza ya ha sido lucida antes y guarda su propia huella del tiempo."
   },
   "announcement": {
     "freeShipping": "Envío gratuito en pedidos superiores a 120 €",
@@ -27,10 +27,10 @@
     "allJewelry": "Todas las Joyas"
   },
   "hero": {
-    "eyebrow": "Única, siempre",
+    "eyebrow": "Elegida con cuidado, siempre",
     "titleLine1": "Vintage seleccionado",
     "titleLine2": "para cada versión de ti.",
-    "subtitle": "Joyas únicas de Japón, con historia, pátina y carácter",
+    "subtitle": "Joyas vintage de Japón, con historia, pátina y carácter",
     "cta": "Descubrir novedades"
   },
   "home": {
@@ -42,7 +42,7 @@
     "storyTitleLine1": "Encontrado en Japón,",
     "storyTitleLine2": "elegido con intención.",
     "storyBody1": "Recorremos todo Japón en busca de piezas con una belleza que solo el tiempo puede crear.",
-    "storyBody2": "Cada tesoro único se selecciona a mano por su artesanía, su material y su presencia serena.",
+    "storyBody2": "Cada tesoro se selecciona a mano por su artesanía, su material y su presencia serena.",
     "storyBody3": "Creemos que las joyas vintage guardan memoria — y pasan a formar parte de la tuya.",
     "storyCta": "Sobre nuestro camino",
     "newArrivalsTitle": "Últimos hallazgos",
@@ -55,19 +55,18 @@
     "condition3": "Revisamos cierres, engastes y piedras a mano.",
     "condition4": "Describimos el estado con claridad para que compre con confianza.",
     "condition5": "Lo que ve es lo que recibe.",
-    "condition6": "Original. Auténtico. Única.",
+    "condition6": "Original. Auténtico. Revisado a mano.",
+    "conditionSecondhandNote": "Esto es lo que puedes esperar de cada pieza vintage de nuestra colección — todas de segunda mano, lucidas antes de llegar a ti.",
     "feature1Title": "Envío internacional",
     "feature1Body": "Embalado con cuidado en Japón y enviado con esmero.",
     "feature2Title": "Empaquetado cuidado",
     "feature2Body": "Un embalaje pensado, listo para regalar o conservar.",
     "feature3Title": "Auténtico y Seleccionado",
-    "feature3Body": "Vintage único, procedente de Japón y elegido a mano.",
+    "feature3Body": "Vintage, procedente de Japón y elegido a mano.",
     "feature4Title": "Aquí para ayudarte",
     "feature4Body": "Nuestro equipo te acompaña antes y después de tu pedido."
   },
   "product": {
-    "oneOfOne": "Pieza única",
-    "onlyOneAvailable": "Solo existe un ejemplar de esta pieza",
     "sold": "Vendida",
     "condition": "Estado",
     "materials": "Materiales",
@@ -96,6 +95,8 @@
     "continueShopping": "Seguir comprando",
     "subtotal": "Subtotal",
     "shippingNote": "Los gastos de envío e impuestos se calculan al finalizar la compra",
+    "freeShippingProgress": "Añade {amount} más para desbloquear el envío estándar gratuito.",
+    "freeShippingUnlocked": "¡Has desbloqueado el envío estándar gratuito!",
     "billedInEur": "El cobro siempre se realiza en EUR, independientemente de la moneda mostrada.",
     "checkout": "Finalizar compra",
     "remove": "Eliminar",
@@ -119,14 +120,13 @@
     "about": "Sobre nosotros",
     "ourStory": "Nuestra Historia",
     "journal": "Diario",
-    "sourcing": "Procedencia",
     "help": "Ayuda",
     "shipping": "Envíos",
     "returns": "Devoluciones",
     "contact": "Contacto",
     "faq": "Preguntas Frecuentes",
     "newsletter": "Mantente al día",
-    "newsletterHint": "Sea la primera en ver las nuevas piezas únicas.",
+    "newsletterHint": "Sea la primera en ver las nuevas piezas.",
     "newsletterThanks": "Gracias — ya está en la lista.",
     "emailPlaceholder": "Su correo electrónico",
     "subscribe": "Suscribirse",
@@ -146,7 +146,7 @@
     "q3": "¿Puedo devolver o cambiar un artículo?",
     "a3": "Inspeccionamos cuidadosamente cada artículo durante la fotografía y el empaquetado, por lo que lamentablemente no podemos aceptar devoluciones ni cambios por daños reportados tras la entrega. Para evitar el cambio de artículos, no aceptamos devoluciones bajo ninguna circunstancia. Dicho esto, ¡queremos que te sientas segura antes de comprar! Si tienes alguna pregunta o duda, no dudes en consultarnos de antemano. ¡Estaremos encantadas de ayudarte!",
     "q4": "Entonces... ¿de dónde saca orangekoko todo esto?",
-    "a4": "Nos abastecemos en tiendas de reventa de marcas con licencia, casas de empeño certificadas y mercados de antigüedades privados. Cada pieza pasa por una verificación antes de llegar a ti.",
+    "a4": "Nos abastecemos directamente de coleccionistas privados y colecciones personales de todo Japón — joyas elegidas y cuidadas por una sola persona, no inventario de reventa masiva. Detrás de cada pieza hay una historia: quién la llevó, dónde viajó, qué significó para esa persona — y esa historia forma parte de lo que te llevas a casa. Cada pieza pasa por una verificación antes de llegar a ti.",
     "q5": "¿En qué estado se encuentran los productos?",
     "a5": "Una pequeña aclaración antes de que te enamores de algo: estas son piezas vintage. Eso significa que pequeños rasguños, marcas leves de uso y algún que otro signo de una vida bien vivida forman parte del paquete. Si buscas la perfección, probablemente este no sea tu sitio. Si aprecias las cosas que realmente han vivido algo, bienvenida.",
     "q6": "¿Puedo pedir un descuento?",
@@ -156,7 +156,128 @@
     "q8": "¿Son fiables las medidas y las fotos?",
     "a8": "Medidas e inspeccionadas a mano, por lo que puede haber una variación de uno o dos milímetros, o algún pequeño detalle que se nos haya pasado por alto. Si el estado te importa mucho, no dudes en escribirnos antes de comprar.\n\nEn cuanto a las fotos, las tomamos nosotras mismas, así que ten en cuenta que los colores pueden variar ligeramente respecto al artículo real según tu pantalla y la iluminación.",
     "q9": "¿Por qué no tengo que preocuparme por alergias u olores raros?",
-    "a9": "No hay mascotas en casa, así que cero pelos, cero olor a animales. Y realmente no soportamos el humo de cigarrillo, así que tampoco hay nada de eso. Lo que recibes llega limpio, neutro y listo para usar."
+    "a9": "No hay mascotas en nuestro estudio, así que cero pelos, cero olor a animales. Y realmente no soportamos el humo de cigarrillo, así que tampoco hay nada de eso."
+  },
+  "atelierPage": {
+    "eyebrow": "atelier orangekoko",
+    "title": "Tres formas de visitarnos",
+    "intro": "Este es nuestro estudio, abierto en línea. Recorre la sala, observa cómo se cuida una pieza, o pruébate algunas cosas.",
+    "exploreTitle": "Explorar la sala",
+    "exploreBody": "Recorre las estanterías de nuestro estudio en Osaka, rincón a rincón.",
+    "exploreCta": "Echar un vistazo",
+    "exploreComingSoonBody": "Estamos construyendo esta sala ahora mismo — pronto estará lista para recorrer.",
+    "processTitle": "Detrás de cada pieza",
+    "processBody": "Descubre qué ocurre entre la llegada de una pieza y el momento en que llega a ti.",
+    "processCta": "Echar un vistazo",
+    "tryOnTitle": "Probártela",
+    "tryOnBody": "Descubre cómo te queda una pieza, directamente desde tu cámara.",
+    "tryOnCta": "Echar un vistazo",
+    "tryOnComingSoonBody": "Estamos construyendo esta función ahora mismo — pronto estará lista para probar.",
+    "comingSoon": "Próximamente",
+    "backToAtelier": "Volver al atelier"
+  },
+  "atelierJourney": {
+    "eyebrow": "El Atelier de orangekoko",
+    "title": "Recorre la sala, elige una pieza",
+    "reduceMotion": "Reducir el movimiento",
+    "hintMove": "Flechas o WASD para caminar · haz clic para moverte allí",
+    "kickerIdle": "Acércate a una pieza",
+    "kickerNearby": "Cerca",
+    "viewDetails": "Ver detalles",
+    "tryOnCta": "Probarte esta pieza →",
+    "promptDoor": "Camina hacia la puerta para entrar a la sala de prueba",
+    "doorEyebrow": "Atelier · Prueba (vista previa)",
+    "doorTitle": "Has cruzado la puerta",
+    "tryingOn": "Probándote",
+    "tryAnother": "Probar otra pieza",
+    "backToRoom": "← Volver a la sala",
+    "fallbackTitle": "Esta sala necesita un navegador más reciente",
+    "fallbackBody": "No pudimos iniciar la sala 3D aquí. Echa un vistazo a la colección en su lugar.",
+    "fallbackCta": "Ir a la tienda",
+    "cameraHeading": "Descubre cómo te queda",
+    "cameraNote": "Esto ocurre completamente en tu dispositivo — tu cámara nunca se sube ni se guarda.",
+    "cameraAllow": "Activar cámara",
+    "cameraDenied": "No pudimos acceder a tu cámara. Aun así puedes explorar la colección.",
+    "cameraUnsupported": "Este navegador no admite el acceso a la cámara aquí. Aun así puedes explorar la colección.",
+    "approxPlacement": "Colocación mediante seguimiento facial — una aproximación"
+  },
+  "process": {
+    "title": "Detrás de cada pieza",
+    "intro": "Un vistazo rápido a lo que ocurre antes de que una pieza llegue a ti.",
+    "previous": "Paso anterior",
+    "next": "Paso siguiente",
+    "arriveLabel": "Llegada",
+    "arriveCaption": "Cada pieza llega exactamente como ha vivido — usada, con historia, imperfecta.",
+    "cleanLabel": "Limpieza",
+    "cleanCaption": "Limpiada a mano, con suavidad — nunca de un modo que borre su edad.",
+    "inspectLabel": "Inspección",
+    "inspectCaption": "Revisada bajo luz intensa: cierres, engastes, piedras, cada borde.",
+    "wrapLabel": "Envoltura",
+    "wrapCaption": "Envuelta en papel de seda, tal como merece ser tratada.",
+    "sealLabel": "Sellada",
+    "sealCaption": "Sellada y enviada desde nuestro estudio en Osaka."
+  },
+  "atelier": {
+    "eyebrow": "El Atelier de orangekoko",
+    "title": "Entra en el atelier",
+    "subtitle": "Recorre las estanterías, observa cómo se prepara una pieza a mano, y descubre cómo te queda — todo sin salir de esta página.",
+    "featureExplore": "Explorar la sala",
+    "featureProcess": "Detrás de cada pieza",
+    "featureTryOn": "Probártela"
+  },
+  "projectsPage": {
+    "issueLabel": "Número 01",
+    "seasonLabel": "Otoño",
+    "title": "La selección de otoño",
+    "intro": "Cuando la luz se vuelve ámbar y el aire se afila, nos atraen las piezas que llevan su propia calidez — dorados envejecidos, rojos laca profundos, el peso silencioso del coral y el ámbar. Esta selección de temporada reúne hallazgos vintage que se sienten como el propio otoño: sin prisa, un poco melancólicos, y aún más bellos por ello.",
+    "comingSoonTitle": "Piezas próximamente",
+    "comingSoonBody": "Actualmente estamos buscando y fotografiando la selección de esta temporada — vuelve pronto, o explora nuestra colección completa mientras tanto."
+  },
+  "chat": {
+    "pageIntro": "Pregunta sobre la talla, el estado, el envío o cualquier otra cosa — nuestro asistente puede ayudarte de inmediato.",
+    "notConfigured": "El chat en directo aún no está configurado — escríbenos directamente por correo más abajo.",
+    "intro": "¡Hola! Pregúntame lo que quieras sobre nuestras piezas, el envío o nuestras políticas.",
+    "placeholder": "Escribe tu pregunta…",
+    "send": "Enviar",
+    "thinking": "Pensando…",
+    "error": "Algo salió mal. Inténtalo de nuevo o escríbenos directamente.",
+    "escalation": "¿No encuentras tu respuesta? Escríbenos directamente y te responderemos en persona."
+  },
+  "shippingPage": {
+    "intro": "Enviamos desde Japón a la UE, Reino Unido, Noruega, Islandia y Suiza con transportistas rastreados y asegurados.",
+    "freeTitle": "Envío estándar gratuito a partir de {amount}",
+    "freeBody": "A partir de {amount} de compra, el envío estándar asegurado es automáticamente gratuito al finalizar la compra — sin código.",
+    "standardName": "Estándar con seguimiento (Japan Post e-packet)",
+    "expressName": "Exprés asegurado (Japan Post EMS)",
+    "daysRange": "{min}–{max} días laborables",
+    "countriesTitle": "A dónde enviamos",
+    "note": "Los precios mostrados son por pedido y se facturan en EUR al finalizar la compra, independientemente de la moneda mostrada."
+  },
+  "returns": {
+    "intro": "Como la mayoría de nuestras piezas son vintage — ya lucidas antes, y a veces con décadas de antigüedad —, nuestra política de devoluciones se basa en el cuidado que ponemos antes del envío, más que después.",
+    "policyTitle": "Nuestra política",
+    "policyBody": "Cada pieza se inspecciona, mide y fotografía cuidadosamente al publicarla, para que recibas exactamente lo que ves. Por este motivo, no podemos aceptar devoluciones ni cambios una vez enviado el pedido.",
+    "beforeTitle": "Antes de comprar",
+    "beforeBody": "Sabemos que comprar vintage online requiere algo de confianza, por eso queremos que te sientas completamente segura antes de finalizar la compra. Si tienes cualquier duda — sobre el estado, la talla, los materiales o cualquier detalle del anuncio — escríbenos antes de comprar. Con gusto compartimos fotos o detalles adicionales.",
+    "issueTitle": "Si algo no está bien",
+    "issueBody": "En el raro caso de que tu pedido llegue dañado durante el transporte o no coincida con el anuncio, contáctanos dentro de las 48 horas posteriores a la entrega con fotos, y buscaremos una solución juntas."
+  },
+  "brand": {
+    "title": "Lo que significa orange",
+    "lead": "Antes de nada — una palabra sobre nuestro nombre, y lo que ‘orange’ significa para nosotros.",
+    "philosophy1": "orange no es un color — es una sensación. El momento en que la luz de la tarde se ralentiza. Una calidez discreta que permanece cerca de la vida sin imponerse.",
+    "philosophy2": "No está hecho para llamar la atención, sino para quedarse contigo en el día a día. Creemos que una joya no necesita demostrar constantemente su presencia. Las mejores piezas simplemente te acompañan en silencio — dejando peso sobre la piel, huellas en el tiempo. Ahí es donde empieza orangekoko.",
+    "philosophy3": "Como espacio curado, buscamos obras de artesanos contemporáneos y joyas vintage japonesas — no porque deslumbren, sino porque merecen llevarse durante años, una y otra vez.",
+    "philosophy4": "El oficio, la textura, el sentido del tiempo — esos son nuestros criterios. En orangekoko, una joya se parece más a una vitamina diaria para la vida.",
+    "philosophy5": "Pequeña, pero necesaria. Suave, pero tomada en serio.",
+    "closing": "orange no crea impulso. orange deja una impresión."
+  },
+  "about": {
+    "expandedBody1": "Esa es la versión que ponemos por escrito. La verdadera empieza conmigo: siempre me han encantado las joyas vintage japonesas — y no las piezas pulidas detrás de un escaparate. Hablo de las que encuentras mesa por mesa en algún mercadillo de un pueblo pequeño, de esos que ninguna guía de viaje menciona.",
+    "expandedBody2": "Las busco yo misma, y lo mejor casi nunca es la pieza en sí — es la historia que la acompaña. Las vendedoras suelen ser las dueñas originales, o sus familias, y te cuentan adónde viajó una pieza, quién la llevó y para qué ocasión, por qué finalmente se guardó. Esas historias no existen en las tiendas de las grandes ciudades.",
+    "expandedBody3": "Lo que sigue sorprendiéndome es lo bien que han sobrevivido estas piezas. Japón tiene una cultura discreta y muy arraigada de cuidar las cosas — reparar en lugar de reemplazar, guardar con intención, transmitir en lugar de tirar. Ese hábito de conservación cuidadosa es exactamente la razón por la que una pieza de hace décadas puede llegarte todavía en condiciones de uso, con su historia intacta en lugar de borrada.",
+    "expandedBodyArtisan": "Junto a estos hallazgos vintage, también he empezado a trabajar con un puñado de artesanos contemporáneos cuyas piezas comparten ese mismo espíritu — hechas en pequeños lotes, pensadas para durar años y no una temporada, cada una moldeada por una mano y no por una máquina.",
+    "expandedBody4": "En eso se basa orangekoko: piezas que merecen ese tipo de cuidado, y las historias que traen consigo."
   },
   "account": {
     "title": "Cuenta",
@@ -168,6 +289,17 @@
     "signInError": "Algo salió mal. Inténtalo de nuevo.",
     "signedInAs": "Sesión iniciada como {email}",
     "viewWishlist": "Ver lista de deseos",
+    "viewOrders": "Historial de pedidos",
     "signOut": "Cerrar sesión"
+  },
+  "orders": {
+    "title": "Historial de pedidos",
+    "empty": "Aún no has realizado ningún pedido.",
+    "emptyBody": "Los pedidos realizados con tu sesión iniciada aparecerán aquí.",
+    "backToAccount": "Volver a la cuenta",
+    "placedOn": "Realizado el {date}",
+    "total": "Total",
+    "status_paid": "Pagado",
+    "status_refunded": "Reembolsado"
   }
 }

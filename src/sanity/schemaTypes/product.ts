@@ -89,6 +89,14 @@ export const productType = defineType({
       description: "Turn on the moment this one-of-one piece sells.",
       initialValue: false,
     }),
+    defineField({
+      name: "projectTags",
+      title: "Project / Collection tags",
+      type: "array",
+      of: [{ type: "string" }],
+      description:
+        'Optional. Add a tag (e.g. "autumn-edit-01") to feature this piece on the matching /projects page. Leave empty for a regular product.',
+    }),
   ],
   preview: {
     select: { title: "title", media: "images.0", subtitle: "category" },

@@ -42,6 +42,12 @@ export default async function AccountPage() {
         >
           {t("viewWishlist")}
         </Link>
+        <Link
+          href="/account/orders"
+          className="w-fit border-b border-ink pb-0.5 text-xs uppercase tracking-[0.1em]"
+        >
+          {t("viewOrders")}
+        </Link>
         <form
           action={async () => {
             "use server";

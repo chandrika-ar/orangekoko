@@ -55,9 +55,6 @@ export function ProductCard({ product }: { product: Product }) {
           {product.title}
         </Link>
         <p className="mt-1 text-ink-soft">{price.formatted}</p>
-        <p className="mt-0.5 text-[10px] uppercase tracking-[0.1em] text-ink-soft">
-          {t("oneOfOne")}
-        </p>
       </div>
     </div>
   );

@@ -22,6 +22,8 @@ export interface Product {
   measurements: string;
   description: string[];
   sold?: boolean;
+  /** Tags like "autumn-edit-01" linking this piece to a /projects page. */
+  projectTags?: string[];
 }
 
 interface SanityProductDoc {
@@ -38,6 +40,7 @@ interface SanityProductDoc {
   measurements: string;
   description: string[];
   sold?: boolean;
+  projectTags?: string[];
 }
 
 const PRODUCT_PROJECTION = `{
@@ -53,7 +56,8 @@ const PRODUCT_PROJECTION = `{
   origin,
   measurements,
   description,
-  sold
+  sold,
+  projectTags
 }`;
 
 function mapSanityProduct(doc: SanityProductDoc): Product {
@@ -75,6 +79,7 @@ function mapSanityProduct(doc: SanityProductDoc): Product {
     measurements: doc.measurements,
     description: doc.description,
     sold: doc.sold,
+    projectTags: doc.projectTags,
   };
 }
 
@@ -272,6 +277,23 @@ export async function getProductsByCategory(
   } catch (err) {
     console.error("Sanity fetch failed, falling back to sample data", err);
     return products.filter((p) => p.category === category);
+  }
+}
+
+export async function getProductsByProjectTag(tag: string): Promise<Product[]> {
+  if (!sanityClient) {
+    return products.filter((p) => p.projectTags?.includes(tag));
+  }
+  try {
+    const params: Record<string, unknown> = { tag };
+    const docs = await sanityClient.fetch<SanityProductDoc[]>(
+      `*[_type == "product" && $tag in projectTags] | order(_createdAt desc) ${PRODUCT_PROJECTION}`,
+      params,
+    );
+    return docs.map(mapSanityProduct);
+  } catch (err) {
+    console.error("Sanity fetch failed, falling back to sample data", err);
+    return products.filter((p) => p.projectTags?.includes(tag));
   }
 }
 

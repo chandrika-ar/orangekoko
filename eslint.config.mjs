@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored MediaPipe WASM runtime, served as a static asset — not
+    // source this project owns or should lint (see face-tracking.ts).
+    "public/mediapipe/**",
   ]),
 ]);
 

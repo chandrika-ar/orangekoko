@@ -93,6 +93,18 @@ npm run dev
 
 加完三个环境变量、执行完数据库脚本后 Redeploy 一次,`/account` 就能正常登录了。
 
+> 如果你之前已经执行过一次 `db/schema.sql`,现在需要**再执行一次**——里面新增了一张 `orders` 表(用于登录后的"订单历史"功能)。脚本里每条语句都是 `CREATE TABLE IF NOT EXISTS`,重复执行是安全的,不会影响已有数据。订单历史只会记录**下单时已登录账号**的订单;未登录的访客下单不受影响,只是不会出现在任何账号的订单历史里。
+
+### Contact 页面的 AI 聊天(`/contact`)
+
+Contact 页面现在有一个 AI 聊天框,能直接回答顾客关于尺寸、成色、物流、退换货政策等问题(内容基于网站已有的 FAQ 和物流信息),回答不了或者是具体订单问题时,会提示顾客改用邮箱联系。配置好之前,页面只显示"聊天还没配置,请直接发邮件"的提示,不影响使用。
+
+1. 去 [console.anthropic.com](https://console.anthropic.com/settings/keys) 注册并生成一个 API Key。
+2. 在 Vercel Environment Variables 里加 `ANTHROPIC_API_KEY`。
+3. (可选)加 `SUPPORT_EMAIL`,填你的客服邮箱——它会显示在 Contact 页面上,让聊天回答不了的问题的顾客能联系到你。不填的话页面上就不显示这行邮箱链接。
+
+加完 Redeploy 一次就生效了。这个聊天功能会调用 Anthropic 的 API 按对话量计费(不是免费的),具体价格见 [Anthropic 官网](https://www.anthropic.com/pricing)。
+
 ---
 
 ## 上线前必须做的事(重要程度从高到低)

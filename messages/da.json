@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — Unikke vintage smykker fra Japan",
-    "description": "orangekoko bringer enestående vintage smykker fra hele Japan til Europa. Hvert stykke er ét af sin slags, tidligere båret, og bærer sit eget spor af tid."
+    "title": "orangekoko — Vintage smykker fra Japan, udvalgt med omhu",
+    "description": "orangekoko bringer vintage smykker fra hele Japan til Europa. Hvert stykke har været båret før og bærer sit eget spor af tid."
   },
   "announcement": {
     "freeShipping": "Fri fragt ved bestillinger over 120 €",
@@ -27,10 +27,10 @@
     "allJewelry": "Alle Smykker"
   },
   "hero": {
-    "eyebrow": "Ét af ét, altid",
+    "eyebrow": "Udvalgt med omhu, altid",
     "titleLine1": "Udvalgt vintage",
     "titleLine2": "til enhver version af dig.",
-    "subtitle": "Unikke smykker fra Japan, med alder, patina og stemning",
+    "subtitle": "Vintage smykker fra Japan, med alder, patina og stemning",
     "cta": "Se nyheder"
   },
   "home": {
@@ -42,7 +42,7 @@
     "storyTitleLine1": "Fundet i Japan,",
     "storyTitleLine2": "udvalgt med omtanke.",
     "storyBody1": "Vi rejser gennem hele Japan for at finde stykker med en skønhed, som kun tiden kan skabe.",
-    "storyBody2": "Hvert unikke fund udvælges i hånden for sit håndværk, sit materiale og sin stille tilstedeværelse.",
+    "storyBody2": "Hvert fund udvælges i hånden for sit håndværk, sit materiale og sin stille tilstedeværelse.",
     "storyBody3": "Vi tror på, at vintage smykker bærer minder — og bliver en del af dine.",
     "storyCta": "Om vores rejse",
     "newArrivalsTitle": "Seneste fund",
@@ -55,19 +55,18 @@
     "condition3": "Vi tjekker lukninger, fatninger og sten i hånden.",
     "condition4": "Vi beskriver standen tydeligt, så du kan handle med tillid.",
     "condition5": "Det, du ser, er det, du får.",
-    "condition6": "Original. Ægte. Unik.",
+    "condition6": "Original. Ægte. Håndtjekket.",
+    "conditionSecondhandNote": "Det kan du forvente af hvert vintage smykke i vores kollektion — alle brugte og båret, før de når frem til dig.",
     "feature1Title": "Verdensomspændende fragt",
     "feature1Body": "Omhyggeligt pakket i Japan og sendt med omtanke.",
     "feature2Title": "Gennemtænkt indpakning",
     "feature2Body": "Omhyggelig indpakning, klar til at give bort eller beholde.",
     "feature3Title": "Ægte & Udvalgt",
-    "feature3Body": "Unik vintage, fundet i Japan og udvalgt i hånden.",
+    "feature3Body": "Vintage, fundet i Japan og udvalgt i hånden.",
     "feature4Title": "Her for dig",
     "feature4Body": "Vores team står klar før og efter din bestilling."
   },
   "product": {
-    "oneOfOne": "Ét af ét",
-    "onlyOneAvailable": "Der findes kun ét eksemplar af dette stykke",
     "sold": "Solgt",
     "condition": "Stand",
     "materials": "Materialer",
@@ -96,6 +95,8 @@
     "continueShopping": "Fortsæt med at shoppe",
     "subtotal": "Subtotal",
     "shippingNote": "Fragt & moms beregnes ved betaling",
+    "freeShippingProgress": "Tilføj {amount} mere for at låse op for gratis standardforsendelse.",
+    "freeShippingUnlocked": "Du har låst op for gratis standardforsendelse!",
     "billedInEur": "Betaling sker altid i EUR, uanset hvilken valuta der vises.",
     "checkout": "Til betaling",
     "remove": "Fjern",
@@ -119,14 +120,13 @@
     "about": "Om os",
     "ourStory": "Vores Historie",
     "journal": "Journal",
-    "sourcing": "Oprindelse",
     "help": "Hjælp",
     "shipping": "Forsendelse",
     "returns": "Retur",
     "contact": "Kontakt",
     "faq": "Ofte Stillede Spørgsmål",
     "newsletter": "Hold dig opdateret",
-    "newsletterHint": "Vær den første til at se nye unikke stykker.",
+    "newsletterHint": "Vær den første til at se nye stykker.",
     "newsletterThanks": "Tak — du er nu på listen.",
     "emailPlaceholder": "Din e-mail",
     "subscribe": "Tilmeld",
@@ -146,7 +146,7 @@
     "q3": "Kan jeg returnere eller bytte en vare?",
     "a3": "Vi undersøger omhyggeligt hver vare under fotografering og pakning, så vi kan desværre ikke acceptere returnering eller bytte for skader, der rapporteres efter levering. For at forhindre ombytning af varer accepterer vi ikke returnering under nogen omstændigheder. Det sagt, vil vi gerne have, at du føler dig sikker inden du køber! Har du spørgsmål eller bekymringer, er du velkommen til at spørge på forhånd. Vi hjælper gerne!",
     "q4": "Så... hvor får orangekoko egentlig fat i alt det her?",
-    "a4": "Vi køber ind fra licenserede genbrugsbutikker for mærkevarer, certificerede pantelånere og private antikmarkeder. Hver vare bliver verificeret, før den når frem til dig.",
+    "a4": "Vi køber direkte fra private samlere og personlige samlinger i hele Japan — smykker, der er udvalgt og passet af én person, ikke masseforhandlet genbrug. Bag hvert stykke er der en historie: hvem der bar det, hvor det har rejst hen, hvad det betød for den person — og den historie er en del af det, du tager med hjem. Hvert stykke bliver verificeret, før det når frem til dig.",
     "q5": "Hvordan er produkternes nuværende tilstand?",
     "a5": "Lige en kort bemærkning, før du forelsker dig i noget: dette er vintage-genstande. Det betyder, at små ridser, lette brugsspor og af og til tegn på et godt levet liv er en del af pakken. Leder du efter perfektion, er det nok ikke stedet for dig. Sætter du pris på ting, der rent faktisk har været et sted — velkommen.",
     "q6": "Kan jeg få rabat?",
@@ -156,7 +156,128 @@
     "q8": "Er mål og billeder pålidelige?",
     "a8": "Målt og efterset i hånden, så der kan være en afvigelse på en til to millimeter, eller en gang imellem en lille detalje, der er overset. Hvis tilstanden betyder meget for dig, er du velkommen til at skrive til os på forhånd.\n\nHvad billederne angår, er de taget af os selv, så husk, at farverne kan afvige en smule fra den faktiske vare afhængigt af din skærm og lysforhold.",
     "q9": "Hvorfor behøver jeg ikke bekymre mig om allergier eller mærkelige lugte?",
-    "a9": "Ingen kæledyr i huset — så nul dyrehår, nul dyrelugt. Og vi kan virkelig ikke holde ud med cigaretrøg, så der er heller absolut intet af det. Det, der kommer frem til dig, er rent, neutralt og klar til brug."
+    "a9": "Ingen kæledyr i vores studie — så nul dyrehår, nul dyrelugt. Og vi kan virkelig ikke holde ud med cigaretrøg, så der er heller absolut intet af det."
+  },
+  "atelierPage": {
+    "eyebrow": "orangekoko-atelieret",
+    "title": "Tre måder at besøge os på",
+    "intro": "Dette er vores studie, åbnet online. Vandre rundt i rummet, se et smykke blive passet, eller prøv et par ting.",
+    "exploreTitle": "Udforsk rummet",
+    "exploreBody": "Gå langs hylderne i vores studie i Osaka, hjørne for hjørne.",
+    "exploreCta": "Tag et kig",
+    "exploreComingSoonBody": "Vi bygger dette rum lige nu — det er snart klar til at gå igennem.",
+    "processTitle": "Bag hvert smykke",
+    "processBody": "Se hvad der sker, fra et smykke ankommer, til det når frem til dig.",
+    "processCta": "Tag et kig",
+    "tryOnTitle": "Prøv det",
+    "tryOnBody": "Se hvordan et smykke sidder på dig, direkte fra dit kamera.",
+    "tryOnCta": "Tag et kig",
+    "tryOnComingSoonBody": "Vi bygger denne funktion lige nu — den er snart klar til at prøve.",
+    "comingSoon": "Kommer snart",
+    "backToAtelier": "Tilbage til atelieret"
+  },
+  "atelierJourney": {
+    "eyebrow": "orangekoko-atelieret",
+    "title": "Gå gennem rummet, vælg et smykke",
+    "reduceMotion": "Reducér bevægelse",
+    "hintMove": "Piletaster eller WASD for at gå · klik for at gå derhen",
+    "kickerIdle": "Gå hen til et smykke",
+    "kickerNearby": "I nærheden",
+    "viewDetails": "Se detaljer",
+    "tryOnCta": "Prøv dette smykke →",
+    "promptDoor": "Gå hen til døren for at komme ind i prøverummet",
+    "doorEyebrow": "Atelier · Prøv (forhåndsvisning)",
+    "doorTitle": "Du er igennem døren",
+    "tryingOn": "Du prøver",
+    "tryAnother": "Prøv et andet smykke",
+    "backToRoom": "← Tilbage til rummet",
+    "fallbackTitle": "Dette rum kræver en nyere browser",
+    "fallbackBody": "Vi kunne ikke starte 3D-rummet her. Se i stedet på kollektionen.",
+    "fallbackCta": "Gå til butikken",
+    "cameraHeading": "Se hvordan det ser ud",
+    "cameraNote": "Dette foregår udelukkende på din egen enhed — dit kamerabillede bliver aldrig uploadet eller gemt.",
+    "cameraAllow": "Slå kamera til",
+    "cameraDenied": "Vi kunne ikke få adgang til dit kamera. Du kan stadig gennemse kollektionen.",
+    "cameraUnsupported": "Denne browser understøtter ikke kameraadgang her. Du kan stadig gennemse kollektionen.",
+    "approxPlacement": "Placering med ansigtssporing — en tilnærmelse"
+  },
+  "process": {
+    "title": "Bag hvert smykke",
+    "intro": "Et hurtigt kig på, hvad der sker, før et smykke når frem til dig.",
+    "previous": "Forrige trin",
+    "next": "Næste trin",
+    "arriveLabel": "Ankomst",
+    "arriveCaption": "Hvert smykke ankommer præcis som det har levet — båret, fyldt med historie, ufuldkomment.",
+    "cleanLabel": "Rengøring",
+    "cleanCaption": "Rengjort i hånden, forsigtigt — aldrig på en måde der udvisker dets alder.",
+    "inspectLabel": "Eftersyn",
+    "inspectCaption": "Tjekket i skarpt lys: lukninger, fatninger, sten, hver kant.",
+    "wrapLabel": "Indpakning",
+    "wrapCaption": "Pakket ind i silkepapir, sådan som det fortjener at blive behandlet.",
+    "sealLabel": "Forseglet",
+    "sealCaption": "Forseglet og sendt fra vores studie i Osaka."
+  },
+  "atelier": {
+    "eyebrow": "orangekoko-atelieret",
+    "title": "Træd ind i atelieret",
+    "subtitle": "Vandre langs hylderne, se et smykke blive gjort klar i hånden, og se hvordan det ser ud på dig — uden nogensinde at forlade denne side.",
+    "featureExplore": "Udforsk rummet",
+    "featureProcess": "Bag hvert smykke",
+    "featureTryOn": "Prøv det"
+  },
+  "projectsPage": {
+    "issueLabel": "Nummer 01",
+    "seasonLabel": "Efterår",
+    "title": "Efterårets udvalg",
+    "intro": "Når lyset bliver rav-farvet og luften skarpere, tiltrækkes vi af stykker, der bærer deres egen varme — patineret guld, dybe lakrøde toner, koral og ravs stille tyngde. Denne sæsons udvalg samler vintagefund, der føles som selve efteråret: uhastet, lidt melankolsk, og netop derfor så smukt.",
+    "comingSoonTitle": "Stykker på vej",
+    "comingSoonBody": "Vi er i gang med at finde og fotografere denne sæsons udvalg — kig forbi igen snart, eller udforsk vores fulde kollektion i mellemtiden."
+  },
+  "chat": {
+    "pageIntro": "Spørg om størrelse, stand, forsendelse eller andet — vores assistent kan hjælpe med det samme.",
+    "notConfigured": "Livechat er ikke sat op endnu — skriv til os direkte via e-mail nedenfor.",
+    "intro": "Hej! Spørg mig om alt vedrørende vores smykker, forsendelse eller politikker.",
+    "placeholder": "Skriv dit spørgsmål…",
+    "send": "Send",
+    "thinking": "Tænker…",
+    "error": "Noget gik galt. Prøv igen, eller skriv til os direkte.",
+    "escalation": "Kan du ikke finde svaret? Skriv til os direkte, så svarer vi personligt."
+  },
+  "shippingPage": {
+    "intro": "Vi sender fra Japan til EU, Storbritannien, Norge, Island og Schweiz med sporbare, forsikrede fragtfirmaer.",
+    "freeTitle": "Gratis standardforsendelse over {amount}",
+    "freeBody": "Handler du for {amount} eller mere, er forsikret standardforsendelse automatisk gratis ved betaling — ingen kode nødvendig.",
+    "standardName": "Standard, sporbar (Japan Post e-packet)",
+    "expressName": "Express, forsikret (Japan Post EMS)",
+    "daysRange": "{min}–{max} hverdage",
+    "countriesTitle": "Hvor vi sender til",
+    "note": "Viste priser gælder pr. ordre og opkræves i EUR ved betaling, uanset hvilken valuta der vises."
+  },
+  "returns": {
+    "intro": "Fordi de fleste af vores stykker er vintage — tidligere elsket og nogle gange årtier gamle — bygger vores tilgang til returnering på den omhu, vi lægger, inden forsendelsen, fremfor bagefter.",
+    "policyTitle": "Vores politik",
+    "policyBody": "Hvert stykke bliver omhyggeligt undersøgt, målt og fotograferet, når det bliver oprettet, så du modtager præcis det, du ser. Af den grund kan vi ikke tilbyde returnering eller ombytning, når en ordre først er sendt.",
+    "beforeTitle": "Før du bestiller",
+    "beforeBody": "Vi ved, at det kræver lidt tillid at købe vintage online, så vi vil gerne have, at du føler dig helt tryg, inden du gennemfører købet. Har du overhovedet et spørgsmål — om stand, størrelse, materialer eller noget andet i opslaget — så skriv til os først. Vi deler altid gerne flere billeder eller detaljer.",
+    "issueTitle": "Hvis noget ikke er, som det skal være",
+    "issueBody": "Skulle din ordre i det sjældne tilfælde ankomme beskadiget under transporten eller ikke svare til opslaget, så kontakt os inden for 48 timer efter levering med billeder, så finder vi en løsning sammen."
+  },
+  "brand": {
+    "title": "Hvad orange betyder",
+    "lead": "Før noget andet — et par ord om vores navn, og hvad ‘orange’ betyder for os.",
+    "philosophy1": "orange er ikke en farve — det er en følelse. Det øjeblik, hvor eftermiddagslyset sænker farten. En stille varme, der forbliver tæt på livet uden at trænge sig på.",
+    "philosophy2": "Ikke skabt for at fange blikket, men for at blive hos dig i hverdagen. Vi tror ikke, at smykker konstant behøver at bevise deres tilstedeværelse. De bedste stykker følger dig blot i stilhed — og efterlader en vægt på huden, spor i tiden. Det er der, orangekoko begynder.",
+    "philosophy3": "Som et kurateret rum søger vi nutidigt håndværk og japanske vintage smykker — ikke fordi de blænder, men fordi de fortjener at blive båret i årevis, igen og igen.",
+    "philosophy4": "Håndværk, tekstur, en fornemmelse for tid — det er vores kriterier. Hos orangekoko er et smykke mere som et dagligt vitamin for livet.",
+    "philosophy5": "Lille, men nødvendigt. Blidt, men taget alvorligt.",
+    "closing": "orange skaber ikke en impuls. orange efterlader et indtryk."
+  },
+  "about": {
+    "expandedBody1": "Det er den version, vi skriver ned. Den ægte begynder med mig: jeg har altid elsket japanske vintage smykker — og ikke de polerede stykker bag en butiksrude. Jeg mener dem, man finder spredt ud bord for bord på et lille loppemarked i en by, ingen rejseguide nogensinde nævner.",
+    "expandedBody2": "Jeg opsøger dem selv, og det bedste er sjældent stykket i sig selv — det er historien, der følger med. Sælgerne er ofte de oprindelige ejere, eller deres familier, og de fortæller, hvor et stykke har rejst hen, hvem der bar det, og til hvilken lejlighed, hvorfor det til sidst blev lagt til side. Den slags historier findes ikke i storbybutikker.",
+    "expandedBody3": "Det, der bliver ved med at overraske mig, er, hvor godt disse stykker har overlevet tiden. Japan har en stille, dybt forankret kultur for at passe på ting — reparere frem for at udskifte, opbevare med omtanke, give videre i stedet for at smide væk. Netop den vane med omhyggelig opbevaring er grunden til, at et stykke fra årtier tilbage stadig kan nå dig i en stand, man kan bære, med sin historie intakt i stedet for udvisket.",
+    "expandedBodyArtisan": "Ved siden af disse vintagefund er jeg også begyndt at samarbejde med en håndfuld nutidige håndværkere, hvis stykker bærer den samme ånd — fremstillet i små serier, tænkt til at blive båret i årevis frem for én sæson, hvert eneste formet af en hånd frem for en maskine.",
+    "expandedBody4": "Det er det, orangekoko er bygget på: stykker, der fortjener den slags omsorg, og de historier, de bringer med sig."
   },
   "account": {
     "title": "Konto",
@@ -168,6 +289,17 @@
     "signInError": "Noget gik galt. Prøv igen.",
     "signedInAs": "Logget ind som {email}",
     "viewWishlist": "Se ønskeliste",
+    "viewOrders": "Ordrehistorik",
     "signOut": "Log ud"
+  },
+  "orders": {
+    "title": "Ordrehistorik",
+    "empty": "Du har ikke afgivet nogen ordrer endnu.",
+    "emptyBody": "Ordrer afgivet, mens du er logget ind, vises her.",
+    "backToAccount": "Tilbage til konto",
+    "placedOn": "Afgivet den {date}",
+    "total": "Total",
+    "status_paid": "Betalt",
+    "status_refunded": "Refunderet"
   }
 }

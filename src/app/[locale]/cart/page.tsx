@@ -4,6 +4,9 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cartSubtotalCents, useCartStore } from "@/store/cart-store";
 import { useDisplayPrice } from "@/lib/use-display-price";
+import { FREE_SHIPPING_THRESHOLD_CENTS } from "@/lib/shipping";
+import { formatPrice } from "@/lib/products";
+import { useLocale } from "next-intl";
 
 function LinePrice({ cents, currency }: { cents: number; currency: string }) {
   return <>{useDisplayPrice(cents, currency).formatted}</>;
@@ -11,10 +14,12 @@ function LinePrice({ cents, currency }: { cents: number; currency: string }) {
 
 export default function CartPage() {
   const t = useTranslations("cart");
+  const locale = useLocale();
   const lines = useCartStore((s) => s.lines);
   const removeItem = useCartStore((s) => s.removeItem);
   const subtotal = cartSubtotalCents(lines);
   const currency = lines[0]?.currency ?? "EUR";
+  const remainingForFreeShipping = FREE_SHIPPING_THRESHOLD_CENTS - subtotal;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
@@ -62,6 +67,13 @@ export default function CartPage() {
             <span>{t("subtotal")}</span>
             <span><LinePrice cents={subtotal} currency={currency} /></span>
           </div>
+          <p className="mt-3 text-xs text-accent">
+            {remainingForFreeShipping > 0
+              ? t("freeShippingProgress", {
+                  amount: formatPrice(remainingForFreeShipping, "EUR", locale),
+                })
+              : t("freeShippingUnlocked")}
+          </p>
           <p className="mt-1 text-xs text-ink-soft">{t("shippingNote")}</p>
           <p className="mt-1 text-xs text-ink-soft">{t("billedInEur")}</p>
           <Link

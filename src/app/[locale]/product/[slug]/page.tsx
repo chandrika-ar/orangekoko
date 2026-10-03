@@ -5,8 +5,10 @@ import { CURRENCY_BY_LOCALE, convertCents, getExchangeRates } from "@/lib/curren
 import type { Locale } from "@/i18n/routing";
 import { ProductGallery } from "@/components/shop/product-gallery";
 import { ProductActions } from "@/components/shop/product-actions";
+import { ProductTryOn } from "@/components/shop/product-try-on";
 import { Accordion } from "@/components/shop/accordion";
 import { ProductCard } from "@/components/shop/product-card";
+import { ProcessFilmstrip } from "@/components/atelier/process-filmstrip";
 
 export default async function ProductPage({
   params,
@@ -18,6 +20,7 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const t = await getTranslations("product");
+  const tp = await getTranslations("process");
   const related = (await getProductsByCategory(product.category))
     .filter((p) => p.id !== product.id)
     .slice(0, 4);
@@ -37,10 +40,7 @@ export default async function ProductPage({
         />
 
         <div>
-          <p className="text-[11px] uppercase tracking-[0.15em] text-accent">
-            {t("oneOfOne")}
-          </p>
-          <h1 className="mt-2 font-display text-3xl">{product.title}</h1>
+          <h1 className="font-display text-3xl">{product.title}</h1>
           <p className="mt-2 text-lg">
             {formatPrice(displayCents, displayCurrency, locale)}
           </p>
@@ -48,10 +48,13 @@ export default async function ProductPage({
           {isConverted && (
             <p className="mt-1 text-xs text-ink-soft">{t("approxNote")}</p>
           )}
-          <p className="mt-3 text-sm text-ink-soft">{t("onlyOneAvailable")}</p>
 
-          <div className="mt-6">
+          <div className="mt-6 space-y-3">
             <ProductActions product={product} />
+            <ProductTryOn
+              product={product}
+              priceLabel={formatPrice(displayCents, displayCurrency, locale)}
+            />
           </div>
 
           <dl className="mt-8 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-line pt-6 text-sm">
@@ -121,6 +124,14 @@ export default async function ProductPage({
           </div>
         </div>
       </div>
+
+      <section className="mt-20 border-t border-line pt-16">
+        <h2 className="text-center font-display text-2xl">{tp("title")}</h2>
+        <p className="mx-auto mt-2 max-w-sm text-center text-sm text-ink-soft">
+          {tp("intro")}
+        </p>
+        <ProcessFilmstrip className="mt-8" />
+      </section>
 
       {related.length > 0 && (
         <section className="mt-20">

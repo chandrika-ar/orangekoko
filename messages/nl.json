@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "orangekoko — Unieke vintage sieraden uit Japan",
-    "description": "orangekoko brengt unieke vintage sieraden uit heel Japan naar Europa. Elk stuk is uniek, eerder gedragen, en draagt zijn eigen spoor van tijd."
+    "title": "orangekoko — Vintage sieraden uit Japan, met zorg gekozen",
+    "description": "orangekoko brengt vintage sieraden uit heel Japan naar Europa. Elk stuk is eerder gedragen en draagt zijn eigen spoor van tijd."
   },
   "announcement": {
     "freeShipping": "Gratis verzending vanaf €120",
@@ -27,10 +27,10 @@
     "allJewelry": "Alle Sieraden"
   },
   "hero": {
-    "eyebrow": "Eén van één, altijd",
+    "eyebrow": "Met zorg gekozen, altijd",
     "titleLine1": "Zorgvuldig gekozen vintage",
     "titleLine2": "voor elke versie van jou.",
-    "subtitle": "Unieke sieraden uit Japan — met ouderdom, patina en sfeer",
+    "subtitle": "Vintage sieraden uit Japan — met ouderdom, patina en sfeer",
     "cta": "Bekijk nieuwe items"
   },
   "home": {
@@ -42,7 +42,7 @@
     "storyTitleLine1": "Gevonden in Japan,",
     "storyTitleLine2": "met zorg gekozen.",
     "storyBody1": "We reizen door heel Japan op zoek naar stukken met een schoonheid die alleen de tijd kan scheppen.",
-    "storyBody2": "Elk uniek sieraad wordt met de hand geselecteerd om zijn vakmanschap, materiaal en stille uitstraling.",
+    "storyBody2": "Elk sieraad wordt met de hand geselecteerd om zijn vakmanschap, materiaal en stille uitstraling.",
     "storyBody3": "Wij geloven dat vintage sieraden herinneringen dragen — en deel worden van de uwe.",
     "storyCta": "Meer over onze reis",
     "newArrivalsTitle": "Laatste vondsten",
@@ -55,19 +55,18 @@
     "condition3": "We controleren sluitingen, zettingen en stenen met de hand.",
     "condition4": "We beschrijven de staat duidelijk, zodat u met vertrouwen kunt winkelen.",
     "condition5": "Wat u ziet, is wat u ontvangt.",
-    "condition6": "Origineel. Authentiek. Uniek.",
+    "condition6": "Origineel. Authentiek. Met de hand gecontroleerd.",
+    "conditionSecondhandNote": "Dit mag u verwachten van elk vintage stuk in onze collectie — elk tweedehands, al gedragen voordat het bij u komt.",
     "feature1Title": "Wereldwijde verzending",
     "feature1Body": "Zorgvuldig verpakt in Japan en met zorg verzonden.",
     "feature2Title": "Doordachte verpakking",
     "feature2Body": "Attente verpakking, klaar om te geven of te bewaren.",
     "feature3Title": "Authentiek & Samengesteld",
-    "feature3Body": "Uniek vintage, gezocht in Japan en met de hand geselecteerd.",
+    "feature3Body": "Vintage, gezocht in Japan en met de hand geselecteerd.",
     "feature4Title": "Voor u klaar",
     "feature4Body": "Ons team staat voor en na uw bestelling voor u klaar."
   },
   "product": {
-    "oneOfOne": "Eén van één",
-    "onlyOneAvailable": "Er bestaat maar één exemplaar van dit stuk",
     "sold": "Verkocht",
     "condition": "Staat",
     "materials": "Materialen",
@@ -96,6 +95,8 @@
     "continueShopping": "Verder winkelen",
     "subtotal": "Subtotaal",
     "shippingNote": "Verzendkosten & belastingen worden berekend bij het afrekenen",
+    "freeShippingProgress": "Voeg nog {amount} toe om gratis standaardverzending vrij te spelen.",
+    "freeShippingUnlocked": "U heeft gratis standaardverzending vrijgespeeld!",
     "billedInEur": "Er wordt altijd in EUR afgerekend, ongeacht de weergegeven valuta.",
     "checkout": "Afrekenen",
     "remove": "Verwijderen",
@@ -119,14 +120,13 @@
     "about": "Over ons",
     "ourStory": "Ons Verhaal",
     "journal": "Journaal",
-    "sourcing": "Herkomst",
     "help": "Hulp",
     "shipping": "Verzending",
     "returns": "Retourneren",
     "contact": "Contact",
     "faq": "Veelgestelde vragen",
     "newsletter": "Blijf op de hoogte",
-    "newsletterHint": "Wees de eerste die nieuwe unieke stukken ziet.",
+    "newsletterHint": "Wees de eerste die nieuwe stukken ziet.",
     "newsletterThanks": "Dank u — u staat op de lijst.",
     "emailPlaceholder": "Uw e-mailadres",
     "subscribe": "Aanmelden",
@@ -146,7 +146,7 @@
     "q3": "Kan ik een artikel retourneren of ruilen?",
     "a3": "We inspecteren elk artikel zorgvuldig tijdens het fotograferen en inpakken, dus we kunnen helaas geen retouren of ruilingen accepteren voor schade die na levering wordt gemeld. Om verwisseling van artikelen te voorkomen, accepteren we onder geen enkele omstandigheid retouren. Toch willen we dat je zeker van je aankoop bent! Heb je vragen of twijfels, aarzel dan niet om ze vooraf te stellen. We helpen je graag verder!",
     "q4": "Dus... waar haalt orangekoko deze dingen eigenlijk vandaan?",
-    "a4": "We halen onze voorraad bij gelicentieerde merk-kringloopwinkels, gecertificeerde pandjeshuizen en particuliere antiekmarkten. Elk stuk wordt geverifieerd voordat het bij jou terechtkomt.",
+    "a4": "We halen onze stukken rechtstreeks bij particuliere verzamelaars en persoonlijke collecties uit heel Japan — sieraden die door één persoon zijn uitgekozen en bewaard, geen bulk uit de tweedehandshandel. Achter elk stuk zit een verhaal: wie het droeg, waar het naartoe reisde, wat het voor die persoon betekende — en dat verhaal maakt deel uit van wat je mee naar huis neemt. Elk stuk wordt geverifieerd voordat het bij jou terechtkomt.",
     "q5": "Wat is de huidige staat van de producten?",
     "a5": "Een korte opmerking voordat je verliefd wordt op iets: dit zijn vintage stukken. Dat betekent dat kleine krasjes, lichte gebruikssporen en af en toe een teken van een goed geleefd leven erbij horen. Als je op zoek bent naar perfectie, is dit waarschijnlijk niet voor jou. Als je dingen waardeert die daadwerkelijk ergens zijn geweest — welkom.",
     "q6": "Kan ik korting krijgen?",
@@ -156,7 +156,128 @@
     "q8": "Zijn de maten en foto's betrouwbaar?",
     "a8": "Met de hand gemeten en geïnspecteerd, dus er kan een millimeter of twee variatie zijn, of af en toe een klein detail dat over het hoofd is gezien. Als de staat erg belangrijk voor je is, stuur ons gerust van tevoren een berichtje.\n\nWat de foto's betreft: die zijn door onszelf genomen, dus houd er rekening mee dat kleuren iets kunnen afwijken van het werkelijke artikel, afhankelijk van je scherm en de lichtomstandigheden.",
     "q9": "Waarom hoef ik me geen zorgen te maken over allergieën of vreemde geurtjes?",
-    "a9": "Geen huisdieren in huis — dus geen haartjes, geen dierengeur. En we kunnen sigarettenrook echt niet uitstaan, dus daar is ook helemaal niets van. Wat aankomt is schoon, neutraal en klaar om te dragen."
+    "a9": "Geen huisdieren in onze studio — dus geen haartjes, geen dierengeur. En we kunnen sigarettenrook echt niet uitstaan, dus daar is ook helemaal niets van."
+  },
+  "atelierPage": {
+    "eyebrow": "orangekoko atelier",
+    "title": "Drie manieren om ons te bezoeken",
+    "intro": "Dit is onze studio, online geopend. Dwaal door de ruimte, kijk hoe een stuk wordt verzorgd, of pas een paar dingen.",
+    "exploreTitle": "Verken de ruimte",
+    "exploreBody": "Loop langs de planken van onze studio in Osaka, hoek voor hoek.",
+    "exploreCta": "Bekijken",
+    "exploreComingSoonBody": "We bouwen deze ruimte nu — hij is binnenkort te bezoeken.",
+    "processTitle": "Achter elk stuk",
+    "processBody": "Bekijk wat er gebeurt tussen de aankomst van een stuk en het moment dat het u bereikt.",
+    "processCta": "Bekijken",
+    "tryOnTitle": "Pas het",
+    "tryOnBody": "Zie hoe een stuk u staat, rechtstreeks via uw camera.",
+    "tryOnCta": "Bekijken",
+    "tryOnComingSoonBody": "We bouwen deze functie nu — hij is binnenkort klaar om te proberen.",
+    "comingSoon": "Binnenkort",
+    "backToAtelier": "Terug naar het atelier"
+  },
+  "atelierJourney": {
+    "eyebrow": "Het orangekoko Atelier",
+    "title": "Loop door de ruimte, kies een stuk",
+    "reduceMotion": "Beweging verminderen",
+    "hintMove": "Pijltjestoetsen of WASD om te lopen · klik om daarheen te gaan",
+    "kickerIdle": "Loop naar een stuk toe",
+    "kickerNearby": "In de buurt",
+    "viewDetails": "Bekijk details",
+    "tryOnCta": "Dit stuk passen →",
+    "promptDoor": "Loop naar de deur om de paskamer te betreden",
+    "doorEyebrow": "Atelier · Pas (voorbeeld)",
+    "doorTitle": "U bent door de deur",
+    "tryingOn": "U past",
+    "tryAnother": "Probeer een ander stuk",
+    "backToRoom": "← Terug naar de ruimte",
+    "fallbackTitle": "Deze ruimte heeft een nieuwere browser nodig",
+    "fallbackBody": "We konden de 3D-ruimte hier niet starten. Bekijk in plaats daarvan de collectie.",
+    "fallbackCta": "Naar de winkel",
+    "cameraHeading": "Bekijk hoe het staat",
+    "cameraNote": "Dit gebeurt volledig op uw apparaat — uw camerabeeld wordt nooit geüpload of opgeslagen.",
+    "cameraAllow": "Camera inschakelen",
+    "cameraDenied": "We konden geen toegang krijgen tot uw camera. U kunt de collectie nog steeds bekijken.",
+    "cameraUnsupported": "Deze browser ondersteunt hier geen cameratoegang. U kunt de collectie nog steeds bekijken.",
+    "approxPlacement": "Plaatsing via gezichtsherkenning — een benadering"
+  },
+  "process": {
+    "title": "Achter elk stuk",
+    "intro": "Een korte blik op wat er gebeurt voordat een stuk u bereikt.",
+    "previous": "Vorige stap",
+    "next": "Volgende stap",
+    "arriveLabel": "Aankomst",
+    "arriveCaption": "Elk stuk komt precies aan zoals het geleefd heeft — gedragen, met een verhaal, onvolmaakt.",
+    "cleanLabel": "Reiniging",
+    "cleanCaption": "Met de hand en zachtjes gereinigd — nooit zo dat het zijn ouderdom wegneemt.",
+    "inspectLabel": "Inspectie",
+    "inspectCaption": "Gecontroleerd onder fel licht: sluitingen, zettingen, stenen, elke rand.",
+    "wrapLabel": "Inpakken",
+    "wrapCaption": "Verpakt in zijdepapier, zoals het verdient te worden behandeld.",
+    "sealLabel": "Verzegeld",
+    "sealCaption": "Verzegeld en verzonden vanuit onze studio in Osaka."
+  },
+  "atelier": {
+    "eyebrow": "Het orangekoko Atelier",
+    "title": "Stap binnen in het atelier",
+    "subtitle": "Dwaal langs de planken, kijk hoe een stuk met de hand wordt klaargemaakt, en zie hoe het u staat — zonder deze pagina te verlaten.",
+    "featureExplore": "Verken de ruimte",
+    "featureProcess": "Achter elk stuk",
+    "featureTryOn": "Pas het"
+  },
+  "projectsPage": {
+    "issueLabel": "Nummer 01",
+    "seasonLabel": "Herfst",
+    "title": "De Herfstselectie",
+    "intro": "Als het licht amberkleurig wordt en de lucht scherper, voelen we ons aangetrokken tot stukken met hun eigen warmte — verweerd goud, diep lakrood, het stille gewicht van koraal en amber. Deze seizoensselectie verzamelt vintage vondsten die aanvoelen als de herfst zelf: ontspannen, een beetje melancholisch, en des te mooier daardoor.",
+    "comingSoonTitle": "Stukken volgen binnenkort",
+    "comingSoonBody": "We zijn momenteel bezig met het zoeken en fotograferen van de selectie voor dit seizoen — kom snel terug, of bekijk ondertussen onze volledige collectie."
+  },
+  "chat": {
+    "pageIntro": "Vraag naar maat, staat, verzending of iets anders — onze assistent helpt u meteen verder.",
+    "notConfigured": "Live chat is nog niet ingesteld — stuur ons hieronder rechtstreeks een e-mail.",
+    "intro": "Hallo! Vraag me gerust iets over onze stukken, verzending of beleid.",
+    "placeholder": "Typ uw vraag…",
+    "send": "Versturen",
+    "thinking": "Aan het nadenken…",
+    "error": "Er is iets misgegaan. Probeer het opnieuw, of e-mail ons rechtstreeks.",
+    "escalation": "Geen antwoord gevonden? Mail ons rechtstreeks en we reageren persoonlijk."
+  },
+  "shippingPage": {
+    "intro": "We verzenden vanuit Japan naar de EU, het VK, Noorwegen, IJsland en Zwitserland met traceerbare, verzekerde vervoerders.",
+    "freeTitle": "Gratis standaardverzending vanaf {amount}",
+    "freeBody": "Vanaf {amount} besteding is verzekerde standaardverzending automatisch gratis bij het afrekenen — geen code nodig.",
+    "standardName": "Standaard, traceerbaar (Japan Post e-packet)",
+    "expressName": "Express, verzekerd (Japan Post EMS)",
+    "daysRange": "{min}–{max} werkdagen",
+    "countriesTitle": "Waar we naartoe verzenden",
+    "note": "Getoonde prijzen gelden per bestelling en worden bij het afrekenen in EUR afgerekend, ongeacht de weergegeven valuta."
+  },
+  "returns": {
+    "intro": "Omdat de meeste stukken die we verkopen vintage zijn — eerder gedragen en soms tientallen jaren oud — is ons retourbeleid gebaseerd op de zorg die we vóór verzending besteden, in plaats van erna.",
+    "policyTitle": "Ons beleid",
+    "policyBody": "Elk stuk wordt bij het plaatsen zorgvuldig geïnspecteerd, gemeten en gefotografeerd, zodat u precies ontvangt wat u ziet. Om deze reden kunnen we geen retouren of ruilingen accepteren zodra een bestelling is verzonden.",
+    "beforeTitle": "Voordat u bestelt",
+    "beforeBody": "We weten dat het online kopen van vintage wat vertrouwen vraagt, dus willen we dat u zich volledig zeker voelt voordat u afrekent. Heeft u een vraag — over de staat, maat, materialen of iets anders in de vermelding — stuur ons dan eerst een bericht. We delen graag extra foto's of details.",
+    "issueTitle": "Als er iets mis is",
+    "issueBody": "Mocht uw bestelling in het zeldzame geval beschadigd aankomen tijdens het transport of niet overeenkomen met de vermelding, neem dan binnen 48 uur na levering contact met ons op met foto's, dan lossen we het samen op."
+  },
+  "brand": {
+    "title": "Wat orange betekent",
+    "lead": "Voordat we verdergaan — een woord over onze naam, en wat ‘orange’ voor ons betekent.",
+    "philosophy1": "orange is geen kleur — het is een gevoel. Het moment waarop het middaglicht vertraagt. Een stille warmte die dicht bij het leven blijft, zonder zich op te dringen.",
+    "philosophy2": "Niet gemaakt om op te vallen, maar om bij u te blijven in het dagelijks leven. Wij geloven dat een sieraad niet voortdurend zijn aanwezigheid hoeft te bewijzen. De mooiste stukken vergezellen u simpelweg in stilte — ze laten een gewicht achter op de huid, sporen in de tijd. Daar begint orangekoko.",
+    "philosophy3": "Als gecureerde plek zoeken we hedendaags handwerk en Japanse vintage sieraden — niet omdat ze schitteren, maar omdat ze het waard zijn om jarenlang gedragen te worden, keer op keer.",
+    "philosophy4": "Vakmanschap, textuur, een gevoel voor tijd — dat zijn onze criteria. Bij orangekoko is een sieraad meer een dagelijkse vitamine voor het leven.",
+    "philosophy5": "Klein, maar noodzakelijk. Zacht, maar serieus genomen.",
+    "closing": "orange creëert geen impuls. orange laat een indruk achter."
+  },
+  "about": {
+    "expandedBody1": "Dat is de versie die we opschrijven. De echte begint bij mij: ik hou al heel lang van Japanse vintage sieraden — en dan niet de gepolijste stukken achter een etalageruit. Ik bedoel de stukken die je tafel voor tafel tegenkomt op een klein vlooienmarktje, zo'n plek die nooit in een reisgids staat.",
+    "expandedBody2": "Ik zoek ze zelf op, en het mooiste is bijna nooit het stuk zelf — het is het verhaal dat erbij komt. De verkopers zijn vaak de oorspronkelijke eigenaars, of hun familie, en ze vertellen waar een stuk naartoe reisde, wie het bij welke gelegenheid droeg, waarom het uiteindelijk opzij werd gelegd. Zulke verhalen bestaan niet in winkels in grote steden.",
+    "expandedBody3": "Wat me blijft verbazen, is hoe goed deze stukken de tijd hebben doorstaan. Japan kent een stille, diepgewortelde cultuur van zorg voor dingen — repareren in plaats van vervangen, met aandacht bewaren, dingen doorgeven in plaats van weggooien. Die gewoonte van zorgvuldig bewaren is precies waarom een stuk van decennia geleden u nog steeds in draagbare staat kan bereiken, met zijn geschiedenis intact in plaats van uitgewist.",
+    "expandedBodyArtisan": "Naast deze vintage vondsten werk ik inmiddels ook samen met een handvol hedendaagse ambachtslieden wiens stukken diezelfde geest dragen — gemaakt in kleine oplages, bedoeld om jarenlang gedragen te worden in plaats van één seizoen, elk stuk gevormd door een hand in plaats van een machine.",
+    "expandedBody4": "Daarop is orangekoko gebouwd: stukken die dat soort zorg verdienen, en de verhalen die ze meebrengen."
   },
   "account": {
     "title": "Account",
@@ -168,6 +289,17 @@
     "signInError": "Er is iets misgegaan. Probeer het opnieuw.",
     "signedInAs": "Ingelogd als {email}",
     "viewWishlist": "Bekijk verlanglijst",
+    "viewOrders": "Bestelgeschiedenis",
     "signOut": "Uitloggen"
+  },
+  "orders": {
+    "title": "Bestelgeschiedenis",
+    "empty": "U heeft nog geen bestellingen geplaatst.",
+    "emptyBody": "Bestellingen die u geplaatst heeft terwijl u was ingelogd, verschijnen hier.",
+    "backToAccount": "Terug naar account",
+    "placedOn": "Geplaatst op {date}",
+    "total": "Totaal",
+    "status_paid": "Betaald",
+    "status_refunded": "Terugbetaald"
   }
 }
