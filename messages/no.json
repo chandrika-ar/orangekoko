@@ -333,7 +333,6 @@
     "browseJewelry": "Håndlagde smykker",
     "deliveryTitle": "Omsorgsfull samlet levering",
     "deliveryBody": "Kort i samme bestilling sendes sammen. Gjeldende fraktkostnad vises i kassen.",
-    "ratePending": "Ingen egen kortfrakt er fastsatt. Den vurderes ut fra faktisk pakket vekt, mål, destinasjon og sporingskostnad.",
     "mixedOrder": "Inneholder bestillingen en forhåndsbestilling, sendes alt samlet når det er klart, senest på den siste oppgitte sendingsdatoen. Transporttiden starter etter sending.",
     "careBody": "Oppbevar kort flatt og tørt, unna direkte sollys.",
     "heroAlt": "Originale håndlagde kort og smykker laget av uavhengige kunsthåndverkere i Japan.",

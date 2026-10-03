@@ -9,7 +9,7 @@ export default async function BrandPage() {
     <div>
       <div className="relative aspect-[16/8] w-full overflow-hidden bg-cream-deep">
         <Image
-          src="/created-curated-hero.webp"
+          src="/brand-gift-story.webp"
           alt=""
           fill
           priority
@@ -30,7 +30,7 @@ export default async function BrandPage() {
       <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 px-4 py-6 sm:px-6 md:grid-cols-2 lg:px-8">
         <div className="relative aspect-[4/5] w-full overflow-hidden bg-cream-deep">
           <Image
-            src="/handmade-jewelry-editorial.webp"
+            src="/brand-jewelry-craft.webp"
             alt=""
             fill
             className="object-cover"
@@ -46,7 +46,7 @@ export default async function BrandPage() {
         </p>
         <div className="relative order-1 aspect-[4/5] w-full overflow-hidden bg-cream-deep md:order-2">
           <Image
-            src="/handmade-cards-editorial.webp"
+            src="/brand-card-making.webp"
             alt=""
             fill
             className="object-cover"

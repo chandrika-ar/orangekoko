@@ -23,12 +23,14 @@ Checkout refuses to start without the write client and webhook secret. Prices an
 
 Configure and verify delivery of the expiration/failure events before selling cards. Failed webhook delivery can leave inventory held until retried. Do not delete inventoryReservation documents while a checkout is active. This stock handling covers this website only; sales elsewhere still need manual reconciliation.
 
-## Shipping assessment
+## Shipping policy
 
-No reduced card rate has been invented. Existing rates remain EUR 9.90 tracked / EUR 24.90 express, with free standard shipping at EUR 120. Weigh and measure a finished single-card parcel, a three-card parcel, and a mixed jewelry/card parcel. Record `packedWeightGrams` and separately record package dimensions, destination, tracking and packaging cost. Compare actual carrier quotations before changing the checkout rate. The site explains that the final shipping amount appears at checkout. Preorder checkout omits transit estimates that would start before dispatch.
+The same shipping policy applies to jewelry, card-only orders and mixed orders. Standard tracked shipping is EUR 9.90, express is EUR 24.90; orders of EUR 120 or more receive free standard tracked shipping. Express remains paid. The Shipping page is authoritative and the card delivery panel reuses its localized free-shipping explanation and shared threshold constant. There is no separate pending card rate. Preorder checkout omits transit estimates that would start before dispatch.
 
 ## Verification and assets
 
 Run `npm test`, `npx tsc --noEmit`, and `npm run build`. All ten message files include the minimum card quantity, three-card saving, preorder messages, jewelry-to-card pairing, and delivery guidance. The homepage gives the two product families equal collection panels and equal new-arrival columns. Jewelry subcategories live under Handmade Jewelry in the main navigation.
 
 The built-in image generation tool created three editorial assets: `public/created-curated-hero.webp` (handmade paper cards and Japanese artisan-style jewelry, with at least half the composition devoted to cards), `public/handmade-cards-editorial.webp` (cards and envelopes), and `public/handmade-jewelry-editorial.webp` (ear clips, pierced earrings and a necklace). Each uses warm ivory, navy and orange, natural light, and crisp craft textures with no logos or text. They are brand imagery; product listings still require real product photographs. Per the owner's request, no illustration caption is displayed.
+
+Brand and About use their own newly generated editorial assets: `brand-gift-story.webp`, `brand-jewelry-craft.webp`, `brand-card-making.webp` and `about-studio-story.webp`. Homepage imagery is not reused on these pages.
