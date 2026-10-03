@@ -23,23 +23,50 @@ const MODEL_URL = "/mediapipe/face_landmarker.task";
 
 let landmarkerPromise: Promise<FaceLandmarker> | null = null;
 
-function getLandmarker(): Promise<FaceLandmarker> {
+// A synchronous, immediate check rather than attempting the GPU delegate
+// and catching its failure: on a device/browser where it was never going
+// to work, that attempt still spends real time spinning up a WebGL
+// context before giving up and falling back to CPU — pure wasted latency
+// on top of an already-slow cold start.
+function hasWebGL2(): boolean {
+  try {
+    return !!document.createElement("canvas").getContext("webgl2");
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Kicks off the WASM + model download/initialization immediately, without
+ * waiting for a `startFaceTracking` call. The slowest part of "time to
+ * first detected face" isn't per-frame inference, it's this one-time cold
+ * start (tens of megabytes to fetch and a TFLite runtime to spin up) — call
+ * this as early as possible (e.g. the moment the try-on view mounts) so it
+ * runs in the background while the person is still looking at the camera
+ * permission prompt, rather than only starting once they've already
+ * granted it. Safe to call repeatedly; later calls just return the same
+ * in-flight/cached promise.
+ */
+export function preloadFaceTracking(): Promise<FaceLandmarker> {
   landmarkerPromise ??= (async () => {
     const vision = await FilesetResolver.forVisionTasks(WASM_BASE_URL);
-    try {
-      return await FaceLandmarker.createFromOptions(vision, {
-        baseOptions: { modelAssetPath: MODEL_URL, delegate: "GPU" },
-        runningMode: "VIDEO",
-        numFaces: 1,
-      });
-    } catch {
-      // Some devices/browsers don't support the WebGL delegate for this task.
-      return await FaceLandmarker.createFromOptions(vision, {
-        baseOptions: { modelAssetPath: MODEL_URL, delegate: "CPU" },
-        runningMode: "VIDEO",
-        numFaces: 1,
-      });
+    if (hasWebGL2()) {
+      try {
+        return await FaceLandmarker.createFromOptions(vision, {
+          baseOptions: { modelAssetPath: MODEL_URL, delegate: "GPU" },
+          runningMode: "VIDEO",
+          numFaces: 1,
+        });
+      } catch {
+        // Some devices/browsers support WebGL2 generally but not this
+        // specific delegate — fall through to CPU below.
+      }
     }
+    return FaceLandmarker.createFromOptions(vision, {
+      baseOptions: { modelAssetPath: MODEL_URL, delegate: "CPU" },
+      runningMode: "VIDEO",
+      numFaces: 1,
+    });
   })();
   return landmarkerPromise;
 }
@@ -132,7 +159,7 @@ export function startFaceTracking(
   let stopped = false;
   let rafId = 0;
 
-  getLandmarker()
+  preloadFaceTracking()
     .then((landmarker) => {
       if (stopped) return;
       const loop = () => {

@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { CameraGate } from "./camera-gate";
 import { cutoutNearWhite } from "./cutout";
-import { startFaceTracking, type FaceAnchors } from "./face-tracking";
+import { preloadFaceTracking, startFaceTracking, type FaceAnchors } from "./face-tracking";
 import type { JourneyItem } from "../journey/types";
 
 type CameraState = "idle" | "requesting" | "granted" | "denied" | "unsupported";
@@ -48,6 +48,16 @@ export function TryOnStage({ item }: { item: JourneyItem | null }) {
     return () => {
       streamRef.current?.getTracks().forEach((track) => track.stop());
     };
+  }, []);
+
+  // Starts the (slow, one-time) model/WASM download the moment this view
+  // mounts, rather than waiting for the camera stream to be granted first
+  // — the two don't depend on each other, so running them in parallel
+  // means the model has a head start on loading while the person is still
+  // looking at (and responding to) the camera permission prompt, instead
+  // of only starting to load once they've already granted it.
+  useEffect(() => {
+    preloadFaceTracking();
   }, []);
 
   // The <video> element below only exists once cameraState is "granted" —
