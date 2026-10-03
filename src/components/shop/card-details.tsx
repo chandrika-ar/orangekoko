@@ -12,6 +12,8 @@ export function CardDetails({ product }: { product: Product }) {
       <p>{product.packSize === 3 ? t("three") : t("single")}</p>
       <p className="text-accent">{availableQuantity(product) === 0 ? t("outOfStock") : product.fulfilment === "preorder" ? t("preorder") : t("ready")}</p>
       {product.fulfilment === "preorder" && <p>{date ? t("dispatchBy", { date }) : t("dispatchMissing")}</p>}
+      <p className="text-ink-soft">{t("minimumCards")}</p>
+      {product.threeCardPriceCents && product.threeCardPriceCents < product.priceCents * 3 ? <p className="text-accent">{t("threeValue", { price: new Intl.NumberFormat(locale, { style: "currency", currency: product.currency }).format(product.threeCardPriceCents / 100) })}</p> : <p className="text-ink-soft">{t("threeValuePending")}</p>}
       <p className="text-ink-soft">{t("deliveryBody")}</p>
       {product.fulfilment === "preorder" && <p className="text-ink-soft">{t("mixedOrder")}</p>}
     </div>

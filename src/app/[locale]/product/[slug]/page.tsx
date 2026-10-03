@@ -131,7 +131,7 @@ export default async function ProductPage({
         </div>
       </div>
 
-      <CrossSell cards={!isCard} excludeId={product.id} />
+      {!isCard && <CrossSell product={product} />}
 
       {!isCard && <section className="mt-20 border-t border-line pt-16">
         <h2 className="text-center font-display text-2xl">{tp("title")}</h2>

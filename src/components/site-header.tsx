@@ -24,9 +24,7 @@ export function SiteHeader() {
   const { status: sessionStatus } = useSession();
 
   const navItems = [
-    { href: "/new-arrivals", label: t("newArrivals") },
     { href: "/handmade-cards", label: t("handmadeCards") },
-    { href: "/projects", label: t("projects") },
     { href: "/brand", label: t("brand") },
   ];
 

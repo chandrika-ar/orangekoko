@@ -24,7 +24,7 @@
     "account": "Account",
     "menu": "Menu",
     "close": "Close",
-    "allJewelry": "Artisan Jewelry",
+    "allJewelry": "Handmade Jewelry",
     "handmadeCards": "Handmade Cards"
   },
   "hero": {
@@ -153,9 +153,9 @@
     "q4": "What materials are used?",
     "a4": "Materials and measurements are stated on each product page. Look closely at the materials, finish and small details that give each handmade piece its character.",
     "q5": "Can I buy cards and jewelry together?",
-    "a5": "Choose one card for a personal message. A coordinated set of three cards, priced and stocked separately. Choose each item separately and add them to the same bag. No fixed bundle or automatic discount.",
+    "a5": "Card-only orders require at least two cards; you may combine designs. One card can be added to a jewelry order.",
     "q6": "How do shipping and preorders work?",
-    "a6": "Cards can be bought alone, as a three-card set, or alongside jewelry. Items in the same order are packed and shipped together; the current shipping charge is shown at checkout. If your order includes a preorder, the whole order ships together when all items are ready, by the latest dispatch date shown. Transit time starts after dispatch."
+    "a6": "Cards in the same order ship together. The current shipping charge is shown at checkout. If your order includes a preorder, the whole order ships together when all items are ready, by the latest dispatch date shown. Transit time starts after dispatch."
   },
   "atelierPage": {
     "eyebrow": "orangekoko atelier",
@@ -265,11 +265,13 @@
     "title": "Small things, made with care",
     "lead": "orangekoko is a place for handmade objects with a personal point of view.",
     "philosophy1": "Orange is the warmth of a small gesture: a card written for someone, or a piece chosen to wear every day.",
-    "philosophy2": "The value is in the making — the choice of paper, a thoughtful shape, a carefully finished detail.",
+    "philosophy2": "For the jewelry collection, I select work made by independent artisans in Japan, with a focus on their design, materials and craftsmanship.",
     "philosophy3": "One part created by me, one part made by Japanese artisans. Both belong here because of the care behind them.",
     "philosophy4": "Our collections share a love of texture, considered design and the people behind the work.",
     "philosophy5": "Look closely at the materials, finish and small details that give each handmade piece its character.",
-    "closing": "Made to be worn, written, given and kept."
+    "closing": "Made to be worn, written, given and kept.",
+    "whyCardsTitle": "Why handmade cards?",
+    "whyCardsBody": "A piece of jewelry is a gift to wear; a card holds the words that make it personal. I make the cards myself so that paper, texture and a handwritten message can be part of the gift. They also stand on their own, for birthdays, thank-yous and everyday gestures."
   },
   "about": {
     "expandedBody1": "orangekoko is a place for handmade objects with a personal point of view.",
@@ -304,41 +306,42 @@
   "cards": {
     "eyebrow": "Created & Curated",
     "title": "Handmade cards",
-    "intro": "Original greeting cards made by hand — a place for personal messages, small details and paper textures.",
+    "intro": "I make each greeting card by hand, paying attention to paper, texture and the space for your own words.",
     "empty": "There are no cards listed yet.",
-    "jewelryCta": "Explore artisan jewelry",
+    "jewelryCta": "Handmade Jewelry",
     "cta": "Discover handmade cards",
-    "previewBody": "Original handmade greeting cards and jewelry handcrafted by independent artisans in Japan.",
+    "previewBody": "I make each greeting card by hand, paying attention to paper, texture and the space for your own words.",
     "metaTitle": "Handmade cards | orangekoko",
-    "metaDescription": "Original greeting cards made by hand — a place for personal messages, small details and paper textures."
+    "metaDescription": "I make each greeting card by hand, paying attention to paper, texture and the space for your own words."
   },
   "cardShop": {
     "single": "Single card",
     "three": "Three-card set",
-    "withJewelry": "Artisan Jewelry",
-    "singleBody": "Choose one card for a personal message.",
-    "threeBody": "A coordinated set of three cards, priced and stocked separately.",
-    "withJewelryBody": "Add a card to a jewelry order, or choose jewelry to accompany a card.",
+    "withJewelry": "Handmade Jewelry",
+    "singleBody": "I make each greeting card by hand, paying attention to paper, texture and the space for your own words.",
+    "threeBody": "Want three? A better-value three-card option will appear here once its price is confirmed.",
+    "withJewelryBody": "Card-only orders require at least two cards; you may combine designs. One card can be added to a jewelry order.",
     "ready": "Ready to ship",
     "preorder": "Preorder",
     "outOfStock": "Out of stock",
     "dispatchBy": "Dispatch by {date}",
     "dispatchMissing": "A dispatch date must be confirmed before ordering.",
     "addCard": "Add a handmade card",
-    "addJewelry": "Pair with artisan jewelry",
-    "pairBody": "Choose each item separately and add them to the same bag. No fixed bundle or automatic discount.",
+    "pairBody": "A handwritten message makes a gift personal. Choose a card selected to complement this piece and add it to your bag.",
     "emptyPairing": "No matching items are available right now.",
     "browseCards": "Browse cards",
-    "browseJewelry": "Explore artisan jewelry",
+    "browseJewelry": "Handmade Jewelry",
     "deliveryTitle": "Delivery, thoughtfully combined",
-    "deliveryBody": "Cards can be bought alone, as a three-card set, or alongside jewelry. Items in the same order are packed and shipped together; the current shipping charge is shown at checkout.",
+    "deliveryBody": "Cards in the same order ship together. The current shipping charge is shown at checkout.",
     "ratePending": "A separate card shipping rate has not been set. It will be assessed using the actual packed weight, envelope or box size, destination and tracking cost.",
     "mixedOrder": "If your order includes a preorder, the whole order ships together when all items are ready, by the latest dispatch date shown. Transit time starts after dispatch.",
     "careBody": "Keep cards flat and dry, away from direct sunlight.",
-    "heroCaption": "Brand illustration — not items for sale",
     "heroAlt": "Original handmade greeting cards and jewelry handcrafted by independent artisans in Japan.",
     "cancelPending": "Releasing your checkout reservation…",
     "cancelFailed": "We could not release this checkout yet. Payment may still be processing. Please contact us before trying another payment.",
-    "cancelHelp": "Contact us"
+    "cancelHelp": "Contact us",
+    "minimumCards": "Card-only orders require at least two cards; you may combine designs. One card can be added to a jewelry order.",
+    "threeValue": "Three of this card for {price} — better value than three singles. Add three to your bag; the saving applies automatically.",
+    "threeValuePending": "Want three? A better-value three-card option will appear here once its price is confirmed."
   }
 }

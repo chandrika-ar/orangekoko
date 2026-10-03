@@ -6,6 +6,8 @@ export type ProductCategory = "earrings-studs" | "ear-clips" | "necklaces" | "ha
 
 export interface Product {
   id: string;
+  recommendedCardIds?: string[];
+  threeCardPriceCents?: number;
   jewelryKind?: "artisan";
   maker?: string;
   craftTechnique?: string;
@@ -39,6 +41,8 @@ export interface Product {
 
 interface SanityProductDoc {
   _id: string;
+  recommendedCardIds?: string[];
+  threeCardPriceEur?: number;
   jewelryKind?: "artisan";
   maker?: string;
   craftTechnique?: string;
@@ -67,6 +71,8 @@ interface SanityProductDoc {
 
 const PRODUCT_PROJECTION = `{
   _id,
+  "recommendedCardIds": recommendedCards[]._ref,
+  threeCardPriceEur,
   jewelryKind,
   maker,
   craftTechnique,
@@ -96,6 +102,8 @@ const PRODUCT_PROJECTION = `{
 function mapSanityProduct(doc: SanityProductDoc): Product {
   return {
     id: doc._id,
+    recommendedCardIds: doc.recommendedCardIds,
+    threeCardPriceCents: doc.threeCardPriceEur ? Math.round(doc.threeCardPriceEur * 100) : undefined,
     jewelryKind: doc.jewelryKind,
     maker: doc.maker,
     craftTechnique: doc.craftTechnique,
@@ -138,7 +146,7 @@ export const categories: {
 
 // No invented stock. Products must have real maker/provenance information.
 export const products: Product[] = [];
-const CURRENT_CATALOGUE = '(category == "handmade-cards" || jewelryKind == "artisan")';
+const CURRENT_CATALOGUE = '((category == "handmade-cards" && (!defined(packSize) || packSize == 1)) || (category != "handmade-cards" && jewelryKind == "artisan"))';
 
 export async function getAllProducts(): Promise<Product[]> {
   if (!sanityClient) return products;

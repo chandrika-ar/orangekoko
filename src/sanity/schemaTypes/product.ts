@@ -32,6 +32,8 @@ export const productType = defineType({
       },
       validation: (rule) => rule.required(),
     }),
+    defineField({ name: "recommendedCards", title: "Matching handmade cards", type: "array", of: [{type: "reference", to: [{type: "product"}], options: {filter: 'category == "handmade-cards" && (!defined(packSize) || packSize == 1)'}}], hidden: ({document}) => document?.category === "handmade-cards", validation: rule => rule.max(3), description: "Choose up to three cards that suit this jewelry piece." }),
+    defineField({ name: "threeCardPriceEur", title: "Price for three of this card (EUR)", type: "number", hidden: ({document}) => document?.category !== "handmade-cards", description: "Optional. Must be lower than three single cards. Uses the same card stock; no separate set listing.", validation: rule => rule.positive().custom((value,context) => value && typeof context.document?.priceEur === "number" && value >= context.document.priceEur * 3 ? "Must cost less than three single cards" : true) }),
     defineField({
       name: "jewelryKind", title: "Jewelry provenance", type: "string", initialValue: "artisan",
       options: { list: [{ title: "Handcrafted by an artisan in Japan", value: "artisan" }] },
@@ -52,9 +54,9 @@ export const productType = defineType({
     }),
     defineField({
       name: "packSize", title: "Cards per pack", type: "number", initialValue: 1,
-      options: { list: [{ title: "Single card", value: 1 }, { title: "Three-card set", value: 3 }] },
+      options: { list: [{ title: "Single card", value: 1 }] },
       hidden: ({ document }) => document?.category !== "handmade-cards",
-      validation: (rule) => rule.custom((value, context) => context.document?.category === "handmade-cards" && value !== 1 && value !== 3 ? "Choose one or three cards" : true),
+      validation: (rule) => rule.custom((value, context) => context.document?.category === "handmade-cards" && value !== 1 ? "Use a single-card listing; set the three-card price on this listing" : true),
     }),
     defineField({
       name: "fulfilment", title: "Fulfilment", type: "string", initialValue: "stock",
@@ -62,13 +64,13 @@ export const productType = defineType({
       hidden: ({ document }) => document?.category !== "handmade-cards",
     }),
     defineField({
-      name: "stock", title: "Ready-to-ship packs in stock", type: "number", initialValue: 0,
-      description: "Count packs, not individual cards. Single-card and three-card listings have separate physical stock.",
+      name: "stock", title: "Ready-to-ship cards in stock", type: "number", initialValue: 0,
+      description: "Count individual cards. Three-card offers use this same stock. Legacy three-card pack listings are hidden; do not simply change their pack size without recounting stock.",
       hidden: ({ document }) => document?.category !== "handmade-cards",
       validation: (rule) => rule.integer().min(0),
     }),
     defineField({
-      name: "preorderCapacity", title: "Preorder packs available", type: "number", initialValue: 0,
+      name: "preorderCapacity", title: "Preorder cards available", type: "number", initialValue: 0,
       hidden: ({ document }) => document?.category !== "handmade-cards" || document?.fulfilment !== "preorder",
       validation: (rule) => rule.integer().min(0),
     }),

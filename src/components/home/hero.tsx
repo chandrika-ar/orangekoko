@@ -13,14 +13,13 @@ export function Hero() {
         <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-soft">{t("subtitle")}</p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link href="/jewelry" className="border border-ink bg-ink px-5 py-3 text-sm text-white transition-colors hover:bg-accent">{cards("browseJewelry")}</Link>
-          <Link href="/handmade-cards" className="border border-ink px-5 py-3 text-sm transition-colors hover:bg-ink hover:text-white">{cards("browseCards")}</Link>
+          <Link href="/handmade-cards" className="border border-ink bg-ink px-5 py-3 text-sm text-white transition-colors hover:bg-accent">{cards("browseCards")}</Link>
         </div>
       </div>
       <figure className="relative m-0">
         <div className="relative aspect-[3/2] lg:aspect-auto lg:h-full lg:min-h-[560px]">
           <Image src="/created-curated-hero.webp" alt={cards("heroAlt")} fill priority className="object-cover" sizes="(min-width: 1024px) 58vw, 100vw" />
         </div>
-        <figcaption className="absolute bottom-3 right-3 max-w-[85%] bg-cream/90 px-3 py-1.5 text-xs text-ink">{cards("heroCaption")}</figcaption>
       </figure>
     </section>
   );

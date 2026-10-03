@@ -24,7 +24,7 @@
     "account": "Account",
     "menu": "Menu",
     "close": "Chiudi",
-    "allJewelry": "Gioielli artigianali",
+    "allJewelry": "Gioielli fatti a mano",
     "handmadeCards": "Biglietti artigianali"
   },
   "hero": {
@@ -153,9 +153,9 @@
     "q4": "Quali materiali vengono usati?",
     "a4": "Materiali e misure sono indicati in ogni pagina prodotto. Osserva materiali, finiture e piccoli dettagli che danno carattere a ogni pezzo fatto a mano.",
     "q5": "Posso comprare biglietti e gioielli insieme?",
-    "a5": "Scegli un biglietto per un messaggio personale. Tre biglietti coordinati, con prezzo e scorte separati. Scegli gli articoli separatamente e aggiungili allo stesso carrello. Nessun pacchetto fisso o sconto automatico.",
+    "a5": "Gli ordini di sole cartoline vengono spediti da due cartoline in su; puoi combinare diversi disegni. Puoi aggiungere una sola cartolina a un ordine di gioielli.",
     "q6": "Come funzionano spedizioni e preordini?",
-    "a6": "I biglietti si acquistano singolarmente, in set da tre o con gioielli. Gli articoli dello stesso ordine vengono imballati e spediti insieme; i costi attuali compaiono al pagamento. Se l’ordine include un preordine, tutto parte insieme quando è pronto, entro l’ultima data di spedizione indicata. Il tempo di trasporto inizia dopo la spedizione."
+    "a6": "Le cartoline dello stesso ordine vengono spedite insieme. Le spese di spedizione attuali sono indicate al pagamento. Se l’ordine include un preordine, tutto parte insieme quando è pronto, entro l’ultima data di spedizione indicata. Il tempo di trasporto inizia dopo la spedizione."
   },
   "atelierPage": {
     "eyebrow": "atelier orangekoko",
@@ -265,11 +265,13 @@
     "title": "Piccole cose, fatte con cura",
     "lead": "orangekoko è uno spazio per oggetti fatti a mano con una voce personale.",
     "philosophy1": "Orange è il calore di un piccolo gesto: un biglietto per qualcuno, un gioiello per ogni giorno.",
-    "philosophy2": "Il valore è nel fare — scegliere la carta, pensare una forma, rifinire un dettaglio.",
+    "philosophy2": "Per i gioielli scelgo lavori di artigiani indipendenti in Giappone, per design, materiali e lavorazione.",
     "philosophy3": "Una parte creata da me, l’altra da artigiani giapponesi. La cura dietro entrambe le unisce.",
     "philosophy4": "Le collezioni condividono l’amore per texture, design curato e persone dietro le opere.",
     "philosophy5": "Osserva materiali, finiture e piccoli dettagli che danno carattere a ogni pezzo fatto a mano.",
-    "closing": "Da indossare, scrivere, regalare e conservare."
+    "closing": "Da indossare, scrivere, regalare e conservare.",
+    "whyCardsTitle": "Perché cartoline fatte a mano?",
+    "whyCardsBody": "Un gioiello è un regalo da indossare; una cartolina custodisce le parole che lo rendono personale. Realizzo io stessa le cartoline perché carta, texture e un messaggio scritto a mano possano far parte del regalo. Sono anche un pensiero a sé, per compleanni, ringraziamenti e piccoli gesti quotidiani."
   },
   "about": {
     "expandedBody1": "orangekoko è uno spazio per oggetti fatti a mano con una voce personale.",
@@ -304,41 +306,42 @@
   "cards": {
     "eyebrow": "Created & Curated",
     "title": "Biglietti artigianali",
-    "intro": "Biglietti d’auguri originali fatti a mano, per messaggi personali, piccoli dettagli e texture di carta.",
+    "intro": "Realizzo personalmente ogni cartolina a mano, curando la carta, la texture e lo spazio per le tue parole.",
     "empty": "Non ci sono ancora biglietti nella collezione.",
-    "jewelryCta": "Scopri i gioielli artigianali",
+    "jewelryCta": "Gioielli fatti a mano",
     "cta": "Scopri i biglietti",
-    "previewBody": "Biglietti originali fatti a mano e gioielli realizzati da artigiani indipendenti in Giappone.",
+    "previewBody": "Realizzo personalmente ogni cartolina a mano, curando la carta, la texture e lo spazio per le tue parole.",
     "metaTitle": "Biglietti artigianali | orangekoko",
-    "metaDescription": "Biglietti d’auguri originali fatti a mano, per messaggi personali, piccoli dettagli e texture di carta."
+    "metaDescription": "Realizzo personalmente ogni cartolina a mano, curando la carta, la texture e lo spazio per le tue parole."
   },
   "cardShop": {
     "single": "Biglietto singolo",
     "three": "Set di tre biglietti",
-    "withJewelry": "Gioielli artigianali",
-    "singleBody": "Scegli un biglietto per un messaggio personale.",
-    "threeBody": "Tre biglietti coordinati, con prezzo e scorte separati.",
-    "withJewelryBody": "Aggiungi un biglietto al tuo ordine di gioielli, o scegli un gioiello da abbinare.",
+    "withJewelry": "Gioielli fatti a mano",
+    "singleBody": "Realizzo personalmente ogni cartolina a mano, curando la carta, la texture e lo spazio per le tue parole.",
+    "threeBody": "Ne vuoi tre? L’opzione più conveniente apparirà qui quando il prezzo sarà confermato.",
+    "withJewelryBody": "Gli ordini di sole cartoline vengono spediti da due cartoline in su; puoi combinare diversi disegni. Puoi aggiungere una sola cartolina a un ordine di gioielli.",
     "ready": "Pronto per la spedizione",
     "preorder": "Preordine",
     "outOfStock": "Esaurito",
     "dispatchBy": "Spedizione entro il {date}",
     "dispatchMissing": "La data di spedizione deve essere confermata prima dell’ordine.",
     "addCard": "Aggiungi un biglietto artigianale",
-    "addJewelry": "Abbina gioielli artigianali",
-    "pairBody": "Scegli gli articoli separatamente e aggiungili allo stesso carrello. Nessun pacchetto fisso o sconto automatico.",
+    "pairBody": "Un messaggio scritto a mano rende personale un regalo. Scegli una cartolina selezionata per accompagnare questo gioiello e aggiungila al carrello.",
     "emptyPairing": "Al momento non ci sono articoli da abbinare.",
     "browseCards": "Vedi i biglietti",
-    "browseJewelry": "Scopri i gioielli artigianali",
+    "browseJewelry": "Gioielli fatti a mano",
     "deliveryTitle": "Spedizioni unite con cura",
-    "deliveryBody": "I biglietti si acquistano singolarmente, in set da tre o con gioielli. Gli articoli dello stesso ordine vengono imballati e spediti insieme; i costi attuali compaiono al pagamento.",
+    "deliveryBody": "Le cartoline dello stesso ordine vengono spedite insieme. Le spese di spedizione attuali sono indicate al pagamento.",
     "ratePending": "Non è stata fissata una tariffa specifica per i biglietti. Verrà valutata secondo il peso reale imballato, le dimensioni, la destinazione e il costo del tracciamento.",
     "mixedOrder": "Se l’ordine include un preordine, tutto parte insieme quando è pronto, entro l’ultima data di spedizione indicata. Il tempo di trasporto inizia dopo la spedizione.",
     "careBody": "Conserva i biglietti in piano e all’asciutto, lontano dal sole diretto.",
-    "heroCaption": "Illustrazione del marchio — non articoli in vendita",
     "heroAlt": "Biglietti originali fatti a mano e gioielli realizzati da artigiani indipendenti in Giappone.",
     "cancelPending": "Rilascio della prenotazione…",
     "cancelFailed": "Non è stato possibile liberare la prenotazione. Il pagamento potrebbe essere ancora in corso. Contattaci prima di pagare di nuovo.",
-    "cancelHelp": "Contattaci"
+    "cancelHelp": "Contattaci",
+    "minimumCards": "Gli ordini di sole cartoline vengono spediti da due cartoline in su; puoi combinare diversi disegni. Puoi aggiungere una sola cartolina a un ordine di gioielli.",
+    "threeValue": "Tre copie di questa cartolina a {price} — più conveniente di tre singole. Aggiungine tre al carrello; il risparmio si applica automaticamente.",
+    "threeValuePending": "Ne vuoi tre? L’opzione più conveniente apparirà qui quando il prezzo sarà confermato."
   }
 }

@@ -24,7 +24,7 @@
     "account": "Tili",
     "menu": "Valikko",
     "close": "Sulje",
-    "allJewelry": "Käsityökorut",
+    "allJewelry": "Käsintehdyt korut",
     "handmadeCards": "Käsintehdyt kortit"
   },
   "hero": {
@@ -153,9 +153,9 @@
     "q4": "Mitä materiaaleja käytetään?",
     "a4": "Materiaalit ja mitat kerrotaan jokaisella tuotesivulla. Tutustu materiaaleihin, viimeistelyyn ja pieniin yksityiskohtiin, jotka antavat käsintehdylle tuotteelle luonteen.",
     "q5": "Voinko ostaa kortteja ja koruja yhdessä?",
-    "a5": "Valitse yksi kortti henkilökohtaiseen viestiin. Kolme yhteensopivaa korttia, joilla on oma hinta ja varasto. Valitse tuotteet erikseen ja lisää ne samaan ostoskoriin. Ei kiinteää pakettia eikä automaattista alennusta.",
+    "a5": "Pelkkää korttia sisältävät tilaukset lähetetään vähintään kahdesta kortista alkaen; voit yhdistellä malleja. Korutilaukseen voi lisätä yhden kortin.",
     "q6": "Miten toimitus ja ennakkotilaukset toimivat?",
-    "a6": "Kortteja voi ostaa yksittäin, kolmen setteinä tai korujen kanssa. Saman tilauksen tuotteet pakataan ja lähetetään yhdessä; nykyinen toimitusmaksu näkyy kassalla. Jos tilaus sisältää ennakkotilauksen, kaikki lähetetään yhdessä tuotteiden valmistuttua, viimeistään viimeisenä ilmoitettuna lähetyspäivänä. Kuljetusaika alkaa lähetyksestä."
+    "a6": "Saman tilauksen kortit lähetetään yhdessä. Nykyiset toimituskulut näkyvät kassalla. Jos tilaus sisältää ennakkotilauksen, kaikki lähetetään yhdessä tuotteiden valmistuttua, viimeistään viimeisenä ilmoitettuna lähetyspäivänä. Kuljetusaika alkaa lähetyksestä."
   },
   "atelierPage": {
     "eyebrow": "orangekoko-ateljee",
@@ -265,11 +265,13 @@
     "title": "Pieniä asioita, huolella tehtyjä",
     "lead": "orangekoko on paikka käsintehdyille esineille, joissa näkyy henkilökohtainen ote.",
     "philosophy1": "Orange on pienen eleen lämpö: kortti jollekulle, koru joka päivälle.",
-    "philosophy2": "Arvo on tekemisessä — paperin valinnassa, harkitussa muodossa, huolitellussa yksityiskohdassa.",
+    "philosophy2": "Korukokoelmaan valitsen Japanin itsenäisten käsityöläisten töitä, joissa korostuvat muotoilu, materiaalit ja käsityötaito.",
     "philosophy3": "Osan teen itse, osan japanilaiset käsityöläiset. Niitä yhdistää tekemisen huolellisuus.",
     "philosophy4": "Kokoelmia yhdistää rakkaus pintoihin, harkittuun muotoiluun ja tekijöihin töiden takana.",
     "philosophy5": "Tutustu materiaaleihin, viimeistelyyn ja pieniin yksityiskohtiin, jotka antavat käsintehdylle tuotteelle luonteen.",
-    "closing": "Kannettaviksi, kirjoitettaviksi, annettaviksi ja säilytettäviksi."
+    "closing": "Kannettaviksi, kirjoitettaviksi, annettaviksi ja säilytettäviksi.",
+    "whyCardsTitle": "Miksi käsintehtyjä kortteja?",
+    "whyCardsBody": "Koru on lahja, jota voi käyttää; kortti säilyttää sanat, jotka tekevät siitä henkilökohtaisen. Teen kortit itse, jotta paperi, pintatuntu ja käsinkirjoitettu viesti voivat olla osa lahjaa. Ne sopivat myös sellaisinaan syntymäpäiviin, kiitoksiin ja pieniin arjen huomionosoituksiin."
   },
   "about": {
     "expandedBody1": "orangekoko on paikka käsintehdyille esineille, joissa näkyy henkilökohtainen ote.",
@@ -304,41 +306,42 @@
   "cards": {
     "eyebrow": "Created & Curated",
     "title": "Käsintehdyt kortit",
-    "intro": "Alkuperäisiä käsintehtyjä onnittelukortteja — henkilökohtaisia viestejä, pieniä yksityiskohtia ja kauniita paperipintoja varten.",
+    "intro": "Teen jokaisen kortin itse käsin ja kiinnitän huomiota paperiin, pintatuntuun ja tilaan omille sanoillesi.",
     "empty": "Kokoelmassa ei ole vielä kortteja.",
-    "jewelryCta": "Tutustu käsityökoruihin",
+    "jewelryCta": "Käsintehdyt korut",
     "cta": "Tutustu kortteihin",
-    "previewBody": "Alkuperäisiä käsintehtyjä kortteja ja Japanin itsenäisten käsityöläisten valmistamia koruja.",
+    "previewBody": "Teen jokaisen kortin itse käsin ja kiinnitän huomiota paperiin, pintatuntuun ja tilaan omille sanoillesi.",
     "metaTitle": "Käsintehdyt kortit | orangekoko",
-    "metaDescription": "Alkuperäisiä käsintehtyjä onnittelukortteja — henkilökohtaisia viestejä, pieniä yksityiskohtia ja kauniita paperipintoja varten."
+    "metaDescription": "Teen jokaisen kortin itse käsin ja kiinnitän huomiota paperiin, pintatuntuun ja tilaan omille sanoillesi."
   },
   "cardShop": {
     "single": "Yksittäinen kortti",
     "three": "Kolmen kortin setti",
-    "withJewelry": "Käsityökorut",
-    "singleBody": "Valitse yksi kortti henkilökohtaiseen viestiin.",
-    "threeBody": "Kolme yhteensopivaa korttia, joilla on oma hinta ja varasto.",
-    "withJewelryBody": "Lisää kortti korutilaukseen tai valitse koru kortin seuraksi.",
+    "withJewelry": "Käsintehdyt korut",
+    "singleBody": "Teen jokaisen kortin itse käsin ja kiinnitän huomiota paperiin, pintatuntuun ja tilaan omille sanoillesi.",
+    "threeBody": "Haluatko kolme? Edullisempi kolmen kortin vaihtoehto näkyy tässä, kun sen hinta on vahvistettu.",
+    "withJewelryBody": "Pelkkää korttia sisältävät tilaukset lähetetään vähintään kahdesta kortista alkaen; voit yhdistellä malleja. Korutilaukseen voi lisätä yhden kortin.",
     "ready": "Valmis lähetettäväksi",
     "preorder": "Ennakkotilaus",
     "outOfStock": "Loppuunmyyty",
     "dispatchBy": "Lähetetään viimeistään {date}",
     "dispatchMissing": "Lähetyspäivä on vahvistettava ennen tilausta.",
     "addCard": "Lisää käsintehty kortti",
-    "addJewelry": "Yhdistä käsityökoruun",
-    "pairBody": "Valitse tuotteet erikseen ja lisää ne samaan ostoskoriin. Ei kiinteää pakettia eikä automaattista alennusta.",
+    "pairBody": "Käsinkirjoitettu viesti tekee lahjasta henkilökohtaisen. Valitse tämän korun pariksi valittu kortti ja lisää se ostoskoriin.",
     "emptyPairing": "Sopivia tuotteita ei ole juuri nyt saatavilla.",
     "browseCards": "Katso kortit",
-    "browseJewelry": "Tutustu käsityökoruihin",
+    "browseJewelry": "Käsintehdyt korut",
     "deliveryTitle": "Huolellinen yhteistoimitus",
-    "deliveryBody": "Kortteja voi ostaa yksittäin, kolmen setteinä tai korujen kanssa. Saman tilauksen tuotteet pakataan ja lähetetään yhdessä; nykyinen toimitusmaksu näkyy kassalla.",
+    "deliveryBody": "Saman tilauksen kortit lähetetään yhdessä. Nykyiset toimituskulut näkyvät kassalla.",
     "ratePending": "Erillistä korttien toimitusmaksua ei ole määritetty. Se arvioidaan todellisen pakatun painon, mittojen, kohdemaan ja seurantakulujen perusteella.",
     "mixedOrder": "Jos tilaus sisältää ennakkotilauksen, kaikki lähetetään yhdessä tuotteiden valmistuttua, viimeistään viimeisenä ilmoitettuna lähetyspäivänä. Kuljetusaika alkaa lähetyksestä.",
     "careBody": "Säilytä kortit tasaisina ja kuivina, suojassa suoralta auringonvalolta.",
-    "heroCaption": "Brändikuvitus — ei myytäviä tuotteita",
     "heroAlt": "Alkuperäisiä käsintehtyjä kortteja ja Japanin itsenäisten käsityöläisten valmistamia koruja.",
     "cancelPending": "Varaustasi vapautetaan…",
     "cancelFailed": "Varausta ei voitu vielä vapauttaa. Maksu saattaa olla kesken. Ota yhteyttä ennen uutta maksuyritystä.",
-    "cancelHelp": "Ota yhteyttä"
+    "cancelHelp": "Ota yhteyttä",
+    "minimumCards": "Pelkkää korttia sisältävät tilaukset lähetetään vähintään kahdesta kortista alkaen; voit yhdistellä malleja. Korutilaukseen voi lisätä yhden kortin.",
+    "threeValue": "Kolme tätä korttia hintaan {price} — edullisemmin kuin kolme erillistä korttia. Lisää kolme ostoskoriin; etu lasketaan automaattisesti.",
+    "threeValuePending": "Haluatko kolme? Edullisempi kolmen kortin vaihtoehto näkyy tässä, kun sen hinta on vahvistettu."
   }
 }

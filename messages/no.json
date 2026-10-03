@@ -24,7 +24,7 @@
     "account": "Konto",
     "menu": "Meny",
     "close": "Lukk",
-    "allJewelry": "Kunsthåndverkssmykker",
+    "allJewelry": "Håndlagde smykker",
     "handmadeCards": "Håndlagde kort"
   },
   "hero": {
@@ -153,9 +153,9 @@
     "q4": "Hvilke materialer brukes?",
     "a4": "Materialer og mål står på hver produktside. Se materialene, overflatene og de små detaljene som gir hvert håndlaget stykke karakter.",
     "q5": "Kan jeg kjøpe kort og smykker sammen?",
-    "a5": "Velg ett kort til en personlig hilsen. Tre matchende kort med egen pris og lagerbeholdning. Velg hver vare separat og legg dem i samme kurv. Ingen fast pakke eller automatisk rabatt.",
+    "a5": "Bestillinger med bare kort sendes fra to kort; du kan kombinere motiver. Ett kort kan legges til en smykkebestilling.",
     "q6": "Hvordan fungerer frakt og forhåndsbestillinger?",
-    "a6": "Kort kan kjøpes enkeltvis, i sett med tre eller med smykker. Varer i samme bestilling pakkes og sendes sammen; gjeldende frakt vises ved betaling. Inneholder bestillingen en forhåndsbestilling, sendes alt samlet når det er klart, senest på den siste oppgitte sendingsdatoen. Transporttiden starter etter sending."
+    "a6": "Kort i samme bestilling sendes sammen. Gjeldende fraktkostnad vises i kassen. Inneholder bestillingen en forhåndsbestilling, sendes alt samlet når det er klart, senest på den siste oppgitte sendingsdatoen. Transporttiden starter etter sending."
   },
   "atelierPage": {
     "eyebrow": "orangekoko-atelieret",
@@ -265,11 +265,13 @@
     "title": "Små ting, laget med omtanke",
     "lead": "orangekoko er et sted for håndlagde ting med et personlig uttrykk.",
     "philosophy1": "Orange er varmen i en liten gest: et kort til noen, et smykke til hver dag.",
-    "philosophy2": "Verdien ligger i å lage — papirvalget, en gjennomtenkt form, en omsorgsfull detalj.",
+    "philosophy2": "Til smykkekolleksjonen velger jeg arbeid fra uavhengige kunsthåndverkere i Japan, med vekt på design, materialer og håndverk.",
     "philosophy3": "En del skapt av meg, en del av japanske kunsthåndverkere. Omsorgen bak dem knytter begge sammen.",
     "philosophy4": "Kolleksjonene deler kjærlighet til tekstur, gjennomtenkt design og menneskene bak arbeidet.",
     "philosophy5": "Se materialene, overflatene og de små detaljene som gir hvert håndlaget stykke karakter.",
-    "closing": "Til å bære, skrive, gi og beholde."
+    "closing": "Til å bære, skrive, gi og beholde.",
+    "whyCardsTitle": "Hvorfor håndlagde kort?",
+    "whyCardsBody": "Et smykke er en gave å bære; et kort tar vare på ordene som gjør den personlig. Jeg lager kortene selv, slik at papir, tekstur og en håndskrevet melding kan bli en del av gaven. De står også på egne ben til bursdager, takk og små omtanker i hverdagen."
   },
   "about": {
     "expandedBody1": "orangekoko er et sted for håndlagde ting med et personlig uttrykk.",
@@ -304,41 +306,42 @@
   "cards": {
     "eyebrow": "Created & Curated",
     "title": "Håndlagde kort",
-    "intro": "Originale gratulasjonskort laget for hånd — til personlige hilsener, små detaljer og vakre papirstrukturer.",
+    "intro": "Jeg lager hvert kort selv for hånd med omtanke for papir, tekstur og plass til dine egne ord.",
     "empty": "Det er ingen kort i kolleksjonen ennå.",
-    "jewelryCta": "Se kunsthåndverkssmykker",
+    "jewelryCta": "Håndlagde smykker",
     "cta": "Se kortene",
-    "previewBody": "Originale håndlagde kort og smykker laget av uavhengige kunsthåndverkere i Japan.",
+    "previewBody": "Jeg lager hvert kort selv for hånd med omtanke for papir, tekstur og plass til dine egne ord.",
     "metaTitle": "Håndlagde kort | orangekoko",
-    "metaDescription": "Originale gratulasjonskort laget for hånd — til personlige hilsener, små detaljer og vakre papirstrukturer."
+    "metaDescription": "Jeg lager hvert kort selv for hånd med omtanke for papir, tekstur og plass til dine egne ord."
   },
   "cardShop": {
     "single": "Enkeltkort",
     "three": "Sett med tre kort",
-    "withJewelry": "Kunsthåndverkssmykker",
-    "singleBody": "Velg ett kort til en personlig hilsen.",
-    "threeBody": "Tre matchende kort med egen pris og lagerbeholdning.",
-    "withJewelryBody": "Legg til et kort i smykkebestillingen, eller velg et smykke til kortet.",
+    "withJewelry": "Håndlagde smykker",
+    "singleBody": "Jeg lager hvert kort selv for hånd med omtanke for papir, tekstur og plass til dine egne ord.",
+    "threeBody": "Vil du ha tre? Det rimeligere alternativet vises her når prisen er bekreftet.",
+    "withJewelryBody": "Bestillinger med bare kort sendes fra to kort; du kan kombinere motiver. Ett kort kan legges til en smykkebestilling.",
     "ready": "Klart til sending",
     "preorder": "Forhåndsbestilling",
     "outOfStock": "Utsolgt",
     "dispatchBy": "Sendes senest {date}",
     "dispatchMissing": "En sendingsdato må bekreftes før bestilling.",
     "addCard": "Legg til et håndlaget kort",
-    "addJewelry": "Kombiner med håndlagde smykker",
-    "pairBody": "Velg hver vare separat og legg dem i samme kurv. Ingen fast pakke eller automatisk rabatt.",
+    "pairBody": "En håndskrevet melding gjør en gave personlig. Velg et kort som er valgt for å passe dette smykket, og legg det i handlekurven.",
     "emptyPairing": "Ingen matchende varer er tilgjengelige akkurat nå.",
     "browseCards": "Se kort",
-    "browseJewelry": "Se kunsthåndverkssmykker",
+    "browseJewelry": "Håndlagde smykker",
     "deliveryTitle": "Omsorgsfull samlet levering",
-    "deliveryBody": "Kort kan kjøpes enkeltvis, i sett med tre eller med smykker. Varer i samme bestilling pakkes og sendes sammen; gjeldende frakt vises ved betaling.",
+    "deliveryBody": "Kort i samme bestilling sendes sammen. Gjeldende fraktkostnad vises i kassen.",
     "ratePending": "Ingen egen kortfrakt er fastsatt. Den vurderes ut fra faktisk pakket vekt, mål, destinasjon og sporingskostnad.",
     "mixedOrder": "Inneholder bestillingen en forhåndsbestilling, sendes alt samlet når det er klart, senest på den siste oppgitte sendingsdatoen. Transporttiden starter etter sending.",
     "careBody": "Oppbevar kort flatt og tørt, unna direkte sollys.",
-    "heroCaption": "Merkeillustrasjon — ikke varer til salgs",
     "heroAlt": "Originale håndlagde kort og smykker laget av uavhengige kunsthåndverkere i Japan.",
     "cancelPending": "Reservasjonen din frigjøres…",
     "cancelFailed": "Reservasjonen kunne ikke frigjøres ennå. Betalingen behandles kanskje fortsatt. Kontakt oss før du betaler igjen.",
-    "cancelHelp": "Kontakt oss"
+    "cancelHelp": "Kontakt oss",
+    "minimumCards": "Bestillinger med bare kort sendes fra to kort; du kan kombinere motiver. Ett kort kan legges til en smykkebestilling.",
+    "threeValue": "Tre av dette kortet for {price} — rimeligere enn tre enkeltkort. Legg tre i handlekurven; besparelsen gjelder automatisk.",
+    "threeValuePending": "Vil du ha tre? Det rimeligere alternativet vises her når prisen er bekreftet."
   }
 }

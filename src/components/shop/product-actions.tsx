@@ -11,6 +11,8 @@ import type { Product } from "@/lib/products";
 
 export function ProductActions({ product }: { product: Product }) {
   const t = useTranslations("product");
+  const cart = useTranslations("cart");
+  const [quantity, setQuantity] = useState(1);
   const available = availableQuantity(product);
   const addItem = useCartStore((s) => s.addItem);
   const inCart = useCartStore((s) =>
@@ -21,11 +23,15 @@ export function ProductActions({ product }: { product: Product }) {
   const [justAdded, setJustAdded] = useState(false);
 
   return (
-    <div className="flex items-stretch gap-3">
+    <div className="flex flex-wrap items-stretch gap-3">
+      {product.category === "handmade-cards" && available > 0 && <label className="flex items-center gap-2 text-sm"><span>{cart("quantity")}</span><input type="number" min={1} max={available} value={quantity} onChange={event=>setQuantity(Math.max(1, Math.min(available, Number(event.target.value) || 1)))} className="w-16 border border-line bg-cream px-2 py-3" /></label>}
       <button
         disabled={available === 0}
         onClick={() => {
           addItem({
+            category: product.category,
+            packSize: product.packSize,
+            threeCardPriceCents: product.category === "handmade-cards" ? product.threeCardPriceCents : undefined,
             productId: product.id,
             slug: product.slug,
             title: product.title,
@@ -33,7 +39,7 @@ export function ProductActions({ product }: { product: Product }) {
             currency: product.currency,
             maxQuantity: available,
             dispatchBy: product.fulfilment === "preorder" ? product.dispatchBy : undefined,
-          });
+          }, quantity);
           setJustAdded(true);
           setTimeout(() => setJustAdded(false), 1800);
         }}

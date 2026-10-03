@@ -24,7 +24,7 @@
     "account": "Konto",
     "menu": "Meny",
     "close": "Stäng",
-    "allJewelry": "Hantverkssmycken",
+    "allJewelry": "Handgjorda smycken",
     "handmadeCards": "Handgjorda kort"
   },
   "hero": {
@@ -153,9 +153,9 @@
     "q4": "Vilka material används?",
     "a4": "Material och mått anges på varje produktsida. Se materialen, ytorna och de små detaljerna som ger varje handgjort föremål karaktär.",
     "q5": "Kan jag köpa kort och smycken tillsammans?",
-    "a5": "Välj ett kort för en personlig hälsning. Tre matchande kort med eget pris och lager. Välj varje artikel separat och lägg dem i samma varukorg. Inget fast paket eller automatisk rabatt.",
+    "a5": "Beställningar med enbart kort skickas från två kort; du kan blanda motiv. Ett enda kort kan läggas till en smyckesbeställning.",
     "q6": "Hur fungerar frakt och förbeställningar?",
-    "a6": "Kort säljs separat, i set om tre eller med smycken. Artiklar i samma beställning packas och skickas tillsammans; aktuell frakt visas i kassan. Om beställningen innehåller en förbeställning skickas allt tillsammans när det är klart, senast vid det sista angivna avsändningsdatumet. Transporttiden börjar efter avsändning."
+    "a6": "Kort i samma beställning skickas tillsammans. Aktuell fraktkostnad visas i kassan. Om beställningen innehåller en förbeställning skickas allt tillsammans när det är klart, senast vid det sista angivna avsändningsdatumet. Transporttiden börjar efter avsändning."
   },
   "atelierPage": {
     "eyebrow": "orangekoko-ateljén",
@@ -265,11 +265,13 @@
     "title": "Små ting, gjorda med omsorg",
     "lead": "orangekoko är en plats för handgjorda föremål med ett personligt uttryck.",
     "philosophy1": "Orange är värmen i en liten gest: ett kort till någon eller ett smycke för varje dag.",
-    "philosophy2": "Värdet finns i skapandet — pappersvalet, en genomtänkt form, en omsorgsfull detalj.",
+    "philosophy2": "Till smyckeskollektionen väljer jag arbeten av oberoende hantverkare i Japan, för deras form, material och hantverk.",
     "philosophy3": "En del skapad av mig, en del av japanska hantverkare. Omsorgen bakom dem förenar båda.",
     "philosophy4": "Kollektionerna delar kärleken till textur, genomtänkt form och människorna bakom arbetet.",
     "philosophy5": "Se materialen, ytorna och de små detaljerna som ger varje handgjort föremål karaktär.",
-    "closing": "Att bära, skriva, ge och behålla."
+    "closing": "Att bära, skriva, ge och behålla.",
+    "whyCardsTitle": "Varför handgjorda kort?",
+    "whyCardsBody": "Ett smycke är en gåva att bära; ett kort bevarar orden som gör den personlig. Jag tillverkar korten själv så att papper, struktur och ett handskrivet meddelande kan bli en del av gåvan. De fungerar också på egen hand, till födelsedagar, tack och små vardagliga omtankar."
   },
   "about": {
     "expandedBody1": "orangekoko är en plats för handgjorda föremål med ett personligt uttryck.",
@@ -304,41 +306,42 @@
   "cards": {
     "eyebrow": "Created & Curated",
     "title": "Handgjorda kort",
-    "intro": "Originella gratulationskort gjorda för hand — för personliga hälsningar, små detaljer och vackra pappersstrukturer.",
+    "intro": "Jag gör varje kort själv för hand med omsorg om papper, struktur och utrymme för dina egna ord.",
     "empty": "Det finns inga kort i kollektionen ännu.",
-    "jewelryCta": "Upptäck hantverkssmycken",
+    "jewelryCta": "Handgjorda smycken",
     "cta": "Upptäck korten",
-    "previewBody": "Handgjorda originalkort och smycken skapade av oberoende hantverkare i Japan.",
+    "previewBody": "Jag gör varje kort själv för hand med omsorg om papper, struktur och utrymme för dina egna ord.",
     "metaTitle": "Handgjorda kort | orangekoko",
-    "metaDescription": "Originella gratulationskort gjorda för hand — för personliga hälsningar, små detaljer och vackra pappersstrukturer."
+    "metaDescription": "Jag gör varje kort själv för hand med omsorg om papper, struktur och utrymme för dina egna ord."
   },
   "cardShop": {
     "single": "Ett kort",
     "three": "Set med tre kort",
-    "withJewelry": "Hantverkssmycken",
-    "singleBody": "Välj ett kort för en personlig hälsning.",
-    "threeBody": "Tre matchande kort med eget pris och lager.",
-    "withJewelryBody": "Lägg till ett kort till din smyckesbeställning, eller välj ett smycke till kortet.",
+    "withJewelry": "Handgjorda smycken",
+    "singleBody": "Jag gör varje kort själv för hand med omsorg om papper, struktur och utrymme för dina egna ord.",
+    "threeBody": "Vill du ha tre? Ett förmånligare alternativ visas här när priset har bekräftats.",
+    "withJewelryBody": "Beställningar med enbart kort skickas från två kort; du kan blanda motiv. Ett enda kort kan läggas till en smyckesbeställning.",
     "ready": "Redo att skickas",
     "preorder": "Förbeställning",
     "outOfStock": "Slutsålt",
     "dispatchBy": "Skickas senast {date}",
     "dispatchMissing": "Ett avsändningsdatum måste bekräftas före beställning.",
     "addCard": "Lägg till ett handgjort kort",
-    "addJewelry": "Kombinera med hantverkssmycken",
-    "pairBody": "Välj varje artikel separat och lägg dem i samma varukorg. Inget fast paket eller automatisk rabatt.",
+    "pairBody": "Ett handskrivet meddelande gör en gåva personlig. Välj ett kort som valts för att passa detta smycke och lägg det i varukorgen.",
     "emptyPairing": "Inga matchande artiklar finns tillgängliga just nu.",
     "browseCards": "Se kort",
-    "browseJewelry": "Upptäck hantverkssmycken",
+    "browseJewelry": "Handgjorda smycken",
     "deliveryTitle": "Omsorgsfull samfrakt",
-    "deliveryBody": "Kort säljs separat, i set om tre eller med smycken. Artiklar i samma beställning packas och skickas tillsammans; aktuell frakt visas i kassan.",
+    "deliveryBody": "Kort i samma beställning skickas tillsammans. Aktuell fraktkostnad visas i kassan.",
     "ratePending": "Ingen särskild kortfrakt har fastställts. Den bedöms utifrån faktisk packad vikt, mått, destination och spårningskostnad.",
     "mixedOrder": "Om beställningen innehåller en förbeställning skickas allt tillsammans när det är klart, senast vid det sista angivna avsändningsdatumet. Transporttiden börjar efter avsändning.",
     "careBody": "Förvara kort plant och torrt, skyddat från direkt solljus.",
-    "heroCaption": "Varumärkesillustration — inte varor till försäljning",
     "heroAlt": "Handgjorda originalkort och smycken skapade av oberoende hantverkare i Japan.",
     "cancelPending": "Din reservation frigörs…",
     "cancelFailed": "Reservationen kunde inte frigöras ännu. Betalningen kanske fortfarande behandlas. Kontakta oss innan du betalar igen.",
-    "cancelHelp": "Kontakta oss"
+    "cancelHelp": "Kontakta oss",
+    "minimumCards": "Beställningar med enbart kort skickas från två kort; du kan blanda motiv. Ett enda kort kan läggas till en smyckesbeställning.",
+    "threeValue": "Tre av detta kort för {price} — bättre pris än tre enstaka kort. Lägg tre i varukorgen; rabatten tillämpas automatiskt.",
+    "threeValuePending": "Vill du ha tre? Ett förmånligare alternativ visas här när priset har bekräftats."
   }
 }

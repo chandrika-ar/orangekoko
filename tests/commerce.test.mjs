@@ -70,3 +70,20 @@ test('all ten locales consistently describe artisan-made jewelry rather than res
   assert.deepEqual(Object.keys(messages.faq).sort(),Array.from({length:6},(_,i)=>[`q${i+1}`,`a${i+1}`]).flat().sort());
  }
 });
+test('card-only orders need two physical cards; jewelry orders allow one card',async()=>{
+ const { cardOrderAllowed }=await import('../src/lib/commerce.ts');
+ assert.equal(cardOrderAllowed([{category:'handmade-cards',quantity:1}]),false);
+ assert.equal(cardOrderAllowed([{category:'handmade-cards',quantity:2}]),true);
+ assert.equal(cardOrderAllowed([{category:'handmade-cards',quantity:1},{category:'handmade-cards',quantity:1}]),true);
+ assert.equal(cardOrderAllowed([{category:'handmade-cards',quantity:1},{category:'necklaces',quantity:1}]),true);
+ assert.equal(cardOrderAllowed([{category:'necklaces',quantity:1}]),true);
+});
+test('three-card price applies to complete groups without losing remainder cards',async()=>{
+ const { purchaseTotalCents }=await import('../src/lib/commerce.ts');
+ assert.equal(purchaseTotalCents(800,2,2100),1600);
+ assert.equal(purchaseTotalCents(800,3,2100),2100);
+ assert.equal(purchaseTotalCents(800,4,2100),2900);
+ assert.equal(purchaseTotalCents(800,7,2100),5000);
+ assert.equal(purchaseTotalCents(800,3,2500),2400);
+ assert.equal(purchaseTotalCents(800,3),2400);
+});

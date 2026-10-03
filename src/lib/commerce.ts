@@ -30,3 +30,13 @@ export function validatePurchase(product: InventoryProduct, quantity: number) {
   if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > availableQuantity(product)) throw new Error("Item is unavailable or requested quantity exceeds stock");
   if (product.fulfilment === "preorder" && (!product.dispatchBy || !/^\d{4}-\d{2}-\d{2}$/.test(product.dispatchBy) || !Number.isFinite(Date.parse(product.dispatchBy)) || product.dispatchBy < new Date().toISOString().slice(0, 10))) throw new Error("Preorder dispatch date is not available");
 }
+
+export function cardOrderAllowed(lines: { category: string; quantity: number; packSize?: number }[]): boolean {
+  if (lines.some(line => line.category !== "handmade-cards")) return true;
+  return lines.reduce((sum, line) => sum + line.quantity * (line.packSize ?? 1), 0) >= 2;
+}
+
+export function purchaseTotalCents(priceCents: number, quantity: number, threeCardPriceCents?: number): number {
+  const valid = Number.isSafeInteger(threeCardPriceCents) && (threeCardPriceCents ?? 0) > 0 && (threeCardPriceCents ?? 0) < priceCents * 3;
+  return valid ? Math.floor(quantity / 3) * threeCardPriceCents! + (quantity % 3) * priceCents : priceCents * quantity;
+}

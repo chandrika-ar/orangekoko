@@ -24,7 +24,7 @@
     "account": "Account",
     "menu": "Menu",
     "close": "Sluiten",
-    "allJewelry": "Ambachtelijke sieraden",
+    "allJewelry": "Handgemaakte sieraden",
     "handmadeCards": "Handgemaakte kaarten"
   },
   "hero": {
@@ -153,9 +153,9 @@
     "q4": "Welke materialen worden gebruikt?",
     "a4": "Materialen en afmetingen staan op elke productpagina. Bekijk de materialen, afwerking en kleine details die elk handgemaakt stuk karakter geven.",
     "q5": "Kan ik kaarten en sieraden samen kopen?",
-    "a5": "Kies één kaart voor een persoonlijke boodschap. Een bijpassende set van drie kaarten, met een eigen prijs en voorraad. Kies de artikelen apart en voeg ze aan dezelfde tas toe. Geen vaste bundel of automatische korting.",
+    "a5": "Bestellingen met alleen kaarten worden vanaf twee kaarten verzonden; je mag ontwerpen combineren. Bij een sieradenbestelling kun je één kaart toevoegen.",
     "q6": "Hoe werken verzending en voorbestellingen?",
-    "a6": "Kaarten zijn los, per drie of samen met sieraden verkrijgbaar. Artikelen uit dezelfde bestelling worden samen verpakt en verzonden; de huidige verzendkosten zie je bij het afrekenen. Bij een voorbestelling wordt alles samen verzonden zodra alle artikelen klaar zijn, uiterlijk op de laatst vermelde verzenddatum. De bezorgtijd begint na verzending."
+    "a6": "Kaarten uit dezelfde bestelling worden samen verzonden. De huidige verzendkosten staan bij het afrekenen. Bij een voorbestelling wordt alles samen verzonden zodra alle artikelen klaar zijn, uiterlijk op de laatst vermelde verzenddatum. De bezorgtijd begint na verzending."
   },
   "atelierPage": {
     "eyebrow": "orangekoko atelier",
@@ -265,11 +265,13 @@
     "title": "Kleine dingen, met zorg gemaakt",
     "lead": "orangekoko is een plek voor handgemaakte voorwerpen met een persoonlijk karakter.",
     "philosophy1": "Orange is de warmte van een klein gebaar: een kaart voor iemand, of een sieraad voor elke dag.",
-    "philosophy2": "De waarde ligt in het maken — papierkeuze, een doordachte vorm en een zorgvuldig detail.",
+    "philosophy2": "Voor de sieradencollectie kies ik werk van onafhankelijke makers in Japan, met aandacht voor ontwerp, materialen en vakmanschap.",
     "philosophy3": "Een deel maak ik zelf, een deel maken Japanse ambachtsmakers. De zorg erachter verbindt beide.",
     "philosophy4": "Onze collecties delen liefde voor textuur, doordacht ontwerp en de mensen achter het werk.",
     "philosophy5": "Bekijk de materialen, afwerking en kleine details die elk handgemaakt stuk karakter geven.",
-    "closing": "Om te dragen, schrijven, geven en bewaren."
+    "closing": "Om te dragen, schrijven, geven en bewaren.",
+    "whyCardsTitle": "Waarom handgemaakte kaarten?",
+    "whyCardsBody": "Een sieraad is een cadeau om te dragen; een kaart bewaart de woorden die het persoonlijk maken. Ik maak de kaarten zelf, zodat papier, textuur en een handgeschreven boodschap bij het cadeau horen. Ze staan ook op zichzelf, voor verjaardagen, bedankjes en kleine dagelijkse gebaren."
   },
   "about": {
     "expandedBody1": "orangekoko is een plek voor handgemaakte voorwerpen met een persoonlijk karakter.",
@@ -304,41 +306,42 @@
   "cards": {
     "eyebrow": "Created & Curated",
     "title": "Handgemaakte kaarten",
-    "intro": "Originele wenskaarten, met de hand gemaakt — voor persoonlijke woorden, kleine details en bijzondere papierstructuren.",
+    "intro": "Ik maak elke wenskaart zelf met de hand, met aandacht voor papier, textuur en ruimte voor jouw eigen woorden.",
     "empty": "Er staan nog geen kaarten in de collectie.",
-    "jewelryCta": "Ontdek ambachtelijke sieraden",
+    "jewelryCta": "Handgemaakte sieraden",
     "cta": "Ontdek de kaarten",
-    "previewBody": "Originele handgemaakte wenskaarten en sieraden gemaakt door onafhankelijke ambachtsmakers in Japan.",
+    "previewBody": "Ik maak elke wenskaart zelf met de hand, met aandacht voor papier, textuur en ruimte voor jouw eigen woorden.",
     "metaTitle": "Handgemaakte kaarten | orangekoko",
-    "metaDescription": "Originele wenskaarten, met de hand gemaakt — voor persoonlijke woorden, kleine details en bijzondere papierstructuren."
+    "metaDescription": "Ik maak elke wenskaart zelf met de hand, met aandacht voor papier, textuur en ruimte voor jouw eigen woorden."
   },
   "cardShop": {
     "single": "Losse kaart",
     "three": "Set van drie kaarten",
-    "withJewelry": "Ambachtelijke sieraden",
-    "singleBody": "Kies één kaart voor een persoonlijke boodschap.",
-    "threeBody": "Een bijpassende set van drie kaarten, met een eigen prijs en voorraad.",
-    "withJewelryBody": "Voeg een kaart toe aan je sieradenbestelling, of kies sieraden bij een kaart.",
+    "withJewelry": "Handgemaakte sieraden",
+    "singleBody": "Ik maak elke wenskaart zelf met de hand, met aandacht voor papier, textuur en ruimte voor jouw eigen woorden.",
+    "threeBody": "Wil je er drie? Zodra de prijs bevestigd is, verschijnt hier de voordeligere optie voor drie kaarten.",
+    "withJewelryBody": "Bestellingen met alleen kaarten worden vanaf twee kaarten verzonden; je mag ontwerpen combineren. Bij een sieradenbestelling kun je één kaart toevoegen.",
     "ready": "Klaar voor verzending",
     "preorder": "Voorbestelling",
     "outOfStock": "Uitverkocht",
     "dispatchBy": "Verzending uiterlijk {date}",
     "dispatchMissing": "Voor bestellen moet een verzenddatum bevestigd zijn.",
     "addCard": "Voeg een handgemaakte kaart toe",
-    "addJewelry": "Combineer met ambachtelijke sieraden",
-    "pairBody": "Kies de artikelen apart en voeg ze aan dezelfde tas toe. Geen vaste bundel of automatische korting.",
+    "pairBody": "Een handgeschreven bericht maakt een cadeau persoonlijk. Kies een kaart die bij dit sieraad past en voeg deze toe aan je tas.",
     "emptyPairing": "Er zijn momenteel geen bijpassende artikelen beschikbaar.",
     "browseCards": "Bekijk kaarten",
-    "browseJewelry": "Ontdek ambachtelijke sieraden",
+    "browseJewelry": "Handgemaakte sieraden",
     "deliveryTitle": "Zorgvuldig samen verzonden",
-    "deliveryBody": "Kaarten zijn los, per drie of samen met sieraden verkrijgbaar. Artikelen uit dezelfde bestelling worden samen verpakt en verzonden; de huidige verzendkosten zie je bij het afrekenen.",
+    "deliveryBody": "Kaarten uit dezelfde bestelling worden samen verzonden. De huidige verzendkosten staan bij het afrekenen.",
     "ratePending": "Er is nog geen apart kaartentarief. Dit wordt beoordeeld op basis van het werkelijke verpakte gewicht, de afmetingen, bestemming en kosten voor tracking.",
     "mixedOrder": "Bij een voorbestelling wordt alles samen verzonden zodra alle artikelen klaar zijn, uiterlijk op de laatst vermelde verzenddatum. De bezorgtijd begint na verzending.",
     "careBody": "Bewaar kaarten plat en droog, buiten direct zonlicht.",
-    "heroCaption": "Merkillustratie — geen artikelen te koop",
     "heroAlt": "Originele handgemaakte wenskaarten en sieraden gemaakt door onafhankelijke ambachtsmakers in Japan.",
     "cancelPending": "Je reservering wordt vrijgegeven…",
     "cancelFailed": "Deze reservering kon nog niet worden vrijgegeven. De betaling wordt mogelijk verwerkt. Neem contact op voordat je opnieuw betaalt.",
-    "cancelHelp": "Neem contact op"
+    "cancelHelp": "Neem contact op",
+    "minimumCards": "Bestellingen met alleen kaarten worden vanaf twee kaarten verzonden; je mag ontwerpen combineren. Bij een sieradenbestelling kun je één kaart toevoegen.",
+    "threeValue": "Drie van deze kaart voor {price} — voordeliger dan drie losse kaarten. Voeg er drie toe; het voordeel wordt automatisch toegepast.",
+    "threeValuePending": "Wil je er drie? Zodra de prijs bevestigd is, verschijnt hier de voordeligere optie voor drie kaarten."
   }
 }

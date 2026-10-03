@@ -4,7 +4,7 @@ import { getProductBySlug } from "@/lib/products";
 import { SHIPPABLE_COUNTRIES, toStripeShippingOptions } from "@/lib/shipping";
 import { routing } from "@/i18n/routing";
 import { randomUUID } from "node:crypto";
-import { normalizeCartLines, validatePurchase } from "@/lib/commerce";
+import { normalizeCartLines, validatePurchase, cardOrderAllowed, purchaseTotalCents } from "@/lib/commerce";
 import { reserveInventory } from "@/lib/inventory-reservations";
 import { sanityWriteClient } from "@/sanity/lib/client";
 import { auth } from "@/auth";
@@ -48,11 +48,18 @@ export async function POST(req: NextRequest) {
     catch { return NextResponse.json({ error: "Item is unavailable or requested quantity exceeds stock" }, { status: 409 }); }
     items.push({ product, quantity });
     if (product.fulfilment === "preorder" && product.dispatchBy) dispatchDates.push(product.dispatchBy);
-    lineItems.push({ quantity, price_data: {
+    const threePrice = product.category === "handmade-cards" ? product.threeCardPriceCents : undefined;
+    const discounted = purchaseTotalCents(product.priceCents, quantity, threePrice) < product.priceCents * quantity;
+    const groups = discounted ? Math.floor(quantity / 3) : 0;
+    if (groups) lineItems.push({quantity: groups, price_data: {currency: product.currency.toLowerCase(), unit_amount: threePrice!, product_data: {name: `${product.title} × 3`, ...(product.fulfilment === "preorder" ? { description: `Preorder — dispatch by ${product.dispatchBy}` } : {})}}});
+    const singles = discounted ? quantity % 3 : quantity;
+    if (singles) lineItems.push({ quantity: singles, price_data: {
       currency: product.currency.toLowerCase(), unit_amount: product.priceCents,
       product_data: { name: product.title, ...(product.fulfilment === "preorder" ? { description: `Preorder — dispatch by ${product.dispatchBy}` } : {}) },
     }});
   }
+  if (!cardOrderAllowed(items.map(({product,quantity}) => ({category: product.category, packSize: product.packSize, quantity})))) return NextResponse.json({error: "Card-only orders require at least two cards", code: "MINIMUM_CARDS"}, {status: 400});
+  if (lineItems.length > 100) return NextResponse.json({error: "Too many checkout lines; please split this order"}, {status: 400});
   const subtotalCents = lineItems.reduce((sum, item) => sum + item.price_data.unit_amount * item.quantity, 0);
   const cancellationToken = randomUUID();
   const reservationId = `inventory-reservation-${randomUUID()}`;

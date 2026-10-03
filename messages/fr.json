@@ -24,7 +24,7 @@
     "account": "Compte",
     "menu": "Menu",
     "close": "Fermer",
-    "allJewelry": "Bijoux artisanaux",
+    "allJewelry": "Bijoux faits main",
     "handmadeCards": "Cartes artisanales"
   },
   "hero": {
@@ -153,9 +153,9 @@
     "q4": "Quelles matières sont utilisées ?",
     "a4": "Les matières et dimensions figurent sur chaque page produit. Observez les matières, les finitions et les petits détails qui donnent son caractère à chaque pièce faite à la main.",
     "q5": "Puis-je acheter cartes et bijoux ensemble ?",
-    "a5": "Choisissez une carte pour un message personnel. Un ensemble de trois cartes assorties, avec son propre prix et stock. Choisissez les articles séparément et ajoutez-les au même panier. Aucun lot imposé ni remise automatique.",
+    "a5": "Les commandes de cartes seules sont expédiées à partir de deux cartes, avec possibilité de mélanger les motifs. Une seule carte peut accompagner une commande de bijoux.",
     "q6": "Comment fonctionnent livraison et précommandes ?",
-    "a6": "Les cartes se vendent à l’unité, par trois ou avec des bijoux. Les articles d’une commande sont emballés et expédiés ensemble ; les frais actuels sont affichés au paiement. Avec une précommande, toute la commande part ensemble lorsque tous les articles sont prêts, au plus tard à la dernière date d’expédition indiquée. Le délai de transport commence après l’expédition."
+    "a6": "Les cartes d’une même commande sont expédiées ensemble. Les frais de livraison actuels sont indiqués au paiement. Avec une précommande, toute la commande part ensemble lorsque tous les articles sont prêts, au plus tard à la dernière date d’expédition indiquée. Le délai de transport commence après l’expédition."
   },
   "atelierPage": {
     "eyebrow": "atelier orangekoko",
@@ -265,11 +265,13 @@
     "title": "De petites choses, faites avec soin",
     "lead": "orangekoko accueille des objets faits à la main avec une expression personnelle.",
     "philosophy1": "Orange est la chaleur d’un petit geste : une carte pour quelqu’un, un bijou choisi pour le quotidien.",
-    "philosophy2": "La valeur est dans le geste — le choix du papier, une forme pensée, un détail soigné.",
+    "philosophy2": "Pour les bijoux, je sélectionne le travail d’artisans indépendants au Japon, pour leur création, leurs matières et leur savoir-faire.",
     "philosophy3": "Une partie créée par moi, l’autre façonnée par des artisans japonais. Le soin apporté à chacune les réunit.",
     "philosophy4": "Nos collections partagent un amour des textures, de la création réfléchie et des personnes derrière les œuvres.",
     "philosophy5": "Observez les matières, les finitions et les petits détails qui donnent son caractère à chaque pièce faite à la main.",
-    "closing": "À porter, écrire, offrir et garder."
+    "closing": "À porter, écrire, offrir et garder.",
+    "whyCardsTitle": "Pourquoi des cartes faites main ?",
+    "whyCardsBody": "Un bijou est un cadeau à porter ; une carte conserve les mots qui le rendent personnel. Je fabrique moi-même les cartes pour que le papier, les textures et un message manuscrit fassent partie du cadeau. Elles ont aussi leur propre place, pour les anniversaires, les remerciements et les petites attentions."
   },
   "about": {
     "expandedBody1": "orangekoko accueille des objets faits à la main avec une expression personnelle.",
@@ -304,41 +306,42 @@
   "cards": {
     "eyebrow": "Created & Curated",
     "title": "Cartes artisanales",
-    "intro": "Des cartes de vœux originales faites à la main, pour des mots personnels, de petits détails et de belles textures de papier.",
+    "intro": "Je réalise chaque carte à la main, avec soin pour le papier, les textures et la place laissée à vos propres mots.",
     "empty": "Aucune carte n’est encore répertoriée.",
-    "jewelryCta": "Découvrir les bijoux artisanaux",
+    "jewelryCta": "Bijoux faits main",
     "cta": "Découvrir les cartes",
-    "previewBody": "Des cartes originales faites à la main et des bijoux façonnés par des artisans indépendants au Japon.",
+    "previewBody": "Je réalise chaque carte à la main, avec soin pour le papier, les textures et la place laissée à vos propres mots.",
     "metaTitle": "Cartes artisanales | orangekoko",
-    "metaDescription": "Des cartes de vœux originales faites à la main, pour des mots personnels, de petits détails et de belles textures de papier."
+    "metaDescription": "Je réalise chaque carte à la main, avec soin pour le papier, les textures et la place laissée à vos propres mots."
   },
   "cardShop": {
     "single": "Carte à l’unité",
     "three": "Lot de trois cartes",
-    "withJewelry": "Bijoux artisanaux",
-    "singleBody": "Choisissez une carte pour un message personnel.",
-    "threeBody": "Un ensemble de trois cartes assorties, avec son propre prix et stock.",
-    "withJewelryBody": "Ajoutez une carte à votre commande de bijoux, ou un bijou à votre carte.",
+    "withJewelry": "Bijoux faits main",
+    "singleBody": "Je réalise chaque carte à la main, avec soin pour le papier, les textures et la place laissée à vos propres mots.",
+    "threeBody": "Vous en souhaitez trois ? Une offre plus avantageuse apparaîtra ici dès que son prix sera confirmé.",
+    "withJewelryBody": "Les commandes de cartes seules sont expédiées à partir de deux cartes, avec possibilité de mélanger les motifs. Une seule carte peut accompagner une commande de bijoux.",
     "ready": "Prêt à expédier",
     "preorder": "Précommande",
     "outOfStock": "Épuisé",
     "dispatchBy": "Expédition au plus tard le {date}",
     "dispatchMissing": "Une date d’expédition doit être confirmée avant la commande.",
     "addCard": "Ajouter une carte artisanale",
-    "addJewelry": "Associer des bijoux artisanaux",
-    "pairBody": "Choisissez les articles séparément et ajoutez-les au même panier. Aucun lot imposé ni remise automatique.",
+    "pairBody": "Un message manuscrit rend un cadeau personnel. Choisissez une carte sélectionnée pour accompagner ce bijou et ajoutez-la au panier.",
     "emptyPairing": "Aucun article assorti n’est disponible actuellement.",
     "browseCards": "Voir les cartes",
-    "browseJewelry": "Découvrir les bijoux artisanaux",
+    "browseJewelry": "Bijoux faits main",
     "deliveryTitle": "Une livraison regroupée avec soin",
-    "deliveryBody": "Les cartes se vendent à l’unité, par trois ou avec des bijoux. Les articles d’une commande sont emballés et expédiés ensemble ; les frais actuels sont affichés au paiement.",
+    "deliveryBody": "Les cartes d’une même commande sont expédiées ensemble. Les frais de livraison actuels sont indiqués au paiement.",
     "ratePending": "Aucun tarif spécifique aux cartes n’est fixé. Il sera évalué selon le poids emballé réel, les dimensions, la destination et le coût du suivi.",
     "mixedOrder": "Avec une précommande, toute la commande part ensemble lorsque tous les articles sont prêts, au plus tard à la dernière date d’expédition indiquée. Le délai de transport commence après l’expédition.",
     "careBody": "Gardez les cartes à plat et au sec, à l’abri du soleil direct.",
-    "heroCaption": "Illustration de marque — pas des articles en vente",
     "heroAlt": "Des cartes originales faites à la main et des bijoux façonnés par des artisans indépendants au Japon.",
     "cancelPending": "Libération de votre réservation…",
     "cancelFailed": "Cette réservation n’a pas encore pu être libérée. Le paiement est peut-être en cours. Contactez-nous avant de réessayer de payer.",
-    "cancelHelp": "Nous contacter"
+    "cancelHelp": "Nous contacter",
+    "minimumCards": "Les commandes de cartes seules sont expédiées à partir de deux cartes, avec possibilité de mélanger les motifs. Une seule carte peut accompagner une commande de bijoux.",
+    "threeValue": "Trois exemplaires de cette carte pour {price} — moins cher que trois cartes à l’unité. Ajoutez-en trois au panier ; la réduction s’applique automatiquement.",
+    "threeValuePending": "Vous en souhaitez trois ? Une offre plus avantageuse apparaîtra ici dès que son prix sera confirmé."
   }
 }
