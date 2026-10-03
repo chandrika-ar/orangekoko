@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 import { TryOnStage } from "@/components/atelier/try-on/try-on-stage";
+import { preloadFaceTracking } from "@/components/atelier/try-on/face-tracking";
 import type { JourneyItem } from "@/components/atelier/journey/types";
 import type { Product } from "@/lib/products";
 
@@ -19,6 +20,24 @@ export function ProductTryOn({
 }) {
   const t = useTranslations("atelierJourney");
   const [open, setOpen] = useState(false);
+
+  // Starts the face-tracking model/WASM download as soon as the product
+  // page itself has settled, not just once the try-on modal opens — by
+  // the time someone's actually read the page and clicked "try this piece
+  // on", the download already has a multi-second head start instead of
+  // starting from zero right when they open the camera. Deferred via
+  // requestIdleCallback (falling back to a short timeout on browsers that
+  // don't have it, e.g. Safari) so it doesn't compete with the page's own
+  // images/fonts for bandwidth during the critical initial render.
+  useEffect(() => {
+    const ric = window.requestIdleCallback;
+    if (ric) {
+      const id = ric(() => preloadFaceTracking());
+      return () => window.cancelIdleCallback?.(id);
+    }
+    const id = window.setTimeout(() => preloadFaceTracking(), 1200);
+    return () => window.clearTimeout(id);
+  }, []);
 
   const item: JourneyItem = {
     slug: product.slug,
