@@ -340,5 +340,11 @@
     "minimumCards": "Bestellingen met alleen kaarten worden vanaf twee kaarten verzonden; je mag ontwerpen combineren. Bij een sieradenbestelling kun je één kaart toevoegen.",
     "threeValue": "Drie van deze kaart voor {price} — voordeliger dan drie losse kaarten. Voeg er drie toe; het voordeel wordt automatisch toegepast.",
     "threeValuePending": "Wil je er drie? Zodra de prijs bevestigd is, verschijnt hier de voordeligere optie voor drie kaarten."
+  },
+  "tryOnShop": {
+    "selectTitle": "Kies een sieraad",
+    "selectLabel": "Sieraad om te passen",
+    "empty": "Er zijn momenteel geen sieraden beschikbaar om te passen. Je kunt wel de camera openen om het beeld te controleren.",
+    "cameraOnly": "Alleen cameravoorbeeld — geen sieraad geselecteerd."
   }
 }

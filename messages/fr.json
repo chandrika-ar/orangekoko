@@ -340,5 +340,11 @@
     "minimumCards": "Les commandes de cartes seules sont expédiées à partir de deux cartes, avec possibilité de mélanger les motifs. Une seule carte peut accompagner une commande de bijoux.",
     "threeValue": "Trois exemplaires de cette carte pour {price} — moins cher que trois cartes à l’unité. Ajoutez-en trois au panier ; la réduction s’applique automatiquement.",
     "threeValuePending": "Vous en souhaitez trois ? Une offre plus avantageuse apparaîtra ici dès que son prix sera confirmé."
+  },
+  "tryOnShop": {
+    "selectTitle": "Choisir un bijou",
+    "selectLabel": "Bijou à essayer",
+    "empty": "Aucun bijou n’est actuellement disponible à l’essayage. Vous pouvez tout de même ouvrir la caméra pour vérifier la vue.",
+    "cameraOnly": "Aperçu caméra uniquement — aucun bijou sélectionné."
   }
 }

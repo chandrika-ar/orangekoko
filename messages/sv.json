@@ -340,5 +340,11 @@
     "minimumCards": "Beställningar med enbart kort skickas från två kort; du kan blanda motiv. Ett enda kort kan läggas till en smyckesbeställning.",
     "threeValue": "Tre av detta kort för {price} — bättre pris än tre enstaka kort. Lägg tre i varukorgen; rabatten tillämpas automatiskt.",
     "threeValuePending": "Vill du ha tre? Ett förmånligare alternativ visas här när priset har bekräftats."
+  },
+  "tryOnShop": {
+    "selectTitle": "Välj ett smycke",
+    "selectLabel": "Smycke att prova",
+    "empty": "Inga smycken finns för närvarande att prova. Du kan ändå öppna kameran för att kontrollera bilden.",
+    "cameraOnly": "Endast kameraförhandsvisning — inget smycke valt."
   }
 }

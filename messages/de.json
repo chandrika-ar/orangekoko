@@ -340,5 +340,11 @@
     "minimumCards": "Bestellungen nur mit Karten werden ab zwei Karten versendet; verschiedene Motive sind kombinierbar. Zu Schmuck kannst du eine einzelne Karte hinzufügen.",
     "threeValue": "Drei dieser Karten für {price} — günstiger als drei Einzelkarten. Lege drei in den Warenkorb; der Vorteil wird automatisch angewendet.",
     "threeValuePending": "Du möchtest drei? Sobald der Preis feststeht, erscheint hier die günstigere Option für drei Karten."
+  },
+  "tryOnShop": {
+    "selectTitle": "Schmuck auswählen",
+    "selectLabel": "Schmuck zum Anprobieren",
+    "empty": "Derzeit ist kein Schmuck zum Anprobieren verfügbar. Du kannst trotzdem die Kamera öffnen und die Ansicht prüfen.",
+    "cameraOnly": "Nur Kameravorschau — kein Schmuck ausgewählt."
   }
 }

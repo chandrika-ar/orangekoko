@@ -340,5 +340,11 @@
     "minimumCards": "Los pedidos que solo contienen tarjetas se envían a partir de dos tarjetas; puedes combinar diseños. Puedes añadir una sola tarjeta a un pedido de joyas.",
     "threeValue": "Tres unidades de esta tarjeta por {price} — más económico que tres tarjetas sueltas. Añade tres al carrito; el ahorro se aplica automáticamente.",
     "threeValuePending": "¿Quieres tres? La opción más económica aparecerá aquí cuando se confirme su precio."
+  },
+  "tryOnShop": {
+    "selectTitle": "Elige una joya",
+    "selectLabel": "Joya para probar",
+    "empty": "Actualmente no hay joyas disponibles para probar. Aun así, puedes abrir la cámara para comprobar la imagen.",
+    "cameraOnly": "Solo vista previa de cámara — ninguna joya seleccionada."
   }
 }

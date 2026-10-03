@@ -340,5 +340,11 @@
     "minimumCards": "Gli ordini di sole cartoline vengono spediti da due cartoline in su; puoi combinare diversi disegni. Puoi aggiungere una sola cartolina a un ordine di gioielli.",
     "threeValue": "Tre copie di questa cartolina a {price} — più conveniente di tre singole. Aggiungine tre al carrello; il risparmio si applica automaticamente.",
     "threeValuePending": "Ne vuoi tre? L’opzione più conveniente apparirà qui quando il prezzo sarà confermato."
+  },
+  "tryOnShop": {
+    "selectTitle": "Scegli un gioiello",
+    "selectLabel": "Gioiello da provare",
+    "empty": "Al momento non ci sono gioielli disponibili da provare. Puoi comunque aprire la fotocamera per controllare l’immagine.",
+    "cameraOnly": "Solo anteprima della fotocamera — nessun gioiello selezionato."
   }
 }

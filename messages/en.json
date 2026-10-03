@@ -340,5 +340,11 @@
     "minimumCards": "Card-only orders require at least two cards; you may combine designs. One card can be added to a jewelry order.",
     "threeValue": "Three of this card for {price} — better value than three singles. Add three to your bag; the saving applies automatically.",
     "threeValuePending": "Want three? A better-value three-card option will appear here once its price is confirmed."
+  },
+  "tryOnShop": {
+    "selectTitle": "Choose jewelry",
+    "selectLabel": "Jewelry to try on",
+    "empty": "No jewelry is currently available for try-on. You can still open the camera to check the view.",
+    "cameraOnly": "Camera preview only — no jewelry selected."
   }
 }

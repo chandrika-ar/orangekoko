@@ -53,7 +53,7 @@ test('every locale provides matching card and shopping message keys', async()=>{
  const english=JSON.parse(await readFile(new URL('../messages/en.json',import.meta.url),'utf8'));
  for(const file of files){
   const messages=JSON.parse(await readFile(new URL(`../messages/${file}`,import.meta.url),'utf8'));
-  for(const namespace of ['cards','cardShop']){
+  for(const namespace of ['cards','cardShop','tryOnShop']){
    assert.deepEqual(Object.keys(messages[namespace]).sort(),Object.keys(english[namespace]).sort(),`${file}: ${namespace}`);
    for(const [key,value] of Object.entries(messages[namespace])) assert.ok(typeof value==='string' && value.trim(),`${file}: ${key}`);
   }
@@ -86,4 +86,14 @@ test('three-card price applies to complete groups without losing remainder cards
  assert.equal(purchaseTotalCents(800,7,2100),5000);
  assert.equal(purchaseTotalCents(800,3,2500),2400);
  assert.equal(purchaseTotalCents(800,3),2400);
+});
+test('new arrivals split jewelry and single cards with an equal six-item limit',async()=>{
+ const { splitCollections }=await import('../src/lib/catalogue-view.ts');
+ const products=[...Array.from({length:8},(_,id)=>({id:'j'+id,category:'ear-clips'})),...Array.from({length:9},(_,id)=>({id:'c'+id,category:'handmade-cards',packSize:1})),{id:'old-pack',category:'handmade-cards',packSize:3}];
+ const result=splitCollections(products,6);
+ assert.equal(result.jewelry.length,6);assert.equal(result.cards.length,6);
+ assert.deepEqual(result.jewelry.map(p=>p.id),['j0','j1','j2','j3','j4','j5']);
+ assert.ok(result.cards.every(p=>p.category==='handmade-cards' && p.packSize===1));
+ const all=splitCollections(products);assert.equal(all.cards.length,9);assert.equal(all.jewelry.length,8);
+ assert.deepEqual(splitCollections([],6),{jewelry:[],cards:[]});
 });

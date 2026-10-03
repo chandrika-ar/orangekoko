@@ -340,5 +340,11 @@
     "minimumCards": "Bestillinger kun med kort sendes fra to kort; du kan kombinere motiver. Ét kort kan tilføjes til en smykkebestilling.",
     "threeValue": "Tre af dette kort for {price} — billigere end tre enkeltkort. Læg tre i kurven; besparelsen anvendes automatisk.",
     "threeValuePending": "Vil du have tre? Den fordelagtige mulighed vises her, når prisen er bekræftet."
+  },
+  "tryOnShop": {
+    "selectTitle": "Vælg et smykke",
+    "selectLabel": "Smykke at prøve",
+    "empty": "Der er i øjeblikket ingen smykker at prøve. Du kan stadig åbne kameraet og kontrollere billedet.",
+    "cameraOnly": "Kun kameravisning — intet smykke valgt."
   }
 }

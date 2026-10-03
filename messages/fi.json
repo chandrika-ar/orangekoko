@@ -340,5 +340,11 @@
     "minimumCards": "Pelkkää korttia sisältävät tilaukset lähetetään vähintään kahdesta kortista alkaen; voit yhdistellä malleja. Korutilaukseen voi lisätä yhden kortin.",
     "threeValue": "Kolme tätä korttia hintaan {price} — edullisemmin kuin kolme erillistä korttia. Lisää kolme ostoskoriin; etu lasketaan automaattisesti.",
     "threeValuePending": "Haluatko kolme? Edullisempi kolmen kortin vaihtoehto näkyy tässä, kun sen hinta on vahvistettu."
+  },
+  "tryOnShop": {
+    "selectTitle": "Valitse koru",
+    "selectLabel": "Sovitettava koru",
+    "empty": "Koruja ei ole tällä hetkellä sovitettavana. Voit silti avata kameran ja tarkistaa kuvan.",
+    "cameraOnly": "Vain kameran esikatselu — korua ei ole valittu."
   }
 }
