@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import studioStory from "../../../../public/about-studio-story.webp";
 
 export default async function AboutPage() {
   const footer = await getTranslations("footer");
@@ -8,7 +9,7 @@ export default async function AboutPage() {
   return (
     <div>
       <div className="relative aspect-[16/7] w-full overflow-hidden bg-cream-deep">
-        <Image src="/about-studio-story.webp" alt="" fill priority className="object-cover" sizes="100vw" />
+        <Image src={studioStory} alt="" fill priority placeholder="blur" className="object-cover" sizes="100vw" />
       </div>
       <article className="mx-auto max-w-2xl px-4 py-14 sm:px-6 lg:px-8">
         <header className="text-center">

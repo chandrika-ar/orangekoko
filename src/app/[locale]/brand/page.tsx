@@ -1,5 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import brandHero from "../../../../public/brand-gift-story.webp";
+import jewelryCraft from "../../../../public/brand-jewelry-craft.webp";
+import cardMaking from "../../../../public/brand-card-making.webp";
 
 export default async function BrandPage() {
   const nav = await getTranslations("nav");
@@ -8,7 +11,7 @@ export default async function BrandPage() {
   return (
     <div>
       <div className="relative aspect-[16/8] w-full overflow-hidden bg-cream-deep">
-        <Image src="/brand-gift-story.webp" alt="" fill priority className="object-cover" sizes="100vw" />
+        <Image src={brandHero} alt="" fill priority placeholder="blur" className="object-cover" sizes="100vw" />
       </div>
       <header className="mx-auto max-w-2xl px-4 pt-16 pb-10 text-center sm:px-6 lg:px-8">
         <p className="text-[11px] uppercase tracking-[0.15em] text-ink-soft">{nav("brand")}</p>
@@ -21,7 +24,7 @@ export default async function BrandPage() {
       </div>
       <section className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 px-4 py-8 sm:px-6 md:grid-cols-2 lg:px-8">
         <div className="relative aspect-[4/5] w-full overflow-hidden bg-cream-deep">
-          <Image src="/brand-jewelry-craft.webp" alt="" fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+          <Image src={jewelryCraft} alt="" fill placeholder="blur" className="object-cover" sizes="(min-width: 1024px) 472px, (min-width: 768px) 50vw, 100vw" />
         </div>
         <div className="space-y-5 text-base leading-relaxed text-ink-soft">
           <h2 className="font-display text-2xl text-ink">{t("aestheticsTitle")}</h2>
@@ -47,7 +50,7 @@ export default async function BrandPage() {
           <p>{t("cards2")}</p>
         </div>
         <div className="relative order-1 aspect-[4/5] w-full overflow-hidden bg-cream-deep md:order-2">
-          <Image src="/brand-card-making.webp" alt="" fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+          <Image src={cardMaking} alt="" fill placeholder="blur" className="object-cover" sizes="(min-width: 1024px) 472px, (min-width: 768px) 50vw, 100vw" />
         </div>
       </section>
       <p className="mx-auto max-w-2xl px-4 pt-6 pb-16 text-center font-display text-xl italic leading-relaxed sm:px-6 lg:px-8">{t("closing")}</p>
